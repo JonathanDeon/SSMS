@@ -12,7 +12,12 @@ class Employee extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('employee', function (Blueprint $table) {
+            $table->string('eid');
+            $table->string('name');
+            $table->string('address');
+            $table->rememberToken();
+        });
     }
 
     /**
@@ -22,6 +27,6 @@ class Employee extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('employee');
     }
 }

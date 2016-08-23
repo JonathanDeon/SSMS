@@ -26,6 +26,7 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -94,8 +95,8 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                        <li class="active"><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                        <li class="active"><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                        <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
                         <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
                         <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
                         <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
@@ -174,78 +175,142 @@
         <div align="center">
 
             <!-- Horizontal Form -->
-            <div class="box box-info" style="width: 58%">
+            <div class="box box-info" style="width: 80%; top:20px;">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Add New Item</h3>
+                    <h3 class="box-title">Add New Employee</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="added" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="inputPID" class="col-sm-2 control-label">Purchase ID</label>
+                            <label for="inputName" class="col-sm-2 control-label">Name</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="pid" placeholder="Purchase ID" style="width:80%">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" style="width:80%">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputITEMID" class="col-sm-2 control-label">Item ID</label>
+                            <label for="inputdob" class="col-sm-2 control-label">Date of Birth</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="itemid" placeholder="Item ID" style="width:80%">
+                                <div class="input-group" style="width:80%">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control" name="dob" id="dob" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputGender" class="col-sm-2 control-label">Gender</label>
+
+                            <div class="col-sm-10" align="left" style="left: 100px">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked="">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="female" checked="">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="address" id="address" placeholder="Enter address" style="width:80%">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputtp" class="col-sm-2 control-label">Contact No.</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter telephone no" style="width:80%">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputJoinedDate" class="col-sm-2 control-label">Joined Date</label>
+                            <div class="col-sm-10">
+                                <div class="input-group" style="width:80%">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" name="date" id="date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputsType" class="col-sm-2 control-label">Service Type</label>
+
+                            <div class="col-sm-10" align="left" style="left: 100px">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios2" id="optionsRadios2" value="janitorial" checked="">
+                                        Janitorial
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios2" id="optionsRadios2" value="vehicle" checked="">
+                                        Vehicle Grooming and Valet
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputdesignation" class="col-sm-2 control-label">Designation</label>
+
+                            <div class="col-sm-10">
+                                <select class="form-control" style="width:80%" name="designation" id="designation">
+                                    <option>Select Designation</option>
+                                    @foreach($designations as $designation)
+                                        <option value="{{!! $designation->id; !!}}">{{$designation->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputdate" class="col-sm-2 control-label">Branch</label>
+
+                            <div class="col-sm-10">
+                                <select class="form-control" style="width:80%" name="branch" id="branch">
+                                    <option>Select Branch</option>
+                                    @foreach($branches as $branch)
+                                        <option value="{{!! $branch->id; !!}}">{{$branch->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
-
                         <div class="form-group">
-                            <label for="inputITEMID" class="col-sm-2 control-label">Quantity</label>
+                            <label for="inputdate" class="col-sm-2 control-label">Manager</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="qty" placeholder="Quantity" style="width:80%">
+                                <select class="form-control" style="width:80%" name="manager" id="manager">
+                                    <option>Select Manager</option>
+                                    @foreach($managers as $manager)
+                                        <option value="{{!! $manager->eid; !!}}">{{$manager->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                        </div>
 
-
-                        <div class="form-group">
-                            <label for="inputdate" class="col-sm-2 control-label">Date</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="date" placeholder="Purchase Date" style="width:80%">
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="inputITEMID" class="col-sm-2 control-label">Price</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="price" placeholder="Price" style="width:80%">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputITEMID" class="col-sm-2 control-label">Total</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="total" placeholder="Total Amount" style="width:80%">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputITEMID" class="col-sm-2 control-label">Supplier ID</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="supplier" placeholder="Supplier ID" style="width:80%">
-                            </div>
                         </div>
 
                     </div>
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        <!--    <button type="submit" class="btn btn-default">Cancel</button> -->
-                        <button type="submit" class="btn btn-primary pull-center name=">Add Purchase Item</button>
+
+                        <button type="submit" class="btn btn-primary pull-center name=">Add Employee</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="submit" class="btn btn-danger pull-center name=">Cancel</button>
                     </div>
 
                     <!-- /.box-footer -->
