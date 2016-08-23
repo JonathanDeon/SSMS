@@ -48,6 +48,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+    </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -78,7 +79,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="ReservationsService"><i class="fa fa-circle-o"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-circle-o"></i>Assign Service</i></a></li>
+            <li><a href="AssignService"><i class="fa fa-circle-o"></i>Assign Service</a></li>
             <li><a href="ServicePlans"><i class="fa fa-circle-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-circle-o"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-circle-o"></i>Service Reports</a></li>
@@ -152,7 +153,7 @@
               <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
             </ul>
        </li>
-
+        </ul>
     </section>
   </aside>
 
@@ -170,139 +171,72 @@
         </section>
 
         <!-- Main content -->
+      <div style="padding:15px">
+          <div class="box box-success" >
+              <div class="box-header with-border">
+                  <h3 class="box-title">All Employees</h3>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <form class="form-horizontal">
+                  <div class="box">
+                      <div class="box-header">
+                          <div class="col-xs-4 form-group">
+                              <select class="form-control" style="width: 75%;">
+                                  <option>Filter</option>
+                                  <option>Employee ID</option>
+                                  <option>Employee Name</option>
+                                  <option>Designation</option>
+                                  <option>Branch</option>
+                                  <option>Date Joined</option>
+                              </select>
+                          </div>
+                          <div class="box-tools">
+                              <div class="input-group input-group-sm" style="width: 400px;">
+                                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
 
-        <div class="row" style="margin-top: 25px">
-            <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <div class="col-xs-4 form-group">
-                            <select class="form-control" style="width: 75%;">
-                                <option>Filter</option>
-                                <option>Employee ID</option>
-                                <option>Employee Name</option>
-                                <option>Designation</option>
-                                <option>Branch</option>
-                                <option>Date Joined</option>
-                            </select>
-                        </div>
-                        <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 400px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover">
-                            <tbody><tr>
-                                <th>ID</th>
-                                <th>Employee Name</th>
-                                <th>Designation</th>
-                                <th>Contact Number</th>
-                                <th>Branch</th>
-                                <th>Date Joined</th>
-                                <th></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>EMP001</td>
-                                <td>John Doe</td>
-                                <td>Manager</td>
-                                <td>0112-236956</td>
-                                <td>Moratuwa</td>
-                                <td>11-7-2014</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button></td>
-                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>EMP294</td>
-                                <td>Alexander Pierce</td>
-                                <td>Manager</td>
-                                <td>0112-236956</td>
-                                <td>Moratuwa</td>
-                                <td>6-7-2014</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button></td>
-                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>EMP657</td>
-                                <td>Bob Doe</td>
-                                <td>Manager</td>
-                                <td>0112-236956</td>
-                                <td>Moratuwa</td>
-                                <td>5-7-2014</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button></td>
-                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>EMP175</td>
-                                <td>Mike Doe</td>
-                                <td>Manager</td>
-                                <td>0112-236956</td>
-                                <td>Moratuwa</td>
-                                <td>5-7-2014</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button></td>
-                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>EMP001</td>
-                                <td>John Doe</td>
-                                <td>Manager</td>
-                                <td>0112-236956</td>
-                                <td>Moratuwa</td>
-                                <td>11-7-2014</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button></td>
-                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>EMP294</td>
-                                <td>Alexander Pierce</td>
-                                <td>Manager</td>
-                                <td>0112-236956</td>
-                                <td>Moratuwa</td>
-                                <td>6-7-2014</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button></td>
-                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>EMP657</td>
-                                <td>Bob Doe</td>
-                                <td>Manager</td>
-                                <td>0112-236956</td>
-                                <td>Moratuwa</td>
-                                <td>5-7-2014</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button></td>
-                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>EMP175</td>
-                                <td>Mike Doe</td>
-                                <td>Manager</td>
-                                <td>0112-236956</td>
-                                <td>Moratuwa</td>
-                                <td>5-7-2014</td>
-                                <td><button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button></td>
-                                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                            </tr>
-                            </tbody></table>
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-            </div>
-        </div>
+                                  <div class="input-group-btn">
+                                      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body table-responsive no-padding">
+                          <table class="table table-hover">
+                              <tbody>
+                              <tr>
+                                  <th>ID</th>
+                                  <th>Employee Name</th>
+                                  <th>Designation</th>
+                                  <th>Gender</th>
+                                  <th>Branch</th>
+                                  <th>Manager</th>
+                                  <th>Date Joined</th>
+                                  <th></th>
+                                  <th></th>
+                              </tr>
+                              @foreach($employees as $employee)
+                                  <tr>
+                                      <td>{{$employee->eid}}</td>
+                                      <td>{{$employee->name}}</td>
+                                      <td>Manager</td>
+                                      <td>{{$employee->gender}}</td>
+                                      <td>{{$employee->branch}}</td>
+                                      <td>{{$employee->manager}}</td>
+                                      <td>{{$employee->joined_date}}</td>
+                                      <td><button type="button" class="btn btn-success"><i class="fa fa-eye"></i></button></td>
+                                      <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
+                                      <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
+                                  </tr>
+                              @endforeach
+                              </tbody></table>
+                      </div>
+                      <!-- /.box-body -->
+                  </div>
+              </form>
+          </div>
+      </div>
         <!-- Modal prompt for update-->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -360,7 +294,7 @@
        
     </div>
 <!-- ./wrapper -->
-
+</div>
 <!-- jQuery 2.2.0 -->
 <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.6 -->

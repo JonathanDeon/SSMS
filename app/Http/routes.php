@@ -70,9 +70,7 @@ Route::get('ReportsServices',function(){
 });
 
 /*Employee routes*/
-Route::get('EmployeeInformation',function(){
-	return view('EmployeeInformation');
-});
+Route::get('EmployeeInformation','EmployeeInfoController@showAllEmployees');
 
 Route::get('EmpMyProfile',function(){
 	return view('EmpMyProfile');

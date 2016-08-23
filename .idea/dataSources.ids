@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - ssms@localhost" uuid="b255ac5c-f547-4705-a863-e3351df89ac0">
+    <database-info product="MySQL" version="5.6.24" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="ssms">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="cdcol"/>
+      <schema id="3" name="information_schema"/>
+      <schema id="4" name="mysql"/>
+      <schema id="5" name="performance_schema"/>
+      <schema id="6" name="phpmyadmin"/>
+      <schema id="7" name="test"/>
+      <schema id="8" name="webauth"/>
+      <table id="9" parent="1" name="branch"/>
+      <table id="10" parent="1" name="customer"/>
+      <table id="11" parent="1" name="employee"/>
+      <table id="12" parent="1" name="employee_service"/>
+      <table id="13" parent="1" name="janitorial_package"/>
+      <table id="14" parent="1" name="janitorial_service"/>
+      <table id="15" parent="1" name="payment"/>
+      <table id="16" parent="1" name="service"/>
+      <table id="17" parent="1" name="service_plan"/>
+      <table id="18" parent="1" name="vehicle"/>
+      <table id="19" parent="1" name="vehicle_service"/>
+      <column id="20" parent="9" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="21" parent="9" name="address">
+        <data-type>varchar(70)|0</data-type>
+      </column>
+      <column id="22" parent="9" name="name">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <key id="23" parent="9" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="24" parent="10" name="cus_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="25" parent="10" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="26" parent="10" name="address">
+        <data-type>varchar(100)|0</data-type>
+      </column>
+      <column id="27" parent="10" name="contactNo">
+        <mandatory>1</mandatory>
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="28" parent="10" name="contactPerson">
+        <data-type>int(30)|0</data-type>
+      </column>
+      <column id="29" parent="10" name="cusType">
+        <mandatory>1</mandatory>
+        <data-type>int(2)|0</data-type>
+      </column>
+      <key id="30" parent="10" name="PRIMARY">
+        <columns>cus_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="31" parent="11" name="eid">
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="32" parent="11" name="address">
+        <data-type>varchar(70)|0</data-type>
+      </column>
+      <column id="33" parent="11" name="name">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="34" parent="11" name="joined_date">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="35" parent="11" name="gender">
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="36" parent="11" name="manager">
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="37" parent="11" name="branch">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <key id="38" parent="11" name="PRIMARY">
+        <columns>eid</columns>
+        <primary>1</primary>
+      </key>
+      <column id="39" parent="12" name="employee">
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="40" parent="12" name="service">
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <key id="41" parent="12" name="PRIMARY">
+        <columns>employee
+service</columns>
+        <primary>1</primary>
+      </key>
+      <column id="42" parent="13" name="package_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="43" parent="13" name="name">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="44" parent="13" name="amount">
+        <mandatory>1</mandatory>
+        <data-type>double|0</data-type>
+      </column>
+      <column id="45" parent="13" name="category">
+        <mandatory>1</mandatory>
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <key id="46" parent="13" name="PRIMARY">
+        <columns>package_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="47" parent="14" name="service_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="48" parent="14" name="date_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="49" parent="14" name="package">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="50" parent="14" name="PRIMARY">
+        <columns>service_id
+package</columns>
+        <primary>1</primary>
+      </key>
+      <column id="51" parent="15" name="pay_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="52" parent="15" name="amount">
+        <data-type>double|0</data-type>
+      </column>
+      <column id="53" parent="15" name="date">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="54" parent="15" name="service">
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="55" parent="15" name="method">
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <key id="56" parent="15" name="PRIMARY">
+        <columns>pay_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="57" parent="16" name="service_id">
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="58" parent="16" name="date_time">
+        <mandatory>1</mandatory>
+        <data-type>timestamp|0</data-type>
+        <default-expression>CURRENT_TIMESTAMP</default-expression>
+      </column>
+      <column id="59" parent="16" name="customer">
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <column id="60" parent="16" name="type">
+        <data-type>varchar(2)|0</data-type>
+      </column>
+      <key id="61" parent="16" name="PRIMARY">
+        <columns>service_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="62" parent="17" name="splan_id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="63" parent="17" name="amount">
+        <mandatory>1</mandatory>
+        <data-type>float|0</data-type>
+      </column>
+      <column id="64" parent="17" name="category">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="65" parent="17" name="title">
+        <mandatory>1</mandatory>
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <key id="66" parent="17" name="PRIMARY">
+        <columns>splan_id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="67" parent="18" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="68" parent="18" name="model">
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="69" parent="18" name="type">
+        <data-type>varchar(30)|0</data-type>
+      </column>
+      <column id="70" parent="18" name="number_plate">
+        <data-type>varchar(10)|0</data-type>
+      </column>
+      <column id="71" parent="18" name="make">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="72" parent="18" name="customer">
+        <data-type>varchar(5)|0</data-type>
+      </column>
+      <key id="73" parent="18" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="74" parent="19" name="service">
+        <mandatory>1</mandatory>
+        <data-type>varchar(5)|0</data-type>
+        <default-expression>&apos;&apos;</default-expression>
+      </column>
+      <column id="75" parent="19" name="vehicle">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <column id="76" parent="19" name="serviceplan">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <default-expression>&apos;0&apos;</default-expression>
+      </column>
+      <key id="77" parent="19" name="PRIMARY">
+        <columns>service
+vehicle
+serviceplan</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>
