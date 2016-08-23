@@ -92,6 +92,10 @@ Route::get('leave',function (){
    return view('leave');
 });
 
+Route::get('AddEmployee',function (){
+    return view('AddEmployee');
+});
+
 //Route::get('')
 
 /*inventory routes*/

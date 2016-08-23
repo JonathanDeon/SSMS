@@ -9,7 +9,7 @@ use App\Http\Requests;
 class EmployeeInfoController extends Controller
 {
     public function showAllEmployees(){
-        $employees = DB::select(DB::raw("select * from employee"));
+        $employees = DB::select("select * from employee");
         return view('EmployeeInformation',compact('employees'));
     }
 }
