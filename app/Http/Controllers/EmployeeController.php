@@ -37,9 +37,10 @@ class EmployeeController extends Controller
         $branch = $request->input('branch');
         $manager = $request->input('manager');
         DB::statement(
-            "INSERT INTO employee(eid, address, name, contact, dob, joined_date, type, gender, manager, branch, designation)
-            VALUES ('SE012','$address','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation')");
-        return view('AddEmployee');
+            "INSERT INTO employee(eid, address, name, contact, dob, joined_date, service_type, gender, manager, branch, designation)
+            VALUES ('SE016','$address','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation')");
+
+        return redirect('/AddEmployee');
     }
 
     public function updateEmployeeDetails(Request $request){

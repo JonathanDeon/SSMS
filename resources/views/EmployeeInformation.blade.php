@@ -27,6 +27,9 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+    <style>
+    .datepicker{z-index:1151 !important;}
+    </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -299,7 +302,12 @@
                                         <label>Employee Name:</label>
                                         <input type="text" class="form-control" id="employee-name">
                                         <label>Date of Birth:</label>
-                                        <input type="text" class="form-control"id="dob">
+                                        <div class="input-group" style="width:80%">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" class="form-control pull-right datepicker" name="dob" id="dob" class="form-control" >
+                                        </div>
                                         <label>Gender:</label><br>
                                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked="">
                                         Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -351,6 +359,7 @@
 </div>
 <!-- jQuery 2.2.0 -->
 <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../../bootstrap/js/bootstrap.min.js"></script>
 <!-- FastClick -->
@@ -374,6 +383,10 @@
 
 
 <script>
+    $('#dob').datepicker({
+        autoclose: true
+
+    });
     function alerts() {
         swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false },
                 function(){   swal("Deleted!", "Employee Record has been deleted", "success");
@@ -386,6 +399,7 @@
                 swal("Successful", "Data Successfully Saved!", "success")
                 location.reload();
     }
+
 </script>
 </body>
 </html>
