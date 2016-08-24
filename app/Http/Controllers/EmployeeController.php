@@ -45,19 +45,19 @@ class EmployeeController extends Controller
     public function updateEmployeeDetails(Request $request){
         $id = $request['id'];
         $name = $request['name'];
-        $address = $request->['address'];
-        $dob = $request->input('dob');
-        $contact = $request->input('phone');
-        $gender = $request->input('optionsRadios');
-        $date = $request->input('date');
-        $service = $request->input('optionsRadios2');
-        $designation = $request->input('designation');
-        $branch = $request->input('branch');
-        $manager = $request->input('manager');
-        DB::statement(
-            "UPDATE TABLE employee(eid, address, name, contact, dob, joined_date, type, gender, manager, branch, designation)
-            VALUES ('SE012','$address','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation')");
-        return view('AddEmployee');
+        $address = $request['address'];
+//        $dob = $request['dob'];
+//        $contact = $request['phone'];
+//        $gender = $request['optionsRadios'];
+//        $date = $request['date'];
+//        $service = $request->input('optionsRadios2');
+//        $designation = $request->input('designation');
+//        $branch = $request->input('branch');
+//        $manager = $request->input('manager');
+        DB::table('employee')->update
+            ->where("eid",$id)
+            ->update(array("name"=>$name,"address=>$address"));
+
     }
 
     private function getManagers(){

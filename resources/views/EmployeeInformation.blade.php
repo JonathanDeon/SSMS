@@ -241,6 +241,7 @@
                                       data: {id: id},
                                       success: function(x) {
                                           var details = JSON.parse(x);
+                                          document.getElementById('save').value=details[0].eid;
                                           document.getElementById('employee-name').value = details[0].name;
                                           document.getElementById('optionsRadios1').checked = details[0].gender;
                                           document.getElementById('contact').value = details[0].contact;
@@ -254,14 +255,17 @@
                                   })
                               }
 
-                              function updateEmployee(id) {
-                                  document.getElementById('employee-id').value = id;
+                              function updateEmployee() {
+                                  var id = document.getElementById('save').value;
                                   $.ajax({
                                       type: "get",
                                       url: 'updateEmployee',
                                       data: {id: id},
                                       success: function(x) {
                                           success("Data Saved Successfully!")
+                                      },
+                                      error: function(){
+                                          console.log("ERROR");
                                       }
                                   })
                               }
@@ -332,7 +336,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary" id="save" onclick="updateEmployee()">Save changes</button>
                     </div>
                 </div>
             </div>
