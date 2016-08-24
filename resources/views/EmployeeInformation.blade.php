@@ -184,11 +184,8 @@
                           <div class="col-xs-4 form-group">
                               <select class="form-control" style="width: 75%;">
                                   <option>Filter</option>
-                                  <option>Employee ID</option>
-                                  <option>Employee Name</option>
-                                  <option>Designation</option>
-                                  <option>Branch</option>
-                                  <option>Date Joined</option>
+                                  <option>Vehicle Grooming</option>
+                                  <option>Janitorial</option>
                               </select>
                           </div>
                           <div class="box-tools">
@@ -248,19 +245,25 @@
                                           document.getElementById('dob').value = details[0].dob;
                                           document.getElementById('dateJoined').value = details[0].joined_date;
                                           document.getElementById('address').value = details[0].address;
-                                          //document.getElementById('designation').value = details[0].designation;
-                                          //document.getElementById('branch').value = details[0].branch;
-                                          //document.getElementById('manager').value = details[0].manager;
+                                          document.getElementById('designation').value = details[0].designation;
+                                          document.getElementById('branch').value = details[0].branch;
+                                          document.getElementById('manager').value = details[0].manager;
                                       }
                                   })
                               }
 
                               function updateEmployee() {
                                   var id = document.getElementById('save').value;
+                                  var ename = document.getElementById('employee-name').value;
+                                  var gender = document.getElementById('optionsRadios1').checked;
+                                  var contact = document.getElementById('contact').value;
+                                  var address = document.getElementById('address').value;
+                                  var dateJoined = document.getElementById('dateJoined').value;
+                                  var dob = document.getElementById('dob').value;
                                   $.ajax({
                                       type: "get",
                                       url: 'updateEmployee',
-                                      data: {id: id},
+                                      data: {id: id, address: address},
                                       success: function(x) {
                                           success("Data Saved Successfully!")
                                       },
@@ -371,8 +374,10 @@
 
 <script>
     function alerts() {
-                swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
-            }
+        swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false },
+                function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
+
+    }
 
     function success() {
                 swal("Successful", "Data Successfully Saved!", "success")

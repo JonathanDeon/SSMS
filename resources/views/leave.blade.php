@@ -24,6 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     -->
     <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 </head>
 <body class="hold-transition skin-blue fixed">
@@ -135,8 +136,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <td>{{$leave->leave_date}}</td>
                                         <td>{{$leave->reason}}</td>
                                         <td><span class="label label-warning">Pending</span></td>
-                                        <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
-                                        <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
+                                        <td><button type="button" id="accept" value="{{$leave->id}}" class="btn btn-success btn-sm" onclick="success()"><i class="fa fa-check"></i></button></td>
+                                        <td><button type="button" id="reject" value="{{$leave->id}}" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
                                     </tr>
                                 @endforeach
                                 </tbody></table>
@@ -145,6 +146,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </div>
                 </div>
 
+                <script>
+                    function alerts() {
+                        swal({   title: "Are you sure you want to reject?", type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Reject",   closeOnConfirm: false },
+                                function(){
+                                    swal("Rejected!", "success");
+                                });
+                    }
+
+                    function success() {
+                        var leaveId = document.getElementById('accept').value;
+                        $.ajax({
+                            type: "get",
+                            url: 'approveLeave',
+                            data: {leaveId: leaveId},
+                            success: function() {
+                                swal("Successful", "Leave Approved!", "success");
+                            },
+                            error: function () {
+                                swal("Rejected!", "success");
+                            }
+                        });
+                    }
+                </script>
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_2">
                     <div class="row">
@@ -220,6 +244,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
+
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

@@ -44,7 +44,7 @@ class EmployeeController extends Controller
 
     public function updateEmployeeDetails(Request $request){
         $id = $request['id'];
-        $name = $request['name'];
+
         $address = $request['address'];
 //        $dob = $request['dob'];
 //        $contact = $request['phone'];
@@ -54,10 +54,8 @@ class EmployeeController extends Controller
 //        $designation = $request->input('designation');
 //        $branch = $request->input('branch');
 //        $manager = $request->input('manager');
-        DB::table('employee')->update
-            ->where("eid",$id)
-            ->update(array("name"=>$name,"address=>$address"));
-
+        $affected = DB::update("update employee set address = '$address' where eid = '$id'");
+        return $affected;
     }
 
     private function getManagers(){

@@ -17,4 +17,10 @@ class LeaveController extends Controller
                   ");
         return view('leave',compact('leaves'));
     }
+
+    public function approveLeave(Request $request){
+        $leaveId = $request['leaveId'];
+        $affected = DB::update("update employee_leave set approved = 1 where leave_id = '$leaveId'");
+        return $affected;
+    }
 }
