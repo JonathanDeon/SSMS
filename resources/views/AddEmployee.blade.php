@@ -167,7 +167,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/main"><i class="fa fa-user"></i> Employee</a></li>
-                <li class="active">Info</li>
+                <li class="active">Add</li>
             </ol>
         </section>
 
@@ -270,7 +270,7 @@
                                 <select class="form-control" style="width:80%" name="designation" id="designation">
                                     <option>Select Designation</option>
                                     @foreach($designations as $designation)
-                                        <option value="{{!! $designation->id; !!}}">{{$designation->title}}</option>
+                                        <option value="{{ $designation->id }}">{{$designation->title}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -282,7 +282,7 @@
                                 <select class="form-control" style="width:80%" name="branch" id="branch">
                                     <option>Select Branch</option>
                                     @foreach($branches as $branch)
-                                        <option value="{{!! $branch->id; !!}}">{{$branch->name}}</option>
+                                        <option value="{{ $branch->id }}">{{$branch->bname}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -295,11 +295,10 @@
                                 <select class="form-control" style="width:80%" name="manager" id="manager">
                                     <option>Select Manager</option>
                                     @foreach($managers as $manager)
-                                        <option value="{{!! $manager->eid; !!}}">{{$manager->name}}</option>
+                                        <option value="{{ $manager->eid }}">{{$manager->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
-
                         </div>
 
                     </div>

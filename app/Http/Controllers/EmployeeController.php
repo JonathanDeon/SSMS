@@ -10,13 +10,16 @@ class EmployeeController extends Controller
 {
     public function showAllEmployees(){
         $employees = DB::select("select * from employee");
-
-        return view('EmployeeInformation',compact('employees'));
+        $branches = DB::select("select * from branch");
+        $designations = DB::select("select * from designation");
+        $managers = $this->getManagers();
+        return view('EmployeeInformation',compact('employees','branches','managers','designations'));
     }
 
     public function showAddEmployee(){
         $branches = DB::select("select * from branch");
         $designations = DB::select("select * from designation");
+
         $managers = $this->getManagers();
         return view('AddEmployee',compact('branches','designations','managers'));
 
@@ -35,12 +38,25 @@ class EmployeeController extends Controller
         $manager = $request->input('manager');
         DB::statement(
             "INSERT INTO employee(eid, address, name, contact, dob, joined_date, type, gender, manager, branch, designation)
-            VALUES ('SE010','$address','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation')");
-        return $name;
+            VALUES ('SE012','$address','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation')");
+        return view('AddEmployee');
     }
 
-    public function getManagers(){
+    private function getManagers(){
         $managers = DB::select("select * from employee where designation = 1");
         return $managers;
     }
+
+    public function getEmployeeDetails($id){
+        $employees = DB::select("select * from employee where eid = '$id'");
+        return $employees;
+    }
+//    private function generateEmployeeId($service){
+//        if($service=="vehicle"){
+//            $empid=
+//        }
+//        else{
+//
+//        }
+//    }
 }
