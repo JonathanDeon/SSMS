@@ -265,10 +265,11 @@
                                       url: 'updateEmployee',
                                       data: {id: id, address: address},
                                       success: function(x) {
-                                          success("Data Saved Successfully!")
+                                          swal("Successful", "Employee Record Updated!", "success");
+                                          location.reload();
                                       },
                                       error: function(){
-                                          console.log("ERROR");
+                                          swal("Update Failed!", "warning")
                                       }
                                   })
                               }
@@ -375,12 +376,15 @@
 <script>
     function alerts() {
         swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false },
-                function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
+                function(){   swal("Deleted!", "Employee Record has been deleted", "success");
+                    location.reload();
+        });
 
     }
 
     function success() {
                 swal("Successful", "Data Successfully Saved!", "success")
+                location.reload();
     }
 </script>
 </body>

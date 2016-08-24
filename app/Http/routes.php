@@ -91,6 +91,8 @@ Route::get('payroll',function (){
 //Employee Leave
 Route::get('approveLeave','LeaveController@approveLeave');
 
+Route::get('rejectLeave','LeaveController@rejectLeave');
+
 Route::get('leave','LeaveController@showPendingLeave');
 
 Route::get('AddEmployee','EmployeeController@showAddEmployee');

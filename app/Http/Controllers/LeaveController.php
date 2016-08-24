@@ -15,7 +15,13 @@ class LeaveController extends Controller
                       el.approved=0 and
                       b.id = e.branch 
                   ");
-        return view('leave',compact('leaves'));
+
+        $allLeaves = DB::select("select * from employee_leave el,employee e,leave_type l,branch b
+                      where e.eid = el.employee and
+                      el.leave_type = l.id AND
+                      b.id = e.branch 
+                  ");
+        return view('leave',compact('leaves','allLeaves'));
     }
 
     public function approveLeave(Request $request){
@@ -23,4 +29,11 @@ class LeaveController extends Controller
         $affected = DB::update("update employee_leave set approved = 1 where leave_id = '$leaveId'");
         return $affected;
     }
+
+    public function rejectLeave(Request $request){
+        $leaveId = $request['leaveId'];
+        $affected = DB::update("update employee_leave set approved = 2 where leave_id = '$leaveId'");
+        return $affected;
+    }
+
 }

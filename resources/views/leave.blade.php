@@ -34,11 +34,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href="welcome" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>S&E</b>Services</span>
+            <span class="logo-mini"><b>AGM</b></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>S&E</b>Services</span>
+            <span class="logo-lg"><b>Auto</b>Gleam</span>
         </a>
 
         <!-- Header Navbar -->
@@ -122,7 +122,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <th>Employee Name</th>
                                     <th>Branch</th>
                                     <th>Leave Type</th>
-                                    <th>Date</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
                                     <th>Reason</th>
                                     <th>Status</th>
                                 </tr>
@@ -133,7 +134,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <td>{{$leave->name}}</td>
                                         <td>{{$leave->bname}}</td>
                                         <td>{{$leave->leave_type}}</td>
-                                        <td>{{$leave->leave_date}}</td>
+                                        <td>{{$leave->start_date}}</td>
+                                        <td>{{$leave->end_date}}</td>
                                         <td>{{$leave->reason}}</td>
                                         <td><span class="label label-warning">Pending</span></td>
                                         <td><button type="button" id="accept" value="{{$leave->id}}" class="btn btn-success btn-sm" onclick="success()"><i class="fa fa-check"></i></button></td>
@@ -150,7 +152,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     function alerts() {
                         swal({   title: "Are you sure you want to reject?", type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Reject",   closeOnConfirm: false },
                                 function(){
-                                    swal("Rejected!", "success");
+                                    var leaveId = document.getElementById('reject').value;
+                                    $.ajax({
+                                        type: "get",
+                                        url: 'rejectLeave',
+                                        data: {leaveId: leaveId},
+                                        success: function() {
+                                            swal("Rejected!", "success")
+                                            location.reload();
+                                        }
+                                    });
                                 });
                     }
 
@@ -162,9 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             data: {leaveId: leaveId},
                             success: function() {
                                 swal("Successful", "Leave Approved!", "success");
-                            },
-                            error: function () {
-                                swal("Rejected!", "success");
+                                location.reload();
                             }
                         });
                     }
@@ -175,6 +184,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="col-xs-12">
                             <div class="col-xs-2">
                                 <button type="button" class="btn btn-block btn-success btn-flat"><i class="ion-android-add-circle"></i>&nbsp;Add Leave Details</button>
+                                <br>
                             </div>
                         </div>
                     </div>
@@ -215,12 +225,71 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_3">
-
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <table class="table table-condensed">
+                                <tbody><tr>
+                                    <th>Leave ID</th>
+                                    <th>Employee Name</th>
+                                    <th>Branch</th>
+                                    <th>Leave Type</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Reason</th>
+                                    <th>Status</th>
+                                </tr>
+                                @foreach($allLeaves as $allLeave)
+                                    <tr>
+                                        <td>{{$allLeave->id}}</td>
+                                        <td>{{$allLeave->name}}</td>
+                                        <td>{{$allLeave->bname}}</td>
+                                        <td>{{$allLeave->leave_type}}</td>
+                                        <td>{{$allLeave->start_date}}</td>
+                                        <td>{{$allLeave->end_date}}</td>
+                                        <td>{{$allLeave->reason}}</td>
+                                        <?php
+                                            if($allLeave->approved==0)
+                                                echo '<td><span class="label label-warning">Pending</span></td>';
+                                            else if($allLeave->approved==1)
+                                                echo '<td><span class="label label-success">Approved</span></td>';
+                                            else if($allLeave->approved==2)
+                                                echo '<td><span class="label label-danger">Declined</span></td>';
+                                            ?>
+                                    </tr>
+                                @endforeach
+                                </tbody></table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
                 </div>
                 <!-- /.tab-pane -->
             </div>
         </div>
         <!-- /.content -->
+        <div class="modal modal-primary">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">Primary Modal</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>One fine body…</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline">Save changes</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
     </div>
     <!-- /.content-wrapper -->
 
