@@ -97,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </section>
 
         <!-- Main content -->
-        <div class="col-md-12" style="background-color: white">
+        <div class="col-md-12" style="background-color:white; padding-top: 30px">
             <!-- Custom Tabs -->
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs" style="background-color:#B1C4E6">
@@ -125,54 +125,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <th>Reason</th>
                                     <th>Status</th>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>EMP123</td>
-                                    <td>John Doe</td>
-                                    <td>Moratuwa</td>
-                                    <td>Casual</td>
-                                    <td>12-01-2016</td>
-                                    <td>Personal matter</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                    <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
-                                    <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>EMP123</td>
-                                    <td>John Doe</td>
-                                    <td>Moratuwa</td>
-                                    <td>Casual</td>
-                                    <td>12-01-2016</td>
-                                    <td>Personal matter</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                    <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
-                                    <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>EMP123</td>
-                                    <td>John Doe</td>
-                                    <td>Moratuwa</td>
-                                    <td>Casual</td>
-                                    <td>12-01-2016</td>
-                                    <td>Personal matter</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                    <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
-                                    <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>EMP123</td>
-                                    <td>John Doe</td>
-                                    <td>Moratuwa</td>
-                                    <td>Casual</td>
-                                    <td>12-01-2016</td>
-                                    <td>Personal matter</td>
-                                    <td><span class="label label-warning">Pending</span></td>
-                                    <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
-                                    <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
-                                </tr>
+                                @foreach($leaves as $leave)
+                                    <tr>
+                                        <td>{{$leave->id}}</td>
+                                        <td>{{$leave->eid}}</td>
+                                        <td>{{$leave->name}}</td>
+                                        <td>{{$leave->bname}}</td>
+                                        <td>{{$leave->leave_type}}</td>
+                                        <td>{{$leave->leave_date}}</td>
+                                        <td>{{$leave->reason}}</td>
+                                        <td><span class="label label-warning">Pending</span></td>
+                                        <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
+                                        <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
+                                    </tr>
+                                @endforeach
                                 </tbody></table>
                         </div>
                         <!-- /.box-body -->

@@ -70,7 +70,7 @@ Route::get('ReportsServices',function(){
 });
 
 /*Employee routes*/
-Route::get('EmployeeInformation','EmployeeInfoController@showAllEmployees');
+Route::get('EmployeeInformation','EmployeeController@showAllEmployees');
 
 Route::get('EmpMyProfile',function(){
 	return view('EmpMyProfile');
@@ -88,13 +88,12 @@ Route::get('payroll',function (){
     return view('payroll');
 });
 
-Route::get('leave',function (){
-   return view('leave');
-});
+Route::get('Leaves','LeaveController@showPendingLeave');
 
-Route::get('AddEmployee',function (){
-    return view('AddEmployee');
-});
+Route::get('AddEmployee','EmployeeController@showAddEmployee');
+
+Route::post('added','EmployeeController@addEmployee');
+
 
 //Route::get('')
 
