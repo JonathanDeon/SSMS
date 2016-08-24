@@ -193,13 +193,15 @@
                         </div>
                         <div class="form-group">
                             <label for="inputdob" class="col-sm-2 control-label">Date of Birth</label>
-
+                            {{--<style>--}}
+                                {{--{z-index:1151 !important;}--}}
+                            {{--</style>--}}
                             <div class="col-sm-10">
                                 <div class="input-group" style="width:80%">
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="dob" id="dob" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                                    <input type="text" class="form-control" name="dob" id="dob">
                                 </div>
                             </div>
                         </div>
@@ -306,10 +308,10 @@
 
                     <div class="box-footer">
 
-                        <button type="submit" class="btn btn-primary pull-center name=">Add Employee</button>
+                        <button type="submit" class="btn btn-primary pull-center">Add Employee</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="submit" class="btn btn-danger pull-center name=">Cancel</button>
+                        {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
                     </div>
 
                     <!-- /.box-footer -->
@@ -323,8 +325,12 @@
     </div>
     <!-- ./wrapper -->
 </div>
+
+
+
 <!-- jQuery 2.2.0 -->
 <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../../bootstrap/js/bootstrap.min.js"></script>
 <!-- FastClick -->
@@ -345,5 +351,15 @@
 
 <script src="../../dist/js/demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script>
+    $('#dob').datepicker({
+        autoclose: true
+
+    });
+    $('#date').datepicker({
+        autoclose: true
+
+    });
+</script>
 </body>
 </html>
