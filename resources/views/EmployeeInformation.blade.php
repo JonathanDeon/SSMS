@@ -235,7 +235,35 @@
                           <script>
                               function getEmployee(id) {
                                   document.getElementById('employee-id').value = id;
+                                  $.ajax({
+                                      type: "get",
+                                      url: 'fillEmployee',
+                                      data: {id: id},
+                                      success: function(x) {
+                                          var details = JSON.parse(x);
+                                          document.getElementById('employee-name').value = details[0].name;
+                                          document.getElementById('optionsRadios1').checked = details[0].gender;
+                                          document.getElementById('contact').value = details[0].contact;
+                                          document.getElementById('dob').value = details[0].dob;
+                                          document.getElementById('dateJoined').value = details[0].joined_date;
+                                          document.getElementById('address').value = details[0].address;
+                                          //document.getElementById('designation').value = details[0].designation;
+                                          //document.getElementById('branch').value = details[0].branch;
+                                          //document.getElementById('manager').value = details[0].manager;
+                                      }
+                                  })
+                              }
 
+                              function updateEmployee(id) {
+                                  document.getElementById('employee-id').value = id;
+                                  $.ajax({
+                                      type: "get",
+                                      url: 'updateEmployee',
+                                      data: {id: id},
+                                      success: function(x) {
+                                          success("Data Saved Successfully!")
+                                      }
+                                  })
                               }
                           </script>
                       </div>
@@ -261,18 +289,18 @@
                                         <label>Employee ID:</label>
                                         <input type="text" class="form-control" id="employee-id" disabled>
                                         <label>Employee Name:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" id="employee-name">
                                         <label>Date of Birth:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control"id="dob">
                                         <label>Gender:</label><br>
                                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked="">
                                         Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="female" checked="">
                                         Female<br>
                                         <label>Contact Number:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" id="contact">
                                         <label>Address:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" id="address">
                                         <label>Employee Designation:</label>
                                         <select onchange="test()" class="form-control" name="designation" id="designation">
                                             <option>Select Designation</option>
@@ -288,7 +316,7 @@
                                             @endforeach
                                         </select>
                                         <label>Date Joined:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" id="dateJoined">
                                         <label>Manager:</label>
                                         <select class="form-control" name="manager" id="manager">
                                             <option>Select Manager</option>

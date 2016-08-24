@@ -94,8 +94,9 @@ Route::get('AddEmployee','EmployeeController@showAddEmployee');
 
 Route::post('added','EmployeeController@addEmployee');
 
+Route::get('fillEmployee','EmployeeController@getEmployeeDetails');
 
-//Route::get('')
+Route::get('updateEmployee','EmployeeController@updateEmployeeDetails');
 
 /*inventory routes*/
 Route::get('AddNewItem',function(){

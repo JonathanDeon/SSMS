@@ -42,21 +42,32 @@ class EmployeeController extends Controller
         return view('AddEmployee');
     }
 
+    public function updateEmployeeDetails(Request $request){
+        $id = $request['id'];
+        $name = $request['name'];
+        $address = $request->['address'];
+        $dob = $request->input('dob');
+        $contact = $request->input('phone');
+        $gender = $request->input('optionsRadios');
+        $date = $request->input('date');
+        $service = $request->input('optionsRadios2');
+        $designation = $request->input('designation');
+        $branch = $request->input('branch');
+        $manager = $request->input('manager');
+        DB::statement(
+            "UPDATE TABLE employee(eid, address, name, contact, dob, joined_date, type, gender, manager, branch, designation)
+            VALUES ('SE012','$address','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation')");
+        return view('AddEmployee');
+    }
+
     private function getManagers(){
         $managers = DB::select("select * from employee where designation = 1");
         return $managers;
     }
 
-    public function getEmployeeDetails($id){
+    public function getEmployeeDetails(Request $request){
+        $id = $request['id'];
         $employees = DB::select("select * from employee where eid = '$id'");
-        return $employees;
+        return json_encode($employees);
     }
-//    private function generateEmployeeId($service){
-//        if($service=="vehicle"){
-//            $empid=
-//        }
-//        else{
-//
-//        }
-//    }
 }
