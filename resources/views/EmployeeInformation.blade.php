@@ -227,7 +227,7 @@
                                       <td>{{$employee->joined_date}}</td>
                                       <td><button type="button" id="view" value="{{$employee->eid}}" class="btn btn-success" onclick="getEmployee('{{$employee->eid}}')"><i class="fa fa-eye"></i></button></td>
                                       <td><button type="button" onclick="getEmployee('{{$employee->eid}}')" id="update" value="{{$employee->eid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                      <td><button type="button" value="{{$employee->eid}}" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
+                                      <td><button type="button" value="{{$employee->eid}}" class="btn btn-danger" onclick="deleteEmployee('{{$employee->eid}}')"><i class="fa fa-trash"></i></button></td>
                                   </tr>
                               @endforeach
                               </tbody></table>
@@ -320,7 +320,7 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right datepicker" placeholder="date of birth" name="dob" id="dob" class="form-control" >
+                                            <input type="date" class="form-control pull-right datepicker" placeholder="date of birth" name="dob" id="dob" class="form-control" >
                                         </div>
                                         <label>Gender:</label><br>
                                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked="">
@@ -397,15 +397,50 @@
 
 
 <script>
-    $('#dob').datepicker({
-        autoclose: true
+//    $('#dob').datepicker({
+//        autoclose: true
+//
+//    });
+    function deleteEmployee(empId) {
 
-    });
-    function alerts() {
-        swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false },
-                function(){   swal("Deleted!", "Employee Record has been deleted", "success");
-                    location.reload();
-        });
+        swal({
+            title: "Are you sure you want to delete?",
+                    text: "You will not be able to recover this record!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Delete",
+                    closeOnConfirm: false },
+                function(confirm){
+
+                        if(confirm) {
+                            alert("test"+empId);
+                            $.ajax({
+                                method:'get',
+                                url:'deleteEmployee',
+                                data:{eid:empId},
+                                success:function(){
+                                    swal({
+                                        title: "Deleted!",
+                                        text: "Successfully deleted the employee record!",
+                                        type: "warning",
+                                        showCancelButton: false,
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "Ok",
+                                        closeOnConfirm: false },
+                                            function (confirm) {
+                                                location.reload();
+                                            });
+                                },
+                                error:function(x,y,thrownError){
+                                    console.log(thrownError);
+                                }
+                            });
+                        }else{
+
+                        }
+                }
+            );
 
     }
 

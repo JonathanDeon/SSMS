@@ -70,6 +70,7 @@ Route::get('ReportsServices',function(){
 });
 
 /*Employee routes*/
+Route::get('deleteEmployee','EmployeeController@deleteEmployeeRecord');
 Route::get('EmployeeInformation','EmployeeController@showAllEmployees');
 
 Route::get('EmpMyProfile',function(){

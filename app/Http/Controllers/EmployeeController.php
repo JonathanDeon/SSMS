@@ -70,4 +70,9 @@ class EmployeeController extends Controller
         $employees = DB::select("select * from employee where eid = '$id'");
         return json_encode($employees);
     }
+
+    public function deleteEmployeeRecord(Request $request){
+        $eid = $request['eid'];
+        $deletedRecord = DB::statement("DELETE FROM employee WHERE eid = '$eid'");
+    }
 }
