@@ -76,9 +76,7 @@ Route::get('EmpMyProfile',function(){
 	return view('EmpMyProfile');
 });
 
-Route::get('EmployeeLoans',function(){
-	return view('EmployeeLoans');
-});
+Route::get('EmployeeLoans','LoanController@showLoans');
 
 Route::get('welcomeEmp',function(){
 	return view('welcomeEmp');

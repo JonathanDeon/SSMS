@@ -21,7 +21,11 @@ class LeaveController extends Controller
                       el.leave_type = l.id AND
                       b.id = e.branch 
                   ");
-        return view('leave',compact('leaves','allLeaves'));
+
+        $leaveTypes = DB::select("select * from leave_type l");
+
+        $designations = DB::select("select * from designation");
+        return view('leave',compact('leaves','allLeaves','designations','leaveTypes'));
     }
 
     public function approveLeave(Request $request){
@@ -34,6 +38,30 @@ class LeaveController extends Controller
         $leaveId = $request['leaveId'];
         $affected = DB::update("update employee_leave set approved = 2 where leave_id = '$leaveId'");
         return $affected;
+    }
+
+    public function saveLeaveInfo(Request $request){
+        $title = $request['title'];
+        $emp_type = $request['emp_type'];
+        $designation = $request['designation'];
+        $number = $request['number'];
+
+        DB::statement(
+            "INSERT INTO leave_type(leave_type, emp_type, designation, no_of_leaves)
+            VALUES ('$title','$emp_type','$designation','$number')");
+
+    }
+
+    public function recordLeave(Request $request){
+        $eid = $request['eid'];
+        $leave_type = $request['leave_type'];
+        $start_date = $request['start_date'];
+        $end_date = $request['end_date'];
+        $reason = $request['reason'];
+
+        DB::statement(
+            "INSERT INTO leave_type(leave_type, employee, start_date, end_date, reason,approved)
+            VALUES ('$eid','$leave_type','$start_date','$end_date','$reason')");
     }
 
 }

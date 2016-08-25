@@ -174,15 +174,15 @@
             <!-- Custom Tabs -->
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs" style="background-color:#B1C4E6">
-                    <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Loan Schemes</a></li>
+                    <li class="active"><a href="#tab_5" data-toggle="tab" aria-expanded="false">New Employee Loan</a></li>
+                    <li><a href="#tab_1" data-toggle="tab" aria-expanded="true">Loan Schemes</a></li>
                     <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">On-going Employee Loans</a></li>
                     <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Pending for Approval</a></li>
                     <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">All Employee Loans</a></li>
-                    <li><a href="#tab_5" data-toggle="tab" aria-expanded="false">New Employee Loan</a></li>
                 </ul>
             </div>
             <div class="tab-content">
-                <div class="tab-pane  active" id="tab_1">
+                <div class="tab-pane" id="tab_1">
                     <div class="row" style="margin-top: 25px">
                         <div class="col-xs-12">
                             <div class="col-xs-2">
@@ -213,55 +213,22 @@
                                             <th>Loan Scheme ID</th>
                                             <th>Title</th>
                                             <th>Description</th>
-                                            <th>Eligibility</th>
-                                            <th>Installments</th>
                                             <th>Amount</th>
                                             <th>Interest Rate</th>
+                                            <th>Installments</th>
                                         </tr>
+                                        @foreach($loans as $loan)
                                         <tr>
-                                            <td>183</td>
-                                            <td>Housing Loan</td>
-                                            <td>This is a housing loan</td>
-                                            <td>Permanent Employees + Basic Salary > 50 000</td>
-                                            <td>12</td>
-                                            <td>10 000 000</td>
-                                            <td>12%</td>
-                                            <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
+                                        <td>{{$loan->scheme_id}}</td>
+                                        <td>{{$loan->name}}</td>
+                                        <td>{{$loan->description}}</td>
+                                        <td>{{$loan->amount}}</td>
+                                        <td>{{$loan->interest}}</td>
+                                        <td>{{$loan->installments}}</td>
+                                        <td><button type="button" id="accept" value="{{$loan->scheme_id}}" class="btn btn-primary btn-sm" onclick="success()"><i class="fa fa-edit"></i></button></td>
+                                        <td><button type="button" id="reject" value="{{$loan->scheme_id}}" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
                                         </tr>
-                                        <tr>
-                                            <td>183</td>
-                                            <td>Housing Loan</td>
-                                            <td>This is a housing loan</td>
-                                            <td>Permanent Employees + Basic Salary > 50 000</td>
-                                            <td>12</td>
-                                            <td>10 000 000</td>
-                                            <td>12%</td>
-                                            <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>183</td>
-                                            <td>Housing Loan</td>
-                                            <td>This is a housing loan</td>
-                                            <td>Permanent Employees + Basic Salary > 50 000</td>
-                                            <td>12</td>
-                                            <td>10 000 000</td>
-                                            <td>12%</td>
-                                            <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>183</td>
-                                            <td>Housing Loan</td>
-                                            <td>This is a housing loan</td>
-                                            <td>Permanent Employees + Basic Salary > 50 000</td>
-                                            <td>12</td>
-                                            <td>10 000 000</td>
-                                            <td>12%</td>
-                                            <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
+                                        @endforeach
                                         </tbody></table>
                                 </div>
                                 <!-- /.box-body -->
@@ -541,7 +508,7 @@
                 </div>
                 <!-- /.tab-pane -->
                 <!-- /.tab-pane 5-->
-                <div class="tab-pane" id="tab_5">
+                <div class="tab-pane active" id="tab_5">
                     <div class="row" style="margin-top: 25px">
                         <div class="col-xs-6">
                             <div class="box box-warning">
@@ -550,23 +517,11 @@
                                         <!-- text input -->
                                         <div class="form-group">
                                             <label>Loan ID:</label>
-                                            <input type="text" class="form-control" placeholder="Enter Loan ID">
+                                            <input type="text" id="lid" class="form-control" placeholder="Enter Loan ID">
                                             <label>Employee ID:</label>
-                                            <input type="text" class="form-control" placeholder="Enter Employee ID">
+                                            <input type="text" id="eid" class="form-control" placeholder="Enter Employee ID">
                                             <label>Employee Name:</label>
-                                            <input type="text" class="form-control" placeholder="Enter Employee Name">
-                                            <label>Contact Number:</label>
-                                            <input type="text" class="form-control" placeholder="Enter Contact Number">
-                                            <div class="form-group">
-                                                <label>Installments</label>
-                                                <select class="form-control">
-                                                    <option>12</option>
-                                                    <option>24</option>
-                                                    <option>36</option>
-                                                </select>
-                                            </div>
-                                            <label>Total Loan Amount:</label>
-                                            <input type="text" class="form-control" placeholder="Enter Loan Amount">
+                                            <input type="text" id="ename" class="form-control" placeholder="Enter Employee Name">
                                         </div>
                                     </form>
                                 </div>
@@ -580,20 +535,69 @@
                                         <!-- text input -->
                                         <div class="form-group">
                                             <label>Guarantor Name:</label>
-                                            <input type="text" class="form-control" placeholder="Enter Name">
+                                            <input type="text" id="name" class="form-control" placeholder="Enter Name">
                                             <label>Guarantor Designation:</label>
-                                            <input type="text" class="form-control" placeholder="Enter Designation">
+                                            <input type="text" id="designation" class="form-control" placeholder="Enter Designation">
                                             <label>Guarantor Contact Number:</label>
-                                            <input type="text" class="form-control" placeholder="Enter Contact Number">
+                                            <input type="text" id="contact" class="form-control" placeholder="Enter Contact Number">
+                                            <label>Guarantor Address:</label>
+                                            <input type="text"id="address" class="form-control" placeholder="Enter Address">
                                         </div>
                                     </form>
                                 </div>
                                 <!-- /.box-body -->
-                                <div style="align-content: center;">
-                                    <button type="button" class="btn btn-block btn-primary btn-flat" style="margin-left: 50%; width: 25%">Update</button>
+                                <div class="box-footer">
+                                    <button type="submit" class="btn btn-block btn-primary btn-flat" style="width: 30%; float: right" onclick="recordLeave()">Update</button>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="box box-info collapsed-box">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Search Employee Details</h3>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body" style="display: none;">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="box">
+
+                                            <!-- /.box-header -->
+                                            <div class="box-tools">
+                                                <div class="input-group input-group-sm" style="width: 400px;">
+                                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search name">
+
+                                                    <div class="input-group-btn">
+                                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="box-body table-responsive no-padding">
+                                                <table class="table table-hover">
+                                                    <tbody><tr>
+                                                        <th>Employee ID</th>
+                                                        <th>Employee Name</th>
+                                                        <th>Designation</th>
+                                                        <th>Branch</th>
+                                                    </tr>
+                                                    </tbody></table>
+                                            </div>
+                                            <!-- /.box-body -->
+                                        </div>
+                                        <!-- /.box -->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
                     </div>
                 </div>
                 <!-- /.tab-pane -->
@@ -627,7 +631,13 @@
                                     <label>Title:</label>
                                     <input type="text" class="form-control" id="title">
                                     <label>Description:</label>
-                                    <input type="" min="1" class="form-control" id="number">
+                                    <textarea class="form-control" rows="3" id="description" placeholder="Description"></textarea>
+                                    <label>Amount:</label>
+                                    <input type="text" class="form-control" id="amount">
+                                    <label>Interest:</label>
+                                    <input type="text" class="form-control" id="interest">
+                                    <label>Installments:</label>
+                                    <input type="text" class="form-control" id="installments">
                                 </div>
                             </form>
                         </div>
@@ -641,30 +651,30 @@
             </div>
             <!-- /.modal-content -->
 
-            <script>
-                function saveLeaveInfo() {
-                    var title = document.getElementById('leave-type').value;
-                    var emp_type = document.getElementById('optionsRadios1').value;
-                    var designation = document.getElementById('designation').options[document.getElementById('designation').selectedIndex].value;
-                    var number = document.getElementById('number').value;
-                    console.log(title)
-                    console.log(emp_type)
-                    console.log(designation)
-                    $.ajax({
-                        type: "get",
-                        url: 'saveLeaveInfo',
-                        data: {title: title, emp_type: emp_type, designation: designation, number: number},
-                        success: function(x) {
-                            swal("Successful", "Leave Type Added!", "success");
-                            location.reload();
-                        },
-                        error: function(){
-                            swal("Adding Failed!", "warning")
-                        }
-                    })
+            {{--<script>--}}
+                {{--function saveLeaveInfo() {--}}
+                    {{--var title = document.getElementById('leave-type').value;--}}
+                    {{--var emp_type = document.getElementById('optionsRadios1').value;--}}
+                    {{--var designation = document.getElementById('designation').options[document.getElementById('designation').selectedIndex].value;--}}
+                    {{--var number = document.getElementById('number').value;--}}
+                    {{--console.log(title)--}}
+                    {{--console.log(emp_type)--}}
+                    {{--console.log(designation)--}}
+                    {{--$.ajax({--}}
+                        {{--type: "get",--}}
+                        {{--url: 'saveLeaveInfo',--}}
+                        {{--data: {title: title, emp_type: emp_type, designation: designation, number: number},--}}
+                        {{--success: function(x) {--}}
+                            {{--swal("Successful", "Leave Type Added!", "success");--}}
+                            {{--location.reload();--}}
+                        {{--},--}}
+                        {{--error: function(){--}}
+                            {{--swal("Adding Failed!", "warning")--}}
+                        {{--}--}}
+                    {{--})--}}
 
-                }
-            </script>
+                {{--}--}}
+            {{--</script>--}}
         </div>
         <!-- /.modal-dialog -->
     </div>
