@@ -201,7 +201,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" class="form-control" name="dob" id="dob">
+                                    <input type="date" class="form-control" name="dob" id="dob">
                                 </div>
                             </div>
                         </div>
@@ -243,7 +243,7 @@
                                     <div class="input-group-addon">
                                         <i class="fa fa-calendar"></i>
                                     </div>
-                                    <input type="text" name="date" id="date" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="">
+                                    <input type="date" name="date" id="date" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -308,12 +308,17 @@
 
                     <div class="box-footer">
 
-                        <button type="submit" class="btn btn-primary pull-center">Add Employee</button>
+                        <button type="submit" onclick="return Test();" class="btn btn-primary pull-center">Add Employee</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
                     </div>
-
+<script>
+    function Test() {
+        alert(document.getElementById('dob').value);
+        return true;
+    }
+</script>
                     <!-- /.box-footer -->
                 </form>
             </div>
@@ -346,20 +351,20 @@
 <!-- ChartJS 1.0.1 -->
 <script src="plugins/chartjs/Chart.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+{{--<script src="dist/js/pages/dashboard2.js"></script>--}}
 
 
 <script src="../../dist/js/demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <script>
-    $('#dob').datepicker({
-        autoclose: true
-
-    });
-    $('#date').datepicker({
-        autoclose: true
-
-    });
+//    $('#dob').datepicker({
+//        autoclose: true
+//
+//    });
+//    $('#date').datepicker({
+//        autoclose: true
+//
+//    });
 </script>
 </body>
 </html>

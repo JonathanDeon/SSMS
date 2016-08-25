@@ -226,8 +226,7 @@
                                       <td>{{$employee->manager}}</td>
                                       <td>{{$employee->joined_date}}</td>
                                       <td><button type="button" id="view" value="{{$employee->eid}}" class="btn btn-success" onclick="getEmployee('{{$employee->eid}}')"><i class="fa fa-eye"></i></button></td>
-                                      <td><button type="button" onclick="getEmployee('{{$employee->eid}}')"
-                                                  id="update" value="{{$employee->eid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
+                                      <td><button type="button" onclick="getEmployee('{{$employee->eid}}')" id="update" value="{{$employee->eid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
                                       <td><button type="button" value="{{$employee->eid}}" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
                                   </tr>
                               @endforeach
@@ -270,11 +269,24 @@
                                       type: "get",
                                       url: 'updateEmployee',
                                       data: {id: id,ename:ename,gender:gender,address: address,dateJoined:dateJoined},
-                                      success: function(x) {
-                                          swal("Successful", "Employee Record Updated!", "success");
+                                      success: function() {
+                                          swal({
+                                              title: "Success!",
+                                              text: "successfully updated the employee information",
+                                              type: "success",
+                                              showCancelButton: false,
+                                              confirmButtonColor: '#1D84FF',
+                                              confirmButtonText: 'Ok',
+                                              closeOnConfirm: true
+                                          },
+                                          function(isConfirm){
+                                              if (isConfirm){
+                                                  window.location.href="/EmployeeInformation";
+                                              }
+                                          });
                                       },
                                       error: function(){
-                                          swal("Update Failed!", "warning")
+                                          swal("Error!","Employee information update failed!", "error");
                                       }
                                   })
                               }
@@ -377,7 +389,7 @@
 <!-- ChartJS 1.0.1 -->
 <script src="plugins/chartjs/Chart.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="dist/js/pages/dashboard2.js"></script>
+{{--<script src="dist/js/pages/dashboard2.js"></script>--}}
 
 
 <script src="../../dist/js/demo.js"></script>

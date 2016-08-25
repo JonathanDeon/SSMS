@@ -39,7 +39,7 @@ class EmployeeController extends Controller
         $manager = $request->input('manager');
         DB::statement(
             "INSERT INTO employee(eid, address, name, contact, dob, joined_date, service_type, gender, manager, branch, designation)
-            VALUES ('SE009','$address','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation')");
+            VALUES ('SE014','$address','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation')");
 
         return redirect('/AddEmployee');
     }
@@ -57,7 +57,7 @@ class EmployeeController extends Controller
 //        $branch = $request->input('branch');
 //        $manager = $request->input('manager');
         $affected = DB::update("update employee set address = '$address' where eid = '$id'");
-        return $affected;
+//        return $affected;
     }
 
     private function getManagers(){
