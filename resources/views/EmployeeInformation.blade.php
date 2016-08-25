@@ -301,11 +301,11 @@
                                         <label>Employee Name:</label>
                                         <input type="text" class="form-control" id="employee-name">
                                         <label>Date of Birth:</label>
-                                        <div class="input-group" style="width:80%">
+                                        <div class="input-group" >
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right datepicker" name="dob" id="dob" class="form-control" >
+                                            <input type="text" class="form-control pull-right datepicker" placeholder="date of birth" name="dob" id="dob" class="form-control" >
                                         </div>
                                         <label>Gender:</label><br>
                                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked="">
