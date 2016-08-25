@@ -9,7 +9,8 @@ use DB;
 class EmployeeController extends Controller
 {
     public function showAllEmployees(){
-        $employees = DB::select("select * from employee");
+        $employees = DB::select("select * from employee e,designation d
+                        where e.designation=d.id");
         $branches = DB::select("select * from branch");
         $designations = DB::select("select * from designation");
         $managers = $this->getManagers();

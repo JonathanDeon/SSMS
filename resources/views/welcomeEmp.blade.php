@@ -185,7 +185,7 @@
                   <i class="fa fa-user"></i>
             </div>
              <div style="margin-top:30%;">
-                <hexa> My Profilet<hexa/>
+                <hexa> My Profile<hexa/>
              </div>
           </div>
         </div>

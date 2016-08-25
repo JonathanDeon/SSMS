@@ -3,7 +3,7 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -78,7 +78,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="ReservationsService"><i class="fa fa-circle-o"></i>Reservations</a></li>
-                        <li><a href="AssignService"><i class="fa fa-circle-o"></i>Assign Service</i></a></li>
+                        <li><a href="AssignService"><i class="fa fa-circle-o"></i>Assign Service</a></li>
                         <li><a href="ServicePlans"><i class="fa fa-circle-o"></i>Service Plans</a></li>
                         <li><a href="ServiceLogs"><i class="fa fa-circle-o"></i>Service Logs</a></li>
                         <li><a href="ReportsServices"><i class="fa fa-circle-o"></i>Service Reports</a></li>
@@ -93,7 +93,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                        <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
                         <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
                         <li class="active"><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
                         <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
@@ -152,7 +152,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
                     </ul>
                 </li>
-
+            </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -172,22 +172,83 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Main content -->
         <div class="col-md-12" style="background-color: white">
+            <br>
             <!-- Custom Tabs -->
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs" style="background-color:#B1C4E6">
                     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">New Salary Details</a>
-                    <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Overtime Details</a></li>
                     <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Salary Deductions</a></li>
-                    <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Allowances</a></li>
-                    <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Employee Salary Details</a></li>
-                    <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Monthly Salary Details</a></li>
-                    <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Employee Fund Details</a></li>
+                    <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Allowances</a></li>
+                    <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Employee Salary Details</a></li>
+                    <li><a href="#tab_5" data-toggle="tab" aria-expanded="false">Monthly Salary Details</a></li>
+                    <li><a href="#tab_6" data-toggle="tab" aria-expanded="false">Employee Fund Details</a></li>
                 </ul>
             </div>
             <div class="tab-content">
-                <div class="tab-pane  active" id="tab_1">
+                <div class="tab-pane  active" id="tab_1" align="center">
+                    <div class="box box-info" style="width: 50%; top:20px;">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">New Salary Details</h3>
+                        </div>
+                    <form class="form-horizontal">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputdate" class="col-sm-2 control-label">Designation</label>
+                                <div class="col-sm-10">
+                                    <select class="form-control" style="width:80%" name="designation" id="designation">
+                                        <option>Select Designation</option>
+                                        @foreach($designations as $designation)
+                                        <option value="{{ $designation->id }}">{{$designation->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress" class="col-sm-2 control-label">Basic</label>
 
-                </div>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="basic" id="basic" placeholder="Enter basic salary" style="width:80%">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputtp" class="col-sm-2 control-label">Allowance</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="allowance" id="allowance" placeholder="Enter allowance" style="width:80%">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+
+                        <div class="box-footer">
+
+                            <button type="submit" class="btn btn-primary pull-center" onclick="newSalary()">Save changes</button>
+                        </div>
+
+                        <!-- /.box-footer -->
+                    </form>
+                    </div>
+                    <script>
+                        function newSalary(){
+                            var designation = document.getElementById('designation').options[document.getElementById('designation').selectedIndex].value;
+                            var basic = document.getElementById('basic').value;
+                            var allowance = document.getElementById('allowance').value;
+                            alert(designation);
+                            $.ajax({
+                                type: "get",
+                                url: 'addSalary',
+                                data: {designation: designation, basic:basic, allowance:allowance},
+                                success: function() {
+                                    swal("Successful", "Record Added!", "success");
+                                    //location.reload();
+                                },
+                                error: function(){
+                                    swal("Adding Failed!", "warning")
+                                }
+                            });
+                        }
+                    </script>
+                 </div>
 
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_2">

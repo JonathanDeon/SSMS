@@ -220,7 +220,7 @@
                                   <tr>
                                       <td>{{$employee->eid}}</td>
                                       <td>{{$employee->name}}</td>
-                                      <td>Manager</td>
+                                      <td>{{$employee->title}}</td>
                                       <td>{{$employee->gender}}</td>
                                       <td>{{$employee->branch}}</td>
                                       <td>{{$employee->manager}}</td>
@@ -258,7 +258,7 @@
                               function updateEmployee() {
                                   var id = document.getElementById('save').value;
                                   var ename = document.getElementById('employee-name').value;
-                                  var gender = document.getElementById('optionsRadios1').checked;
+                                  var gender = document.querySelector('input[name="optionsRadios"]:checked').value;
                                   var contact = document.getElementById('contact').value;
                                   var address = document.getElementById('address').value;
                                   var dateJoined = document.getElementById('dateJoined').value;
@@ -266,10 +266,9 @@
                                   $.ajax({
                                       type: "get",
                                       url: 'updateEmployee',
-                                      data: {id: id, address: address},
+                                      data: {id: id,ename:ename,gender:gender,address: address,dateJoined:dateJoined},
                                       success: function(x) {
                                           swal("Successful", "Employee Record Updated!", "success");
-                                          location.reload();
                                       },
                                       error: function(){
                                           swal("Update Failed!", "warning")

@@ -82,9 +82,8 @@ Route::get('welcomeEmp',function(){
 	return view('welcomeEmp');
 });
 
-Route::get('payroll',function (){
-    return view('payroll');
-});
+Route::get('payroll','PayrollController@showPayrollInformation');
+Route::get('addSalary','PayrollController@addSalary');
 
 //Employee Leave
 Route::get('approveLeave','LeaveController@approveLeave');
@@ -100,6 +99,8 @@ Route::get('updateEmployee','EmployeeController@updateEmployeeDetails');
 
 Route::get('saveLoanScheme','LoanController@saveLoanScheme');
 Route::get('addLoan','LoanController@addLoan');
+Route::get('approveLoan','LoanController@approveLoan');
+Route::get('declineLoan','LoanController@rejectLoan');
 
 /*inventory routes*/
 Route::get('AddNewItem',function(){

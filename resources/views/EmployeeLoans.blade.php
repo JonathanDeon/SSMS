@@ -268,18 +268,26 @@
                                             <th>Total Loan Amount</th>
                                             <th>Amount to be paid</th>
                                             <th>Guarantor</th>
+                                            <th>Guarantor designation</th>
+                                            <th>Guarantor contact</th>
+                                            <th>Guarantor address</th>
                                         </tr>
                                         @foreach($ongoing as $x)
                                             <tr>
                                                 <td>{{$x->l_name}}</td>
+                                                <td>{{$x->scheme_id}}</td>
                                                 <td>{{$x->eid}}</td>
                                                 <td>{{$x->name}}</td>
                                                 <td>{{$x->contact}}</td>
                                                 <td>{{$x->installments}}</td>
                                                 <td>{{$x->amount}}</td>
+                                                <td>{{$x->guarantor_name}}</td>
+                                                <td>{{$x->g_designation}}</td>
+                                                <td>{{$x->g_contact}}</td>
+                                                <td>{{$x->g_address}}</td>
                                                 <td></td>
                                                 <td>{{$x->guarantor_name}}</td>
-                                                <td><button type="button" id="accept" value="{{$x->loan_id}}" class="btn btn-primary" onclick="success()"><i class="fa fa-edit"></i></button></td>
+                                                <td><button type="button" id="accept" value="{{$x->loan_id}}" class="btn btn-primary"  data-toggle="modal" data-target="#myModal2"><i class="fa fa-edit"></i></button></td>
                                                 <td><button type="button" id="reject" value="{{$x->loan_id}}" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
                                             </tr>
                                         @endforeach
@@ -311,7 +319,8 @@
                                 <!-- /.box-header -->
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
-                                        <tbody><tr>
+                                        <tbody>
+                                        <tr>
                                             <th>Loan Scheme</th>
                                             <th>Employee ID</th>
                                             <th>Employee Name</th>
@@ -319,19 +328,25 @@
                                             <th>Installments</th>
                                             <th>Total Loan Amount</th>
                                             <th>Guarantor</th>
+                                            <th>Guarantor designation</th>
+                                            <th>Guarantor contact</th>
+                                            <th>Guarantor address</th>
                                         </tr>
                                         @foreach($pending as $x)
                                             <tr>
-                                                <td>{{$x->scheme_id}}</td>
+                                                <td>{{$x->l_name}}</td>
                                                 <td>{{$x->eid}}</td>
                                                 <td>{{$x->name}}</td>
                                                 <td>{{$x->contact}}</td>
                                                 <td>{{$x->installments}}</td>
                                                 <td>{{$x->amount}}</td>
                                                 <td>{{$x->guarantor_name}}</td>
+                                                <td>{{$x->g_designation}}</td>
+                                                <td>{{$x->g_contact}}</td>
+                                                <td>{{$x->g_address}}</td>
                                                 <td><span class="label label-warning">Pending</span></td>
-                                                <td><button type="button" id="accept" value="{{$x->loan_id}}" class="btn btn-success btn-sm" onclick="success()"><i class="fa fa-check"></i></button></td>
-                                                <td><button type="button" id="reject" value="{{$x->loan_id}}" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
+                                                <td><button type="button" id="accept" value="{{$x->loan_id}}" class="btn btn-success btn-sm" onclick="accept()"><i class="fa fa-check"></i></button></td>
+                                                <td><button type="button" id="reject" value="{{$x->loan_id}}" class="btn btn-danger btn-sm" onclick="decline()"><i class="fa fa-close"></i></button></td>
                                             </tr>
                                         @endforeach
                                         </tbody></table>
@@ -339,6 +354,37 @@
                                 <!-- /.box-body -->
                             </div>
                             <!-- /.box -->
+
+                            <script>
+                                function accept(){
+                                    var id = document.getElementById('accept').value;
+                                    $.ajax({
+                                        type: "get",
+                                        url: 'approveLoan',
+                                        data: {id: id},
+                                        success: function() {
+                                            swal("Successful", "Loan Recorded!", "success");
+                                        },
+                                        error: function(){
+                                            swal("Failed!", "warning")
+                                        }
+                                    });
+                                }
+                                function decline() {
+                                    var id = document.getElementById('reject').value;
+                                    $.ajax({
+                                        type: "get",
+                                        url: 'declineLoan',
+                                        data: {id: id},
+                                        success: function() {
+                                            swal("Successful", "Loan Declined!", "success");
+                                        },
+                                        error: function(){
+                                            swal("Failed!", "warning")
+                                        }
+                                    });
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
@@ -364,30 +410,42 @@
                                 <div class="box-body table-responsive no-padding">
 
                                     <table class="table table-hover">
-                                        <tbody><tr>
+                                        <tr>
                                             <th>Loan Scheme</th>
                                             <th>Employee ID</th>
                                             <th>Employee Name</th>
                                             <th>Contact Details</th>
-                                            <th>Loan Date</th>
                                             <th>Installments</th>
                                             <th>Total Loan Amount</th>
                                             <th>Guarantor</th>
-                                            <th>Status</th>
+                                            <th>Guarantor designation</th>
+                                            <th>Guarantor contact</th>
+                                            <th>Guarantor address</th>
                                         </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>Mary Anne</td>
-                                            <td><span class="label label-success">Approved</span></td>
-                                        </tr>
-
-                                        </tbody></table>
+                                        @foreach($all as $x)
+                                            <tr>
+                                                <td>{{$x->l_name}}</td>
+                                                <td>{{$x->eid}}</td>
+                                                <td>{{$x->name}}</td>
+                                                <td>{{$x->contact}}</td>
+                                                <td>{{$x->installments}}</td>
+                                                <td>{{$x->amount}}</td>
+                                                <td>{{$x->guarantor_name}}</td>
+                                                <td>{{$x->g_designation}}</td>
+                                                <td>{{$x->g_contact}}</td>
+                                                <td>{{$x->g_address}}</td>
+                                                <?php
+                                                    if($x->status==0)
+                                                        echo '<td><span class="label label-warning">Pending</span></td>';
+                                                    else if($x->status==1)
+                                                        echo '<td><span class="label label-success">Approved</span></td>';
+                                                    else if($x->status==2)
+                                                        echo '<td><span class="label label-danger">Declined</span></td>';
+                                                ?>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
@@ -463,53 +521,6 @@
                                 }
                             </script>
                         </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="box box-info collapsed-box">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Search Employee Details</h3>
-                                <div class="box-tools pull-right">
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                                    </button>
-                                </div>
-                                <!-- /.box-tools -->
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body" style="display: none;">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <div class="box">
-
-                                            <!-- /.box-header -->
-                                            <div class="box-tools">
-                                                <div class="input-group input-group-sm" style="width: 400px;">
-                                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search name">
-
-                                                    <div class="input-group-btn">
-                                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="box-body table-responsive no-padding">
-                                                <table class="table table-hover">
-                                                    <tbody><tr>
-                                                        <th>Employee ID</th>
-                                                        <th>Employee Name</th>
-                                                        <th>Designation</th>
-                                                        <th>Branch</th>
-                                                    </tr>
-                                                    </tbody></table>
-                                            </div>
-                                            <!-- /.box-body -->
-                                        </div>
-                                        <!-- /.box -->
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- /.box-body -->
-                        </div>
-                        <!-- /.box -->
                     </div>
                 </div>
                 <!-- /.tab-pane -->
@@ -590,13 +601,11 @@
 
                 }
             </script>
-
         </div>
         <!-- /.modal-dialog -->
-    </div>
       
   </div>
-
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.0 -->
