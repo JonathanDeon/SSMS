@@ -90,17 +90,14 @@ Route::get('payroll',function (){
 
 //Employee Leave
 Route::get('approveLeave','LeaveController@approveLeave');
-
+Route::get('saveLeaveInfo','LeaveController@saveLeaveInfo');
 Route::get('rejectLeave','LeaveController@rejectLeave');
+Route::post('recordLeave','LeaveController@recordLeave');
 
 Route::get('leave','LeaveController@showPendingLeave');
-
 Route::get('AddEmployee','EmployeeController@showAddEmployee');
-
 Route::post('added','EmployeeController@addEmployee');
-
 Route::get('fillEmployee','EmployeeController@getEmployeeDetails');
-
 Route::get('updateEmployee','EmployeeController@updateEmployeeDetails');
 
 /*inventory routes*/

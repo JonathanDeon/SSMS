@@ -226,7 +226,7 @@
                                       <td>{{$employee->manager}}</td>
                                       <td>{{$employee->joined_date}}</td>
                                       <td><button type="button" id="view" value="{{$employee->eid}}" class="btn btn-success" onclick="getEmployee('{{$employee->eid}}')"><i class="fa fa-eye"></i></button></td>
-                                      <td><button type="button" onclick="getEmployee('{{$employee->eid}}','{{$employee->name}}','{{$employee->address}}','{{$employee->contact}}','{{$employee->dob}}','{{$employee->joined_date}}','{{$employee->service_type}}','{{$employee->gender}}','{{$employee->manager}}','{{$employee->branch}}','{{$employee->designation}}','{{$employee->emp_type}}')"
+                                      <td><button type="button" onclick="getEmployee('{{$employee->eid}}')"
                                                   id="update" value="{{$employee->eid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
                                       <td><button type="button" value="{{$employee->eid}}" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
                                   </tr>
@@ -318,7 +318,7 @@
                                         <label>Address:</label>
                                         <input type="text" class="form-control" id="address">
                                         <label>Employee Designation:</label>
-                                        <select onchange="test()" class="form-control" name="designation" id="designation">
+                                        <select class="form-control" name="designation" id="designation">
                                             <option>Select Designation</option>
                                             @foreach($designations as $designation)
                                                 <option value="{{ $designation->id }}">{{$designation->title}}</option>
