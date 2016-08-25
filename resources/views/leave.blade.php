@@ -472,14 +472,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             var end_date = document.getElementById('end_date').value;
                             var reason = document.getElementById('reason').value;
 
-                            alert(eid);
-                            alert(leave_type);
-                            alert(start_date);
-                            alert(end_date);
-                            alert(reason);
-
                             $.ajax({
-                                type: "post",
+                                type: "get",
                                 url: 'recordLeave',
                                 data: {eid: eid, leave_type: leave_type, start_date: start_date, end_date: end_date, reason:reason},
                                 success: function() {

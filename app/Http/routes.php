@@ -90,13 +90,16 @@ Route::get('payroll',function (){
 Route::get('approveLeave','LeaveController@approveLeave');
 Route::get('saveLeaveInfo','LeaveController@saveLeaveInfo');
 Route::get('rejectLeave','LeaveController@rejectLeave');
-Route::post('recordLeave','LeaveController@recordLeave');
-
+Route::get('recordLeave','LeaveController@recordLeave');
 Route::get('leave','LeaveController@showPendingLeave');
+
 Route::get('AddEmployee','EmployeeController@showAddEmployee');
 Route::post('added','EmployeeController@addEmployee');
 Route::get('fillEmployee','EmployeeController@getEmployeeDetails');
 Route::get('updateEmployee','EmployeeController@updateEmployeeDetails');
+
+Route::get('saveLoanScheme','LoanController@saveLoanScheme');
+Route::get('addLoan','LoanController@addLoan');
 
 /*inventory routes*/
 Route::get('AddNewItem',function(){

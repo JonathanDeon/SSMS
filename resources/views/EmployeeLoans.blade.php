@@ -220,7 +220,7 @@
                                         @foreach($loans as $loan)
                                         <tr>
                                         <td>{{$loan->scheme_id}}</td>
-                                        <td>{{$loan->name}}</td>
+                                        <td>{{$loan->l_name}}</td>
                                         <td>{{$loan->description}}</td>
                                         <td>{{$loan->amount}}</td>
                                         <td>{{$loan->interest}}</td>
@@ -264,64 +264,25 @@
                                             <th>Employee ID</th>
                                             <th>Employee Name</th>
                                             <th>Contact Details</th>
-                                            <th>Loan Date</th>
                                             <th>Installments</th>
                                             <th>Total Loan Amount</th>
                                             <th>Amount to be paid</th>
                                             <th>Guarantor</th>
                                         </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>2 005 560</td>
-                                            <td>Mary Anne</td>
-                                            <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>2 005 560</td>
-                                            <td>Mary Anne</td>
-                                            <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>2 005 560</td>
-                                            <td>Mary Anne</td>
-                                            <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>2 005 560</td>
-                                            <td>Mary Anne</td>
-                                            <td><button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
-                                        </tr>
+                                        @foreach($ongoing as $x)
+                                            <tr>
+                                                <td>{{$x->l_name}}</td>
+                                                <td>{{$x->eid}}</td>
+                                                <td>{{$x->name}}</td>
+                                                <td>{{$x->contact}}</td>
+                                                <td>{{$x->installments}}</td>
+                                                <td>{{$x->amount}}</td>
+                                                <td></td>
+                                                <td>{{$x->guarantor_name}}</td>
+                                                <td><button type="button" id="accept" value="{{$x->loan_id}}" class="btn btn-primary" onclick="success()"><i class="fa fa-edit"></i></button></td>
+                                                <td><button type="button" id="reject" value="{{$x->loan_id}}" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
+                                            </tr>
+                                        @endforeach
                                         </tbody></table>
                                 </div>
                                 <!-- /.box-body -->
@@ -355,64 +316,24 @@
                                             <th>Employee ID</th>
                                             <th>Employee Name</th>
                                             <th>Contact Details</th>
-                                            <th>Loan Date</th>
                                             <th>Installments</th>
                                             <th>Total Loan Amount</th>
                                             <th>Guarantor</th>
-                                            <th>Status</th>
                                         </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>Mary Anne</td>
-                                            <td><span class="label label-warning">Pending</span></td>
-                                            <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>Mary Anne</td>
-                                            <td><span class="label label-warning">Pending</span></td>
-                                            <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>Mary Anne</td>
-                                            <td><span class="label label-warning">Pending</span></td>
-                                            <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>Mary Anne</td>
-                                            <td><span class="label label-warning">Pending</span></td>
-                                            <td><button type="button" class="btn btn-success btn-sm"><i class="fa fa-check"></i></button></td>
-                                            <td><button type="button" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
-                                        </tr>
+                                        @foreach($pending as $x)
+                                            <tr>
+                                                <td>{{$x->scheme_id}}</td>
+                                                <td>{{$x->eid}}</td>
+                                                <td>{{$x->name}}</td>
+                                                <td>{{$x->contact}}</td>
+                                                <td>{{$x->installments}}</td>
+                                                <td>{{$x->amount}}</td>
+                                                <td>{{$x->guarantor_name}}</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                                <td><button type="button" id="accept" value="{{$x->loan_id}}" class="btn btn-success btn-sm" onclick="success()"><i class="fa fa-check"></i></button></td>
+                                                <td><button type="button" id="reject" value="{{$x->loan_id}}" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
+                                            </tr>
+                                        @endforeach
                                         </tbody></table>
                                 </div>
                                 <!-- /.box-body -->
@@ -465,39 +386,7 @@
                                             <td>Mary Anne</td>
                                             <td><span class="label label-success">Approved</span></td>
                                         </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>Mary Anne</td>
-                                            <td><span class="label label-warning">Pending</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>Mary Anne</td>
-                                            <td><span class="label label-danger">Declined</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Housing Loan</td>
-                                            <td>EMP001</td>
-                                            <td>John Doe</td>
-                                            <td>0112-233665</td>
-                                            <td>01-02-2010</td>
-                                            <td>24</td>
-                                            <td>10 000 000</td>
-                                            <td>Mary Anne</td>
-                                            <td><span class="label label-success">Approved</span></td>
-                                        </tr>
+
                                         </tbody></table>
                                 </div>
                                 <!-- /.box-body -->
@@ -547,9 +436,32 @@
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <button type="submit" class="btn btn-block btn-primary btn-flat" style="width: 30%; float: right" onclick="recordLeave()">Update</button>
+                                    <button type="submit" class="btn btn-block btn-primary btn-flat" style="width: 30%; float: right" onclick="addLoan()">Update</button>
                                 </div>
                             </div>
+                            <script>
+                                function addLoan() {
+                                    var lid = document.getElementById('lid').value;
+                                    var eid = document.getElementById('eid').value;
+                                    var name = document.getElementById('name').value;
+                                    var designation = document.getElementById('designation').value;
+                                    var contact = document.getElementById('contact').value;
+                                    var address = document.getElementById('address').value;
+                                    console.log(lid);
+                                    $.ajax({
+                                        type: "get",
+                                        url: 'addLoan',
+                                        data: {lid: lid, eid: eid, name: name, designation: designation,contact:contact,address:address},
+                                        success: function() {
+                                            swal("Successful", "Loan Record Added!", "success");
+                                            location.reload();
+                                        },
+                                        error: function(){
+                                            swal("Adding Failed!", "warning")
+                                        }
+                                    })
+                                }
+                            </script>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -646,35 +558,39 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-outline" onclick="saveLeaveInfo()">Save changes</button>
+                    <button type="button" class="btn btn-outline" onclick="saveLoanScheme()">Save changes</button>
                 </div>
             </div>
             <!-- /.modal-content -->
 
-            {{--<script>--}}
-                {{--function saveLeaveInfo() {--}}
-                    {{--var title = document.getElementById('leave-type').value;--}}
-                    {{--var emp_type = document.getElementById('optionsRadios1').value;--}}
-                    {{--var designation = document.getElementById('designation').options[document.getElementById('designation').selectedIndex].value;--}}
-                    {{--var number = document.getElementById('number').value;--}}
-                    {{--console.log(title)--}}
-                    {{--console.log(emp_type)--}}
-                    {{--console.log(designation)--}}
-                    {{--$.ajax({--}}
-                        {{--type: "get",--}}
-                        {{--url: 'saveLeaveInfo',--}}
-                        {{--data: {title: title, emp_type: emp_type, designation: designation, number: number},--}}
-                        {{--success: function(x) {--}}
-                            {{--swal("Successful", "Leave Type Added!", "success");--}}
-                            {{--location.reload();--}}
-                        {{--},--}}
-                        {{--error: function(){--}}
-                            {{--swal("Adding Failed!", "warning")--}}
-                        {{--}--}}
-                    {{--})--}}
+            <script>
+                function saveLoanScheme() {
+                    var title = document.getElementById('title').value;
+                    var description = document.getElementById('description').value;
+                    var amount = document.getElementById('amount').value;
+                    var interest = document.getElementById('interest').value;
+                    var installments = document.getElementById('installments').value;
+                    console.log(title)
+                    console.log(description)
+                    console.log(amount)
+                    console.log(interest)
+                    console.log(installments)
+                    $.ajax({
+                        type: "get",
+                        url: 'saveLoanScheme',
+                        data: {title: title, description: description, amount: amount, interest: interest, installments:installments},
+                        success: function() {
+                            swal("Successful", "Loan Scheme Added!", "success");
+                            location.reload();
+                        },
+                        error: function(x,y,z){
+                            swal("Adding Failed!", z);
+                        }
+                    })
 
-                {{--}--}}
-            {{--</script>--}}
+                }
+            </script>
+
         </div>
         <!-- /.modal-dialog -->
     </div>
