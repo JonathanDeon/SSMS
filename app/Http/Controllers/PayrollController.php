@@ -20,6 +20,6 @@ class PayrollController extends Controller
         $allowance = $request['allowance'];
         $affected = DB::statement("update designation set basic = $basic,allowance = $allowance 
                     where id = '$id'");
-        return $affected;
+
     }
 }

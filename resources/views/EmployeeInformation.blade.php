@@ -251,6 +251,9 @@
                                           document.getElementById('designation').value = details[0].designation;
                                           document.getElementById('branch').value = details[0].branch;
                                           document.getElementById('manager').value = details[0].manager;
+                                      },
+                                      error:function(){
+
                                       }
                                   })
                               }

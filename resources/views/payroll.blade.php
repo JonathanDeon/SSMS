@@ -25,11 +25,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-</head>
-<body class="hold-transition skin-blue fixed">
-<div class="wrapper">
 
-    <!-- Main Header -->
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  </head>
+  <body class="hold-transition skin-blue fixed">
+  <div class="wrapper">
+
+      <!-- Main Header -->
     <header class="main-header">
 
         <!-- Logo -->
@@ -182,17 +185,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <li><a href="#tab_6" data-toggle="tab" aria-expanded="false">Employee Fund Details</a></li>
                 </ul>
             </div>
+            <script>
+                function updateSalary(){
+                    var designation = document.getElementById('designation').value;
+                    var basic = document.getElementById('basic').value;
+                    var allowance = document.getElementById('allowance').value;
+                    $.ajax({
+                        type:'get',
+                        url:'addSalary',
+                        data:{designation: designation, basic:basic, allowance:allowance},
+                        success: function() {
+                            swal({
+                                title: "Success!",
+                                text: "successfully updated the salary information",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonColor: '#1D84FF',
+                                confirmButtonText: 'Ok',
+                                closeOnConfirm: true
+                            },
+                            function(isConfirm){
+                                if (isConfirm){
+                                    window.location.href="/payroll";
+                                }
+                            });
+                        },
+                        error: function(x,y,thrownError){
+                            swal("Error!","Updation of salary information failed!", "error");
+
+                        }
+                    });
+                }
+            </script>
             <div class="tab-content">
                 <div class="tab-pane  active" id="tab_1" align="center">
                     <div class="box box-info" style="width: 50%; top:20px;">
                         <div class="box-header with-border">
                             <h3 class="box-title">New Salary Details</h3>
                         </div>
-                    <form class="form-horizontal">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <form class="form-horizontal" role="form">
+                        {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="inputdate" class="col-sm-2 control-label">Designation</label>
+                                <label for="designation" class="col-sm-2 control-label">Designation</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" style="width:80%" name="designation" id="designation">
                                         <option>Select Designation</option>
@@ -203,16 +238,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputAddress" class="col-sm-2 control-label">Basic</label>
+                                <label for="basic" class="col-sm-2 control-label">Basic</label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="basic" id="basic" placeholder="Enter basic salary" style="width:80%">
+                                    <input type="number" min="0" class="form-control" name="basic" id="basic" placeholder="Enter basic salary" style="width:80%">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputtp" class="col-sm-2 control-label">Allowance</label>
+                                <label for="allowance" class="col-sm-2 control-label">Allowance</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="allowance" id="allowance" placeholder="Enter allowance" style="width:80%">
+                                    <input type="number" min="0" class="form-control" name="allowance" id="allowance" placeholder="Enter allowance" style="width:80%">
                                 </div>
                             </div>
                         </div>
@@ -220,32 +255,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                         <div class="box-footer">
 
-                            <button type="submit" class="btn btn-primary pull-center" onclick="newSalary()">Save changes</button>
+                            <button type="button" class="btn btn-primary pull-center" onclick="updateSalary()">Save changes</button>
                         </div>
 
                         <!-- /.box-footer -->
                     </form>
                     </div>
-                    <script>
-                        function newSalary(){
-                            var designation = document.getElementById('designation').options[document.getElementById('designation').selectedIndex].value;
-                            var basic = document.getElementById('basic').value;
-                            var allowance = document.getElementById('allowance').value;
-                            alert(designation);
-                            $.ajax({
-                                type: "get",
-                                url: 'addSalary',
-                                data: {designation: designation, basic:basic, allowance:allowance},
-                                success: function() {
-                                    swal("Successful", "Record Added!", "success");
-                                    //location.reload();
-                                },
-                                error: function(){
-                                    swal("Adding Failed!", "warning")
-                                }
-                            });
-                        }
-                    </script>
+
                  </div>
 
                 <!-- /.tab-pane -->
@@ -279,12 +295,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
 
+<!-- Bootstrap 3.3.6 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/app.min.js"></script>
+
+<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- SlimScroll 1.3.0 -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+{{--<script src="dist/js/pages/dashboard2.js"></script>--}}
+
+
+<script src="../../dist/js/demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
