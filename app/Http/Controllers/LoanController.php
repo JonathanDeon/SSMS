@@ -68,8 +68,8 @@ class LoanController extends Controller
 
     public function approveLoan(Request $request){
         $loanId = $request['id'];
-        $affected = DB::update("update employee_loan set status = 1, ongoing = 1 where loan_id = '$loanId'");
-        return $affected;
+        $affected = DB::update("update employee_loan set status = 1 where loan_id = '$loanId'");
+//        return $affected;
     }
 
     public function rejectLoan(Request $request){
@@ -87,5 +87,10 @@ class LoanController extends Controller
                       ongoing=0
                   ");
         return $loans;
+    }
+
+    public function deleteLoanScheme(Request $request){
+        $loan_scheme_id = $request['id'];
+        DB::statement("DELETE FROM loan_scheme WHERE scheme_id = '$loan_scheme_id'");
     }
 }
