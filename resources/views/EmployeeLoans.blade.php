@@ -562,7 +562,7 @@
                                                 <td>{{$x->contact}}</td>
                                                 <td>{{$x->installments}}</td>
                                                 <td>{{$x->amount}}</td>
-                                                <td><button type="button" onclick="getEmployee('{{$x->loan_id}}')" id="update" value="{{$x->loan_id}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal2"><i class="fa fa-edit"></i></button></td>
+                                                <td><button type="button" id="update" value="{{$x->loan_id}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal2"><i class="fa fa-edit"></i></button></td>
                                             </tr>
                                         @endforeach
                                         </tbody></table>

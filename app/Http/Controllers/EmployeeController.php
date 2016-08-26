@@ -20,9 +20,9 @@ class EmployeeController extends Controller
     public function showAddEmployee(){
         $branches = DB::select("select * from branch");
         $designations = DB::select("select * from designation");
-
+        $interviews = $this->getAllInterviews();
         $managers = $this->getManagers();
-        return view('AddEmployee',compact('branches','designations','managers'));
+        return view('AddEmployee',compact('branches','designations','managers','interviews'));
 
     }
 
@@ -74,5 +74,11 @@ class EmployeeController extends Controller
     public function deleteEmployeeRecord(Request $request){
         $eid = $request['eid'];
         $deletedRecord = DB::statement("DELETE FROM employee WHERE eid = '$eid'");
+    }
+
+    private function getAllInterviews(){
+        $today = date("Y-m-d");
+        $interviews = DB::select("select * from interview where date > '$today'");
+        return $interviews;
     }
 }

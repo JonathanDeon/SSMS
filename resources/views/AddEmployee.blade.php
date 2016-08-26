@@ -181,111 +181,6 @@
                 </div>
             </div>
             <div class="col-md-12" style="background-color: whitesmoke; padding-bottom: 100px">
-                <div class="box box-success collapsed-box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Schedule interview</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                            </button>
-                        </div>
-                        <!-- /.box-tools -->
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body" style="display: none;">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="box">
-                                    <!-- /.box-body -->
-                                    <form class="form-horizontal">
-                                        <div class="box-body">
-                                            <div class="form-group">
-                                                <label for="inputName" class="col-sm-2 control-label">Candidate Name</label>
-
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" style="width:80%">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputtp" class="col-sm-2 control-label">Contact No.</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter telephone no" style="width:80%">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputtp" class="col-sm-2 control-label">Position</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="position" id="position" placeholder="Enter position" style="width:80%">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputdob" class="col-sm-2 control-label">Date scheduled</label>
-                                                {{--<style>--}}
-                                                {{--{z-index:1151 !important;}--}}
-                                                {{--</style>--}}
-                                                <div class="col-sm-10">
-                                                    <div class="input-group" style="width:80%">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input type="date" class="form-control" name="date" id="date">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputdob" class="col-sm-2 control-label">Time</label>
-                                                {{--<style>--}}
-                                                {{--{z-index:1151 !important;}--}}
-                                                {{--</style>--}}
-                                                <div class="col-sm-10">
-                                                    <div class="input-group" style="width:80%">
-                                                        <div class="input-group-addon">
-                                                            <i class="fa fa-calendar"></i>
-                                                        </div>
-                                                        <input type="time" class="form-control" name="time" id="time">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /.box-body -->
-
-                                        <div class="box-footer">
-
-                                            <button type="submit" onclick="schedule()" class="btn btn-primary pull-center">Schedule</button>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
-                                        </div>
-                                        <!-- /.box-footer -->
-                                    </form>
-                                </div>
-                                <!-- /.box -->
-                            </div>
-                            <script>
-                                function schedule() {
-                                    var name = document.getElementById('name').value;
-                                    var position = document.getElementById('position').value;
-                                    var date = document.getElementById('date').value;
-                                    var time = document.getElementById('time').value;
-                                    var contact = document.getElementById('phone').value;
-
-                                    $.ajax({
-                                    type: 'get',
-                                    url: 'scheduleInterview',
-                                    data: {name: name, position:position, date:date,time:time,contact:contact},
-                                    success: function(x) {
-                                        swal("Successful", "Data Successfully Saved!", "success");
-                                    },
-                                    error:function(x,y,z){
-                                        swal("Successful", "Data Successfully Saved!", z);
-                                    }
-                                });
-                                }
-                            </script>
-                        </div>
-
-                    </div>
-                    <!-- /.box-body -->
-                </div>
                 <div class="box box-info collapsed-box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Add Employee</h3>
@@ -442,10 +337,261 @@
                     </div>
                     <!-- /.box-body -->
                 </div>
+                <div class="box box-success collapsed-box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Schedule interview</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <!-- /.box-body -->
+                                    <form class="form-horizontal">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label for="name" class="col-sm-2 control-label">Candidate Name</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="can_name" id="can_name" placeholder="Enter name" style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="phone" class="col-sm-2 control-label">Contact No.</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="can_phone" id="can_phone" placeholder="Enter telephone no" style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="position" class="col-sm-2 control-label">Position</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="can_position" id="can_position" placeholder="Enter position" style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="date" class="col-sm-2 control-label">Date scheduled</label>
+                                                {{--<style>--}}
+                                                {{--{z-index:1151 !important;}--}}
+                                                {{--</style>--}}
+                                                <div class="col-sm-10">
+                                                    <div class="input-group" style="width:80%">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="date" class="form-control" name="initial_date" id="initial_date">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="time" class="col-sm-2 control-label">Time</label>
+                                                {{--<style>--}}
+                                                {{--{z-index:1151 !important;}--}}
+                                                {{--</style>--}}
+                                                <div class="col-sm-10">
+                                                    <div class="input-group" style="width:80%">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="time" class="form-control" name="initial_time" id="initial_time">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                        <div class="box-footer">
+
+                                            <button type="button" onclick="schedule()" class="btn btn-primary pull-center">Schedule</button>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
+                                        </div>
+                                        <!-- /.box-footer -->
+                                    </form>
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                            <script>
+                                function schedule() {
+                                    var name = document.getElementById('can_name').value;
+                                    var position = document.getElementById('can_position').value;
+                                    var date = document.getElementById('initial_date').value;
+                                    var time = document.getElementById('initial_time').value;
+                                    var contact = document.getElementById('can_phone').value;
+                                    $.ajax({
+                                        type: 'get',
+                                        url: 'scheduleInterview',
+                                        data: {name: name, position:position, date:date,time:time,contact:contact},
+                                        success: function(x) {
+                                            swal("Successful", "Data Successfully Saved!", "success");
+                                            location.reload();
+                                        },
+                                        error:function(x,y,z){
+                                            swal("Successful", "Data Not Saved!"+z, "error");
+                                        }
+                                    });
+                                }
+                            </script>
+                        </div>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-warning collapsed-box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">View interview details</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <!-- /.box-body -->
+                                    <form class="form-horizontal">
+                                        <div class="box">
+                                            <!-- /.box-header -->
+                                            <div class="box-body table-responsive no-padding">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                    <tr>
+                                                        <th>Candidate name</th>
+                                                        <th>Contact</th>
+                                                        <th>Position</th>
+                                                        <th>Date</th>
+                                                        <th>Time</th>
+                                                        <th></th>
+                                                        <th></th>
+                                                    </tr>
+                                                    @foreach($interviews as $interview)
+                                                        <tr>
+                                                            <td>{{$interview->cand_name}}</td>
+                                                            <td>{{$interview->contact}}</td>
+                                                            <td>{{$interview->position}}</td>
+                                                            <td>{{$interview->date}}</td>
+                                                            <td>{{$interview->time}}</td>
+                                                            <td><button type="button" id="update" onclick="getData({{$interview->cand_id}})" value="" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
+                                                            <td><button type="button" id="delete" onclick="deleteInterview({{$interview->cand_id}})" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody></table>
+                                            </div>
+                                            <!-- /.box-body -->
+                                        </div>
+                                    </form>
+                                    <script>
+                                        function getData(data){
+                                            $.ajax({
+                                                type: "get",
+                                                url: 'fillInterview',
+                                                data: {data: data},
+                                                success: function(x) {
+                                                    var details = JSON.parse(x);
+                                                    document.getElementById('can_id').value=details[0].cand_id;
+                                                    document.getElementById('can2_name').value=details[0].cand_name;
+                                                    document.getElementById('can_date').value = details[0].date;
+                                                    document.getElementById('can_time').value = details[0].time;
+                                                },
+                                                error:function(x,y,z){
+                                                    swal("Error!", z,"error");
+                                                }
+                                            })
+                                        }
+
+                                        function deleteInterview(id){
+                                            $.ajax({
+                                                type: "get",
+                                                url: 'deleteInterview',
+                                                data: {id: id},
+                                                success: function(x) {
+                                                    swal("Deleted!", "Interview removed");
+                                                    location.reload();
+                                                },
+                                                error:function(x,y,z){
+                                                    swal("Error!", z,"error");
+                                                }
+                                            })
+                                        }
+                                    </script>
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+
+                </div>
             </div>
         </div>
     </div>
     <!-- ./wrapper -->
+    <div class="modal modal-info fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>Interview</button>
+                    <h4 class="modal-title">Update</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box box-info">
+                        <div class="box-body">
+                            <form role="form">
+                                <!-- text input -->
+                                <div class="form-group" style="color:black">
+                                    <label>ID:</label>
+                                    <input type="text" class="form-control" id="can_id" disabled>
+                                    <label>Name:</label>
+                                    <input type="text" class="form-control" id="can2_name" disabled>
+                                    <label>date:</label>
+                                    <input type="date" class="form-control" id="can_date">
+                                    <label>time:</label>
+                                    <input type="time" class="form-control" id="can_time">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline" onclick="saveInterview()">Save changes</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+
+            <script>
+                function saveInterview() {
+                    var id = document.getElementById('can_id').value;
+                    var name = document.getElementById('can2_name').value;
+                    var date = document.getElementById('can_date').value;
+                    var time = document.getElementById('can_time').value;
+                    $.ajax({
+                        type: "get",
+                        url: 'saveInterview',
+                        data: {id:id, name:name, date:date, time:time},
+                        success: function() {
+                            swal("Successful", "Updated!", "success");
+                            location.reload();
+                        },
+                        error: function(x,y,z){
+                            swal("Error!", z,"error");
+                        }
+                    })
+
+                }
+            </script>
+        </div>
+        <!-- /.modal-dialog -->
 </div>
 
 
@@ -483,5 +629,6 @@
 //
 //    });
 </script>
+</div>
 </body>
 </html>
