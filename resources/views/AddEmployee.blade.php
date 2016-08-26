@@ -64,8 +64,8 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i>Register Customer</a></li>
-                        <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i>Customer Loyalty</a></li>
+                        <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+                        <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
                         <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
                         <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
                         <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
@@ -159,9 +159,9 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="height: 100%">
         <!-- Content Header (Page header) -->
-        <section class="content-header">
+        <section class="content-header" >
             <h1>
                 Employee Management
             </h1>
@@ -173,154 +173,277 @@
 
         <!-- Main content -->
         <div align="center">
-
-            <!-- Horizontal Form -->
-            <div class="box box-info" style="width: 80%; top:20px;">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Add New Employee</h3>
+            <div class="col-md-12">
+                <br>
+                <div class="callout callout-info">
+                    <h4>Reminder!</h4>
+                    You have an interview scheduled for today
                 </div>
-                <!-- /.box-header -->
-                <!-- form start -->
-                <form class="form-horizontal" action="added" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" style="width:80%">
-                            </div>
+            </div>
+            <div class="col-md-12" style="background-color: whitesmoke; padding-bottom: 100px">
+                <div class="box box-success collapsed-box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Schedule interview</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                            </button>
                         </div>
-                        <div class="form-group">
-                            <label for="inputdob" class="col-sm-2 control-label">Date of Birth</label>
-                            {{--<style>--}}
-                                {{--{z-index:1151 !important;}--}}
-                            {{--</style>--}}
-                            <div class="col-sm-10">
-                                <div class="input-group" style="width:80%">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="date" class="form-control" name="dob" id="dob">
+                        <!-- /.box-tools -->
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <!-- /.box-body -->
+                                    <form class="form-horizontal">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label for="inputName" class="col-sm-2 control-label">Candidate Name</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputtp" class="col-sm-2 control-label">Contact No.</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter telephone no" style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputtp" class="col-sm-2 control-label">Position</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="position" id="position" placeholder="Enter position" style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputdob" class="col-sm-2 control-label">Date scheduled</label>
+                                                {{--<style>--}}
+                                                {{--{z-index:1151 !important;}--}}
+                                                {{--</style>--}}
+                                                <div class="col-sm-10">
+                                                    <div class="input-group" style="width:80%">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="date" class="form-control" name="date" id="date">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputdob" class="col-sm-2 control-label">Time</label>
+                                                {{--<style>--}}
+                                                {{--{z-index:1151 !important;}--}}
+                                                {{--</style>--}}
+                                                <div class="col-sm-10">
+                                                    <div class="input-group" style="width:80%">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="time" class="form-control" name="time" id="time">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                        <div class="box-footer">
+
+                                            <button type="submit" onclick="schedule()" class="btn btn-primary pull-center">Schedule</button>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
+                                        </div>
+                                        <!-- /.box-footer -->
+                                    </form>
                                 </div>
+                                <!-- /.box -->
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputGender" class="col-sm-2 control-label">Gender</label>
+                            <script>
+                                function schedule() {
+                                    var name = document.getElementById('name').value;
+                                    var position = document.getElementById('position').value;
+                                    var date = document.getElementById('date').value;
+                                    var time = document.getElementById('time').value;
+                                    var contact = document.getElementById('phone').value;
 
-                            <div class="col-sm-10" align="left" style="left: 100px">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked="">
-                                        Male
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="female" checked="">
-                                        Female
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress" class="col-sm-2 control-label">Address</label>
-
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="address" id="address" placeholder="Enter address" style="width:80%">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputtp" class="col-sm-2 control-label">Contact No.</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter telephone no" style="width:80%">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputJoinedDate" class="col-sm-2 control-label">Joined Date</label>
-                            <div class="col-sm-10">
-                                <div class="input-group" style="width:80%">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                    </div>
-                                    <input type="date" name="date" id="date" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputsType" class="col-sm-2 control-label">Service Type</label>
-
-                            <div class="col-sm-10" align="left" style="left: 100px">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios2" id="optionsRadios2" value="janitorial" checked="">
-                                        Janitorial
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionsRadios2" id="optionsRadios2" value="vehicle" checked="">
-                                        Vehicle Grooming and Valet
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputdesignation" class="col-sm-2 control-label">Designation</label>
-
-                            <div class="col-sm-10">
-                                <select class="form-control" style="width:80%" name="designation" id="designation">
-                                    <option>Select Designation</option>
-                                    @foreach($designations as $designation)
-                                        <option value="{{ $designation->id }}">{{$designation->title}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputdate" class="col-sm-2 control-label">Branch</label>
-
-                            <div class="col-sm-10">
-                                <select class="form-control" style="width:80%" name="branch" id="branch">
-                                    <option>Select Branch</option>
-                                    @foreach($branches as $branch)
-                                        <option value="{{ $branch->id }}">{{$branch->bname}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="inputdate" class="col-sm-2 control-label">Manager</label>
-
-                            <div class="col-sm-10">
-                                <select class="form-control" style="width:80%" name="manager" id="manager">
-                                    <option>Select Manager</option>
-                                    @foreach($managers as $manager)
-                                        <option value="{{ $manager->eid }}">{{$manager->name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                    $.ajax({
+                                    type: 'get',
+                                    url: 'scheduleInterview',
+                                    data: {name: name, position:position, date:date,time:time,contact:contact},
+                                    success: function(x) {
+                                        swal("Successful", "Data Successfully Saved!", "success");
+                                    },
+                                    error:function(x,y,z){
+                                        swal("Successful", "Data Successfully Saved!", z);
+                                    }
+                                });
+                                }
+                            </script>
                         </div>
 
                     </div>
                     <!-- /.box-body -->
-
-                    <div class="box-footer">
-
-                        <button type="submit" class="btn btn-primary pull-center">Add Employee</button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
+                </div>
+                <div class="box box-info collapsed-box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Add Employee</h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                            </button>
+                        </div>
+                        <!-- /.box-tools -->
                     </div>
-                    <!-- /.box-footer -->
-                </form>
+                    <!-- /.box-header -->
+                    <div class="box-body" style="display: none;">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <form class="form-horizontal" action="added" method="post">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label for="inputName" class="col-sm-2 control-label">Name</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputdob" class="col-sm-2 control-label">Date of Birth</label>
+                                                {{--<style>--}}
+                                                {{--{z-index:1151 !important;}--}}
+                                                {{--</style>--}}
+                                                <div class="col-sm-10">
+                                                    <div class="input-group" style="width:80%">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="date" class="form-control" name="dob" id="dob">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputGender" class="col-sm-2 control-label">Gender</label>
+
+                                                <div class="col-sm-10" align="left" style="left: 100px">
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="male" checked="">
+                                                            Male
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="female" checked="">
+                                                            Female
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputAddress" class="col-sm-2 control-label">Address</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="address" id="address" placeholder="Enter address" style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputtp" class="col-sm-2 control-label">Contact No.</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter telephone no" style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputJoinedDate" class="col-sm-2 control-label">Joined Date</label>
+                                                <div class="col-sm-10">
+                                                    <div class="input-group" style="width:80%">
+                                                        <div class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </div>
+                                                        <input type="date" name="date" id="date" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputsType" class="col-sm-2 control-label">Service Type</label>
+
+                                                <div class="col-sm-10" align="left" style="left: 100px">
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="optionsRadios2" id="optionsRadios2" value="janitorial" checked="">
+                                                            Janitorial
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="optionsRadios2" id="optionsRadios2" value="vehicle" checked="">
+                                                            Vehicle Grooming and Valet
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputdesignation" class="col-sm-2 control-label">Designation</label>
+
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" style="width:80%" name="designation" id="designation">
+                                                        <option>Select Designation</option>
+                                                        @foreach($designations as $designation)
+                                                            <option value="{{ $designation->id }}">{{$designation->title}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputdate" class="col-sm-2 control-label">Branch</label>
+
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" style="width:80%" name="branch" id="branch">
+                                                        <option>Select Branch</option>
+                                                        @foreach($branches as $branch)
+                                                            <option value="{{ $branch->id }}">{{$branch->bname}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="inputdate" class="col-sm-2 control-label">Manager</label>
+
+                                                <div class="col-sm-10">
+                                                    <select class="form-control" style="width:80%" name="manager" id="manager">
+                                                        <option>Select Manager</option>
+                                                        @foreach($managers as $manager)
+                                                            <option value="{{ $manager->eid }}">{{$manager->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-body -->
+
+                                        <div class="box-footer">
+
+                                            <button type="submit" class="btn btn-primary pull-center">Add Employee</button>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
+                                        </div>
+                                        <!-- /.box-footer -->
+                                    </form>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /.box -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
             </div>
-
-
-
         </div>
-
     </div>
     <!-- ./wrapper -->
 </div>

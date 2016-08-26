@@ -97,6 +97,7 @@ Route::get('AddEmployee','EmployeeController@showAddEmployee');
 Route::post('added','EmployeeController@addEmployee');
 Route::get('fillEmployee','EmployeeController@getEmployeeDetails');
 Route::get('updateEmployee','EmployeeController@updateEmployeeDetails');
+Route::get('scheduleInterview','InterviewController@scheduleInterview');
 
 Route::get('saveLoanScheme','LoanController@saveLoanScheme');
 Route::get('addLoan','LoanController@addLoan');
