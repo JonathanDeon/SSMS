@@ -24,7 +24,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     -->
     <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    {{--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -177,9 +177,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs" style="background-color:#B1C4E6">
                     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">For Approval</a>
-                    <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Record Absence</a></li>
                     <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Leave Details</a></li>
                     <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Employee Leave History</a></li>
+                    <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Record Absence</a></li>
                 </ul>
             </div>
             <div class="tab-content">
@@ -403,14 +403,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <form class="form-horizontal">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label for="inputName" class="col-sm-2 control-label">Employee ID</label>
+                                        <label for="eid" class="col-sm-2 control-label">Employee ID</label>
 
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="eid" id="eid" placeholder="Enter ID" style="width:80%">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputName" class="col-sm-2 control-label">Leave Type</label>
+                                        <label for="leave_type" class="col-sm-2 control-label">Leave Type</label>
                                         <div class="col-sm-10">
                                             <select class="form-control" style="width:80%" name="leave_type" id="leave_type">
                                                 <option>Select Leave Type</option>
@@ -430,7 +430,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control" name="start_date" id="start_date">
+                                                <input type="date" class="form-control" name="start_date" id="start_date">
                                             </div>
                                         </div>
                                     </div>
@@ -444,7 +444,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control" name="end_date" id="end_date">
+                                                <input type="date" class="form-control" name="end_date" id="end_date">
                                             </div>
                                         </div>
                                     </div>
@@ -458,7 +458,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <button type="submit" class="btn btn-primary pull-center" onclick="recordLeave()">Submit</button>
+                                    <button type="button" class="btn btn-primary pull-center" onclick="recordLeave()">Submit</button>
                                 </div>
                                 </form>
                             </div>
@@ -467,13 +467,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <script>
                         function recordLeave() {
                             var eid = document.getElementById('eid').value;
-                            var leave_type = document.getElementById('leave_type').options[document.getElementById('leave_type').selectedIndex].value;
+                            var leave_type = document.getElementById('leave_type').value;
                             var start_date = document.getElementById('start_date').value;
                             var end_date = document.getElementById('end_date').value;
                             var reason = document.getElementById('reason').value;
 
                             $.ajax({
-                                type: "get",
+                                type: 'get',
                                 url: 'recordLeave',
                                 data: {eid: eid, leave_type: leave_type, start_date: start_date, end_date: end_date, reason:reason},
                                 success: function() {
@@ -582,12 +582,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
+
 <!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="../../dist/js/app.min.js"></script>
+
+<script src="plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- SlimScroll 1.3.0 -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+{{--<script src="dist/js/pages/dashboard2.js"></script>--}}
+
+
+<script src="../../dist/js/demo.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

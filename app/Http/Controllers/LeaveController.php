@@ -60,8 +60,8 @@ class LeaveController extends Controller
         $reason = $request['reason'];
 
         DB::statement(
-            "INSERT INTO leave_type(leave_type, employee, start_date, end_date, reason,approved)
-            VALUES ('$eid','$leave_type','$start_date','$end_date','$reason')");
+            "INSERT INTO employee_leave(leave_type, employee, start_date, end_date, reason)
+            VALUES ('$leave_type','$eid','$start_date','$end_date','$reason')");
     }
 
 }

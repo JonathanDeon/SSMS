@@ -22,4 +22,7 @@ class PayrollController extends Controller
                     where id = '$id'");
 
     }
+
+//    payroll calculations
+//    public function
 }
