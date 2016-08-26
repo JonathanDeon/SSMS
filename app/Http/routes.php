@@ -12,6 +12,19 @@
 */
 
 
+//
+Route::get('getEmployeeBasicSalaryDetails','PayrollController@getEmployeeBasicSalaryDetails');
+Route::get('calculateEPF_8','PayrollController@calculateEPF_8');
+Route::get('calculateNetSalary','PayrollController@calculateNetSalary');
+//
+
+
+
+
+
+
+
+
 Route::get('welcome',function(){
 	return view('welcome');
 });
