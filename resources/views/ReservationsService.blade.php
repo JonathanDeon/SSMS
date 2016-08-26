@@ -53,6 +53,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+    </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -83,7 +84,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active"><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
             <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
@@ -99,11 +100,11 @@
            </span>
            </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
             </ul>
        </li>
 
