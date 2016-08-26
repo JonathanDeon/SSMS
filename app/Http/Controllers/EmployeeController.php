@@ -46,17 +46,17 @@ class EmployeeController extends Controller
 
     public function updateEmployeeDetails(Request $request){
         $id = $request['id'];
-
+        $ename = $request['ename'];
+        $gender = $request['gender'];
+        $contact = $request['contact'];
+        $dob = $request['dob'];
         $address = $request['address'];
-//        $dob = $request['dob'];
-//        $contact = $request['phone'];
-//        $gender = $request['optionsRadios'];
-//        $date = $request['date'];
-//        $service = $request->input('optionsRadios2');
-//        $designation = $request->input('designation');
-//        $branch = $request->input('branch');
-//        $manager = $request->input('manager');
-        $affected = DB::update("update employee set address = '$address' where eid = '$id'");
+        $dateJoined = $request['dateJoined'];
+        $designation= $request['designation'];
+        $branch= $request['branch'];
+        $manager= $request['manager'];
+
+        $affected = DB::update("UPDATE `employee` SET `address`='$address',`name`='$ename',`contact`='$contact',`dob`='$dob',`joined_date`='$dateJoined',`gender`='$gender',`branch`='$branch',`designation`='$designation',`manager`='$manager' WHERE `eid`='$id'");
 //        return $affected;
     }
 

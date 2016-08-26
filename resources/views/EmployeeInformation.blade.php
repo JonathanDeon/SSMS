@@ -262,13 +262,17 @@
                                   var ename = document.getElementById('employee-name').value;
                                   var gender = document.querySelector('input[name="optionsRadios"]:checked').value;
                                   var contact = document.getElementById('contact').value;
+                                  var dob = document.getElementById('dob').value;
                                   var address = document.getElementById('address').value;
                                   var dateJoined = document.getElementById('dateJoined').value;
-                                  var dob = document.getElementById('dob').value;
+                                  var designation = document.getElementById('designation').value;
+                                  var branch = document.getElementById('branch').value;
+                                  var manager = document.getElementById('manager').value;
+
                                   $.ajax({
                                       type: "get",
                                       url: 'updateEmployee',
-                                      data: {id: id,ename:ename,gender:gender,address: address,dateJoined:dateJoined},
+                                      data: {id: id,ename:ename,gender:gender,contact:contact,dob:dob,address: address,dateJoined:dateJoined,designation:designation,branch:branch,manager:manager},
                                       success: function() {
                                           swal({
                                               title: "Success!",
