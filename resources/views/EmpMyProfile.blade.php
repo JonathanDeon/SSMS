@@ -50,24 +50,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </header>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
-
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">=
                 <li class="active"><a href="#"><i class="fa fa-user"></i> <span>Employee Profile</span></a></li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-calendar-times-o"></i><span>Employee Leave</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i>Apply for leave</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Leave Information</a></li>
-                    </ul>
-                </li>
+                <li><a href=""><i class="fa fa-calendar-times-o"></i><span>Employee Leave</span></a></li>
                 <li><a href="#"><i class="fa fa-dollar "></i> <span>Salary Information</span></a></li>
                 <li class=""><a href="#"><i class="fa fa-credit-card"></i> <span>Employee Loans</span></a></li>
             </ul>
@@ -119,26 +107,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <hr>
                             <strong><i class="fa fa-user margin-r-5"></i> Employee type</strong>
                                 <p>Permanent</p>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <div class="box box-success">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">About Me</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <strong><i class="fa fa-map-marker margin-r-5"></i> Address</strong>
-                            <p class="text-muted">No.25, Flower Road, Nugegoda</p>
-                            <hr>
-                            <strong><i class="fa fa-mobile-phone margin-r-5"></i> Mobile Number</strong>
-                            <p class="text-muted">0775-067203</p>
-                            <hr>
-                            <strong><i class="fa fa-calendar-o margin-r-5"></i> Date joined</strong>
-                            <p>12/01/2016</p>
-                            <hr>
-                            <strong><i class="fa fa-user margin-r-5"></i> Employee type</strong>
-                            <p>Permanent</p>
                         </div>
                         <!-- /.box-body -->
                     </div>

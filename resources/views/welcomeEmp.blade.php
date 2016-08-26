@@ -50,112 +50,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+    </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
-    
-        <ul class="sidebar-menu">
-        
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-user"></i> <span>Customer Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <<li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-            <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
-            <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
-            <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-            <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+      <section class="sidebar">
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu">=
+              <li class="active"><a href="#"><i class="fa fa-user"></i> <span>Employee Profile</span></a></li>
+              <li><a href=""><i class="fa fa-calendar-times-o"></i><span>Employee Leave</span></a></li>
+              <li><a href="#"><i class="fa fa-dollar "></i> <span>Salary Information</span></a></li>
+              <li class=""><a href="#"><i class="fa fa-credit-card"></i> <span>Employee Loans</span></a></li>
           </ul>
-        </li>
-
-        <li class="treeview">
-          <a href="#">
-           <i class="fa fa-car"></i> <span>Service Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
-            <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
-            <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
-            <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
-          </ul>
-        </li>
-
-
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-users"></i><span>Employee Management</span>
-          
-            <i class="fa fa-angle-left pull-right"></i>
-           </span>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
-            </ul>
-       </li>
-
-       <li class="treeview">
-         <a href="Janitorial">
-          <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-           
-       </li>
-
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-money"></i><span>Finance Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-              <li><a href="#"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-              <li><a href="#"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-              <li><a href="#"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
-            </ul>
-       </li>
-
-        <li class="treeview">
-         <a href="#">
-          <i class="fa fa-cube"></i><span>Inventory Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
-              <li><a href="#"><i class="fa fa-cubes"></i>Inventory</a></li>
-              <li><a href="#"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
-              <li><a href="#"><i class="fa fa-refresh"></i>Purchase Return</a></li>
-              <li><a href="#"><i class="fa fa-money"></i>Sales</a></li>
-              <li><a href="#"><i class="fa fa-mail-forward "></i>Send PO</a></li>
-              <li><a href="#"><i class="fa fa-truck"></i>Suppliers</a></li>
-            </ul>
-       </li>
-
-        <li class="treeview">
-         <a href="#">
-          <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-              <li><a href="#"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-              <li><a href="#"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-            </ul>
-       </li>
-
-      </ul>
-    </section>
+          <!-- /.sidebar-menu -->
+      </section>
   </aside>
 
  
@@ -178,56 +87,44 @@
             </div>
 
       <div class="box-body" id="hexas" style="display: flex; align-items: center;flex-flow:row wrap;justify-content: space-around;">
-
-        <div class="col-sm-2 col-md-1">
-          <div id="floating" style="width:111px;">
+          <a href="EmpMyProfile">
+          <div class="col-sm-2 col-md-1">
+            <div id="floating" style="width:111px;">
             <div class="hexagon-md hexagon-primary hexagon-hover">
                   <i class="fa fa-user"></i>
             </div>
              <div style="margin-top:30%;">
-                <hexa> My Profile<hexa/>
+                <hexa> My Profile</hexa>
              </div>
-          </div>
-        </div>
-
-        <div class="col-sm-2 col-md-1">
+            </div>
+           </div>
+          </a>
+        <a href="#"><div class="col-sm-2 col-md-1">
            <div id="floating" style="width:111px;" >
             <div class="hexagon-md hexagon-danger hexagon-hover">
                   <i class="fa fa-credit-card"></i>
             </div>
              <div style="margin-top:30%;">
-                <hexa>Employee Loans<hexa/>
+                <hexa>Employee Loans</hexa>
              </div>
           </div>   
-        </div>
-         
-        <div class="col-sm-2 col-md-1">
+        </div></a>
+        <a href="#"><div class="col-sm-2 col-md-1">
           <div id="floating" style="width:111px;">
             <div class="hexagon-md hexagon-success hexagon-hover">
-                  <i class="fa fa-calendar-times-o "></i>
-            </div>
-             <div style="margin-top:30%;">
-                <hexa>Leave Requisition<hexa/>
-             </div>
-          </div> 
-        </div>
-
-        <div class="col-sm-2 col-md-1">
-          <div id="floating" style="width:111px;">
-            <div class="hexagon-md hexagon-info hexagon-hover"> 
                   <i class="fa fa-calendar"></i>
             </div>
              <div style="margin-top:30%;">
-                <hexa>My Work-Shift<hexa/>
+                <hexa>My Work-Shift</hexa>
              </div>
           </div>
-        </div>
+        </div></a>
       </div>
       </div>
 
   </section>
   </div>
-
+</div>
    
 
 <!-- jQuery 2.2.0 -->

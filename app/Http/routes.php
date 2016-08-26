@@ -92,22 +92,20 @@ Route::get('EmpMyProfile',function(){
 	return view('EmpMyProfile');
 });
 
-Route::get('EmployeeLoans','LoanController@showLoans');
-
 Route::get('welcomeEmp',function(){
 	return view('welcomeEmp');
 });
 
+//payroll
 Route::get('payroll','PayrollController@showPayrollInformation');
 Route::get('addSalary','PayrollController@addSalary');
-
 //Employee Leave
 Route::get('approveLeave','LeaveController@approveLeave');
 Route::get('saveLeaveInfo','LeaveController@saveLeaveInfo');
 Route::get('rejectLeave','LeaveController@rejectLeave');
 Route::get('recordLeave','LeaveController@recordLeave');
 Route::get('leave','LeaveController@showPendingLeave');
-
+//Employee managing
 Route::get('AddEmployee','EmployeeController@showAddEmployee');
 Route::post('added','EmployeeController@addEmployee');
 Route::get('fillEmployee','EmployeeController@getEmployeeDetails');
@@ -116,7 +114,8 @@ Route::get('scheduleInterview','InterviewController@scheduleInterview');
 Route::get('saveInterview','InterviewController@saveInterview');
 Route::get('fillInterview','InterviewController@getEmployeeDetails');
 Route::get('deleteInterview','InterviewController@deleteInterview');
-
+//Employee Loans
+Route::get('EmployeeLoans','LoanController@showLoans');
 Route::get('saveLoanScheme','LoanController@saveLoanScheme');
 Route::get('addLoan','LoanController@addLoan');
 Route::get('approveLoan','LoanController@approveLoan');
