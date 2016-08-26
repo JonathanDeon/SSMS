@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Customer Management | Register Customer</title>
+  <title>Inventory Management | Purchase Return</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -28,6 +28,260 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+
+
+
+
+<script>
+   function alerts() {
+                swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
+            }
+    function emptyField(field) {
+                swal("Invalid Field : "+field, "You Cannot Have "+field+" Field Empty", "warning");
+    }
+
+    function invalidl(field) {
+                swal("Invalid Field : "+field, "You Can Have Only Numeric Values In "+field+" field ", "warning");
+    }
+
+      function nonNeg(field) {
+                swal("Invalid Field : "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
+    }
+
+
+
+function formValidate(){
+
+ //alert("TEST");
+
+ 
+ var items = document.getElementById('PRpid').value;
+ var dates = document.getElementById('PRdate').value;
+ var qty = document.getElementById('PRqty').value;
+ var price = document.getElementById('PRprice').value;
+ var totalp = document.getElementById('PRtotal').value;
+
+/* if(items == "")
+ {  
+  //document.getElementById("pitemid").value=dates;
+  alert("Item ID should be entered");
+  //emptyField("itemID");
+  return;
+  }*/
+
+  if(!isEmpty(items,"Purchase ID"))
+    if(validateDate(dates))
+      if(!isEmpty(qty,"Quantity"))
+      
+        if(!isEmpty(price,"Price"))
+      
+            if(!isEmpty(totalp,"Total"))
+
+        return true;
+      
+
+      else
+        return false;
+        else
+        return false;
+       else
+        return false;
+      else
+         return false;
+        else
+        return false;
+    
+
+
+function validateDate(elem){
+
+if(!isEmpty(elem,"Date")){  
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+    var yyyy = today.getFullYear();
+      
+      if(dd<10){
+        dd='0'+dd;
+      } 
+      if(mm<10){
+        mm='0'+mm;
+      } 
+      var today = yyyy+'-'+mm+'-'+dd;
+//document.getElementById("DATE").value = today;
+        if(dates!==today)
+      {
+          alert("Invalid Date Today is "+today);
+          document.getElementById('PRdate').value="";
+          return false;
+
+      }
+        else
+        return true;
+        }
+
+  else
+  return false;
+
+}
+
+
+
+
+
+function isEmpty(elem,field) {
+
+  if(elem == "")
+      {   
+
+        alert("You cannot have "+field+" field Empty");
+        return true;
+      }
+else
+{
+  return false;
+  }  
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function calTotal() {
+
+  // inc();
+    var qty = document.getElementById('PRqty').value;
+    var price = document.getElementById('PRprice').value;
+  
+    var expr = /^[0-9]+$/;
+
+
+
+    if(qty == "")
+      {    
+        emptyField("Quantity");
+       //alert("You cannot have Quantity Empty");
+       return;
+      }
+
+          else if(qty < 0)
+          {    
+            nonNeg("Quantity");
+            document.getElementById('PRqty').value="";
+            return;
+           }
+
+               else if(isNaN(qty))
+             { 
+                 invalidl("Quantity"); 
+                 document.getElementById('PRqty').value="";         
+                //alert("Invalid Quantity Field : You Cannot Enter Letters");
+                return; 
+             }
+
+    if(price == "")
+      {    
+        emptyField("Price");
+       //alert("You cannot have price Empty");
+       return;
+      }
+
+         else if(price < 0)
+        {    
+            nonNeg("Price");
+            document.getElementById('PRprice').value="";
+            return;
+        }
+
+            else if(isNaN(price))
+            { 
+              invalidl("Price");  
+              document.getElementById('PRprice').value="";        
+              //alert("Invalid Price Field : You Cannot Enter Letters");
+              return; 
+            }
+
+
+        if(qty != "" && price != "")
+    {   
+          var tot =(parseInt(qty)*parseFloat(price)).toFixed(2);
+          var PRtotal = document.getElementById('PRtotal');
+          PRtotal.value=tot;
+          return;
+    }
+     
+    
+     
+    
+        }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -80,7 +334,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
             <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
@@ -96,11 +350,11 @@
            </span>
            </a>
             <ul class="treeview-menu">
-                <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-                <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-                <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-                <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
             </ul>
        </li>
 
@@ -132,7 +386,7 @@
            </a>
             <ul class="treeview-menu">
               <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
-              <li><a href="inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+              <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
               <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
               <li class="active"><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
               <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
@@ -202,31 +456,45 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal">
+            <form class="form-horizontal" name="prForm" id="prForm" onsubmit =" return formValidate()" action="{{ route('prForm') }}" method="post">
               <div class="box-body">
-                <div class="form-group">
+              
+              <!--  <div class="form-group">
                   <label for="inputPID" class="col-sm-2 control-label">Return ID</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="pid" placeholder="Purchase Return ID" style="width:80%">
+                    <input type="text" class="form-control" id="prid" placeholder="Purchase Return ID" style="width:80%" disabled>
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label for="inputITEMID" class="col-sm-2 control-label">PID</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="itemid" placeholder="Purchase ID" style="width:80%">
+                    <input type="text" class="form-control" id="PRpid" name="PRpid" placeholder="Purchase ID" style="width:80%">
                   </div>
                 </div>
+
+
+
+
+                  <div class="form-group">
+                  <label for="inputdate" class="col-sm-2 control-label">Date</label>
+
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="PRdate" name="PRdate" placeholder="Purchase Date" style="width:80%">
+                  </div>
+                </div>
+
 
 
                  <div class="form-group">
                   <label for="inputITEMID" class="col-sm-2 control-label">Quantity</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="qty" placeholder="Return Quantity" style="width:80%">
+                    <input type="text" class="form-control" id="PRqty" name="PRqty" placeholder="Return Quantity" style="width:80%">
                   </div>
                 </div>
+
 
 
 
@@ -235,20 +503,14 @@
                   <label for="inputITEMID" class="col-sm-2 control-label">Price</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="price" placeholder="Price" style="width:80%">
+                    <input type="text" class="form-control" id="PRprice" name="PRprice" placeholder="Price" style="width:80%">
                   </div>
                 </div>
 
 
 
 
-                 <div class="form-group">
-                  <label for="inputdate" class="col-sm-2 control-label">Date</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="date" placeholder="Purchase Date" style="width:80%">
-                  </div>
-                </div>
+               
 
 
 
@@ -258,12 +520,11 @@
 
 
              
-
-                 <div class="form-group">
-                  <label for="inputITEMID" class="col-sm-2 control-label">Total</label>
-
+      <div class="form-group">
+                  <label for="Total" class="col-sm-2 control-label">Total</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="total" placeholder="Total Amount" style="width:80%">
+                    <input type="text" class="form-control" name="PRtotal" id="PRtotal" placeholder="Total Amount" style="width:80%" readonly>
+                    <button type="button" onclick="return calTotal()" class="btn btn-info btn-flat">calculate total</button>
                   </div>
                 </div>
 
@@ -280,7 +541,8 @@
               <div class="box-footer">
             <!--    <button type="submit" class="btn btn-default">Cancel</button> -->
                 <button type="submit" class="btn btn-primary pull-center name="addp" >Add Purchase Return Item</button>
-                <button type="submit" class="btn btn-warning pull-center name="clearpr" >Clear</button>
+                  <input type="hidden" name="_token" value="{{ Session::token() }}"> 
+                   <button type="reset" class="btn btn-warning pull-center"> Clear </button>
               </div>
               
               <!-- /.box-footer -->
@@ -348,40 +610,13 @@
 
 
 <div class="row">
-       <div class="col-sm-6">
-       <div id="example1_length" class="dataTables_length">
-       <label>Show <select class="form-control input-sm" aria-controls="example1" name="example1_length">
-       <option value="10">10</option>
-       <option value="25">25</option> 
-       <option value="50">50</option>
-       <option value="100">100</option></select> entries</label>
-
-
-
-
-       </div>
-
-       </div>
 
        <div class="col-sm-6">
 
 
 
        <div class="dataTables_filter" id="example1_filter">
-       <label>Search:<input aria-controls="example1" placeholder="" class="form-control input-sm" type="search"></label>
 
-<div class="btn-group">
-                  <button type="button" class="btn btn-default">Edit</button>
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Remove</a></li>
-                 
-                 
-                  </ul>
-                </div>
 
        </div></div></div>
 
@@ -429,60 +664,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>PR001</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6
-                  </td>
-                  <td>Win 98+</td>
-                  <td>6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 7</td>
-                  <td>Win XP SP2+</td>
-                  <td>7</td>
-                  <td>A</td>
-                </tr>
+                      @foreach($rets as $ret)
+                  <tr>
+                  <td>{{$ret->prid}}</td>
+                  <td>{{$ret->PRpid}}</td>
+                  <td>{{$ret->PRqty}}</td>
+                  <td>{{$ret->PRprice}}</td>
+                  <td>{{$ret->PRdate}}</td>
+                  <td>{{$ret->PRtotal}}</td>
+                 
+                  </tr>
+
+                @endforeach
               
                 </tbody>
-                <tfoot>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-                </tfoot>
+           
               </table>
             </div>
             <!-- /.box-body -->
@@ -523,7 +719,6 @@
     function alerts() {
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
-
     function success() {
                 swal("Successful", "Data Successfully Saved!", "success")
     }

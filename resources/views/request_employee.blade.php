@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Efficiency Analysis</title>
+  <title>AdminLTE 2 | Starter</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -106,7 +106,7 @@ desired effect
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
-           <ul class="sidebar-menu">
+          <ul class="sidebar-menu">
         <li class="header">Work Shift Management</li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href="create"><i class="fa fa-link"></i> <span>Create Shifts</span></a></li>
@@ -144,7 +144,7 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Efficiency Analysis
+        Request Employees
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -157,79 +157,168 @@ desired effect
 
     <div class="main">
 
-      <div class="col-md-12">
-        <div class="row">
-        <div class="box box-info">
-            <!-- form start -->
-  <form role="form" method="POST" action="{{url('selectBranch')}}"> 
-            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-    <div class="box-body">
-
-    <div class="row">
-      <div class="col-md-4">
-        
-          <div class="form-group">
-            <div class="input-group margin">
-              <select class="form-control" name="selectBranch2">
-
-              @foreach ($branches as $branch)
-                <option>{{ $branch->Branch_name }}</option>
-              @endforeach
-              </select>
-
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-info btn-flat">Go!</button>
-              </span>
-            </div>
-          </div>
-        
-      </div>
-      </div>
-
-
       <div class="row">
 
-      <div class="col-md-6">
-      <table class="table table-bordered">
-  <tbody>
+      <h4 style="margin-left:40px">Requested Employees</h4>
 
-    
-    <tr>          
-      <th>Name</th>
-      <th>Services provided</th>
-      <th style="width: 40px">Efficiency percetage</th>
-    </tr>
 
-     @if ($efficiency != null)
-        @foreach ($efficiency as $row)
-    <tr>
-      <td>{{ $row->name }}</td>
-      <td><span class="badge bg-red">cleaning</span></td>
-      <td>
-        <div class="progress progress-xs">
-          <div class="progress-bar progress-bar-danger" style="width:{{ $row->Efficiency }}%">
+        <div class="col-lg-3 col-xs-6" style="margin-left:50px">
+          <!-- small box -->
+          <div class="small-box bg-red">
+
+            <div class="inner">
+              <h3>11</h3>
+
+              <p>Branch 1</p>
+            </div>
+
+           
+
+            <div class="icon">
+              <i class="fa fa-fw fa-user-plus"></i>
+            </div>
+
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-xs-6" style="margin-left:50px">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3>7</h3>
+
+              <p>Branch 2</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-fw fa-user-plus"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
           </div>
         </div>
-       </td>
-     
-    </tr>
-      @endforeach
-       @endif       
-   
+
+        <div class="col-lg-3 col-xs-6" style="margin-left:50px">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3>3</h3>
+
+              <p>Branch 3</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-fw fa-user-plus"></i>
+            </div>
+            <a href="#" class="small-box-footer">
+              More info <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          </div>
+        </div>
+  </div>
+
+
+  <div class="box box-success">
+            
+            <div class="box-body">
+
+            
+            
+            <div class="box-body no-padding">
+              <table class="table table-bordered">
+                <tbody><tr>
+                  <th style="width: 10px">Customer ID</th>
+                  <th>Vehicle Type</th>
+                  <th>Requested Employee</th>
+                  <th>Requested Services</th>
+                  <th>Shift Plan ID</th>
+                </tr>
+                <tr>
+                  <td>1234</td>
+                  <td>Car</td>
+                  <td>Margaery Tyrell</td>
+                  <td><span class="badge bg-red">Full Interior Grooimng</span></td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td>4567</td>
+                  <td>Van</td>
+                  <td>Jensen Ackles</td>
+                  <td><span class="badge bg-yellow">Full Exterior Grooming</span></td>
+                  <td>6</td>
+                </tr>
                
-  </tbody></table>
-      </div>
-        <div class="col-md-6">
-          <canvas id="pieChart" style="height: 164px; width: 329px;" height="164" width="329"></canvas>
-        </div>
-        </div>
-      </div>
-    
-    <!-- /.box-body -->
-  </form>
- </div>
-        </div>
-      </div>
+              </tbody></table>
+            </div>
+
+
+             <div class="row">
+             <div class="col-md-6"">
+             </div>
+            <div class="col-md-6">
+             <div class="box-body no-padding" style="margin-top:10px;">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                  <th>Employee Name</th>
+                  
+                  <th>Efficiency</th>
+                  <th>Over-worked percentage</th>
+                </tr>
+                <tr>
+                  <td>Joel Shevin</td>
+                  
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td align="center"><span class="badge bg-red">55%</span></td>
+                </tr>
+                <tr>
+                  <td>Yusra Frouz</td>
+                
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-yellow" style="width: 70%"></div>
+                    </div>
+                  </td>
+                  <td align="center"><span class="badge bg-yellow">70%</span></td>
+                </tr>
+                <tr>
+                  <td>Himasha Harinda</td>
+              
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-primary" style="width: 30%"></div>
+                    </div>
+                  </td>
+                  <td align="center"><span class="badge bg-light-blue">30%</span></td>
+                </tr>
+                <tr>
+                  <td>Jonathan Deon</td>
+                  <td>
+                    <div class="progress progress-xs progress-striped active">
+                      <div class="progress-bar progress-bar-success" style="width: 90%"></div>
+                    </div>
+                  </td>
+                  <td align="center"><span class="badge bg-green">90%</span></td>
+                </tr>
+                
+              </tbody></table>
+              </div>
+              </div>
+
+              </div>
+
+
+
+               
+            
+          </div>
 
 
 
@@ -327,17 +416,11 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/app.min.js"></script>
-
-<script src="../../plugins/fastclick/fastclick.js"></script>
-
-<script src="../../plugins/chartjs/Chart.min.js"></script>
-
-<script src="../../dist/js/demo.js"></script>
+<script src="dist/js/app.min.js"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

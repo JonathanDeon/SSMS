@@ -4,10 +4,10 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
-<head>
+ 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Efficiency Analysis</title>
+  <title>Create Shift</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -24,12 +24,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+ <script>
+    function alerts() {
+                swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
+            }
+    function success() {
+                swal("Successful", "Data Successfully Saved!", "success")
+    }
+</script>
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -106,7 +111,7 @@ desired effect
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
-           <ul class="sidebar-menu">
+      <ul class="sidebar-menu">
         <li class="header">Work Shift Management</li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href="create"><i class="fa fa-link"></i> <span>Create Shifts</span></a></li>
@@ -144,7 +149,7 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Efficiency Analysis
+        Create Shifts
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -155,88 +160,201 @@ desired effect
     <!-- Main content -->
     <section class="content">
 
-    <div class="main">
+      <div class="main">
 
-      <div class="col-md-12">
         <div class="row">
-        <div class="box box-info">
-            <!-- form start -->
-  <form role="form" method="POST" action="{{url('selectBranch')}}"> 
-            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-    <div class="box-body">
-
-    <div class="row">
-      <div class="col-md-4">
         
-          <div class="form-group">
-            <div class="input-group margin">
-              <select class="form-control" name="selectBranch2">
-
-              @foreach ($branches as $branch)
-                <option>{{ $branch->Branch_name }}</option>
-              @endforeach
-              </select>
-
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-info btn-flat">Go!</button>
-              </span>
-            </div>
-          </div>
-        
-      </div>
-      </div>
-
-
-      <div class="row">
-
-      <div class="col-md-6">
-      <table class="table table-bordered">
-  <tbody>
-
-    
-    <tr>          
-      <th>Name</th>
-      <th>Services provided</th>
-      <th style="width: 40px">Efficiency percetage</th>
-    </tr>
-
-     @if ($efficiency != null)
-        @foreach ($efficiency as $row)
-    <tr>
-      <td>{{ $row->name }}</td>
-      <td><span class="badge bg-red">cleaning</span></td>
-      <td>
-        <div class="progress progress-xs">
-          <div class="progress-bar progress-bar-danger" style="width:{{ $row->Efficiency }}%">
-          </div>
-        </div>
-       </td>
-     
-    </tr>
-      @endforeach
-       @endif       
-   
-               
-  </tbody></table>
-      </div>
         <div class="col-md-6">
-          <canvas id="pieChart" style="height: 164px; width: 329px;" height="164" width="329"></canvas>
+
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Enter Shift Details</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            
+            <form role="form" method="POST" action="{{url('shiftcreate')}}"> 
+            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+
+            @if(Session::has('flash_message'))
+              <?php
+                echo '<script type="text/javascript">',
+                       'success();',
+                       '</script>';
+              ?>
+            @endif
+           
+              <div class="box-body">
+
+                <div class="form-group">
+                  <span class="form-group-addon"><i class="fa fa-fw fa-building"></i></span>
+                  <label for="Branch">Branch</label>
+                
+                    <select class="form-control" id="SelectBranch" name="SelectBranch">
+
+                    @foreach ($branches as $branch)
+
+                      <option>{{ $branch->Branch_name }}</option>
+
+                    @endforeach
+                 
+                    </select>
+                    
+                </div>
+
+                
+
+
+                
+                <div class="row1">
+                  <div class="col-md-6">
+
+                  <div class="form-group">
+                    <span class="form-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
+                    <label for="Day">Day</label>
+                
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="selectDay1" value="week-day">
+                          Week-day
+                        </label>
+                      </div>
+
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="selectday2" value="week-end">
+                          Week-end
+                        </label>
+                      </div>
+
+                  </div>
+
+                  </div>
+
+                  <div class="col-md-6">
+
+                  <div class="form-group">
+                    <span class="form-group-addon"><i class="fa fa fa-fw fa-calendar-times-o"></i></span>
+                    <label for="Time">Time</label>
+                
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios1" id="optionsRadios11" value="peak">
+                          Peak
+                        </label>
+                      </div>
+
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios1" id="optionsRadios12" value="non-peak">
+                          Non-peak
+                        </label>
+                      </div>
+
+                  </div>
+                  
+                  </div>                  
+                </div>
+              </div>
+
+
+              <div class="box-footer" style="height:70px">
+                <button type="submit" class="btn btn-primary" onclick="AddtoTable()" style="margin-left:400px; margin-top:8px; margin-bottom:8px;" >Submit</button>
+              </div>
+            </form>
+          </div>
+
+
+
         </div>
-        </div>
-      </div>
-    
-    <!-- /.box-body -->
-  </form>
- </div>
-        </div>
-      </div>
+        <div id="result"></div>
 
+        <div class="col-md-6">
 
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Shift Plan Details</h3>
 
+              <div class="box-tools">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                  <li><a href="#">«</a></li>
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">»</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+              <table  id="myTable" class="table table-hover">
+                <tbody><tr>
+                   <th>ID</th>
+                   <th>Branch</th>
+                   <th>Day</th>
+                   <th>Time</th>
+                </tr>
 
-    </div>
+                @foreach ($plans as $plan)
+                  <tr>
+                    <td>{{ $plan->SPID }}</td>
+                    <td>{{ $plan->BID }}</td>
+                    <td>{{ $plan->day }}</td>
+                    <td>{{ $plan->Tim }}</td>
+                  </tr> 
+                @endforeach                     
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          </div>
+          </div>
+          
+           
+          
+
+        
+
+            <div class="box box-primary">
+              <div class="box-header with-border">
+              <h3 class="box-title">Assigned Employees</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body1 no-padding">
+              <table class="table table-condensed">
+                <tbody>
+                <tr>
+                  <th >Employee Name</th>
+                  <th style="width:350px">Providing Services</th>
+                  <th style="width:300px">Efficiency</th>
+                  <th style="width:200px">Over-worked percentage<th>
+                </tr>
+                <tr>
+
+                @if ($employees != null)  
+                  @foreach ($employees as $employee)
+                  <td>{{ $employee->name }}</td>
+                  <td><span class="badge bg-blue">Full Exterior Grooming</span></td>
+                  <td>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
+                    </div>
+                  </td>
+                  <td align="center"><span class="badge bg-red">55%</span></td>
+                  @endforeach
+                @endif
+                </tr>
+                
+                
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+            
+          </div>
+          </div>
+
       
-
     </section>
     <!-- /.content -->
   </div>
@@ -327,21 +445,40 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="function.js"></script>
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../dist/js/app.min.js"></script>
+<script src="dist/js/app.min.js"></script>
+<!--
+<script type="text/javascript">
 
-<script src="../../plugins/fastclick/fastclick.js"></script>
+          function AddtoTable()
+          {
+            var element = document.getElementById("SelectBranch");
+            var branchName = element.options[element.selectedIndex].text;
+            var branchID = branchName.match(/\d+/)[0];
 
-<script src="../../plugins/chartjs/Chart.min.js"></script>
+            var day = document.querySelector('input[name="optionsRadios"]:checked').value;
 
-<script src="../../dist/js/demo.js"></script>
+            var time = document.querySelector('input[name="optionsRadios1"]:checked').value;
+            
+            CreateShiftsController@AddShiftPlans(Number(branchID),String(day),String(time));
+
+          } 
+          
+</script>
+  -->
+
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+
+
 </body>
 </html>
+
+

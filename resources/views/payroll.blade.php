@@ -358,7 +358,62 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_3">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"></h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="payroll-monthly-records-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" style="width: 181px;">Lead No</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;">Customer</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 197px;">Address</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;">Agent</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Date</th>
+                                                <th rowspan="1" style="width: 112px;"></th>
+                                                <th rowspan="1" style="width: 112px;"></th>
+                                                <th rowspan="1" style="width: 112px;"></th>
 
+                                            </tr>
+                                            </thead>
+                                            <tbody id="payroll-monthly-records-tbody">
+
+                                            </tbody>
+                                            <tfoot>
+
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-sm-7">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                            <ul class="pagination">
+                                                <li class="paginate_button previous disabled" id="example1_previous">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a>
+                                                </li>
+                                                <li class="paginate_button active">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
+                                                </li>
+                                                <li class="paginate_button ">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a>
+                                                </li>
+                                                <li class="paginate_button ">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a>
+                                                </li>
+                                                <li class="paginate_button ">
+                                                    <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
+                        </div>
+
+
+                        <!-- /.box-body -->
+                    </div>
                 </div>
                 <!-- /.tab-pane -->
             </div>
@@ -397,6 +452,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
 {{--<script src="dist/js/pages/dashboard2.js"></script>--}}
 
+  <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 
 <script src="../../dist/js/demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
@@ -404,5 +460,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+  <script>
+//      $('document').ready(function () {
+          $('#payroll-monthly-records-table').DataTable({
+
+              responsive: true,
+              "ajax": {
+                  "type": "get",
+                  "url": "getEmployeeMonthlySalaryReport",
+
+
+              },
+              "pageLength": 100,
+
+
+              columns: [
+                  {"data": "empId"},
+                  {"data": "etf3"},
+                  {"data": "epf8"},
+                  {"data": "epf12"}
+              ]
+
+
+          });
+//      });
+  </script>
 </body>
 </html>

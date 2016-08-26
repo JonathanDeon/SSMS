@@ -78,7 +78,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
             <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
@@ -94,11 +94,11 @@
            </span>
            </a>
             <ul class="treeview-menu">
-                <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-                <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-                <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-                <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
             </ul>
        </li>
 
@@ -193,12 +193,12 @@
                <div class="col-md-6">
                  <div class="form-group">
                   <label for="LoadCusname">Customer Name</label>
-                  <input type="text" class="form-control" id="CusName" size="10">
+                  <input type="text" class="form-control" id="CusName" size="10" disabled="">
                 </div>
 
                 <div class="form-group">
                   <label for="LoadCusId">Customer ID</label>
-                  <input type="number" class="form-control" id="CusId" style="width:150px;">
+                  <input type="text" class="form-control" id="CusId" style="width:150px;" disabled="">
                 </div>          
 
                </div>
@@ -240,41 +240,20 @@
                   <th>ID</th>
                   <th>User</th>
                   <th>Date</th>
-                  <th>Reason</th>
+                  <th>Feedback</th>
                   <th></th>
                 </tr>
                 <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                @foreach ($feedback as $feedback)
+                  <td>{{$feedback->cusID}}</td>
+                  <td>{{$feedback->feedbackID}}</td>
+                  <td>{{$feedback->date}}</td>
+                  <td>{{$feedback->feedback}}</td>
                   <td><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></td>
                   <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
                 </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  <td> <button type="button" class="btn btn-success""><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  <td> <button type="button" class="btn btn-success""><i class="fa fa-edit"> </i> </button></td>
-                  <td><button type="button" class="btn btn-danger"><i class="fa fa-trash"> </i> </button></td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  <td> <button type="button" class="btn btn-success""><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-                </tr>
+                @endforeach
+                
               </tbody></table>
             </div>
             <!-- /.box-body -->

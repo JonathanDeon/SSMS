@@ -14,17 +14,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker-bs3.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../plugins/datepicker/datepicker3.css"
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
   <![endif]-->
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -77,7 +82,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
             <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
@@ -93,11 +98,11 @@
            </span>
            </a>
             <ul class="treeview-menu">
-                <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-                <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-                <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-                <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
             </ul>
        </li>
 
@@ -190,11 +195,18 @@
            
               <div class="box-body">
                <div class="col-md-6">
+               
                  <div class="form-group">
-                  <label for="name">Customer Name</label>
-                  <input type="text" class="form-control" id="Name" placeholder="Enter Name" size="10">
+                 
+                  <label>Customer Name</label>
+                  <select class="form-control" name="cusname" id="cusname">
+                  <option></option>
+                  @foreach ($customers as $customer)
+                    <option value="{{$customer->cus_id}}">{{$customer->name}}</option> 
+                  @endforeach
+                  </select>
                 </div>
-
+                
                   <div class="form-group">
                 <label>Discount Rate</label>
                 <select class="form-control select2 select2-hidden-accessible" style="width: 15%;" tabindex="-1" aria-hidden="true">
@@ -212,17 +224,33 @@
             
                     <div class="form-group">
                     <label>Customer ID</label>
-                    <input type="text" class="form-control" disabled="">
+                    
+                    <input type="text" class="form-control" disabled="" name="cusid" id="cusid">
+                  
                     </div>
       
                     <div class="form-group">
-                    <label>Date range:</label>
-                    <div class="input-group">
-                      <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
+                      <label>From:</label>
+
+                      <div class="input-group date">
+                        <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                        <input class="form-control" id="datepicker" type="date">
                       </div>
-                    <input type="date" class="form-control pull-right active" id="reservation">  
+                      <!-- /.input group -->
                     </div>
+
+                    <div class="form-group">
+                      <label>To: </label>
+
+                      <div class="input-group date">
+                        <div class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </div>
+                        <input class="form-control pull-right" id="datepicker" type="text">
+                      </div>
+                      <!-- /.input group -->
                     </div>
 
                     <div class="input-group-btn">
@@ -232,10 +260,9 @@
                 </div>        
                </div>
               </div>
-          </div>    
-          </section>
 
-          <section>
+
+
            <div class="col-md-12">    
               <div class="box">
             <div class="box-header">
@@ -286,9 +313,27 @@
           </div>
       
           </div>
-          </section>
 
 
+          </div>    
+        
+
+         
+          
+        </section>
+         
+      </div>
+
+
+<script type="text/javascript">
+  $( "#cusname" ).change(function() {
+  $val=$( "#cusname" ).val();
+  
+  $("#cusid").val($val);
+//subtotal').val(data);
+});
+
+</script>
 
 
 
@@ -302,5 +347,6 @@
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>  
 </body>
 </html>

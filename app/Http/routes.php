@@ -11,22 +11,6 @@
 |
 */
 
-
-//
-Route::get('getEmployeeBasicSalaryDetails','PayrollController@getEmployeeBasicSalaryDetails');
-Route::get('calculateEPF_8','PayrollController@calculateEPF_8');
-Route::get('calculateNetSalary','PayrollController@calculateNetSalary');
-Route::get('calculateMonthlyEpfEtfReport','PayrollController@calculateMonthlyEpfEtfReport');
-Route::get('getEmployeeMonthlySalaryReport','PayrollController@getEmployeeMonthlySalaryReport');
-//
-
-
-
-
-
-
-
-
 Route::get('welcome',function(){
 	return view('welcome');
 });
@@ -89,18 +73,25 @@ Route::get('ReportsServices',function(){
 Route::get('deleteEmployee','EmployeeController@deleteEmployeeRecord');
 Route::get('deleteLoanScheme','LoanController@deleteLoanScheme');
 Route::get('EmployeeInformation','EmployeeController@showAllEmployees');
-
-Route::get('EmpMyProfile',function(){
-	return view('EmpMyProfile');
-});
-
-Route::get('welcomeEmp',function(){
-	return view('welcomeEmp');
-});
+//
+//Route::get('EmpMyProfile',function(){
+//	return view('EmpMyProfile');
+//});
+//
+//Route::get('welcomeEmp',function(){
+//	return view('welcomeEmp');
+//});
 
 //payroll
 Route::get('payroll','PayrollController@showPayrollInformation');
 Route::get('addSalary','PayrollController@addSalary');
+Route::get('getEmployeeBasicSalaryDetails','PayrollController@getEmployeeBasicSalaryDetails');
+Route::get('calculateEPF_8','PayrollController@calculateEPF_8');
+Route::get('calculateNetSalary','PayrollController@calculateNetSalary');
+Route::get('calculateMonthlyEpfEtfReport','PayrollController@calculateMonthlyEpfEtfReport');
+Route::get('getEmployeeMonthlySalaryReport','PayrollController@getEmployeeMonthlySalaryReport');
+//
+
 //Employee Leave
 Route::get('approveLeave','LeaveController@approveLeave');
 Route::get('saveLeaveInfo','LeaveController@saveLeaveInfo');
@@ -124,80 +115,103 @@ Route::get('approveLoan','LoanController@approveLoan');
 Route::get('declineLoan','LoanController@rejectLoan');
 
 /*inventory routes*/
-Route::get('AddNewItem',function(){
-	return view('AddNewItem');
-});
-
-Route::get('inventory',function(){
-	return view('inventory');
-});
-
-Route::get('Purchases',function(){
-	return view('Purchases');
-});
-
-Route::get('PurchaseReturns',function(){
-	return view('PurchaseReturns');
-});
-
-Route::get('Sales',function(){
-	return view('Sales');
-});
-
-Route::get('PurchaseOrder',function(){
-	return view('PurchaseOrder');
-});
-
-Route::get('Supplier',function(){
-	return view('Supplier');
-});
+//Route::get('AddNewItem',function(){
+//	return view('AddNewItem');
+//});
+//
+//Route::get('inventory',function(){
+//	return view('inventory');
+//});
+//
+//Route::get('Purchases',function(){
+//	return view('Purchases');
+//});
+//
+//Route::get('PurchaseReturns',function(){
+//	return view('PurchaseReturns');
+//});
+//
+//Route::get('Sales',function(){
+//	return view('Sales');
+//});
+//
+//Route::get('PurchaseOrder',function(){
+//	return view('PurchaseOrder');
+//});
+//
+//Route::get('Supplier',function(){
+//	return view('Supplier');
+//});
 
 
 
 /*work shift routes*/
 
-Route::get('AssignEmployees',function(){
-	return view('AssignEmployees');
-});
+//Route::get('AssignEmployees',function(){
+//	return view('AssignEmployees');
+//});
+//
+//Route::get('OverWorkedEmployees',function(){
+//	return view('OverWorkedEmployees');
+//});
+//
+//Route::get('CreateShifts',function(){
+//	return view('CreateShifts');
+//});
+//
+//Route::get('ReplaceEmployee',function(){
+//	return view('ReplaceEmployee');
+//});
+//
+//Route::get('RequestEmployee',function(){
+//	return view('RequestEmployee');
+//});
+//
+//Route::get('EfficiencyAnalysis',function(){
+//	return view('EfficiencyAnalysis');
+//});
+Route::get('create','CreateShiftsController@loadView');
+Route::post('shiftcreate','CreateShiftsController@addshift');
+Route::get('replaceEmp','HomeController@Addemp');
+Route::post('selectBranch','efficiencyController@loadtable');
+Route::get('addEmployee','assignEmpController@addEmployeeShift');
+Route::post('selectshift','assignEmpController@getemp');
+Route::get('assign','assignEmpController@loadAssignEmployee');
+Route::get('assignShift','HomeController@assignShift');
+Route::get('replace','ReplaceController@loadReplaceEmployee');
+Route::post('request','ReplaceController@loadRequestedEmployees');
+Route::post('selectShift','ReplaceController@replace');
+Route::get('efficiency','efficiencyController@loadview');
 
-Route::get('OverWorkedEmployees',function(){
-	return view('OverWorkedEmployees');
-});
+// Route::get('liabilities', function () {
+//     return view('Liability');
+// });
 
-Route::get('CreateShifts',function(){
-	return view('CreateShifts');
-});
-
-Route::get('ReplaceEmployee',function(){
-	return view('ReplaceEmployee');
-});
-
-Route::get('RequestEmployee',function(){
-	return view('RequestEmployee');
-});
-
-Route::get('EfficiencyAnalysis',function(){
-	return view('EfficiencyAnalysis');
-});
+//
+// Route::get('assets', function () {
+//     return view('Assets');
+// });
 
 
+// Route::get('inexpense', function()
+// {
+//     return view('IncomeExpenditure');
+// });
 
-/*Finance routes*/
-Route::get('Assets',function(){
-	return view('Assets');
-});
+//
+///Route::get('transactions', function()
+// {
+//     return view('Transactions');
+// });
 
-Route::get('Income&Expenditure',function(){
-	return view('Income&Expenditure');
-});
 
-Route::get('Liability',function(){
-	return view('Liability');
-});
+Route::post('loadIDs','AssetController@findAssets');
+Route::post('assets','AssetController@addAssets');
+Route::post('calculateDepreciation','AssetController@calculateDepreciation');
+Route::get('assets','AssetController@loadAssets');
 
-Route::get('TransactionManagement',function(){
-	return view('TransactionManagement');
-});
+
+
 
 
 
@@ -207,6 +221,19 @@ Route::get('TransactionManagement',function(){
 Route::get('Janitorial',function(){
 	return view('Janitorial');
 });
+
+
+Route::get('/', function () {
+    return view('main');
+});
+route::get('emp','EmpManController@loadView');
+route::get('cust','CustManController@loadView');
+route::get('package','PackagesController@loadView');
+route::get('order','OrderController@loadView');
+
+route::post('addEmp','EmpManController@getemp');
+route::post('addCust','CustManController@getCust');
+route::post('addPack','PackagesController@getPack');
 
 
 

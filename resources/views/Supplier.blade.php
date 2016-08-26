@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Customer Management | Register Customer</title>
+  <title>Inventory Management | Supplier</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -28,6 +28,186 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+    <script src="../../dist/js/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"> </script>
+
+
+
+
+
+
+
+    <script>
+   function alerts() {
+                swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
+            }
+    function emptyField(field) {
+                swal("Invalid Field : "+field, "You Cannot Have "+field+" Field Empty", "warning");
+    }
+
+    function invalidl(field) {
+                swal("Invalid Field : "+field, "You Can Have Only Numeric Values In "+field+" field ", "warning");
+    }
+
+      function nonNeg(field) {
+                swal("Invalid Field : "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
+    }
+
+
+
+
+
+function formValidate(){
+
+       var emailID = document.getElementById('Semail').value;
+       var Sname = document.getElementById('Sname').value;
+       var Addr = document.getElementById('Saddress').value;
+       var phone = document.getElementById('Stel').value;
+
+
+
+      if(!isEmpty(Sname,"Supplier Name"))
+       if(emailValidate(emailID))
+          if(validatePhone(phone))
+            if(!isEmpty(Addr,"Supplier Address"))
+                   return true;
+                   else
+                   return false;
+                 else
+                  return false;
+                else
+                  return false;
+                else
+                  return false;
+
+
+ 
+       
+      
+
+
+    function emailValidate(elem){         
+        
+         atpos = emailID.indexOf("@");
+         dotpos = emailID.lastIndexOf(".");
+        
+      if(!isEmpty(elem,"Email"))
+      {     
+         if (atpos < 1 || ( dotpos - atpos < 2 )) 
+         {
+            alert("Please enter correct Email Address");
+            document.getElementById('Semail').value="";
+            return false;      
+         }
+        else
+         return true;
+     }
+
+     return false;
+       
+       }
+
+
+
+
+    function isEmpty(elem,field) {
+
+        if(elem == "")
+        {    
+           alert("You cannot have "+field+" field Empty");
+           return true;
+        }
+        else
+        {
+          return false;
+        }  
+    } 
+
+
+
+
+
+
+
+
+
+
+    function validatePhone(elem){  
+        var expr = /^[0-9]+$/;
+      if(!isEmpty(elem,"Phone no."))
+      {  
+         if(!elem.match(expr))
+         {
+            alert("Invalid Phone : Only numeric values");
+            document.getElementById('Stel').value="";
+            return false;
+
+         }
+
+         if(elem.length!=10)
+         {
+
+            alert("Invalid Phone : Length of digits should be 10");
+            document.getElementById('Stel').value="";
+            return false;
+
+         }
+
+
+         else
+          return true;
+      }
+
+      return false;
+          
+          }
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -49,7 +229,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+        </nav>
   </header>
+
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -96,11 +278,11 @@
            </span>
            </a>
             <ul class="treeview-menu">
-                <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-                <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-                <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-                <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
             </ul>
        </li>
 
@@ -132,7 +314,7 @@
            </a>
             <ul class="treeview-menu">
               <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
-              <li><a href="#"><i class="fa fa-cubes"></i>Inventory</a></li>
+              <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
               <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
               <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
               <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
@@ -229,7 +411,7 @@
             <div class="icon">
               <i class="fa fa-sign-out"></i>
             </div>
-            <a href="sales" class="small-box-footer">Click here <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="Sales" class="small-box-footer">Click here <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -244,7 +426,7 @@
             <div class="icon">
               <i class="fa fa-user-plus"></i>
             </div>
-            <a href="supplier" class="small-box-footer">Click here<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="Supplier" class="small-box-footer">Click here<i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -301,21 +483,22 @@
               <h3 class="box-title">Add Supplier Details</h3>
             </div>
             <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal">
+            <!-- onsubmit =" return formValidate()" action="{{ route('supplierForm') }}" method="post" -->
+            <form class="form-horizontal" name="supplierForm" id="supplierForm" onsubmit =" return formValidate()" action="{{ route('supplierForm') }}" method="post">
               <div class="box-body">
-                <div class="form-group">
+                
+               <!-- <div class="form-group">
                   <label for="inputPID" class="col-sm-2 control-label">Supplier ID</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="pid" placeholder="Supplier ID" style="width:80%">
+                    <input type="text" class="form-control"  id="ssid" name="ssid" placeholder="Supplier ID" style="width:80%">
                   </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label for="inputITEMID" class="col-sm-2 control-label">Supplier Name</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="itemid" placeholder="Supplier Name" style="width:80%">
+                    <input type="text" class="form-control" id="Sname" name="Sname" placeholder="Supplier Name" style="width:80%">
                   </div>
                 </div>
 
@@ -327,7 +510,7 @@
                   <label for="inputITEMID" class="col-sm-2 control-label">Email</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="supplier" placeholder="Email" style="width:80%">
+                    <input type="text" class="form-control" id="Semail" name="Semail" placeholder="Email" style="width:80%">
                   </div>
                 </div>
 
@@ -341,7 +524,7 @@
                   <label for="inputITEMID" class="col-sm-2 control-label">Telephone</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="qty" placeholder="Telephone" style="width:80%">
+                    <input type="text" class="form-control" id="Stel" name="Stel" placeholder="Telephone" style="width:80%">
                   </div>
                 </div>
 
@@ -352,7 +535,7 @@
                   <label for="inputITEMID" class="col-sm-2 control-label">Address</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="qty" placeholder="Address" style="width:80%">
+                    <input type="text" class="form-control" id="Saddress" name="Saddress" placeholder="Address" style="width:80%">
                   </div>
                 </div>
 
@@ -368,8 +551,9 @@
               
               <div class="box-footer">
             <!--    <button type="submit" class="btn btn-default">Cancel</button> -->
-                <button type="submit" class="btn btn-primary pull-center name="addp" >Add Supplier</button>
-                <button type="submit" class="btn btn-warning pull-center name="cancel">Clear</button>
+                <button type="submit" class="btn btn-primary pull-center name=addp" >Add Supplier</button>
+                   <input type="hidden" name="_token" value="{{ Session::token() }}">
+                <button type="reset" class="btn btn-warning pull-center"> Clear </button>
 
 
 
@@ -427,7 +611,7 @@
 
 
 <div class="row">
-       <div class="col-sm-6">
+ <!--      <div class="col-sm-6">
        <div id="example1_length" class="dataTables_length">
        <label>Show <select class="form-control input-sm" aria-controls="example1" name="example1_length">
        <option value="10">10</option>
@@ -440,27 +624,19 @@
 
        </div>
 
-       </div>
+       </div> -->
 
        <div class="col-sm-6">
 
 
 
        <div class="dataTables_filter" id="example1_filter">
-       <label>Search:<input aria-controls="example1" placeholder="" class="form-control input-sm" type="search"></label>
+     <!--  <label>Search:<input aria-controls="example1" placeholder="" class="form-control input-sm" type="search"></label>
 
 <div class="btn-group">
+        <button type="button" onclick="alerts()" class="btn btn-default">Remove</button>
                   <button type="button" class="btn btn-default">Edit</button>
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Remove</a></li>
-                 
-                 
-                  </ul>
-                </div>
+                </div> -->
 
        </div></div></div>
 
@@ -497,60 +673,150 @@
                   <th>SID</th>
                   <th>Supplier Name</th>
                   <th>E-mail</th>
-                  <th>Telepohone</th>
+                  <th>Telephone</th>
                   <th>Address</th>
-                
+
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>S001</td>
-                  <td>Ceylon
-                  </td>
-                  <td>ceylonserve@gmail.com</td>
-                  <td> 0774856215</td>
-                  <td>Colombo 10</td>
-                </tr>
-                <tr>
-                  <td>S002</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>S003</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>S004</td>
-                  <td>Internet
-                    Explorer 6
-                  </td>
-                  <td>Win 98+</td>
-                  <td>6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>S004</td>
-                  <td>Internet Explorer 7</td>
-                  <td>Win XP SP2+</td>
-                  <td>7</td>
-                  <td>A</td>
-                </tr>
+                @foreach($suppliers as $supplier)
+                    <tr>
+                        <td>{{$supplier->ssid}}</td>
+                        <td>{{$supplier->Sname}}</td>
+                        <td>{{$supplier->Semail}}</td>
+                        <td>{{$supplier->Stel}}</td>
+                        <td>{{$supplier->Saddress}}</td>
+                        <td><button type="button" onclick="getSupplier('{{$supplier->ssid}}')" id="update" value="{{$supplier->ssid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
+
+                    <td><button type="button" value="{{$supplier->ssid}}" class="btn btn-danger" onclick="deleteSupplier('{{$supplier->ssid}}')"><i class="fa fa-trash"></i></button></td>
+
+                    </tr>
+
+                @endforeach
+
+                </tbody></table>
+                  <script>
+                      function deleteSupplier(ssid){
+                      
+
+                          swal({
+                                      title: "Are you sure you want to delete?",
+                                      text: "You will not be able to recover this record!",
+                                      type: "warning",
+                                      showCancelButton: true,
+                                      confirmButtonColor: "#DD6B55",
+                                      confirmButtonText: "Delete",
+                                      closeOnConfirm: false },
+                                  function(confirm){
+                                      if(confirm) {
+
+                                          $.ajax({
+                                              method:'get',
+                                              url:'deleteSupplier',
+                                              data:{ssid:ssid},
+                                              success:function(){
+                                                  swal({
+                                                              title: "Deleted!",
+                                                              text: "Successfully deleted the supplier record!",
+                                                              type: "warning",
+                                                              showCancelButton: false,
+                                                              confirmButtonColor: "#DD6B55",
+                                                              confirmButtonText: "Ok",
+                                                              closeOnConfirm: false },
+                                                          function (confirm) {
+                                                              location.reload();
+                                                          });
+                                              },
+                                              error:function(x,y,thrownError){
+                                                  console.log(thrownError);
+                                              }
+                                          });
+                                      }else{
+                                      }
+                                  }
+                          );
+
+
+
+                      }
+                  </script>
+
+
+
+
+
+
+
+
+                   <script>
+                              function getSupplier(ssid) {  
+                                  document.getElementById('ssid').value = ssid;
+                                  $.ajax({
+                                      type: "get",
+                                      url: 'fillSupplier',
+                                      data: {ssid: ssid},
+                                      success: function(x) {
+                                          var details = JSON.parse(x);
+                                          document.getElementById('ssid').value=details[0].ssid;
+                                          document.getElementById('Sname').value = details[0].Sname;
+                                          document.getElementById('Semail').value = details[0].Semail;
+                                          document.getElementById('Stel').value = details[0].Stel;
+                                          document.getElementById('Saddress').value = details[0].Saddress;
+                                          
+                                      },
+                                      error:function(){
+                                      }
+                                  })
+                              }
+                              function updateSupplier() {
+                                  var ssid = document.getElementById('save').value;
+                                  var Sname = document.getElementById('Sname').value;
+                                  var Semail = document.getElementById('Semail').value;
+                                  var Stel = document.getElementById('Stel').value;
+                                  var Saddress = document.getElementById('Saddress').value;
+                             
+                                  $.ajax({
+                                      type: "get",
+                                      url: 'updateSupplier',
+                                      data: {ssid: ssid,Sname:Sname,Semail:Semail,Stel: Stel,Saddress:Saddress},
+                                      success: function() {
+                                          swal({
+                                              title: "Success!",
+                                              text: "successfully updated the employee information",
+                                              type: "success",
+                                              showCancelButton: false,
+                                              confirmButtonColor: '#1D84FF',
+                                              confirmButtonText: 'Ok',
+                                              closeOnConfirm: true
+                                          },
+                                          function(isConfirm){
+                                              if (isConfirm){
+                                                  window.location.href="/EmployeeInformation";
+                                              }
+                                          });
+                                      },
+                                      error: function(){
+                                          swal("Error!","Employee information update failed!", "error");
+                                      }
+                                  })
+                              } 
+                          </script>
+
+
+
+
+
+
+
+
+
+
               
-                </tbody>
-           
-              </table>
             </div>
-            <!-- /.box-body -->
+            <!--        
+ <td><button type="button" id="accept" class="btn btn-primary" onclick="success()"><i class="fa fa-edit"></i></button></td>
+                    <td><button type="button" id="reject" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
+ -->
           </div>
 
 
@@ -561,9 +827,7 @@
 
 
 
-
-
-
+</div>
     </section>
     <!-- /.content -->
   </div>
@@ -594,6 +858,72 @@
     </section>   
     
 
+
+
+
+
+
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Update Employee Information</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box box-warning">
+                            <div class="box-body">
+                                <form role="form">
+                                    
+                                    <div class="form-group">
+                                        <label>Supplier ID:</label>
+                                        <input type="text" class="form-control" id="ssid" name="ssid" disabled>
+                                        <label>Supplier Name:</label>
+                                        <input type="text" class="form-control" id="Sname" name="Sname">
+                                        <label>Supplier Email</label>
+                                        <input type="text" class="form-control" id="Semail" name="Semail">
+                                        <label>Supplier Telephone</label>
+                                        <input type="text" class="form-control" id="Stel" name="Stel">
+                                        <label>Supplier Address</label>
+                                        <input type="text" class="form-control" id="Stel" name="Stel">
+                                        
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="save" onclick="updateSupplier()">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 
 
     <!-- /.content -->
@@ -617,10 +947,10 @@
     function alerts() {
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
-
     function success() {
                 swal("Successful", "Data Successfully Saved!", "success")
     }
 </script>
+
 </body>
 </html>

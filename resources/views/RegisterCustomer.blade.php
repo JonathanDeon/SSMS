@@ -17,7 +17,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
@@ -28,6 +28,15 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <script>
+    function alerts() {
+                swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
+            }
+
+    function success() {
+                swal("Successful", "Data Successfully Saved!", "success")
+    }
+</script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -80,7 +89,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
             <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
@@ -96,11 +105,11 @@
            </span>
            </a>
             <ul class="treeview-menu">
-                <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-                <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-                <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-                <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
             </ul>
        </li>
 
@@ -186,7 +195,26 @@
             <div class="box-header with-border">
               <h3 class="box-title">Basic Information</h3>
             </div>
-             <form role="form">
+             <form role="form" method="POST" action="{{url('RegisterCustomer')}}">
+                 @if (count($errors) > 0)
+              <div class="alert alert-danger">
+                <strong>Save Failed</strong><br><br>
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
+            @if(Session::has('flash_message'))
+              <?php
+                echo '<script type="text/javascript">',
+                       'success();',
+                       '</script>';
+              ?>
+            @endif
+
+             <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
            
             <!-- /.box-header -->
             <!-- form start -->
@@ -195,140 +223,122 @@
                <div class="col-md-6">
                  <div class="form-group">
                   <label for="EnterCusname">Full Name</label>
-                  <input type="text" class="form-control" id="CusName" placeholder="Enter Name" size="10">
+                  <input type="text" class="form-control" id="CusName" name="CusName" placeholder="Enter Name" size="10" required>
                 </div>
 
                 <div class="form-group">
                   <label for="EnterCusEmail1">Email address</label>
-                  <input type="email" class="form-control" id="CusEmail" placeholder="Enter email">
+                  <input type="email" class="form-control" id="CusEmail" name="CusEmail" placeholder="Enter email">
                 </div>
 
                 <div class="form-group">
                   <label for="Cusnumber">Telephone</label>
-                  <input type="phone" class="form-control" id="Custele" placeholder="Telephone">
+                  <input type="text" class="form-control" id="Custele" name="cusTele" placeholder="Telephone">
                 </div> 
 
                 <div class="form-group">
-                  <label for="EnterCusname">Address Line 1</label>
-                  <input type="text" class="form-control" id="CusName" placeholder="Enter Address Line 1" size="10">
+                  <label for="EnterAdd1">Address Line 1</label>
+                  <input type="text" class="form-control" id="CusAdd1" name="CusAdd1" placeholder="Enter Address Line 1" size="10" required>
                 </div>
 
                 <div class="form-group">
-                  <label for="EnterCusname">Address Line 2</label>
-                  <input type="text" class="form-control" id="CusName" placeholder="Enter Address Line 2" size="10">
+                  <label for="EnterAdd2">Address Line 2</label>
+                  <input type="text" class="form-control" id="CusAdd2" name="CusAdd2" placeholder="Enter Address Line 2" size="10" required>
                 </div>
 
                 <div class="form-group">
-                  <label for="EnterCusname">Address Line 3</label>
-                  <input type="text" class="form-control" id="CusName" placeholder="Enter Address Line 3" size="10">
+                  <label for="EnterAdd3">Address Line 3</label>
+                  <input type="text" class="form-control" id="CusAdd3" name="CusAdd3" placeholder="Enter Address Line 3" size="10" required>
                 </div>
               
-
-      
                </div>
                  <div class="col-md-6" position=50%>              
 
+                 
                 <div class="form-group">
                   <label for="GenCusID">Customer ID</label>
-                  <input type="text" class="form-control" id="CusIdGen" placeholder="Customer ID" disabled="">
-                </div>
-
+                  <input type="text" class="form-control" id="CusIdGen" disabled="">
+                </div> 
+                
                  <div class="form-group">
                   <label for="enterNIC">NIC No.</label>
-                  <input type="text" class="form-control" id="NIC" placeholder="Enter NIC">
+                  <input type="text" class="form-control" name='CusNIC' id="NIC" placeholder="Enter NIC" required>
                 </div>  
 
                 <div class="form-group">
                   <label for="EnterCusPassword1">Password</label>
-                  <input type="password" class="form-control" id="CusPassword1" placeholder="Password">
+                  <input type="password" class="form-control" name='CusPW' id="CusPassword1" placeholder="Password" required>
                 </div>
 
                 <div class="form-group">
                   <label for="EnterCusPassword2">Confirm Password</label>
-                  <input type="password" class="form-control" id="CusPassword2" placeholder="Confirm Password">
+                  <input type="password" class="form-control" name='CusPW_confirmation' id="CusPassword2" placeholder="Confirm Password" required>
                 </div>    
           
                </div>
-              </div>
-             
-            </form>
-          </div>    
-          </div>
-          </section>
 
-
-          <section class="content" class="cold-md-6">
-          <div class="row">
-          <div class="col-md-6">
+               <div class="col-md-6">
           
           <div class="box box-warning">
             <div class="box-header with-border">
               <h3 class="box-title">Vehicle Details</h3>
             </div>
 
-             <form role="form">
+             
             <!-- /.box-header -->
             <div class="box-body">
        
-              
-                
-      <div class="nav-tabs-custom" >
-            <ul class="nav nav-tabs">
-              <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Vehicle Details</a></li>
-            </ul>
-            <div class="tab-content">
-
-              <div class="tab-pane active" id="tab_1">
-             
             <div class="form-group" style="width: 100px;">
                 <label>Vehicle Type</label>
-                  <select class="form-control">
+                  <select class="form-control" name="vType">
                     <option>Car</option>
-                    <option>SUV</option>
-                    <option>Bike</option>
+                    <option>Suv</option>
                     <option>Van</option>
-                    <option>Truck</option>
+                    <option>Bike</option>
                   </select>
             </div>
             
-              
             <div class="form-group" style="width:300px;">
                   <label for="enterVmake">Make</label>
-                  <input type="text" class="form-control" id="vMake" placeholder="Enter Vehicle Make">
+                  <input type="text" class="form-control" name="vMake" placeholder="Enter Vehicle Make" required>
             </div>  
 
             <div class="form-group" style="width:300px;">
                   <label for="enterVmodel">Model</label>
-                  <input type="text" class="form-control" id="vModel" placeholder="Enter Vehicle Model">
+                  <input type="text" class="form-control" name="vModel" placeholder="Enter Vehicle Model" required>
             </div>    
 
             <div class="form-group" style="width:300px;">
                   <label for="enterVnum">Number Plate</label>
-                  <input type="text" class="form-control" id="vnumbP" placeholder="Enter Vehicle Number Plate">
+                  <input type="text" class="form-control" name="vnumbP" placeholder="Enter Vehicle Number Plate" required>
             </div>    
     
-            <div class="box-footer" align="right">
-                <button type="button" class="btn btn-block btn-primary" style="width:100px;" onclick="success()">Submit</button>
+      
+          
             </div>
-
-              </div>
-           
-              <!-- /.tab-pane -->
-              
-            </div>
-           
-      </div> 
-             
-              
-            </div>
-            </form>
-            
+          
           </div>
           
           </div>
 
-           <div class="col-md-6">    
-      <section>
+              </div>
+             <div class="box-footer" align="right">
+              <button type="submit" class="btn btn-block btn-primary" style="width:100px;" >Submit</button>
+          </div>
+            </form>
+          </div>  
+
+          </div>
+          
+          </div>
+          </section>
+
+
+          <section class="content" class="cold-md-6">
+          <div class="row">
+          
+           <div class="col-xs-12">    
+            <section>
       
         <div class="box">
             <div class="box-header">
@@ -341,40 +351,16 @@
                 <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 50px;">Customer ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 361px;">Customer Name</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Telephone</th>
                 </thead>
                 <tbody>
-                               
+                  @foreach($customer as $customer)             
                 <tr role="row" class="odd">
-                  <td class="sorting_1">CUS001</td>
-                  <td>Thomas Wickramasinghe</td>
-                  <td>0112729729</td>
-                  <td> <button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></td>
+                  <td class="sorting_1">{{$customer->cus_id}}</td>
+                  <td>{{$customer->name}}</td>
+                  <td>{{$customer->contactNo}}</td>
+                  <td> <a class="btn btn-success" id="Edit" onclick="getCustomer('{{$customer->cus_id}}')" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a></td>
                   <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></button></td>
                 </tr>
+                @endforeach
 
-                <tr role="row" class="odd">
-                  <td class="sorting_1">CUS001</td>
-                  <td>Thomas Wickramasinghe</td>
-                  <td>0112729729</td>
-                  <td> <button type="button" class="btn btn-success""><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></button></td>
-                  </tr>
-
-                <tr role="row" class="odd">
-                  <td class="sorting_1">CUS001</td>
-                  <td>Thomas Wickramasinghe</td>
-                  <td>0112729729</td>
-                  <td> <button type="button" class="btn btn-success""><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></button></td>
-                  </tr>
-
-                <tr role="row" class="odd">
-                  <td class="sorting_1">CUS001</td>
-                  <td>Thomas Wickramasinghe</td>
-                  <td>0112729729</td>
-                  <td> <button type="button" class="btn btn-success""><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></button></td>
-                </tr>
-                  
-                
                 </tbody>
                 <tfoot>
                 <tr><th rowspan="1" colspan="1">Customer ID</th><th rowspan="1" colspan="1">Customer Name</th><th rowspan="1" colspan="1">Telephone</th>
@@ -382,18 +368,90 @@
             </div>
             <!-- /.box-body -->
           </div>
-         </section>
-         </div>
-
-
-          </div>
-
-          </section>
-       
-
-      
+         </section>       
       </div>
+      </div>
+      </section>
 
+
+
+
+
+<script type="text/javascript">
+  function getCustomer(id) {
+    alert(id);
+    
+        $.ajax({
+         type: 'get',
+         url: 'fillCustomer',
+         data: {id: id},
+         success: function(x) {
+             details = JSON.parse(x);
+             console.log(details);
+             document.getElementById('test-id').value = details[0].cus_id;
+             document.getElementById('test-name').value = details[0].name;
+
+         },
+             error:function(x,y,z){
+              alert(z);
+             }
+        });
+}
+</script>
+      <!-- Modal prompt for update-->
+    <div class="modal fade" id="editModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Update Employee Information</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box box-warning">
+                        <div class="box-body">
+                            <form role="form">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Employee ID:</label>
+                                    <input type="text" id="test-id" class="form-control" placeholder="Enter ..."  disabled>
+                                    <label>Employee Name:</label>
+                                    <input type="text" id="test-name" class="form-control" placeholder="Enter ..." >
+                                    <label>Employee Designation:</label>
+                                    <input type="text" class="form-control" id="test-designation" placeholder="Enter ..." value="">
+                                    <label>Contact Number:</label>
+                                    <input type="text" class="form-control" id="test-contact-no" placeholder="Enter ..." value="">
+                                    <label>Branch:</label>
+                                    <input type="text" class="form-control" id="test-branch" placeholder="Enter ..." value="">
+                                    <label>Date Joined:</label>
+                                    <input type="text" class="form-control" id="test-date-joined" placeholder="Enter ..." value="">
+                                    <label>Gender:</label>
+                                    <div class="form-group">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="test-optionsRadios" id="test-optionsRadios1" value="" checked="">
+                                                Male
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="test-optionsRadios" id="test-optionsRadios2" value="">
+                                                Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.0 -->
@@ -407,14 +465,5 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
-<script>
-    function alerts() {
-                swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
-            }
-
-    function success() {
-                swal("Successful", "Data Successfully Saved!", "success")
-    }
-</script>
 </body>
 </html>

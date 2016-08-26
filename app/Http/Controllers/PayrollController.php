@@ -98,6 +98,7 @@ class PayrollController extends Controller
             $tempArray = array("empId"=>$item->eid,"etf3"=>$this->calculateETF_3($item->eid),"epf8"=>$this->calculateEPF_8($item->eid),"epf12"=>$this->calculateEPF_12($item->eid));
             array_push($salaryArray,$tempArray);
         }
-        return json_encode($salaryArray);
+        return response()->json(['data'=>$salaryArray]);
+//        return json_encode($salaryArray);
     }
 }

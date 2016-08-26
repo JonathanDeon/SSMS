@@ -80,7 +80,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
             <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
@@ -96,7 +96,7 @@
            </span>
            </a>
             <ul class="treeview-menu">
-              <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
               <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
               <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
               <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
@@ -186,10 +186,6 @@
             <form role="form">
               <div class="box-body">
                 <div class="form-group">
-                  <label>ID</label>
-                  <input type="text" class="form-control" disabled="">
-                </div>
-                <div class="form-group">
                   <label>Description</label>
                   <input type="text" class="form-control" placeholder="Enter Description">
                 </div>
@@ -241,134 +237,215 @@
                   <label>Interest</label>
                   <input type="text" class="form-control" disabled="">
                 </div>
-                <div class="form-group">
-                  <label>Amount to be paid</label>
-                  <input type="text" class="form-control" placeholder="Enter Amount">
-                </div>
-                <div class="form-group">
-                <label>Estimated Date:</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="datepicker">
-                </div>
+                
+                
                 <!-- /.input group -->
               </div>
               <div class="form-group">
-                <label>Estimated Date by User:</label>
-                <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="datepicker">
-                </div>
+                
+                
                 <!-- /.input group -->
               </div>
-              <div class="form-group">
-                  <label>Average Unit Payment Amount</label>
-                  <input type="text" class="form-control" placeholder="Enter Amount">
-                </div>
+              
 
-              <div class="form-group">
-                  <label>Estimated Time</label>
-                  <input type="text" class="form-control" disabled="">
-                </div>   
+                
 
               </div> 
                 
-                <div class="box-footer">                
-              </div>         
+                        
               <!-- /.box-body -->              
             </form>
+
             </div>
+            <div class="col-xs-12">
+
+ <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Liability Details</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                <thead>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;">Description</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 197px;">Type</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 154px;">Value</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Duration</th><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">Depreciation Rate</th></tr>
+                </thead>
+                <tbody>    
+                                <tr role="row" class="odd">
+                  <td>1</td>
+                  <td>A</td>
+                  <td>Fixed</td>
+                  <td>100000</td>
+                  <td>5</td>
+                  <td>40000</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>2</td>
+                  <td>B</td>
+                  <td>Cash</td>
+                  <td>30000</td>
+                  <td>5</td>
+                  <td>0.20000000298023</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>3</td>
+                  <td>C</td>
+                  <td>Building</td>
+                  <td>150000</td>
+                  <td>3</td>
+                  <td>0.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>4</td>
+                  <td>B</td>
+                  <td>Cash</td>
+                  <td>30000</td>
+                  <td>5</td>
+                  <td>0.20000000298023</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>5</td>
+                  <td>C</td>
+                  <td>Land</td>
+                  <td>70000</td>
+                  <td>7</td>
+                  <td>13.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>6</td>
+                  <td>D</td>
+                  <td>Fixed</td>
+                  <td>39992</td>
+                  <td>2</td>
+                  <td>0.60000002384186</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>7</td>
+                  <td>R</td>
+                  <td>Kashif</td>
+                  <td>0</td>
+                  <td>5670</td>
+                  <td>0.80000001192093</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>8</td>
+                  <td>C</td>
+                  <td>Investment</td>
+                  <td>65890</td>
+                  <td>5</td>
+                  <td>0.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>9</td>
+                  <td>B</td>
+                  <td>Investment</td>
+                  <td>600000</td>
+                  <td>6</td>
+                  <td>0.60000002384186</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>10</td>
+                  <td>B</td>
+                  <td>Investment</td>
+                  <td>67900</td>
+                  <td>2</td>
+                  <td>0.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>11</td>
+                  <td>B</td>
+                  <td>Investment</td>
+                  <td>600000</td>
+                  <td>6</td>
+                  <td>0.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>12</td>
+                  <td>B</td>
+                  <td>Investment</td>
+                  <td>98700</td>
+                  <td>5</td>
+                  <td>0.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>13</td>
+                  <td>B</td>
+                  <td>Investment</td>
+                  <td>876660</td>
+                  <td>6</td>
+                  <td>0.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>14</td>
+                  <td>B</td>
+                  <td>Investment</td>
+                  <td>876660</td>
+                  <td>6</td>
+                  <td>0.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>15</td>
+                  <td>B</td>
+                  <td>Investment</td>
+                  <td>87000</td>
+                  <td>6</td>
+                  <td>3</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>16</td>
+                  <td>B</td>
+                  <td>Red</td>
+                  <td>76500</td>
+                  <td>5</td>
+                  <td>2.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>17</td>
+                  <td>B</td>
+                  <td>Red</td>
+                  <td>76500</td>
+                  <td>5</td>
+                  <td>2.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>18</td>
+                  <td>B</td>
+                  <td>Red</td>
+                  <td>76500</td>
+                  <td>5</td>
+                  <td>2.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>19</td>
+                  <td>B</td>
+                  <td>Red</td>
+                  <td>76500</td>
+                  <td>5</td>
+                  <td>2.5</td>
+                </tr>
+                                <tr role="row" class="odd">
+                  <td>20</td>
+                  <td>B</td>
+                  <td>Red</td>
+                  <td>76500</td>
+                  <td>5</td>
+                  <td>2.5</td>
+                </tr>
+                               </tbody>
+                <tfoot>                
+                </tfoot>
+              </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
+            </div>
+            <!-- /.box-body -->
+          
+          </div>
+</div>
             </div>
             </div>
 
             <div class="row">
             <div class="col-md-12">
             
-            <div class="box box-calculateDep">
-            <div class="box-header with-border">
-              <h3 class="box-title">Liability Details</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form role="form">
-              <div class="box-body">
-                <div class="form-group">
-                  <label>ID</label>
-                  <select class="form-control">
-                    <option>option 1</option>
-                    <option>option 2</option>
-                    <option>option 3</option>
-                    <option>option 4</option>
-                    <option>option 5</option>
-                  </select>
-                </div>  
-                <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Transaction Details</h3>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                <thead>
-                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;">Description</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 197px;">Type</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 154px;">Original Value</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Current Value</th><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">Date</th></tr>
-                </thead>
-                <tbody>      
-                <tr role="row" class="odd">
-                  <td class="sorting_1">T1009</td>
-                  <td>A</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                  <td>12/03/2016</td>
-                </tr><tr role="row" class="even">
-                  <td class="sorting_1">T1076</td>
-                  <td>B</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                  <td>23/07/2016</td>
-                </tr><tr role="row" class="odd">
-                  <td class="sorting_1">T1065</td>
-                  <td>C</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                  <td>11/06/2016</td>
-                </tr><tr role="row" class="even">
-                  <td class="sorting_1">T1025</td>
-                  <td>D</td>
-                  <td>Win 2k+ / OSX.3+</td>
-                  <td>1.9</td>
-                  <td>A</td>
-                  <td>06/01/2016</td>
-                </tr><tr role="row" class="odd">
-                  <td class="sorting_1">T1042</td>
-                  <td>E</td>
-                  <td>OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                  <td>02/06/2015</td>
-                </tr><tr role="row" class="even">
-                  <td class="sorting_1">T1036</td>
-                  <td>F</td>
-                  <td>OSX.3+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                  <td>06/05/2015</td>
-                </tr></tbody>
-                <tfoot>                
-                </tfoot>
-              </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          </div>
-          </form>
-          </div>
+            >
           </div>
           </div>
 

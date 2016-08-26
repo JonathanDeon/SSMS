@@ -80,7 +80,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
             <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
@@ -96,11 +96,11 @@
            </span>
            </a>
             <ul class="treeview-menu">
-                <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-                <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-                <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-                <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
             </ul>
        </li>
 
@@ -188,39 +188,42 @@
                 <h3 class="box-title">Add Assets</h3>
               </div>
            
-                <form role="form">
+                <form role="form" method="POST" action="{{url('assets')}}"> 
+            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                   <div class="box-body">
-                    
-                      <div class="form-group">
-                        <label>ID</label>
-                          <input type="text" class="form-control" disabled="">
-                      </div>
 
                       <div class="form-group">
                         <label>Description</label>
-                          <input type="text" class="form-control" placeholder="Enter Description">
+                          <input type="text" class="form-control" placeholder="Enter Description" name="description">
                       </div>
 
                       <div class="form-group">
                         <label>Type</label>
-                          <input type="text" class="form-control" placeholder="Enter Type">
+                          <input type="text" class="form-control" placeholder="Enter Type" name="type">
                       </div>
 
                       <div class="form-group">
                         <label>Value</label>
-                          <input type="text" class="form-control" placeholder="Enter Value">
+                          <input type="text" class="form-control" placeholder="Enter Value" name="value">
                       </div>
 
-                      <div class="Depreciation Rate">
-                        <label>Description</label>
-                          <input type="text" class="form-control" placeholder="Enter Depreciation Rate">
+                      <div class="form-group">
+                        <label>Duration</label>
+                          <input type="text" class="form-control" placeholder="Enter Duration" id="duration" name="duration">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Depreciation Rate</label>
+                          <input type="text" class="form-control" placeholder="Enter Depreciation Rate" name="depRate">
+                      </div>
+
+                      <div class="form-group">
+                      <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
                 </div>
               <!-- /.box-body -->
 
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
+              
             </form>
 </div>
 </div>
@@ -231,29 +234,24 @@
               <div class="box-header with-border">
                 <h3 class="box-title">Calculate Depreciation</h3>
               </div>
-           
-            <form role="form">
+            
+                <form role="form" method="POST" action="{{url('calculateDepreciation')}}"> 
+            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
               <div class="box-body">
-              
-                <div class="form-group">
+              <div class="form-group">
                   <label>ID</label>
-                    <select class="form-control">
-                      <option>option 1</option>
-                      <option>option 2</option>
-                      <option>option 3</option>
-                      <option>option 4</option>
-                      <option>option 5</option>
+                    <select class="form-control" name="listOne">
+                    <option></option>
                   </select>
-                </div>
-
+                <br>
                 <div class="form-group">
                   <label>Original Value</label>
-                  <input type="text" class="form-control" disabled="">
+                  <input type="text" class="form-control" disabled="" name="originalValue">
                 </div>
 
                 <div class="form-group">
                   <label>Current Value</label>
-                  <input type="text" class="form-control" disabled="">
+                  <input type="text" class="form-control" disabled="" name="currentValue">
                 </div>
 
                 <div class="form-group">
@@ -262,61 +260,50 @@
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  <input type="text" class="form-control pull-right" id="datepicker">
+                  <input type="date" class="form-control pull-right" id="datepicker" name="selectedDate">
+                </div>
+                <br>
+                <div class="form-group">
+                <button class="btn btn-primary" style="right">Calculate</button>
+                </div>
+
+                <div class="form-group">
+                  <label>Calculated Value</label>
+                  <input type="text" class="form-control" disabled="" name="calculatedValue">
                 </div>
                 <!-- /.input group -->
               </div>
               </div>
               <!-- /.box-body -->
-
-              <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Calculate</button>
-                <div class="form-group">
-                  <label>Calculated Value</label>
-                  <input type="text" class="form-control" disabled="">
-                  </div>
-              </div>
-              
             </form>
 </div>
 </div>
 </div>
 
 <div class="row">
-<div class="col-md-6">
+<div class="col-xs-12">
 
  <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Transaction Details</h3>
+              <h3 class="box-title">Asset Details</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                 <thead>
-                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;">Description</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 197px;">Type</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 154px;">Original Value</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Current Value</th><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">Date</th></tr>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;">Description</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 197px;">Type</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 154px;">Value</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 112px;">Duration</th><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 181px;">Depreciation Rate</th></tr>
                 </thead>
-                <tbody>      
+                <tbody>    
+                @foreach($assets as $asset)
                 <tr role="row" class="odd">
-                  <td class="sorting_1">T1009</td>
-                  <td>Vaccum Machine</td>
-                  <td>Equipment</td>
-                  <td>65000</td>
-                  <td>45000</td>
-                  <td>12/03/2016</td>
-                </tr><tr role="row" class="even">
-                  <td class="sorting_1">T1076</td>
-                  <td>Blower</td>
-                  <td>Equipment</td>
-                  <td>35000</td>
-                  <td>20000</td>
-                  <td>23/07/2016</td>
-                </tr><tr role="row" class="odd">
-                  <td class="sorting_1">T1065</td>
-                  <td>Office Building</td>
-                  <td>Building</td>
-                  <td>1500000</td>
-                  <td>1450000</td>
-                  <td>11/06/2016</td>
+                  <td>{{$asset->assetID}}</td>
+                  <td>{{$asset->description}}</td>
+                  <td>{{$asset->type}}</td>
+                  <td>{{$asset->value}}</td>
+                  <td>{{$asset->duration}}</td>
+                  <td>{{$asset->depreciation_rate}}</td>
+                </tr>
+                @endforeach
                </tbody>
                 <tfoot>                
                 </tfoot>
@@ -326,26 +313,6 @@
           
           </div>
 </div>
-
-
-<div class="col-md-6">
-<div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Depreciated Values Over The Past Years</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="barChart" style="height: 227px; width: 505px;" height="227" width="505"></canvas>
-              </div>
-            </div>
-            <!-- /.box-body -->
-          </div>
 </div>
 </div>
 </div>

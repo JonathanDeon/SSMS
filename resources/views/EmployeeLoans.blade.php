@@ -617,23 +617,23 @@
 
               <script>
                   function saveLoanScheme() {
-                      var title = document.getElementById('title').value;
-                      var description = document.getElementById('description').value;
-                      var amount = document.getElementById('amount').value;
-                      var interest = document.getElementById('interest').value;
-                      var installments = document.getElementById('installments').value;
-                      console.log(title)
-                      console.log(description)
-                      console.log(amount)
-                      console.log(interest)
-                      console.log(installments)
+                      var title = document.getElementById('loan_title').value;
+                      var description = document.getElementById('loan_description').value;
+                      var amount = document.getElementById('loan_amount').value;
+                      var interest = document.getElementById('loan_interest').value;
+                      var installments = document.getElementById('loan_installments').value;
+                      alert(title)
+                      alert(description)
+                      alert(amount)
+                      alert(interest)
+                      alert(installments)
                       $.ajax({
                           type: "get",
                           url: 'saveLoanScheme',
                           data: {title: title, description: description, amount: amount, interest: interest, installments:installments},
                           success: function() {
                               swal("Successful", "Loan Scheme Added!", "success");
-                              location.reload();
+                              //location.reload();
                           },
                           error: function(x,y,z){
                               swal("Adding Failed!", z);
@@ -703,15 +703,15 @@
                                 <!-- text input -->
                                 <div class="form-group" style="color:black">
                                     <label>Title:</label>
-                                    <input type="text" class="form-control" id="title">
+                                    <input type="text" class="form-control" id="loan_title">
                                     <label>Description:</label>
-                                    <textarea class="form-control" rows="3" id="description" placeholder="Description"></textarea>
+                                    <textarea class="form-control" rows="3" id="loan_description" placeholder="Description"></textarea>
                                     <label>Amount:</label>
-                                    <input type="text" class="form-control" id="amount">
+                                    <input type="text" class="form-control" id="loan_amount">
                                     <label>Interest:</label>
-                                    <input type="text" class="form-control" id="interest">
+                                    <input type="text" class="form-control" id="loan_nterest">
                                     <label>Installments:</label>
-                                    <input type="text" class="form-control" id="installments">
+                                    <input type="text" class="form-control" id="loan_installments">
                                 </div>
                             </form>
                         </div>

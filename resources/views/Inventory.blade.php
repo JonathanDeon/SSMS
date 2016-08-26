@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Customer Management | Register Customer</title>
+  <title>Inventory Management | Inventory</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -80,7 +80,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
             <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
@@ -96,11 +96,11 @@
            </span>
            </a>
             <ul class="treeview-menu">
-              <<li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-                <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-                <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-                <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
             </ul>
        </li>
 
@@ -234,7 +234,7 @@
             <div class="icon">
               <i class="fa fa-sign-out"></i>
             </div>
-            <a href="sales" class="small-box-footer">Click here <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="Sales" class="small-box-footer">Click here <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -249,7 +249,7 @@
             <div class="icon">
               <i class="fa fa-user-plus"></i>
             </div>
-            <a href="supplier" class="small-box-footer">Click here<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="Supplier" class="small-box-footer">Click here<i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -342,20 +342,7 @@
 
 
 <div class="row">
-       <div class="col-sm-6">
-       <div id="example1_length" class="dataTables_length">
-       <label>Show <select class="form-control input-sm" aria-controls="example1" name="example1_length">
-       <option value="10">10</option>
-       <option value="25">25</option> 
-       <option value="50">50</option>
-       <option value="100">100</option></select> entries</label>
-
-
-
-
-       </div>
-
-       </div>
+ 
 
 
 
@@ -377,24 +364,7 @@
 
 
        <div class="dataTables_filter" id="example1_filter">
-       <label>Search:<input aria-controls="example1" placeholder="" class="form-control input-sm" type="search"></label>
-
-
-
-
-
-<div class="btn-group">
-                  <button type="button" class="btn btn-default">Edit</button>
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Remove</a></li>
-                 
-                 
-                  </ul>
-                </div>
+      
 
 
 
@@ -422,43 +392,35 @@
                   <th>Issue Rate</th>
                   <th>Re-order level</th>
                   <th>Qty in hand</th>
+                  <th>Unit Value</th>
+                  <th>Total</th>
+                  <th>Days Left</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
-                  <td>I001</td>
-                  <td>
-                    Way Spray
-                  </td>
-                  <td>750</td>
-                  <td> 10</td>
-                  <td>25</td>
-                </tr>
-                <tr>
-                  <td>I002</td>
-                  <td>
-                    Sponge Wipes
-                  </td>
-                  <td>300</td>
-                  <td>30</td>
-                  <td>70</td>
-                </tr>
-                <tr>
-                  <td>I003</td>
-                  <td>
-                    Air Freshner
-                  </td>
-                  <td>550</td>
-                  <td>15</td>
-                  <td>50</td>
-                </tr>
-             
+                @foreach($items as $item)
+                  <tr>
+                  <td>{{$item->itemid}}</td>
+                  <td>{{$item->itemName}}</td>
+                  <td>{{$item->Irate}}</td>
+                  <td>{{$item->rol}}</td>
+                  <td>{{$item->qty}}</td>
+                  <td>{{$item->unitvalue}}</td>
+                  <td>{{$item->tot}}</td>
+                  <td>{{$item->daysleft}}</td>
+                    <td><button type="button" id="accept" class="btn btn-primary" onclick="success()"><i class="fa fa-edit"></i></button></td>
+                    <td><button type="button" id="reject" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
+                  </tr>
+
+                @endforeach
+             </tbody>
               </table>
               <div class="col-md-2" style="margin-top:10px; margin-left:80%;">
   
       <a href="AddNewItem" button class="btn btn-block btn-primary" type="button">Add New Item </button> </a>
 
-      <a href="SendPurchaseOrder" button class="btn btn-block btn-info" type="button">Send PO</button></a>
+      <a href="PurchaseOrder" button class="btn btn-block btn-info" type="button">Send PO</button></a>
                   </div></div>
             </div>
             <!-- /.box-body -->
@@ -503,7 +465,6 @@
     function alerts() {
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
-
     function success() {
                 swal("Successful", "Data Successfully Saved!", "success")
     }
