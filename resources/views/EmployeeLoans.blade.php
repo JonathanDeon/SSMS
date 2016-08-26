@@ -178,6 +178,7 @@
                     <li><a href="#tab_1" data-toggle="tab" aria-expanded="true">Loan Schemes</a></li>
                     <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">On-going Employee Loans</a></li>
                     <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Pending for Approval</a></li>
+                    <li><a href="#tab_6" data-toggle="tab" aria-expanded="false">Approved Loans</a></li>
                     <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">All Employee Loans</a></li>
                 </ul>
             </div>
@@ -225,7 +226,6 @@
                                         <td>{{$loan->amount}}</td>
                                         <td>{{$loan->interest}}</td>
                                         <td>{{$loan->installments}}</td>
-                                        <td><button type="button" id="accept" value="{{$loan->scheme_id}}" class="btn btn-primary btn-sm" onclick="success()"><i class="fa fa-edit"></i></button></td>
                                         <td><button type="button" id="reject" value="{{$loan->scheme_id}}" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
                                         </tr>
                                         @endforeach
@@ -287,7 +287,6 @@
                                                 <td>{{$x->g_address}}</td>
                                                 <td></td>
                                                 <td>{{$x->guarantor_name}}</td>
-                                                <td><button type="button" id="accept" value="{{$x->loan_id}}" class="btn btn-primary"  data-toggle="modal" data-target="#myModal2"><i class="fa fa-edit"></i></button></td>
                                                 <td><button type="button" id="reject" value="{{$x->loan_id}}" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
                                             </tr>
                                         @endforeach
@@ -437,10 +436,12 @@
                                                 <?php
                                                     if($x->status==0)
                                                         echo '<td><span class="label label-warning">Pending</span></td>';
-                                                    else if($x->status==1)
+                                                    else if($x->status==1 && $x->ongoing==0)
                                                         echo '<td><span class="label label-success">Approved</span></td>';
                                                     else if($x->status==2)
                                                         echo '<td><span class="label label-danger">Declined</span></td>';
+                                                    else if($x->status==1 && $x->ongoing==1)
+                                                        echo '<td><span class="label label-info">Ongoing</span></td>';
                                                 ?>
                                             </tr>
                                             @endforeach
@@ -494,7 +495,7 @@
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <button type="submit" class="btn btn-block btn-primary btn-flat" style="width: 30%; float: right" onclick="addLoan()">Update</button>
+                                    <button type="submit" class="btn btn-block btn-primary btn-flat" style="width: 30%; float: right" onclick="addLoan()">Save</button>
                                 </div>
                             </div>
                             <script>
@@ -520,6 +521,55 @@
                                     })
                                 }
                             </script>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.tab-pane -->
+                <!-- /.tab-pane 6-->
+                <div class="tab-pane" id="tab_6">
+                    <div class="row" style="margin-top: 25px">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Approved Loans</h3>
+                                    <div class="box-tools">
+                                        <div class="input-group input-group-sm" style="width: 400px;">
+                                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                                            <div class="input-group-btn">
+                                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <th>Loan Scheme</th>
+                                            <th>Employee ID</th>
+                                            <th>Employee Name</th>
+                                            <th>Contact Details</th>
+                                            <th>Installments</th>
+                                            <th>Total Loan Amount</th>
+                                        </tr>
+                                        @foreach($approved as $x)
+                                            <tr>
+                                                <td>{{$x->l_name}}</td>
+                                                <td>{{$x->eid}}</td>
+                                                <td>{{$x->name}}</td>
+                                                <td>{{$x->contact}}</td>
+                                                <td>{{$x->installments}}</td>
+                                                <td>{{$x->amount}}</td>
+                                                <td><button type="button" onclick="getEmployee('{{$x->loan_id}}')" id="update" value="{{$x->loan_id}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal2"><i class="fa fa-edit"></i></button></td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody></table>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
                         </div>
                     </div>
                 </div>
@@ -603,7 +653,73 @@
             </script>
         </div>
         <!-- /.modal-dialog -->
-      
+      <!--------------------------------------modal for update--------------------------->
+        <div class="modal modal-success fade" id="myModal2" tabindex="-2" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>Loans</button>
+                        <h4 class="modal-title">Add Loan Scheme</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box box-success">
+                            <div class="box-body">
+                                <form role="form">
+                                    <!-- text input -->
+                                    <div class="form-group" style="color:black">
+                                        <label>Title:</label>
+                                        <input type="text" class="form-control" id="title">
+                                        <label>Description:</label>
+                                        <textarea class="form-control" rows="3" id="description" placeholder="Description"></textarea>
+                                        <label>Amount:</label>
+                                        <input type="text" class="form-control" id="amount">
+                                        <label>Interest:</label>
+                                        <input type="text" class="form-control" id="interest">
+                                        <label>Installments:</label>
+                                        <input type="text" class="form-control" id="installments">
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline" onclick="saveLoanScheme()">Save changes</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+
+                <script>
+                    function saveLoanScheme() {
+                        var title = document.getElementById('title').value;
+                        var description = document.getElementById('description').value;
+                        var amount = document.getElementById('amount').value;
+                        var interest = document.getElementById('interest').value;
+                        var installments = document.getElementById('installments').value;
+                        console.log(title)
+                        console.log(description)
+                        console.log(amount)
+                        console.log(interest)
+                        console.log(installments)
+                        $.ajax({
+                            type: "get",
+                            url: 'saveLoanScheme',
+                            data: {title: title, description: description, amount: amount, interest: interest, installments:installments},
+                            success: function() {
+                                swal("Successful", "Loan Scheme Added!", "success");
+                                location.reload();
+                            },
+                            error: function(x,y,z){
+                                swal("Adding Failed!", z);
+                            }
+                        })
+
+                    }
+                </script>
+            </div>
+            <!-- /.modal-dialog -->
   </div>
 </div>
 <!-- ./wrapper -->

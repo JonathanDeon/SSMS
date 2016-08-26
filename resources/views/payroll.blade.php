@@ -180,9 +180,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs" style="background-color:#B1C4E6">
                     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">New Salary Details</a>
-                    <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Employee Salary Details</a></li>
-                    <li><a href="#tab_5" data-toggle="tab" aria-expanded="false">Monthly Salary Details</a></li>
-                    <li><a href="#tab_6" data-toggle="tab" aria-expanded="false">Employee Fund Details</a></li>
+                    <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Employee Salary Details</a></li>
+                    <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Monthly Salary Details</a></li>
+                    <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Employee Fund Details</a></li>
                 </ul>
             </div>
             <script>
@@ -197,7 +197,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         success: function() {
                             swal({
                                 title: "Success!",
-                                text: "successfully updated the salary information",
+                                text: "Successfully updated the Salary Information",
                                 type: "success",
                                 showCancelButton: false,
                                 confirmButtonColor: '#1D84FF',
@@ -211,7 +211,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             });
                         },
                         error: function(x,y,thrownError){
-                            swal("Error!","Updation of salary information failed!", "error");
+                            swal("Error!","Update of salary information failed!", "error");
 
                         }
                     });

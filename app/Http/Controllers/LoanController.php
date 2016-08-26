@@ -15,7 +15,8 @@ class LoanController extends Controller
               where el.scheme = l.scheme_id and e.eid = el.employee");
         $ongoing = $this->showOngoingLoans();
         $pending = $this->showPendingLoans();
-        return view('EmployeeLoans',compact('loans','ongoing','pending','all'));
+        $approved = $this->showApprovedLoans();
+        return view('EmployeeLoans',compact('loans','ongoing','pending','all','approved'));
     }
 
     public function saveLoanScheme(Request $request){
@@ -76,5 +77,15 @@ class LoanController extends Controller
         $affected = DB::update("update employee_loan set status = 2 where loan_id = '$loanId'");
         echo $affected;
         return $affected;
+    }
+
+    private function showApprovedLoans (){
+        $loans = DB::select("select * from employee_loan el, employee e,loan_scheme l
+                      where e.eid = el.employee and
+                      el.loan_id = l.scheme_id AND 
+                      el.status=1 and 
+                      ongoing=0
+                  ");
+        return $loans;
     }
 }
