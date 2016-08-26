@@ -196,13 +196,23 @@
                             <div class="col-xs-12">
                                 <div class="box">
                                     <form class="form-horizontal" action="added" method="post">
+                                        {{--@if (count($errors))>0--}}
+                                        {{--<div class="alert alert-danger">--}}
+                                            {{--<strong>Save Failed</strong><br><br>--}}
+                                            {{--<ul>--}}
+                                                {{--@foreach ($errors->all() as $error)--}}
+                                                    {{--<li>{{ $error }}</li>--}}
+                                                 {{--@endforeach--}}
+                                            {{--</ul>--}}
+                                        {{--</div>--}}
+                                        {{--@endif--}}
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <div class="box-body">
                                             <div class="form-group">
                                                 <label for="inputName" class="col-sm-2 control-label">Name</label>
 
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" style="width:80%">
+                                                    <input type="text" class="form-control" required name="name" id="name" placeholder="Enter name" style="width:80%">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -215,7 +225,7 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="date" class="form-control" name="dob" id="dob">
+                                                        <input type="date" class="form-control" name="dob" id="dob" required>
                                                     </div>
                                                 </div>
                                             </div>

@@ -266,7 +266,94 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_2">
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Employee Name</th>
+                                <th>Designation</th>
+                                <th>Basic</th>
+                                <th>Allowance</th>
+                                <th>Ongoing loans</th>
+                                <th>Total</th>
+                            </tr>
+                            {{--@foreach($employees as $employee)--}}
+                                {{--<tr>--}}
+                                    {{--<td>{{$employee->eid}}</td>--}}
+                                    {{--<td>{{$employee->name}}</td>--}}
+                                    {{--<td>{{$employee->title}}</td>--}}
+                                    {{--<td>{{$employee->gender}}</td>--}}
+                                    {{--<td>{{$employee->branch}}</td>--}}
+                                    {{--<td>{{$employee->manager}}</td>--}}
+                                    {{--<td>{{$employee->joined_date}}</td>--}}
+                                    {{--<td><button type="button" id="view" value="{{$employee->eid}}" class="btn btn-success" onclick="getEmployee('{{$employee->eid}}')"><i class="fa fa-eye"></i></button></td>--}}
+                                    {{--<td><button type="button" onclick="getEmployee('{{$employee->eid}}')" id="update" value="{{$employee->eid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>--}}
+                                    {{--<td><button type="button" value="{{$employee->eid}}" class="btn btn-danger" onclick="deleteEmployee('{{$employee->eid}}')"><i class="fa fa-trash"></i></button></td>--}}
+                                {{--</tr>--}}
+                            {{--@endforeach--}}
+                            </tbody></table>
+                        <script>
+                            function getEmployee(id) {
+                                document.getElementById('employee-id').value = id;
+                                $.ajax({
+                                    type: "get",
+                                    url: 'fillEmployee',
+                                    data: {id: id},
+                                    success: function(x) {
+                                        var details = JSON.parse(x);
+                                        document.getElementById('save').value=details[0].eid;
+                                        document.getElementById('employee-name').value = details[0].name;
+                                        document.getElementById('optionsRadios1').checked = details[0].gender;
+                                        document.getElementById('contact').value = details[0].contact;
+                                        document.getElementById('dob').value = details[0].dob;
+                                        document.getElementById('dateJoined').value = details[0].joined_date;
+                                        document.getElementById('address').value = details[0].address;
+                                        document.getElementById('designation').value = details[0].designation;
+                                        document.getElementById('branch').value = details[0].branch;
+                                        document.getElementById('manager').value = details[0].manager;
+                                    },
+                                    error:function(){
 
+                                    }
+                                })
+                            }
+
+                            function updateEmployee() {
+                                var id = document.getElementById('save').value;
+                                var ename = document.getElementById('employee-name').value;
+                                var gender = document.querySelector('input[name="optionsRadios"]:checked').value;
+                                var contact = document.getElementById('contact').value;
+                                var address = document.getElementById('address').value;
+                                var dateJoined = document.getElementById('dateJoined').value;
+                                var dob = document.getElementById('dob').value;
+                                $.ajax({
+                                    type: "get",
+                                    url: 'updateEmployee',
+                                    data: {id: id, ename:ename,gender:gender,address: address,dateJoined:dateJoined},
+                                    success: function() {
+                                        swal({
+                                                    title: "Success!",
+                                                    text: "successfully updated the employee information",
+                                                    type: "success",
+                                                    showCancelButton: false,
+                                                    confirmButtonColor: '#1D84FF',
+                                                    confirmButtonText: 'Ok',
+                                                    closeOnConfirm: true
+                                                },
+                                                function(isConfirm){
+                                                    if (isConfirm){
+                                                        window.location.href="/EmployeeInformation";
+                                                    }
+                                                });
+                                    },
+                                    error: function(){
+                                        swal("Error!","Employee information update failed!", "error");
+                                    }
+                                })
+                            }
+                        </script>
+                    </div>
 
                 </div>
                 <!-- /.tab-pane -->
