@@ -10,9 +10,9 @@ class LeaveController extends Controller
 {
     public function showPendingLeave(){
         $leaves = DB::select("select * from employee_leave el,employee e,leave_type l,branch b
-                      where e.eid = el.employee and
+                      where e.eid = el.employee AND
                       el.leave_type = l.id AND 
-                      el.approved=0 and
+                      el.approved=0 AND
                       b.id = e.branch 
                   ");
 

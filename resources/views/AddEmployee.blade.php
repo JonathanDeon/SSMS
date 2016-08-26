@@ -64,8 +64,8 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-                        <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+                        <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i>Register Customer</a></li>
+                        <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i>Customer Loyalty</a></li>
                         <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
                         <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
                         <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
@@ -308,17 +308,11 @@
 
                     <div class="box-footer">
 
-                        <button type="submit" onclick="return Test();" class="btn btn-primary pull-center">Add Employee</button>
+                        <button type="submit" class="btn btn-primary pull-center">Add Employee</button>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
                     </div>
-<script>
-    function Test() {
-        alert(document.getElementById('dob').value);
-        return true;
-    }
-</script>
                     <!-- /.box-footer -->
                 </form>
             </div>

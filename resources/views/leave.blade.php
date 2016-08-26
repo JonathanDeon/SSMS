@@ -204,7 +204,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </tr>
                                 @foreach($leaves as $leave)
                                     <tr>
-                                        <td>{{$leave->id}}</td>
+                                        <td>{{$leave->leave_id}}</td>
                                         <td>{{$leave->eid}}</td>
                                         <td>{{$leave->name}}</td>
                                         <td>{{$leave->bname}}</td>
@@ -213,8 +213,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <td>{{$leave->end_date}}</td>
                                         <td>{{$leave->reason}}</td>
                                         <td><span class="label label-warning">Pending</span></td>
-                                        <td><button type="button" id="accept" value="{{$leave->id}}" class="btn btn-success btn-sm" onclick="success()"><i class="fa fa-check"></i></button></td>
-                                        <td><button type="button" id="reject" value="{{$leave->id}}" class="btn btn-danger btn-sm" onclick="alerts()"><i class="fa fa-close"></i></button></td>
+                                        <td><button type="button" value="{{$leave->leave_id}}" class="btn btn-success btn-sm" onclick="acceptLeave('{{$leave->leave_id}}')"><i class="fa fa-check"></i></button></td>
+                                        <td><button type="button" value="{{$leave->leave_id}}" class="btn btn-danger btn-sm" onclick="rejectLeave('{{$leave->leave_id}}')"><i class="fa fa-close"></i></button></td>
                                     </tr>
                                 @endforeach
                                 </tbody></table>
@@ -224,33 +224,69 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </div>
 
                 <script>
-                    function alerts() {
-                        swal({   title: "Are you sure you want to reject?", type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Reject",   closeOnConfirm: false },
-                                function(){
-                                    var leaveId = document.getElementById('reject').value;
+                    function rejectLeave(id) {
+                        alert(id);
+                        swal({   title: "Are you sure you want to reject?", type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Reject",   closeOnConfirm: false,closeOnCancel: true },
+                                function(isConfirm){
+                                    var leaveId = id;
+                                    alert(leaveId);
                                     $.ajax({
                                         type: "get",
                                         url: 'rejectLeave',
                                         data: {leaveId: leaveId},
                                         success: function() {
-                                            swal("Rejected!", "success")
-                                            location.reload();
+                                            swal({
+                                                title: "Rejected!",
+                                                text: "successfully rejected the leave",
+                                                type: "warning",
+                                                showCancelButton: false,
+                                                confirmButtonColor: "#DD6B55",
+                                                confirmButtonText: "Ok",
+                                                closeOnConfirm: false,
+                                                closeOnCancel: true },
+                                            function(isConfirm){
+                                                location.reload();
+                                            });
                                         }
                                     });
                                 });
                     }
 
-                    function success() {
-                        var leaveId = document.getElementById('accept').value;
-                        $.ajax({
-                            type: "get",
-                            url: 'approveLeave',
-                            data: {leaveId: leaveId},
-                            success: function() {
-                                swal("Successful", "Leave Approved!", "success");
-                                location.reload();
-                            }
-                        });
+                    function acceptLeave(id) {
+                        var leaveId = id;
+                        swal({
+                            title: "Are you sure you want to approve the leave?",
+                                    type: "warning",
+
+                                    showCancelButton: true,
+                                    confirmButtonColor: "#DD6B55",
+                                    confirmButtonText: "Yes",
+                                    closeOnConfirm: false,
+                                    closeOnCancel: true },
+                                function(isConfirm){
+                                    $.ajax({
+                                        type: "get",
+                                        url: 'approveLeave',
+                                        data: {leaveId: leaveId},
+                                        success: function() {
+                                            swal({
+                                                title: "Successful!",
+                                                text: "successfully accepted the leave",
+                                                type: "success",
+                                                showCancelButton: false,
+                                                confirmButtonColor: "#DD6B55",
+                                                confirmButtonText: "Ok",
+                                                closeOnConfirm: false,
+                                                closeOnCancel: true },
+                                            function(isConfirm){
+                                                location.reload();
+                                            });
+                                        },
+                                        error:function(x,y,thrownError){
+                                            console.log(thrownError);
+                                        }
+                                    });
+                                });
                     }
                 </script>
                 <!-- /.tab-pane -->
@@ -330,7 +366,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             if($allLeave->approved==0)
                                                 echo '<td><span class="label label-warning">Pending</span></td>';
                                             else if($allLeave->approved==1)
-                                                echo '<td><span class="label label-success">Approved</span></td>';
+                                                echo '<td><span class="label label-acceptLeave">Approved</span></td>';
                                             else if($allLeave->approved==2)
                                                 echo '<td><span class="label label-danger">Declined</span></td>';
                                             ?>
@@ -477,10 +513,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 url: 'recordLeave',
                                 data: {eid: eid, leave_type: leave_type, start_date: start_date, end_date: end_date, reason:reason},
                                 success: function() {
-                                    swal("Successful", "Leave Recorded!", "success");
+                                    swal({
+                                                title: "Successful!",
+                                                text: "Successfully leave recorded!",
+                                                type: "success",
+                                                showCancelButton: false,
+                                                confirmButtonColor: "#1B28FF",
+                                                confirmButtonText: "Apply",
+                                                cancelButtonText: "Close",
+                                                closeOnConfirm: false,
+                                                closeOnCancel: true},
+                                            function (isConfirm) {
+                                                location.reload();
+                                            });
                                 },
                                 error: function(){
-                                    swal("Failed!", "warning")
+                                    swal("Warnin!","Failed to record leave!", "warning")
                                 }
                             })
                         }
@@ -552,7 +600,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             url: 'saveLeaveInfo',
                             data: {title: title, emp_type: emp_type, designation: designation, number: number},
                             success: function(x) {
-                                swal("Successful", "Leave Type Added!", "success");
+                                swal("Successful", "Leave Type Added!", "acceptLeave");
                                 location.reload();
                             },
                             error: function(){
