@@ -27,7 +27,7 @@ class PayrollController extends Controller
 //    public function
     public function getEmployeeBasicSalaryDetails(){
         $salary = DB::select("select e.eid,d.title,d.basic,d.allowance from employee e, designation d where d.id = e.designation group by e.eid");
-//        return $salary[0]->basic;
+
         return $salary;
     }
 
@@ -76,5 +76,28 @@ class PayrollController extends Controller
         }
         //epf12 should go in to another table each month
         return $basic+$allowance-$epf8-$etf3;
+    }
+
+    public function calculateMonthlyEpfEtfReport(){
+        $totalEpf8 = 0;
+        $totalEpf12 = 0;
+        $totalEtf3 = 0;
+        foreach ($this->getEmployeeBasicSalaryDetails() as $item) {
+            $totalEpf8 = $totalEpf8 + $this->calculateEPF_8($item->eid);
+            $totalEpf12 = $totalEpf12 + $this->calculateEPF_12($item->eid);
+            $totalEtf3 = $totalEtf3 + $this->calculateETF_3($item->eid);
+        }
+        $epfEtfArr = array("totalEtf3"=>$totalEtf3,"totalEpf8"=>$totalEpf8,"totalEpf12"=>$totalEpf12);
+
+        return json_encode($epfEtfArr);
+    }
+
+    public function getEmployeeMonthlySalaryReport(){
+        $salaryArray = array();
+        foreach ($this->getEmployeeBasicSalaryDetails() as $item) {
+            $tempArray = array("empId"=>$item->eid,"etf3"=>$this->calculateETF_3($item->eid),"epf8"=>$this->calculateEPF_8($item->eid),"epf12"=>$this->calculateEPF_12($item->eid));
+            array_push($salaryArray,$tempArray);
+        }
+        return json_encode($salaryArray);
     }
 }
