@@ -11,13 +11,29 @@
 |
 */
 
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('login',function(){
+        return view('Login');
+    });
+    Route::get('signUpCheck','LoginController@signUp');
+    Route::get('/loginCheck','LoginController@authenticate');
+
+    Route::get('logout','LogController@logout');
+
+
+});
+//
+Route::get('getEmployeeBasicSalaryDetails','PayrollController@getEmployeeBasicSalaryDetails');
+Route::get('calculateEPF_8','PayrollController@calculateEPF_8');
+Route::get('calculateNetSalary','PayrollController@calculateNetSalary');
+Route::get('calculateMonthlyEpfEtfReport','PayrollController@calculateMonthlyEpfEtfReport');
+Route::get('getEmployeeMonthlySalaryReport','PayrollController@getEmployeeMonthlySalaryReport');
+//
 Route::get('welcome',function(){
 	return view('welcome');
 });
 
-Route::get('login',function(){
-	return view('login');
-});
 
 
 /*Customer Routes*/
@@ -73,6 +89,7 @@ Route::get('ReportsServices',function(){
 Route::get('deleteEmployee','EmployeeController@deleteEmployeeRecord');
 Route::get('deleteLoanScheme','LoanController@deleteLoanScheme');
 Route::get('EmployeeInformation','EmployeeController@showAllEmployees');
+Route::get('getAllEmployeesForInfo','EmployeeController@getAllEmployeesForInfo');
 //
 //Route::get('EmpMyProfile',function(){
 //	return view('EmpMyProfile');

@@ -17,8 +17,10 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -175,130 +177,130 @@
 
         <!-- Main content -->
       <div style="padding:15px">
-          <div class="box box-success" >
-              <div class="box-header with-border">
-                  <h3 class="box-title">All Employees</h3>
+          <div class="box">
+              <div class="box-header">
+                  <h3 class="box-title"></h3>
               </div>
               <!-- /.box-header -->
-              <!-- form start -->
-              <form class="form-horizontal">
-                  <div class="box">
-                      <div class="box-header">
-                          <div class="col-xs-4 form-group">
-                              <select class="form-control" style="width: 75%;">
-                                  <option>Filter</option>
-                                  <option>Vehicle Grooming</option>
-                                  <option>Janitorial</option>
-                              </select>
-                          </div>
-                          <div class="box-tools">
-                              <div class="input-group input-group-sm" style="width: 400px;">
-                                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+              <div class="box-body">
+                  <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                      <div class="row">
+                          <div class="col-sm-12">
+                              <table id="all-employee-records-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                  <thead>
+                                  <tr role="row">
+                                      <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" style="width: 181px;">Employee Id</th>
+                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;">Name</th>
+                                      {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 197px;">Address</th>--}}
+                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;">Contact</th>
+                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">NIC</th>
+                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Joined Date</th>
+                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Service Type</th>
+                                      {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Gender</th>--}}
+                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Branch</th>
+                                      <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Designation</th>
+                                      {{--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Manager</th>--}}
+                                      <th rowspan="1" style="width: 112px;"></th>
+                                      <th rowspan="1" style="width: 112px;"></th>
+                                      <th rowspan="1" style="width: 112px;"></th>
 
-                                  <div class="input-group-btn">
-                                      <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- /.box-header -->
-                      <div class="box-body table-responsive no-padding">
-                          <table class="table table-hover">
-                              <tbody>
-                              <tr>
-                                  <th>ID</th>
-                                  <th>Employee Name</th>
-                                  <th>Designation</th>
-                                  <th>Gender</th>
-                                  <th>Branch</th>
-                                  <th>Manager</th>
-                                  <th>Date Joined</th>
-                                  <th></th>
-                                  <th></th>
-                              </tr>
-                              @foreach($employees as $employee)
-                                  <tr>
-                                      <td>{{$employee->eid}}</td>
-                                      <td>{{$employee->name}}</td>
-                                      <td>{{$employee->title}}</td>
-                                      <td>{{$employee->gender}}</td>
-                                      <td>{{$employee->branch}}</td>
-                                      <td>{{$employee->manager}}</td>
-                                      <td>{{$employee->joined_date}}</td>
-                                      <td><button type="button" id="view" value="{{$employee->eid}}" class="btn btn-success" onclick="getEmployee('{{$employee->eid}}')"><i class="fa fa-eye"></i></button></td>
-                                      <td><button type="button" onclick="getEmployee('{{$employee->eid}}')" id="update" value="{{$employee->eid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
-                                      <td><button type="button" value="{{$employee->eid}}" class="btn btn-danger" onclick="deleteEmployee('{{$employee->eid}}')"><i class="fa fa-trash"></i></button></td>
                                   </tr>
-                              @endforeach
-                              </tbody></table>
-                          <script>
-                              function getEmployee(id) {
-                                  document.getElementById('employee-id').value = id;
-                                  $.ajax({
-                                      type: "get",
-                                      url: 'fillEmployee',
-                                      data: {id: id},
-                                      success: function(x) {
-                                          var details = JSON.parse(x);
-                                          document.getElementById('save').value=details[0].eid;
-                                          document.getElementById('employee-name').value = details[0].name;
-                                          document.getElementById('optionsRadios1').checked = details[0].gender;
-                                          document.getElementById('contact').value = details[0].contact;
-                                          document.getElementById('dob').value = details[0].dob;
-                                          document.getElementById('dateJoined').value = details[0].joined_date;
-                                          document.getElementById('address').value = details[0].address;
-                                          document.getElementById('designation').value = details[0].designation;
-                                          document.getElementById('branch').value = details[0].branch;
-                                          document.getElementById('manager').value = details[0].manager;
-                                      },
-                                      error:function(){
+                                  </thead>
+                                  <tbody id="all-employee-records-tbody">
 
-                                      }
-                                  })
-                              }
+                                  </tbody>
+                                  <tfoot>
 
-                              function updateEmployee() {
-                                  var id = document.getElementById('save').value;
-                                  var ename = document.getElementById('employee-name').value;
-                                  var gender = document.querySelector('input[name="optionsRadios"]:checked').value;
-                                  var contact = document.getElementById('contact').value;
-                                  var dob = document.getElementById('dob').value;
-                                  var address = document.getElementById('address').value;
-                                  var dateJoined = document.getElementById('dateJoined').value;
-                                  var designation = document.getElementById('designation').value;
-                                  var branch = document.getElementById('branch').value;
-                                  var manager = document.getElementById('manager').value;
-
-                                  $.ajax({
-                                      type: "get",
-                                      url: 'updateEmployee',
-                                      data: {id: id,ename:ename,gender:gender,contact:contact,dob:dob,address: address,dateJoined:dateJoined,designation:designation,branch:branch,manager:manager},
-                                      success: function() {
-                                          swal({
-                                              title: "Success!",
-                                              text: "successfully updated the employee information",
-                                              type: "success",
-                                              showCancelButton: false,
-                                              confirmButtonColor: '#1D84FF',
-                                              confirmButtonText: 'Ok',
-                                              closeOnConfirm: true
-                                          },
-                                          function(isConfirm){
-                                              if (isConfirm){
-                                                  window.location.href="/EmployeeInformation";
-                                              }
-                                          });
-                                      },
-                                      error: function(){
-                                          swal("Error!","Employee information update failed!", "error");
-                                      }
-                                  })
-                              }
-                          </script>
+                                  </tfoot>
+                              </table>
+                          </div>
                       </div>
-                      <!-- /.box-body -->
-                  </div>
-              </form>
+                      <div class="row">
+
+                          <div class="col-sm-7">
+                              <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+                                  <ul class="pagination">
+                                      <li class="paginate_button previous disabled" id="example1_previous">
+                                          <a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a>
+                                      </li>
+                                      <li class="paginate_button active">
+                                          <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a>
+                                      </li>
+                                      <li class="paginate_button ">
+                                          <a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a>
+                                      </li>
+                                      <li class="paginate_button ">
+                                          <a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a>
+                                      </li>
+                                      <li class="paginate_button ">
+                                          <a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
+              </div>
+
+              <script>
+                  function getEmployee(id) {
+                      document.getElementById('employee-id').value = id;
+                      $.ajax({
+                          type: "get",
+                          url: 'fillEmployee',
+                          data: {id: id},
+                          success: function(x) {
+                              var details = JSON.parse(x);
+                              document.getElementById('save').value=details[0].eid;
+                              document.getElementById('employee-name').value = details[0].name;
+                              document.getElementById('optionsRadios1').checked = details[0].gender;
+                              document.getElementById('contact').value = details[0].contact;
+                              document.getElementById('dob').value = details[0].dob;
+                              document.getElementById('dateJoined').value = details[0].joined_date;
+                              document.getElementById('address').value = details[0].address;
+                              document.getElementById('designation').value = details[0].designation;
+                              document.getElementById('branch').value = details[0].branch;
+                              document.getElementById('manager').value = details[0].manager;
+                          },
+                          error:function(){
+
+                          }
+                      })
+                  }
+
+                  function updateEmployee() {
+                      var id = document.getElementById('save').value;
+                      var ename = document.getElementById('employee-name').value;
+                      var gender = document.querySelector('input[name="optionsRadios"]:checked').value;
+                      var contact = document.getElementById('contact').value;
+                      var dob = document.getElementById('dob').value;
+                      var address = document.getElementById('address').value;
+                      var dateJoined = document.getElementById('dateJoined').value;
+                      var designation = document.getElementById('designation').value;
+                      var branch = document.getElementById('branch').value;
+                      var manager = document.getElementById('manager').value;
+
+                      $.ajax({
+                          type: "get",
+                          url: 'updateEmployee',
+                          data: {id: id,ename:ename,gender:gender,contact:contact,dob:dob,address: address,dateJoined:dateJoined,designation:designation,branch:branch,manager:manager},
+                          success: function() {
+                              swal({
+                                          title: "Success!",
+                                          text: "successfully updated the employee information",
+                                          type: "success",
+                                          showCancelButton: false,
+                                          confirmButtonColor: '#1D84FF',
+                                          confirmButtonText: 'Ok',
+                                          closeOnConfirm: true
+                                      },
+                                      function(isConfirm){
+                                          if (isConfirm){
+                                              window.location.href="/EmployeeInformation";
+                                          }
+                                      });
+                          },
+                          error: function(){
+                              swal("Error!","Employee information update failed!", "error");
+                          }
+                      })
+                  }
+              </script>
+              <!-- /.box-body -->
           </div>
       </div>
         <!-- Modal prompt for update-->
@@ -392,7 +394,7 @@
 <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS 1.0.1 -->
 <script src="plugins/chartjs/Chart.min.js"></script>
-
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
 
 <script src="../../dist/js/demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
@@ -450,6 +452,46 @@
                 swal("Successful", "Data Successfully Saved!", "success")
                 location.reload();
     }
+
+$('#all-employee-records-table').DataTable( {
+
+    responsive: true,
+    "ajax": {
+        "type":"get",
+        "url": "getAllEmployeesForInfo",
+    },
+    "pageLength": 100,
+
+    columns: [
+        { "data": "eid" },
+        { "data": "name" },
+        { "data": "contact" },
+        { "data": "nic" },
+        { "data": "joined_date" },
+        { "data": "service_type" },
+        { "data": "branch" },
+        { "data": "title" },
+        {"data" : null,
+            "mRender": function(data, type, full) {
+                return '<button type="button" id="view" value="'+data.eid+'" class="btn btn-success" onclick="getEmployee(\''+data.eid+'\')"><i class="fa fa-eye"></i></button>';
+            }
+        },
+        {"data" : null,
+            "mRender": function(data, type, full) {
+                return '<button type="button" onclick="getEmployee(\''+data.eid+'\')" id="update" value="'+data.eid+'" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button>';
+            }
+        },
+        {"data" : null,
+            "mRender": function(data, type, full) {
+
+
+                return '<button type="button" value="'+data.eid+'" class="btn btn-danger" onclick="deleteEmployee(\''+data.eid+'\')"><i class="fa fa-trash"></i></button>';
+            }
+        }
+    ]
+
+
+} );
 
 </script>
 </body>

@@ -16,6 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="http://localhost:8000/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -370,14 +371,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <table id="payroll-monthly-records-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                             <thead>
                                             <tr role="row">
-                                                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" style="width: 181px;">Lead No</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;">Customer</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 197px;">Address</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;">Agent</th>
-                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Date</th>
-                                                <th rowspan="1" style="width: 112px;"></th>
-                                                <th rowspan="1" style="width: 112px;"></th>
-                                                <th rowspan="1" style="width: 112px;"></th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" style="width: 181px;">Employee Id</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;">Name</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;">ETF 3%</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 197px;">Epf 8%</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;">Epf 12%</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Net Salary</th>
+                                                {{--<th rowspan="1" style="width: 112px;"></th>--}}
+                                                {{--<th rowspan="1" style="width: 112px;"></th>--}}
+                                                {{--<th rowspan="1" style="width: 112px;"></th>--}}
 
                                             </tr>
                                             </thead>
@@ -476,9 +478,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
               columns: [
                   {"data": "empId"},
+                  {"data": "name"},
                   {"data": "etf3"},
                   {"data": "epf8"},
-                  {"data": "epf12"}
+                  {"data": "epf12"},
+                  {"data": "netSalary"}
+
               ]
 
 

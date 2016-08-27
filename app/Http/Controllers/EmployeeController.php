@@ -17,6 +17,12 @@ class EmployeeController extends Controller
         return view('EmployeeInformation',compact('employees','branches','managers','designations'));
     }
 
+    public function getAllEmployeesForInfo(){
+        $employees = DB::select("select e.eid,e.address,e.nic,e.name,e.contact,e.joined_date,e.service_type,e.gender,e.branch,e.manager,d.title from employee e,designation d
+                        where e.designation=d.id group by e.eid");
+        return response()->json(['data'=>$employees]);
+    }
+
     public function showAddEmployee(){
         $branches = DB::select("select * from branch");
         $designations = DB::select("select * from designation");

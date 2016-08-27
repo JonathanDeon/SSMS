@@ -26,7 +26,7 @@ class PayrollController extends Controller
 //    payroll calculations
 //    public function
     public function getEmployeeBasicSalaryDetails(){
-        $salary = DB::select("select e.eid,d.title,d.basic,d.allowance from employee e, designation d where d.id = e.designation group by e.eid");
+        $salary = DB::select("select e.eid,e.name,d.title,d.basic,d.allowance from employee e, designation d where d.id = e.designation group by e.eid");
 
         return $salary;
     }
@@ -95,7 +95,7 @@ class PayrollController extends Controller
     public function getEmployeeMonthlySalaryReport(){
         $salaryArray = array();
         foreach ($this->getEmployeeBasicSalaryDetails() as $item) {
-            $tempArray = array("empId"=>$item->eid,"etf3"=>$this->calculateETF_3($item->eid),"epf8"=>$this->calculateEPF_8($item->eid),"epf12"=>$this->calculateEPF_12($item->eid));
+            $tempArray = array("empId"=>$item->eid,"name"=>$item->name,"etf3"=>$this->calculateETF_3($item->eid),"epf8"=>$this->calculateEPF_8($item->eid),"epf12"=>$this->calculateEPF_12($item->eid),"netSalary"=>$this->calculateNetSalary($item->eid));
             array_push($salaryArray,$tempArray);
         }
         return response()->json(['data'=>$salaryArray]);
