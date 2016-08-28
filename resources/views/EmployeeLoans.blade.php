@@ -79,11 +79,11 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="ReservationsService"><i class="fa fa-circle-o"></i>Reservations</a></li>
-                        <li><a href="AssignService"><i class="fa fa-circle-o"></i>Assign Service</a></li>
-                        <li><a href="ServicePlans"><i class="fa fa-circle-o"></i>Service Plans</a></li>
-                        <li><a href="ServiceLogs"><i class="fa fa-circle-o"></i>Service Logs</a></li>
-                        <li><a href="ReportsServices"><i class="fa fa-circle-o"></i>Service Reports</a></li>
+                        <li><a href="welcome"><i class="fa fa-calendar-minus-o"></i> <span>Reservations</span></a></li>
+                        <li><a href="assignments"><i class="fa fa-male"></i> <span>Assignments</span></a></li>
+                        <li><a href="plans"><i class="fa fa-check-square"></i> <span>Service Plans</span></a></li>
+                        <li><a href="logs"><i class="fa fa-file-text-o"></i> <span>Logs</span></a></li>
+                        <li><a href="reports"><i class="fa fa-pencil-square-o"></i> <span>Reports</span></a></li>
                     </ul>
                 </li>
 
