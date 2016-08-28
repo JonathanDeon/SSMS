@@ -24,6 +24,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+
  
 </head>
 <!--
@@ -57,7 +62,7 @@ desired effect
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Auto</b>Gleam</span>
     </a>
 
     <!-- Header Navbar -->
@@ -74,64 +79,109 @@ desired effect
   <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
+      <section class="sidebar">
+          <!-- Sidebar user panel -->
 
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
+          <ul class="sidebar-menu">
 
-      <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
+              <li class="treeview active">
+                  <a href="#">
+                      <i class="fa fa-user"></i> <span>Customer Management</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+                      <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+                      <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+                      <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+                      <li class="active"><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
+                      <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+                  </ul>
+              </li>
 
-      <!-- Sidebar Menu -->
-            <ul class="sidebar-menu">
-        <li class="header">Work Shift Management</li>
-        <!-- Optionally, you can add icons to the links -->
-        <li><a href="create"><i class="fa fa-link"></i> <span>Create Shifts</span></a></li>
-        <li><a href="assign"><i class="fa fa-link"></i> <span>Assign Employees</span></a></li>
-          <li class="treeview">
-          <a><i class="fa fa-link"></i> <span>Manage Employees</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="replace">Replace Employees</a></li>
-            <li><a href="request">Request Employees</a></li>
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-car"></i> <span>Service Management</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
+                      <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
+                      <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
+                      <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
+                      <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
+                  </ul>
+              </li>
+
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-users"></i><span>Employee Management</span>
+
+                      <i class="fa fa-angle-left pull-right"></i>
+                      </span>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                      <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                      <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                      <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                      <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                  </ul>
+              </li>
+
+              <li class="treeview">
+                  <a href="Janitorial">
+                      <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+
+              </li>
+
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-money"></i><span>Finance Management</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
+                      <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+                      <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
+                      <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
+                  </ul>
+              </li>
+
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-cube"></i><span>Inventory Management</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
+                      <li><a href="inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+                      <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
+                      <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
+                      <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
+                      <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
+                      <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
+                  </ul>
+              </li>
+
+              <li class="treeview">
+                  <a href="#">
+                      <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                      <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
+                      <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
+                      <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
+                  </ul>
+              </li>
+
           </ul>
-        </li>  <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Shift Analysis</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="efficiency">Efficiency Analysis</a></li>
-            <li><a href="OW">Over-worked Employee Report</a></li>
-          </ul>
-        </li>
-        
-      </ul>
-      <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
+      </section>
+
+      <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -269,7 +319,7 @@ desired effect
                         <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
                         </div>
                       </td>
-                      <td><button type="button" value="{{$employee->eid}}" class="btn btn-success" onclick="Addemp({{$employee->eid}})"><i class="fa fa-trash"></i></button></td>
+                      <td><button type="button" value="{{$employee->eid}}" class="btn btn-success" onclick="Addemp({{$employee->eid}})">Replace</button></td>
                 </tr>
                 @endforeach
                 @endif
@@ -327,7 +377,7 @@ desired effect
                         <div class="progress-bar progress-bar-danger" style="width:{{ $list->Efficiency }}%">
                       </div>
                     </td>
-                    <td><button type="button" value="y" class="btn btn-success" onclick="Addemp({{$list->employee}})"><i class="fa fa-trash"></i></button></td>
+                    <td><button type="button" value="y" class="btn btn-success" onclick="Addemp({{$list->employee}})">Replace</button></td>
                 </tr>
                 @endforeach
                 @endif
@@ -375,7 +425,7 @@ desired effect
                         <div class="progress-bar progress-bar-danger" style="width:{{ $list->Efficiency }}%">
                       </div>
                     </td>
-                    <td><button type="button" value="y" class="btn btn-success" onclick="Addemp({{$list->employee}})"><i class="fa fa-trash"></i></button></td>
+                    <td><button type="button" value="y" class="btn btn-success" onclick="Addemp({{$list->employee}})">Replace</button></td>
                 </tr>
                 @endforeach
                 @endif
@@ -424,7 +474,7 @@ desired effect
                         <div class="progress-bar progress-bar-danger" style="width:{{ $list->Efficiency }}%">
                       </div>
                     </td>
-                    <td><button type="button" value="y" class="btn btn-success" onclick="Addemp('{{$list->employee}}')"><i class="fa fa-trash"></i></button></td>
+                    <td><button type="button" value="y" class="btn btn-success" onclick="Addemp('{{$list->employee}}')">Replace</button></td>
                 </tr>
                 @endforeach
                 @endif
@@ -446,19 +496,45 @@ desired effect
   
  <script type="text/javascript">
   function Addemp(emp) {
+
+     swal({
+            title: "Are you sure you want to Add?",
+                    
+                    type: "success",
+                    showCancelButton: true,
+                    confirmButtonColor: "#75c92c",
+                    confirmButtonText: "Add",
+                    closeOnConfirm: false },
+                function(confirm){
+                        if(confirm) {
+                            alert("test"+emp);
+                            $.ajax({
+                                method:'get',
+                                url:'replaceEmp',
+                                data:{emp:emp},
+                                success:function(){
+                                    swal({
+                                        title: "Add!",
+                                        text: "Successfully added the employee record!",
+                                        type: "Success",
+                                        showCancelButton: false,
+                                        confirmButtonColor: "#75c92c",
+                                        confirmButtonText: "Ok",
+                                        closeOnConfirm: false },
+                                            function (confirm) {
+                                                location.reload();
+                                            });
+                                },
+                                error:function(x,y,thrownError){
+                                    console.log(thrownError);
+                                }
+                            });
+                        }else{
+                        }
+                }
+            );
       
-        $.ajax({
-            method:'get', 
-            url: 'replaceEmp',
-            data: {emp:emp},
-            success: function(data) {
-              alert("test"); 
-            },
-            error:function(){
-
-            }
-
-        });
+       
   }
 </script>
   </div>
@@ -479,7 +555,7 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+
 <!-- Bootstrap 3.3.6 -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->

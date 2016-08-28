@@ -93,7 +93,7 @@
            </span>
            </a>
             <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
               <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
               <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
               <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>

@@ -174,20 +174,18 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+   <!--  <section class="content">
       <div class="row">
-        <!-- left column -->
-        <div class="col-xs-12">
-
-          <!-- general form elements -->
+       
+      
+         
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">View Customer Feedback</h3>
             </div>
              <form role="form">
            
-            <!-- /.box-header -->
-            <!-- form start -->
+          
            
               <div class="box-body">
                <div class="col-md-6">
@@ -216,6 +214,9 @@
           </div>    
           </div>
           </section>
+ -->
+
+          
 
           <section>
            <div class="col-md-12">    
@@ -238,7 +239,7 @@
               <table class="table table-hover">
                 <tbody><tr>
                   <th>ID</th>
-                  <th>User</th>
+                  <th>Feedback ID</th>
                   <th>Date</th>
                   <th>Feedback</th>
                   <th></th>
@@ -249,8 +250,9 @@
                   <td>{{$feedback->feedbackID}}</td>
                   <td>{{$feedback->date}}</td>
                   <td>{{$feedback->feedback}}</td>
-                  <td><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
+                 
+                  <td><button type="button" class="btn btn-success" data-toggle="modal" href="#editModal" onclick="fillfeed('{{$feedback->cusID}}'); fillname('{{$feedback->cusID}}');"><i class="fa fa-edit"></i></button></td>
+                  
                 </tr>
                 @endforeach
                 
@@ -261,8 +263,104 @@
       
           </div>
           </section>
+
+          <div class="modal fade" id="editModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel"> View Feedback </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box box-warning">
+                        <div class="box-body">
+                            <form role="form">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Customer ID</label>
+                                    <input type="text" id="CusId1" class="form-control" disabled>
+                                    <label>Customer Name</label>
+                                    <input type="text" id="CusName1" class="form-control" disabled>
+                                    <label>Feedback</label>
+                                    <textarea class="form-control" id="feedback" rows="3" disabled></textarea>
+                                    
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                   
+                    <button type="button" class="btn btn-primary" id="save" onclick="">Repond</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </body>
 <!-- ./wrapper -->
+
+
+<script type="text/javascript">
+  function fillfeed(id) {
+    
+        $.ajax({
+         type: 'get',
+         url: 'fillfeed',
+         data: {id: id},
+         success: function(x) {
+             details = JSON.parse(x);
+             console.log(details);
+             document.getElementById('CusId1').value = details[0].cusID;
+             
+             document.getElementById('feedback').value = details[0].feedback;
+             
+
+         },
+             error:function(x,y,z){
+              alert(z);
+             }
+        });
+}
+
+ function fillname(id) {
+    
+        $.ajax({
+         type: 'get',
+         url: 'fillname',
+         data: {id: id},
+         success: function(x) {
+             details = JSON.parse(x);
+             console.log(details);
+           
+             document.getElementById('CusName1').value = details[0].name;
+            
+             
+
+         },
+             error:function(x,y,z){
+              alert(z);
+             }
+        });
+}
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- jQuery 2.2.0 -->
 <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>

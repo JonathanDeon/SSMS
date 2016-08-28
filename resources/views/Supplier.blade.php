@@ -34,7 +34,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"> </script>
 
 
-
+ 
 
 
 
@@ -72,7 +72,10 @@ function formValidate(){
        if(emailValidate(emailID))
           if(validatePhone(phone))
             if(!isEmpty(Addr,"Supplier Address"))
+                { 
+                  success();
                    return true;
+                 }
                    else
                    return false;
                  else
@@ -686,13 +689,18 @@ function formValidate(){
                         <td>{{$supplier->Semail}}</td>
                         <td>{{$supplier->Stel}}</td>
                         <td>{{$supplier->Saddress}}</td>
-                        <td><button type="button" onclick="getSupplier('{{$supplier->ssid}}')" id="update" value="{{$supplier->ssid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
 
+                    <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="ion-android-add-circle"></i>&nbsp</button></td>
                     <td><button type="button" value="{{$supplier->ssid}}" class="btn btn-danger" onclick="deleteSupplier('{{$supplier->ssid}}')"><i class="fa fa-trash"></i></button></td>
 
                     </tr>
 
                 @endforeach
+                <script type="text/javascript">
+                  function ok(){
+                    alert("okay");
+                  }
+                </script>>
 
                 </tbody></table>
                   <script>
@@ -750,18 +758,20 @@ function formValidate(){
 
                    <script>
                               function getSupplier(ssid) {  
-                                  document.getElementById('ssid').value = ssid;
+
+                                  document.getElementById('Ussid').value = ssid;
                                   $.ajax({
                                       type: "get",
                                       url: 'fillSupplier',
                                       data: {ssid: ssid},
                                       success: function(x) {
                                           var details = JSON.parse(x);
-                                          document.getElementById('ssid').value=details[0].ssid;
-                                          document.getElementById('Sname').value = details[0].Sname;
-                                          document.getElementById('Semail').value = details[0].Semail;
-                                          document.getElementById('Stel').value = details[0].Stel;
-                                          document.getElementById('Saddress').value = details[0].Saddress;
+                                        //   document.getElementById('save').value=details[0].eid;
+                                          document.getElementById('save').value=details[0].ssid;
+                                          document.getElementById('USname').value = details[0].Sname;
+                                          document.getElementById('USemail').value = details[0].Semail;
+                                          document.getElementById('UStel').value = details[0].Stel;
+                                          // document.getElementById('USaddress').value = details[0].Saddress;
                                           
                                       },
                                       error:function(){
@@ -770,10 +780,10 @@ function formValidate(){
                               }
                               function updateSupplier() {
                                   var ssid = document.getElementById('save').value;
-                                  var Sname = document.getElementById('Sname').value;
-                                  var Semail = document.getElementById('Semail').value;
-                                  var Stel = document.getElementById('Stel').value;
-                                  var Saddress = document.getElementById('Saddress').value;
+                                  var Sname = document.getElementById('USname').value;
+                                  var Semail = document.getElementById('USemail').value;
+                                  var Stel = document.getElementById('UStel').value;
+                                  // var Saddress = document.getElementById('USaddress').value;
                              
                                   $.ajax({
                                       type: "get",
@@ -791,7 +801,7 @@ function formValidate(){
                                           },
                                           function(isConfirm){
                                               if (isConfirm){
-                                                  window.location.href="/EmployeeInformation";
+                                                  window.location.href="/Supplier";
                                               }
                                           });
                                       },
@@ -828,6 +838,7 @@ function formValidate(){
 
 
 </div>
+
     </section>
     <!-- /.content -->
   </div>
@@ -871,7 +882,7 @@ function formValidate(){
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Update Employee Information</h4>
+                        <h4 class="modal-title" id="myModal">Update Supply Information</h4>
                     </div>
                     <div class="modal-body">
                         <div class="box box-warning">
@@ -880,15 +891,15 @@ function formValidate(){
                                     
                                     <div class="form-group">
                                         <label>Supplier ID:</label>
-                                        <input type="text" class="form-control" id="ssid" name="ssid" disabled>
+                                        <input type="text" class="form-control" id="Ussid" name="Ussid" disabled>
                                         <label>Supplier Name:</label>
-                                        <input type="text" class="form-control" id="Sname" name="Sname">
+                                        <input type="text" class="form-control" id="USname" name="USname">
                                         <label>Supplier Email</label>
-                                        <input type="text" class="form-control" id="Semail" name="Semail">
+                                        <input type="text" class="form-control" id="USemail" name="USemail">
                                         <label>Supplier Telephone</label>
-                                        <input type="text" class="form-control" id="Stel" name="Stel">
+                                        <input type="text" class="form-control" id="UStel" name="UStel">
                                         <label>Supplier Address</label>
-                                        <input type="text" class="form-control" id="Stel" name="Stel">
+                                        <input type="text" class="form-control" id="USaddress" name="USaddress">
                                         
                                     </div>
                                 </form>
@@ -948,7 +959,7 @@ function formValidate(){
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
     function success() {
-                swal("Successful", "Data Successfully Saved!", "success")
+                swal("Successful", "Supplier Successfully Saved!", "success");
     }
 </script>
 

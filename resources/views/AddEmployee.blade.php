@@ -195,7 +195,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="box">
-                                    <form class="form-horizontal" action="added" method="post">
+                                    <form class="form-horizontal" action="added" method="post" onsubmit="return validate()">
                                         {{--@if (count($errors))>0--}}
                                         {{--<div class="alert alert-danger">--}}
                                             {{--<strong>Save Failed</strong><br><br>--}}
@@ -212,7 +212,14 @@
                                                 <label for="inputName" class="col-sm-2 control-label">Name</label>
 
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" required name="name" id="name" placeholder="Enter name" style="width:80%">
+                                                    <input type="text" class="form-control" pattern="^[a-zA-Z\s]*$" required name="name" id="name" placeholder="Enter name" title='only letters' style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputn" class="col-sm-2 control-label">NIC</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control" required name="nic" id="nic" placeholder="Enter NIC" pattern="^\d{9}[V]$" title='NIC format (Format: XXXXXXXXXV)' style="width:80%">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -251,13 +258,13 @@
                                                 <label for="inputAddress" class="col-sm-2 control-label">Address</label>
 
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="address" id="address" placeholder="Enter address" style="width:80%">
+                                                    <input type="text" class="form-control" pattern="^[a-zA-Z\s]*$" name="address" required id="address" title='only letters' placeholder="Enter address" style="width:80%">
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputtp" class="col-sm-2 control-label">Contact No.</label>
+                                                <label for="inputtp" class="col-sm-2 control-label" >Contact No.</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter telephone no" style="width:80%">
+                                                    <input type="text" class="form-control" name="phone"  required id="phone" pattern="^\d{4}\d{3}\d{3}$" title='(Format: XXXXXXXXXX)' placeholder="Enter telephone no" style="width:80%">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -267,7 +274,7 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="date" name="date" id="date" class="form-control">
+                                                        <input type="date" name="date" required id="date" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
@@ -277,13 +284,13 @@
                                                 <div class="col-sm-10" align="left" style="left: 100px">
                                                     <div class="radio">
                                                         <label>
-                                                            <input type="radio" name="optionsRadios2" id="optionsRadios2" value="janitorial" checked="">
+                                                            <input type="radio" required name="optionsRadios2" id="optionsRadios2" value="janitorial" checked="">
                                                             Janitorial
                                                         </label>
                                                     </div>
                                                     <div class="radio">
                                                         <label>
-                                                            <input type="radio" name="optionsRadios2" id="optionsRadios2" value="vehicle" checked="">
+                                                            <input type="radio" required name="optionsRadios2" id="optionsRadios2" value="vehicle" checked="">
                                                             Vehicle Grooming and Valet
                                                         </label>
                                                     </div>
@@ -329,15 +336,39 @@
 
                                         </div>
                                         <!-- /.box-body -->
+                                        <script>
+                                            function validate(){
+                                                var designation = document.getElementById('designation').value;
+                                                var manager = document.getElementById('manager').value;
+                                                var branch = document.getElementById('branch').value;
+                                                if(designation=="Select Designation"){
+                                                    alert("Please select a designation");
+                                                    return false;
+                                                }
+                                                else if(branch == "Select branch"){
+                                                    alert("Please select a branch");
+                                                    return false;
 
+                                                }
+                                                else if(manager == "Select Manager"){
+                                                    alert("Please select a manager");
+                                                    return false;
+                                                }
+                                            }
+                                        </script>
                                         <div class="box-footer">
 
                                             <button type="submit" class="btn btn-primary pull-center">Add Employee</button>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
                                         </div>
                                         <!-- /.box-footer -->
+                                        <script>
+                                            function success() {
+                                                swal("Successful", "Data Successfully Saved!", "success")
+                                                location.reload();
+                                            }
+                                        </script>
                                     </form>
                                     <!-- /.box-body -->
                                 </div>
@@ -362,25 +393,26 @@
                             <div class="col-xs-12">
                                 <div class="box">
                                     <!-- /.box-body -->
-                                    <form class="form-horizontal">
+                                    <form class="form-horizontal" onsubmit="return schedule()">
                                         <div class="box-body">
                                             <div class="form-group">
                                                 <label for="name" class="col-sm-2 control-label">Candidate Name</label>
 
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="can_name" id="can_name" placeholder="Enter name" style="width:80%">
+                                                    <input type="text" class="form-control" name="can_name" id="can_name" pattern="^[a-zA-Z\s]*$" title='(only letters)' required placeholder="Enter name" style="width:80%">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="phone" class="col-sm-2 control-label">Contact No.</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="can_phone" id="can_phone" placeholder="Enter telephone no" style="width:80%">
+                                                    <input type="text" class="form-control" name="can_phone" id="can_phone" required  pattern="^\d{4}\d{3}\d{3}$" title='(Format: XXXXXXXXXX)'
+                                                           placeholder="Enter telephone no" style="width:80%">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="position" class="col-sm-2 control-label">Position</label>
                                                 <div class="col-sm-10">
-                                                    <input type="text" class="form-control" name="can_position" id="can_position" placeholder="Enter position" style="width:80%">
+                                                    <input type="text" class="form-control" name="can_position" id="can_position"pattern="^[a-zA-Z\s]*$" title='(only letters)' required placeholder="Enter position" style="width:80%">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -393,7 +425,7 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="date" class="form-control" name="initial_date" id="initial_date">
+                                                        <input type="date" class="form-control" required name="initial_date" id="initial_date">
                                                     </div>
                                                 </div>
                                             </div>
@@ -407,7 +439,7 @@
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="time" class="form-control" name="initial_time" id="initial_time">
+                                                        <input type="time" class="form-control" required name="initial_time" id="initial_time">
                                                     </div>
                                                 </div>
                                             </div>
@@ -416,7 +448,7 @@
 
                                         <div class="box-footer">
 
-                                            <button type="button" onclick="schedule()" class="btn btn-primary pull-center">Schedule</button>
+                                            <button type="submit" class="btn btn-primary pull-center">Schedule</button>
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             {{--<button type="submit" class="btn btn-danger pull-center">Cancel</button>--}}
@@ -428,23 +460,41 @@
                             </div>
                             <script>
                                 function schedule() {
+                                    var today = new Date();
+                                    var format = today.toISOString().substring(0, 10);
                                     var name = document.getElementById('can_name').value;
                                     var position = document.getElementById('can_position').value;
                                     var date = document.getElementById('initial_date').value;
                                     var time = document.getElementById('initial_time').value;
                                     var contact = document.getElementById('can_phone').value;
-                                    $.ajax({
-                                        type: 'get',
-                                        url: 'scheduleInterview',
-                                        data: {name: name, position:position, date:date,time:time,contact:contact},
-                                        success: function(x) {
-                                            swal("Successful", "Data Successfully Saved!", "success");
-                                            location.reload();
-                                        },
-                                        error:function(x,y,z){
-                                            swal("Successful", "Data Not Saved!"+z, "error");
-                                        }
-                                    });
+                                    if(Date.parse(format)>Date.parse(date)){
+                                        alert("invalid date");
+                                        return false;
+                                    }else {
+                                        $.ajax({
+                                            type: 'get',
+                                            url: 'scheduleInterview',
+                                            data: {
+                                                name: name,
+                                                position: position,
+                                                date: date,
+                                                time: time,
+                                                contact: contact
+                                            },
+                                            success: function (x) {
+                                                if(x == 0) {
+                                                    swal("Successful", "Data Successfully Saved!", "success");
+                                                    location.reload();
+                                                }
+                                                else{
+                                                    swal("Failed", "Data Not Saved!" + z, "error");
+                                                }
+                                            },
+                                            error: function (x, y, z) {
+                                                swal("Failed", "Data Not Saved!" + z, "error");
+                                            }
+                                        });
+                                    }
                                 }
                             </script>
                         </div>
@@ -563,9 +613,9 @@
                                     <label>Name:</label>
                                     <input type="text" class="form-control" id="can2_name" disabled>
                                     <label>date:</label>
-                                    <input type="date" class="form-control" id="can_date">
+                                    <input type="date" class="form-control" id="can_date" required>
                                     <label>time:</label>
-                                    <input type="time" class="form-control" id="can_time">
+                                    <input type="time" class="form-control" id="can_time" required>
                                 </div>
                             </form>
                         </div>
@@ -581,22 +631,28 @@
 
             <script>
                 function saveInterview() {
+                    var today = new Date();
+                    var format = today.toISOString().substring(0, 10);
                     var id = document.getElementById('can_id').value;
                     var name = document.getElementById('can2_name').value;
                     var date = document.getElementById('can_date').value;
                     var time = document.getElementById('can_time').value;
+//                    if(Date.parse(format)>Date.parse(date)){
+//                        alert("invalid date");
+//                        return false;
+//                    }
                     $.ajax({
                         type: "get",
                         url: 'saveInterview',
                         data: {id:id, name:name, date:date, time:time},
                         success: function() {
                             swal("Successful", "Updated!", "success");
-                            location.reload();
+
                         },
                         error: function(x,y,z){
                             swal("Error!", z,"error");
                         }
-                    })
+                    });
 
                 }
             </script>

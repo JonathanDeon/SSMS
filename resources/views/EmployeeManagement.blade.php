@@ -1,28 +1,40 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>Customer Management | Register Customer</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-        page. However, you can choose any other skin. Make sure you
-        apply the skin class to the body tag so the changes take effect.
-  -->
-  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+ 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+ <script src="../../dist/js/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"> </script>
   <style>
             .btn-floating {
                 display: inline-block;
@@ -134,90 +146,85 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         </style>
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+
+ 
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
-  <!-- Main Header -->
   <header class="main-header">
-
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+     <a href="welcome" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>AGM</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Auto</b>Gleam</span>
     </a>
-
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
-      <!-- Navbar Right Menu -->
-     
-    </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
-
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
+      <!-- Sidebar user panel -->
 
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-
-      <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-
-      <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-        <!-- Optionally, you can add icons to the links -->
+        
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>Customer Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+            <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+            <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+            <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+            <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
+            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+           <i class="fa fa-car"></i> <span>Service Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
+            <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
+            <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
+            <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
+          </ul>
+       </li>
+
+
+      <li class="treeview">
+         <a href="#">
+          <i class="fa fa-users"></i><span>Employee Management</span>
+          
+            <i class="fa fa-angle-left pull-right"></i>
+           </span>
+           </a>
+            <ul class="treeview-menu">
+              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+            </ul>
+       </li>
+
+      
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i>Janitorial Service Management<span></span>
             <span class="pull-right-container">
@@ -231,8 +238,53 @@ desired effect
             <li><a href="order">Order Managment</a></li>
           </ul>
         </li>
+      
+
+       <li class="treeview">
+         <a href="#">
+          <i class="fa fa-money"></i><span>Finance Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+           </a>
+            <ul class="treeview-menu">
+              <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
+              <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+              <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
+              <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
+            </ul>
+       </li>
+    
+        <li class="treeview">
+         <a href="#">
+          <i class="fa fa-cube"></i><span>Inventory Management</span>        
+            <i class="fa fa-angle-left pull-right"></i>
+           </a>
+            <ul class="treeview-menu">
+              <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
+              <li><a href="inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+              <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
+              <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
+              <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
+              <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
+              <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
+            </ul>
+       </li>
+
+       <li class="treeview">
+         <a href="#">
+          <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+           </a>
+            <ul class="treeview-menu">
+              <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
+              <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
+              <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
+              <li><a href="OverWorkedEmp"><i class="fa fa-plus-circle"></i>Over Worked Employees</a></li>
+              <li><a href="RequestEmployee"><i class="fa fa-plus-circle"></i>Request Employee</a></li>
+              <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
+            </ul>
+       </li>
+
       </ul>
-      <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -242,15 +294,19 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Employee Details Management
+        Register Customer
       </h1>
-      
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Customer Management</a></li>
+        <li class="active">Register Customer</li>
+      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
 
-    <div class="main">
+      <div class="main">
       <div class="container-fluid">
           <div class="clearfix"></div>
           <br>
@@ -258,23 +314,28 @@ desired effect
               <div class="box-body">
                 <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                   <div class="row">
-                    <div class="col-sm-6">
-                      <div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                    <div class="col-sm-8">
+                      <div class="dataTables_length" id="example1_length"> <label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-4"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row">
+
+                      <div class="col-sm-12">
+                      <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                       <thead>
-                      <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Employee ID</th><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Name</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Address</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Phone</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">JoinedDate</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Position</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Salary</th></tr>
+                      <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Name</th><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Address</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">NIC</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Phone</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Date of Birth</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">JoinedDate</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Gender</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Position</th>
+                      <!--<th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Salary</th> --> </tr>
                       </thead>
                         <tbody>
                         @foreach ($employees as $employee) 
                           <tr role="row" class="odd">
-                            <td class="sorting_1">{{ $employee->janEmpId }}</td>
-                            <td>{{ $employee->name }}</td>
+                            <td class="sorting_1">{{ $employee->name }}</td>
                             <td>{{ $employee->address }}</td>
-                            <td>{{ $employee->phone }}</td>
-                            <td>{{ $employee->joinedDate }}</td>
-                            <td>{{ $employee->position }}</td>
-                            <td>{{ $employee->salary }}</td>
-                            <td><button class="btn btn-warning" value="{{$employee->janEmpId}}" data-toggle="modal" data-target="#employeeModal" >Update</button>
-                            <button class="btn btn-danger">Delete</button></td>
+                            <td>{{ $employee->NIC }}</td>
+                            <td>{{ $employee->contact }}</td>
+                            <td>{{ $employee->dob }}</td>
+                            <td>{{ $employee->joined_date }}</td>
+                            <td>{{ $employee->gender }}</td>
+                            <td>{{ $employee->designation }}</td>
+                            
+                            <td><button class="btn btn-danger" value="{{$employee->eid}}"  onclick="deleteEmployee('{{$employee->eid}}')">Delete</button></td>
                           </tr>
                         @endforeach                                        
                         </tbody>
@@ -282,64 +343,8 @@ desired effect
 
                         <script>
 
-                        function getEmployee(updateEmp) {
-                          document.getElementById('empid').value = id;
-                            $.ajax({
-                            type: "get",
-                            url: 'fillEmployee',
-                            data: {id: id},
-                            success: function(x) {
-                            var details = JSON.parse(x);
-                              document.getElementById('janEmpId').value=details[0].janEmpId;
-                              document.getElementById('name').value = details[0].name;
-                              document.getElementById('address').checked = details[0].address;
-                              document.getElementById('phone').value = details[0].phone;
-                              document.getElementById('dateJoined').value = details[0].joinedDate;
-                              document.getElementById('pos').value = details[0].position;
-                              document.getElementById('sal').value = details[0].salary;
-
-                                      },
-                                      error:function(){
-                                      }
-                                  })
-                              }
-
-                        function updateEmp() {
-                                  var Empid = document.getElementById('janEmpId').value;
-                                  var ename = document.getElementById('name').value;
-                                  var address = document.getElementById('address').value;
-                                  var phone = document.getElementById('phone').value;
-                                  var dateJoined = document.getElementById('joinedDate').value;
-                                  var position = document.getElementById('pos').value;
-                                  var salary = document.getElementById('sal').value;
-
-                                  $.ajax({
-                                      type: "get",
-                                      url: 'updateEmployee',
-                                      data: {Empid:janEMpId,ename:name,address:address,phone:phone,dateJoined:joinedDate,position:pos,salary:sal},
-                                      success: function() {
-                                          swal({
-                                              title: "Success!",
-                                              text: "successfully updated the employee information",
-                                              type: "success",
-                                              showCancelButton: false,
-                                              confirmButtonColor: '#1D84FF',
-                                              confirmButtonText: 'Ok',
-                                              closeOnConfirm: true
-                                          },
-                                          function(isConfirm){
-                                              if (isConfirm){
-                                                  window.location.href="/EmployeeManagement";
-                                              }
-                                          });
-                                      },
-                                      error: function(){
-                                          swal("Error!","Employee information update failed!", "error");
-                                      }
-                                  })
-                              } 
-
-                              function deleteEmployee(empId) {
+                        function deleteEmployee(eid) {
+                              alert(eid);
                               swal({
                                 title: "Are you sure you want to delete?",
                                 text: "You will not be able to recover this record!",
@@ -351,11 +356,11 @@ desired effect
 
                               function(confirm){
                                 if(confirm) {
-                                  alert("test"+empId);
+                                
                                   $.ajax({
                                   method:'get',
                                   url:'deleteEmployee',
-                                  data:{eid:empId},
+                                  data:{eid:eid},
                                   success:function(){
                                     swal({
                                         title: "Deleted!",
@@ -416,15 +421,7 @@ desired effect
                                   </div> -->
                                   <form role="form" method="POST" action="{{url('addEmp')}}"> 
                                   <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-                                  <div class="row">
-                                  <div class="form-group">
-                                    <div style="text-align: left"class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Employee ID</div>
-                                    <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
-                                    <input id="empid" name="empid" type="text" placeholder="" class="form-control input-md" required>      
-                                      </div>
-                                  </div>
-                                  </div><br />
-
+                                  
                                   <div class="row">
                                   <div class="form-group">
                                     <div style="text-align: left"class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Name</div>
@@ -445,10 +442,28 @@ desired effect
 
                                   <div class="row">
                                   <div class="form-group">
+                                    <div style="text-align: left"class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">NIC</div>
+                                    <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
+                                    <input id="NIC" name="NIC" type="text" placeholder="" class="form-control input-md" required min="0">      
+                                      </div>
+                                  </div>
+                                  </div><br />
+
+                                  <div class="row">
+                                  <div class="form-group">
                                   <div style="text-align: left"class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Phone</div>
                                   <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
-                                  <input id="phone" name="phone" type="number" min="0" placeholder="" class="form-control input-md" required>     
+                                  <input id="phone" name="phone" type="number" min="0" placeholder="" class="form-control input-md" required min="0">     
                                   </div>
+                                  </div>
+                                  </div><br />
+
+                                  <div class="row">
+                                  <div class="form-group">
+                                    <div style="text-align: left"class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Date of Birth</div>
+                                    <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
+                                    <input id="dob" name="dob" type="date" placeholder="" class="form-control input-md" required>      
+                                      </div>
                                   </div>
                                   </div><br />
 
@@ -460,16 +475,28 @@ desired effect
                                   </div>
                                   </div>
                                   </div><br />
-                                                        
+                                  
+                                  <div class="row">
+                                  <div class="form-group">
+                                    <div style="text-align: left"class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Gender</div>
+                                    <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
+                                    <div class="radio">
+                                      <label><input type="radio" name="gender" value="male" >Male</label>
+                                      <label><input type="radio" name="gender" value="female">Female</label>
+                                      </div>     
+                                      </div>
+                                  </div>
+                                  </div><br />
+
                                   <div class="row">
                                   <div class="form-group">
                                   <div style="text-align: left"class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Position</div>
                                   <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
-                                  <input id="pos" name="pos" type="text" placeholder="" class="form-control input-md">     
+                                  <input id="pos" name="pos" type="number" placeholder="(Supervisor=1,Janitor=2)" class="form-control input-md" required min="0">     
                                   </div>
                                   </div>                            
                                   </div><br />
-
+<!--
                                   <div class="row">
                                   <div class="form-group">
                                   <div style="text-align: left"class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Salary</div>
@@ -478,6 +505,7 @@ desired effect
                                   </div>
                                   </div>
                                   </div><br />
+                                  -->
                                   
                                 </div>
                               </div>
@@ -497,107 +525,26 @@ desired effect
 
 
     </div>
+
       
+      </section>
 
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
 
-  <!-- Main Footer -->
-  
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript::;">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript::;">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="pull-right-container">
-                  <span class="label label-danger pull-right">70%</span>
-                </span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-</div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery 2.2.0 -->
+<script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
+<script src="../../dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+
+
+
 </body>
 </html>

@@ -39,6 +39,10 @@
                 swal("Invalid Field : "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
     }
 
+   function success() {
+                swal("Successful", "New Item Successfully Saved!", "success");
+    }
+
 
 
 
@@ -78,9 +82,11 @@ function formValidate(){
             if(!isnotnum(price,"Unit Value"))
           if(!greaterz(price,"Unit Value"))
        
-
+          {
+            success();
         return true;
-      
+        }
+          
               else
         return false;
     
@@ -406,6 +412,7 @@ function inc() {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+</nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -437,7 +444,7 @@ function inc() {
           </a>
           <ul class="treeview-menu">
             <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
             <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
             <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
             <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
@@ -517,6 +524,7 @@ function inc() {
     </section>
     
   </aside>
+
 
   
   <div class="content-wrapper">
@@ -635,7 +643,7 @@ function inc() {
              </div>
     </div>
        
-      
+</section>
   </div>
 <!-- ./wrapper -->
 <!-- jQuery 2.2.0 -->

@@ -182,15 +182,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <ul class="nav nav-tabs" style="background-color:#B1C4E6">
                     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">New Salary Details</a>
                     <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Employee Salary Details</a></li>
-                    <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Monthly Salary Details</a></li>
-                    <li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Employee Fund Details</a></li>
+                    {{--<li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Monthly Salary Details</a></li>--}}
+                    {{--<li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Employee Fund Details</a></li>--}}
                 </ul>
             </div>
             <script>
                 function updateSalary(){
                     var designation = document.getElementById('designation').value;
                     var basic = document.getElementById('basic').value;
-                    var allowance = document.getElementById('allowance').value;
                     $.ajax({
                         type:'get',
                         url:'addSalary',
@@ -266,7 +265,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                  </div>
 
                 <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_2">
+                <div class="tab-pane" id="tab_3">
                     <div class="box-body table-responsive no-padding">
                         <table class="table table-hover">
                             <tbody>
@@ -358,7 +357,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_3">
+                <div class="tab-pane" id="tab_2">
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title"></h3>

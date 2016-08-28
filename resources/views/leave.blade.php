@@ -366,7 +366,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             if($allLeave->approved==0)
                                                 echo '<td><span class="label label-warning">Pending</span></td>';
                                             else if($allLeave->approved==1)
-                                                echo '<td><span class="label label-acceptLeave">Approved</span></td>';
+                                                echo '<td><span class="label label-success">Approved</span></td>';
                                             else if($allLeave->approved==2)
                                                 echo '<td><span class="label label-danger">Declined</span></td>';
                                             ?>
@@ -494,7 +494,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <button type="button" class="btn btn-primary pull-center" onclick="recordLeave()">Submit</button>
+                                    <button type="button" class="btn btn-primary pull-center" onclick="return recordLeave()">Submit</button>
                                 </div>
                                 </form>
                             </div>
@@ -507,7 +507,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             var start_date = document.getElementById('start_date').value;
                             var end_date = document.getElementById('end_date').value;
                             var reason = document.getElementById('reason').value;
-
+                            console.log(start_date);
+                            if(Date.parse(start_date)>Date.parse(end_date)) {
+                                alert("invalid date");
+                                return false;
+                            }
                             $.ajax({
                                 type: 'get',
                                 url: 'recordLeave',
@@ -528,7 +532,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             });
                                 },
                                 error: function(){
-                                    swal("Warnin!","Failed to record leave!", "warning")
+                                    swal("Warning!","Failed to record leave!", "warning")
                                 }
                             })
                         }

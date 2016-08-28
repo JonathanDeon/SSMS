@@ -47,6 +47,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+ <script src="../../dist/js/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"> </script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -85,7 +92,7 @@ desired effect
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg"><b>Auto</b>Gleam</span>
     </a>
 
     <!-- Header Navbar -->
@@ -103,62 +110,107 @@ desired effect
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
+      <!-- Sidebar user panel -->
 
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Alexander Pierce</p>
-          <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-        </div>
-      </div>
-
-      <!-- search form (Optional) -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
-              <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
-
-      <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
-        <li class="header">Work Shift Management</li>
-        <!-- Optionally, you can add icons to the links -->
-        <li><a href="create"><i class="fa fa-link"></i> <span>Create Shifts</span></a></li>
-        <li><a href="assign"><i class="fa fa-link"></i> <span>Assign Employees</span></a></li>
-          <li class="treeview">
-          <a><i class="fa fa-link"></i> <span>Manage Employees</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>Customer Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="replace">Replace Employees</a></li>
-            <li><a href="request">Request Employees</a></li>
-          </ul>
-        </li>  <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Shift Analysis</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="efficiency">Efficiency Analysis</a></li>
-            <li><a href="OW">Over-worked Employee Report</a></li>
+            <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+            <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+            <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+            <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+            <li class="active"><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
+            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
           </ul>
         </li>
-        
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-car"></i> <span>Service Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
+            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
+            <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
+            <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
+            <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i><span>Employee Management</span>
+
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+            <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+            <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+            <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+            <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="Janitorial">
+            <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-money"></i><span>Finance Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
+            <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+            <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
+            <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cube"></i><span>Inventory Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
+            <li><a href="inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+            <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
+            <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
+            <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
+            <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
+            <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
+            <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
+            <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
+          </ul>
+        </li>
+
       </ul>
-      <!-- /.sidebar-menu -->
     </section>
+
     <!-- /.sidebar -->
   </aside>
 
@@ -274,7 +326,7 @@ desired effect
 
         </div>
 
-        <form role="form" method="POST" action="{{url('selectshift')}}"> 
+        <form role="form" method="POST" action="{{url('selectsift')}}"> 
             <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
 
         <div class="box-body">
@@ -289,7 +341,7 @@ desired effect
 
               @foreach ($branches as $branch)
 
-                <option>{{ $branch->Branch_name }}</option>
+                <option>{{ $branch->bname }}</option>
                 
              @endforeach       
               </select>
@@ -389,16 +441,12 @@ desired effect
             <div class="box-header">
               <h3 class="box-title">Assignable Employees</h3>
 
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+              
 
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
+                  
                 </div>
               </div>
-            </div>
+            
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
@@ -407,6 +455,7 @@ desired effect
                   <th>Providing Services</th>
                   <th>Efficiency</th>
                   <th>Over-worked percentage</th>
+                  <th></th>
                   <th></th>
                 </tr>
 
@@ -422,7 +471,8 @@ desired effect
                     </div>
                   </td>
                   <td align="center"><span class="badge bg-red">55%</span></td>
-          <td><button type="button" value="{{$employee->eid}}" class="btn btn-success" onclick="addEmployee('{{$employee->eid}}')"><i class="fa fa-trash"></i></button></td>
+          <td><button type="button" value="{{$employee->eid}}" class="btn btn-success" onclick="addEmployee('{{$employee->eid}}')">Assign</button></td>
+                  <td><button type="submit" class="btn btn-danger" value="{{$employee->eid}}"  onclick="deleteEmployee('{{$employee->eid}}')">Delete</button></td>
                 </tr>
                 @endforeach
                 @endif
@@ -446,7 +496,7 @@ desired effect
                     type: "success",
                     showCancelButton: true,
                     confirmButtonColor: "#75c92c",
-                    confirmButtonText: "Add",
+                    confirmButtonText: "OK",
                     closeOnConfirm: false },
                 function(confirm){
                         if(confirm) {
@@ -454,19 +504,20 @@ desired effect
                             $.ajax({
                                 method:'get',
                                 url:'addEmployee',
-                                data:{empid:empId},
+                                data:{empId:empId},
                                 success:function(){
                                     swal({
-                                        title: "Add!",
+                                        title: "Added!",
                                         text: "Successfully added the employee record!",
                                         type: "Success",
                                         showCancelButton: false,
                                         confirmButtonColor: "#75c92c",
                                         confirmButtonText: "Ok",
-                                        closeOnConfirm: false },
+                                        closeOnConfirm: true },
                                             function (confirm) {
                                                 location.reload();
-                                            });
+                                            }});
+
                                 },
                                 error:function(x,y,thrownError){
                                     console.log(thrownError);
@@ -482,6 +533,55 @@ desired effect
                 location.reload();
     }
 </script>
+
+<script>
+                        function deleteEmployee(EmpID) {
+
+                          alert(EmpID);
+                              swal({
+                                title: "Are you sure you want to delete?",
+                                text: "You will not be able to recover this record!",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Delete",
+                                closeOnConfirm: false }),
+                              function(confirm){
+                                if(confirm) {
+                                
+                                  $.ajax({
+                                  method:'get',
+                                  url:'deleteEmploy',
+                                  data:{EmpID:EmpID},
+                                  success:function(){
+                                    swal({
+                                        title: "Deleted!",
+                                        text: "Successfully deleted the employee record!",
+                                        type: "warning",
+                                        showCancelButton: false,
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "Ok",
+                                        closeOnConfirm: false },
+                                            function (confirm) {
+                                               // location.reload();
+                                            });
+                                },
+                                error:function(x,y,thrownError){
+                                    console.log(thrownError);
+                                }
+                              });
+                            }
+                            else{
+                            }
+                          }
+                          );
+                          }
+    
+                          function success() {
+                            swal("Successful", "Data Successfully Saved!", "success")
+                            location.reload();
+                          } 
+                        </script>
 
 
 
@@ -596,6 +696,12 @@ desired effect
 <script src="dist/js/app.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+ <script src="../../dist/js/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"> </script>
 
 
 </body>

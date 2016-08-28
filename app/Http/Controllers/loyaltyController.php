@@ -14,7 +14,8 @@ class loyaltyController extends Controller
    public function getCustomerName(){
     	
         
-		$customers = \DB::select("select name,cus_id from customers");
+		$customers = \DB::select("select name,cus_id from customer");
+	
 		//return $customers;
     	return view('CustomerLoyalty',compact('customers'));
 
@@ -22,6 +23,19 @@ class loyaltyController extends Controller
    	//echo "test";
     }
 
+    public function addloyalty(Request $request){
+             
+        // $name = $request->input('cusname');
+        $id = $request->input('cusname');
+        $fromm = $request->input('from');
+        $to = $request->input('to');
+       	$discount = $request->input('discount');
 
-   
+        DB::statement(
+            "INSERT INTO loyalty(cusid,discount,fromDate,toDate)
+            VALUES ('$id','$discount','$fromm','$to')"); 
+
+
+        return redirect('CustomerLoyalty');
+}
 }

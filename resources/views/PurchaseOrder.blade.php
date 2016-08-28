@@ -366,7 +366,7 @@
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
     function success() {
-                swal("Successful", "Data Successfully Saved!", "success")
+                swal("Successful", "Data Successfully Saved!", "success");
     }
 </script>
 </body>

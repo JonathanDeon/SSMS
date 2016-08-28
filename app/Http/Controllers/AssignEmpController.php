@@ -17,11 +17,17 @@ class AssignEmpController extends Controller
 
 	 public function loadAssignEmployee()
   	{
-      $branches = DB::select('select * from branches');
+      $branches = DB::select('select * from branch');
       $employees = null;
   		return view('AssignEmp',compact('branches','employees'));
     }
 
+    public function deleteEmployee(Request $request)
+    {
+        $EmpID = $request['EmpID'];
+        $deletedRecord=DB::statement("DELETE FROM empinplans WHERE EmpID = '$EmpID'");
+    }
+    
     public function getemp(Request $request)
 
     {
@@ -29,7 +35,7 @@ class AssignEmpController extends Controller
       $Time = $request->input('selectTime');
       $Bname = $request->input('SelectBranch1');
 
-     $BID = DB::select("select id from branches where Branch_name='$Bname'");
+     $BID = DB::select("select id from branch where bname='$Bname'");
 
      $id=$BID[0]->id;
 
@@ -37,13 +43,14 @@ class AssignEmpController extends Controller
 
     //var_dump($employees);
 
-    $plan = DB::select("select * from shiftplans where BID='$id' AND day='$Day' AND Tim='Time'");
+    $plan = DB::select("select * from shiftplans where BID='$id' AND day='$Day' AND Tim='$Time'");
 
 
-      $branches = DB::select('select * from branches');
+      $branches = DB::select('select * from branch');
       
   		return view('AssignEmp',compact('branches','employees'));
   	}
+
      public function addEmployeeShift(Request $request){
         $empid=$request['empId'];
         $x=4;

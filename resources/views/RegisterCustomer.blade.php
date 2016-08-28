@@ -197,6 +197,42 @@
             </div>
              <form role="form" method="POST" action="{{url('RegisterCustomer')}}">
                  @if (count($errors) > 0)
+                <!--  <script>
+                    // Run on page load
+                    window.onload = function() {
+
+                        // If sessionStorage is storing default values (ex. name), exit the function and do not restore data
+                        if (sessionStorage.getItem('name') == "name") {
+                            return;
+                        }
+
+                        // If values are not blank, restore them to the fields
+                        var name = sessionStorage.getItem('name');
+                        if (name !== null) $('#CusName').val(name);
+
+                        var email = sessionStorage.getItem('email');
+                        if (email !== null) $('#CusEmail').val(email);
+
+                        // var subject= sessionStorage.getItem('subject');
+                        // if (subject!== null) $('#inputSubject').val(subject);
+
+                        // var message= sessionStorage.getItem('message');
+                        // if (message!== null) $('#inputMessage').val(message);
+                    }
+
+                    // Before refreshing the page, save the form data to sessionStorage
+                    window.onbeforeunload = function() {
+                        sessionStorage.setItem("name", $('#CusName').val());
+                        sessionStorage.setItem("email", $('#CusEmail').val());
+                        // sessionStorage.setItem("subject", $('#inputSubject').val());
+                        // sessionStorage.setItem("message", $('#inputMessage').val());
+                    }
+                </script> -->
+                <script>
+                    function myFunction() {
+                     location.reload();
+                      }
+               </script>                                          
               <div class="alert alert-danger">
                 <strong>Save Failed</strong><br><br>
                 <ul>
@@ -222,57 +258,49 @@
               <div class="box-body">
                <div class="col-md-6">
                  <div class="form-group">
-                  <label for="EnterCusname">Full Name</label>
-                  <input type="text" class="form-control" id="CusName" name="CusName" placeholder="Enter Name" size="10" required>
+                  <label for="EnterCusname">Full Name<font color="red">*</font></label>
+                  <input type="text" class="form-control" id="CusName" name="CusName" placeholder="Enter Name" size="10">
                 </div>
 
                 <div class="form-group">
-                  <label for="EnterCusEmail1">Email address</label>
-                  <input type="email" class="form-control" id="CusEmail" name="CusEmail" placeholder="Enter email">
+                  <label for="EnterCusEmail1">Email address<font color="red">*</font></label>
+                  <input type="text" class="form-control" id="CusEmail" name="CusEmail" placeholder="Enter email">
                 </div>
 
                 <div class="form-group">
-                  <label for="Cusnumber">Telephone</label>
+                  <label for="Cusnumber">Telephone<font color="red">*</font></label>
                   <input type="text" class="form-control" id="Custele" name="cusTele" placeholder="Telephone">
                 </div> 
 
                 <div class="form-group">
-                  <label for="EnterAdd1">Address Line 1</label>
-                  <input type="text" class="form-control" id="CusAdd1" name="CusAdd1" placeholder="Enter Address Line 1" size="10" required>
+                  <label for="EnterAdd1">Address</label>
+                  <input type="text" class="form-control" id="CusAdd" name="CusAdd" placeholder="Enter Address" size="10">
                 </div>
 
-                <div class="form-group">
-                  <label for="EnterAdd2">Address Line 2</label>
-                  <input type="text" class="form-control" id="CusAdd2" name="CusAdd2" placeholder="Enter Address Line 2" size="10" required>
-                </div>
-
-                <div class="form-group">
-                  <label for="EnterAdd3">Address Line 3</label>
-                  <input type="text" class="form-control" id="CusAdd3" name="CusAdd3" placeholder="Enter Address Line 3" size="10" required>
-                </div>
-              
                </div>
                  <div class="col-md-6" position=50%>              
 
                  
                 <div class="form-group">
+                @foreach ($cusid as $cusid)
                   <label for="GenCusID">Customer ID</label>
-                  <input type="text" class="form-control" id="CusIdGen" disabled="">
+                  <input type="text" class="form-control" value="{{$cusid->AUTO_INCREMENT}}" id="CusIdGen" disabled="">
+               @endforeach
                 </div> 
                 
                  <div class="form-group">
-                  <label for="enterNIC">NIC No.</label>
-                  <input type="text" class="form-control" name='CusNIC' id="NIC" placeholder="Enter NIC" required>
+                  <label for="enterNIC">NIC No.<font color="red">*</font></label>
+                  <input type="text" class="form-control" name='CusNIC' id="NIC" placeholder="Enter NIC">
                 </div>  
 
                 <div class="form-group">
-                  <label for="EnterCusPassword1">Password</label>
-                  <input type="password" class="form-control" name='CusPW' id="CusPassword1" placeholder="Password" required>
+                  <label for="EnterCusPassword1">Password<font color="red">*</font></label>
+                  <input type="password" class="form-control" name='CusPW' id="CusPassword1" placeholder="Password" >
                 </div>
 
                 <div class="form-group">
-                  <label for="EnterCusPassword2">Confirm Password</label>
-                  <input type="password" class="form-control" name='CusPW_confirmation' id="CusPassword2" placeholder="Confirm Password" required>
+                  <label for="EnterCusPassword2">Confirm Password<font color="red">*</font></label>
+                  <input type="password" class="form-control" name='CusPW_confirmation' id="CusPassword2" placeholder="Confirm Password">
                 </div>    
           
                </div>
@@ -289,7 +317,7 @@
             <div class="box-body">
        
             <div class="form-group" style="width: 100px;">
-                <label>Vehicle Type</label>
+                <label>Vehicle Type<font color="red">*</font></label>
                   <select class="form-control" name="vType">
                     <option>Car</option>
                     <option>Suv</option>
@@ -299,18 +327,18 @@
             </div>
             
             <div class="form-group" style="width:300px;">
-                  <label for="enterVmake">Make</label>
-                  <input type="text" class="form-control" name="vMake" placeholder="Enter Vehicle Make" required>
+                  <label for="enterVmake">Make<font color="red">*</font></label>
+                  <input type="text" class="form-control" name="vMake" placeholder="Enter Vehicle Make" >
             </div>  
 
             <div class="form-group" style="width:300px;">
-                  <label for="enterVmodel">Model</label>
-                  <input type="text" class="form-control" name="vModel" placeholder="Enter Vehicle Model" required>
+                  <label for="enterVmodel">Model<font color="red">*</font></label>
+                  <input type="text" class="form-control" name="vModel" placeholder="Enter Vehicle Model" >
             </div>    
 
             <div class="form-group" style="width:300px;">
-                  <label for="enterVnum">Number Plate</label>
-                  <input type="text" class="form-control" name="vnumbP" placeholder="Enter Vehicle Number Plate" required>
+                  <label for="enterVnum">Number Plate<font color="red">*</font></label>
+                  <input type="text" class="form-control" name="vnumbP" placeholder="Enter Vehicle Number Plate" >
             </div>    
     
       
@@ -348,7 +376,7 @@
             <div class="box-body">
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="example1_length"></div></div><div class="col-sm-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                 <thead>
-                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 50px;">Customer ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 361px;">Customer Name</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Telephone</th>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 50px;">Customer ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 361px;">Customer Name</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Telephone</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Email</th>
                 </thead>
                 <tbody>
                   @foreach($customer as $customer)             
@@ -356,8 +384,9 @@
                   <td class="sorting_1">{{$customer->cus_id}}</td>
                   <td>{{$customer->name}}</td>
                   <td>{{$customer->contactNo}}</td>
-                  <td> <a class="btn btn-success" id="Edit" onclick="getCustomer('{{$customer->cus_id}}')" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a></td>
-                  <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></button></td>
+                  <td>{{$customer->mail}}</td>
+                  <td> <a class="btn btn-success" id="Edit" onclick="getCustomer('{{$customer->cus_id}}'); getVehicle('{{$customer->cus_id}}');" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a></td>
+                  <td><button type="button" class="btn btn-danger" value="{{$customer->cus_id}}" onclick="deleteCustomer('{{$customer->cus_id}}')"><i class="fa fa-trash"></button></td>
                 </tr>
                 @endforeach
 
@@ -373,13 +402,8 @@
       </div>
       </section>
 
-
-
-
-
 <script type="text/javascript">
   function getCustomer(id) {
-    alert(id);
     
         $.ajax({
          type: 'get',
@@ -388,15 +412,48 @@
          success: function(x) {
              details = JSON.parse(x);
              console.log(details);
-             document.getElementById('test-id').value = details[0].cus_id;
-             document.getElementById('test-name').value = details[0].name;
+             document.getElementById('CusIdGen1').value = details[0].cus_id;
+             document.getElementById('CusName1').value = details[0].name;
+             document.getElementById('CusEmail1').value = details[0].mail;
+             document.getElementById('CusNIC1').value = details[0].nic;
+             document.getElementById('cusTele1').value = details[0].contactNo;
+             document.getElementById('CusAdd1').value = details[0].address;
+             
+
 
          },
              error:function(x,y,z){
               alert(z);
              }
         });
-}
+
+        
+        }
+
+        function getVehicle(id) {
+    
+        $.ajax({
+         type: 'get',
+         url: 'fillVehicle',
+         data: {id: id},
+         success: function(x) {
+             details = JSON.parse(x);
+             console.log(details);
+            
+             document.getElementById('vMake1').value = details[0].make;
+             document.getElementById('vModel1').value = details[0].model;
+             document.getElementById('vnumbP1').value = details[0].number_plate;
+             document.getElementById('vType1').value = details[0].type;
+
+         },
+             error:function(x,y,z){
+              alert(z);
+                 }
+        });
+
+        
+        }
+
 </script>
       <!-- Modal prompt for update-->
     <div class="modal fade" id="editModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -412,33 +469,35 @@
                             <form role="form">
                                 <!-- text input -->
                                 <div class="form-group">
-                                    <label>Employee ID:</label>
-                                    <input type="text" id="test-id" class="form-control" placeholder="Enter ..."  disabled>
-                                    <label>Employee Name:</label>
-                                    <input type="text" id="test-name" class="form-control" placeholder="Enter ..." >
-                                    <label>Employee Designation:</label>
-                                    <input type="text" class="form-control" id="test-designation" placeholder="Enter ..." value="">
-                                    <label>Contact Number:</label>
-                                    <input type="text" class="form-control" id="test-contact-no" placeholder="Enter ..." value="">
-                                    <label>Branch:</label>
-                                    <input type="text" class="form-control" id="test-branch" placeholder="Enter ..." value="">
-                                    <label>Date Joined:</label>
-                                    <input type="text" class="form-control" id="test-date-joined" placeholder="Enter ..." value="">
-                                    <label>Gender:</label>
-                                    <div class="form-group">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="test-optionsRadios" id="test-optionsRadios1" value="" checked="">
-                                                Male
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="test-optionsRadios" id="test-optionsRadios2" value="">
-                                                Female
-                                            </label>
-                                        </div>
+                                    <label>Customer ID</label>
+                                    <input type="text" id="CusIdGen1" class="form-control" placeholder="Enter ..."  disabled>
+                                    <label>Customer Name</label>
+                                    <input type="text" id="CusName1" class="form-control" placeholder="Enter ..." >
+                                    <label>Email Address</label>
+                                    <input type="text" class="form-control" id="CusEmail1" placeholder="Enter ..." value="">
+                                    <label>NIC No</label>
+                                    <input type="text" class="form-control" id="CusNIC1" placeholder="Enter ..." value="">
+                                    <label>Telephone</label>
+                                    <input type="text" class="form-control" id="cusTele1" placeholder="Enter ..." value="">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" id="CusAdd1" placeholder="Enter ..." value="">
+                                    <div class="form-group" style="width: 100px;">
+                                        <label>Vehicle Type</label>
+                                          <select class="form-control" id="vType1" >
+                                            <option selected=""></option>
+                                            <option>Car</option>
+                                            <option>Suv</option>
+                                            <option>Van</option>
+                                            <option>Bike</option>
+                                          </select>
                                     </div>
+                                    <label>Make</label>
+                                    <input type="text" class="form-control" id="vMake1" placeholder="Enter ..." value="">
+                                    <label>Model</label>
+                                    <input type="text" class="form-control" id="vModel1" placeholder="Enter ..." value="">
+                                    <label>Number Plate</label>
+                                    <input type="text" class="form-control" id="vnumbP1" placeholder="Enter ..." value="">
+                                    
                                 </div>
                             </form>
                         </div>
@@ -447,7 +506,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="save" onclick="updateCustomer(); updateVehicle();">Save changes</button>
                 </div>
             </div>
         </div>
@@ -464,6 +523,152 @@
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+
+<script type="text/javascript">
+  
+ function updateCustomer() {
+
+           
+
+            var id = document.getElementById('CusIdGen1').value;
+
+            var name = document.getElementById('CusName1').value;
+
+            var mail = document.getElementById('CusEmail1').value;
+            var nic = document.getElementById('CusNIC1').value;
+            var tele = document.getElementById('cusTele1').value;
+            var address = document.getElementById('CusAdd1').value;
+
+              //alert(name);
+            
+                  $.ajax({
+                       type: "get",
+                       url: 'updateCustomer',
+                       data: {id:id,name:name,mail:mail,nic:nic,tele:tele,address:address},
+                       success: function() {
+                       swal({
+                            title: "Success!",
+                            text: "successfully updated the customer information",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonColor: '#1D84FF',
+                            confirmButtonText: 'Ok',
+                            closeOnConfirm: true
+                            },
+                       function(isConfirm){
+                          if (isConfirm){
+                         window.location.href="/RegisterCustomer";
+                          }
+                       });
+
+                       
+                      },
+                         error: function(){
+                              swal("Error!","Customer information update failed!", "error");
+                            
+                           }
+                      })
+                }
+
+
+
+            function updateVehicle() {
+
+           
+
+            var id = document.getElementById('CusIdGen1').value;
+
+            var make = document.getElementById('vMake1').value;
+
+            var model = document.getElementById('vModel1').value;
+            var plate = document.getElementById('vnumbP1').value;
+            
+
+              // alert(plate);
+            
+                  $.ajax({
+                       type: "get",
+                       url: 'updateVehicle',
+                       data: {id:id,make:make,model:model,plate:plate},
+                       success: function() {
+                       swal({
+                            title: "Success!",
+                            text: "successfully updated the  information",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonColor: '#1D84FF',
+                            confirmButtonText: 'Ok',
+                            closeOnConfirm: true
+                            },
+                       function(isConfirm){
+                          if (isConfirm){
+                         window.location.href="/RegisterCustomer";
+                          }
+                       });
+
+                       
+                      },
+                         error: function(){
+                              swal("Error!","xyz", "error");
+                            
+                           }
+                      })
+                }
+
+</script>
+
+<script type="text/javascript">
+  
+    function deleteCustomer(cusId) {
+        swal({
+            title: "Are you sure you want to delete?",
+                    text: "You will not be able to recover this record!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Delete",
+                    closeOnConfirm: false },
+                function(confirm){
+                        if(confirm) {
+                            // alert("test"+cusId);
+                            $.ajax({
+                                method:'get',
+                                url:'deleteCustomer',
+                                data:{id:cusId},
+                                success:function(){
+                                    swal({
+                                        title: "Deleted!",
+                                        text: "Successfully deleted the employee record!",
+                                        type: "warning",
+                                        showCancelButton: false,
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "Ok",
+                                        closeOnConfirm: false },
+                                            function (confirm) {
+                                                location.reload();
+                                            });
+                                },
+                                error:function(x,y,thrownError){
+                                    console.log(thrownError);
+                                }
+                            });
+                        }else{
+                        }
+                }
+            );
+    }
+    function success() {
+                swal("Successful", "Data Successfully Saved!", "success")
+                location.reload();
+    }
+
+
+
+
+
+</script>
+
 
 </body>
 </html>

@@ -274,6 +274,30 @@
                       var branch = document.getElementById('branch').value;
                       var manager = document.getElementById('manager').value;
 
+                      if(ename==null||ename==""|| !ename.match("^[a-zA-Z\s]*$")){
+                          alert("Invalid Name");
+                          return false;
+                      }
+                      else if(contact == null|| contact == "" || isNaN(contact) || !contact.match("^\d{4}\d{3}\d{3}$")){
+                          alert("Invalid contact number");
+                          return false;
+                      }
+                      else if(address==null||address==""|| !address.match("^[a-zA-Z\s]*$")){
+                          alert("Invalid address");
+                          return false;
+                      }
+                      if(designation=="Select Designation"){
+                          alert("Please select a designation");
+                          return false;
+                      }
+                      else if(branch=="Select Branch"){
+                          alert("Please select a branch");
+                          return false;
+                      }
+                      else if(manager=="Select Manager"){
+                          alert("Please select a manager");
+                          return false;
+                      }
                       $.ajax({
                           type: "get",
                           url: 'updateEmployee',
@@ -320,7 +344,7 @@
                                         <label>Employee ID:</label>
                                         <input type="text" class="form-control" id="employee-id" disabled>
                                         <label>Employee Name:</label>
-                                        <input type="text" class="form-control" id="employee-name">
+                                        <input type="text" class="form-control" required pattern="^[a-zA-Z\s]*$" title ='only letters allowed' id="employee-name">
                                         <label>Date of Birth:</label>
                                         <div class="input-group" >
                                             <div class="input-group-addon">
@@ -334,7 +358,7 @@
                                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="female" checked="">
                                         Female<br>
                                         <label>Contact Number:</label>
-                                        <input type="text" class="form-control" id="contact">
+                                        <input type="text" required pattern="^\d{4}\d{3}\d{3}$" title='(Format: XXXXXXXXXX)' class="form-control" id="contact">
                                         <label>Address:</label>
                                         <input type="text" class="form-control" id="address">
                                         <label>Employee Designation:</label>
@@ -368,7 +392,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" id="save" onclick="updateEmployee()">Save changes</button>
+                        <button type="submit" class="btn btn-primary" onclick="return updateEmployee()" id="save" >Save changes</button>
                     </div>
                 </div>
             </div>
@@ -471,11 +495,6 @@ $('#all-employee-records-table').DataTable( {
         { "data": "service_type" },
         { "data": "branch" },
         { "data": "title" },
-        {"data" : null,
-            "mRender": function(data, type, full) {
-                return '<button type="button" id="view" value="'+data.eid+'" class="btn btn-success" onclick="getEmployee(\''+data.eid+'\')"><i class="fa fa-eye"></i></button>';
-            }
-        },
         {"data" : null,
             "mRender": function(data, type, full) {
                 return '<button type="button" onclick="getEmployee(\''+data.eid+'\')" id="update" value="'+data.eid+'" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button>';

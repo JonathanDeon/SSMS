@@ -17,18 +17,47 @@ class supplierController extends Controller
 			$Semail = $request['Semail'];
 			$Stel = $request['Stel'];
 			$Saddress = $request['Saddress'];
+            $true = 0;
 			
 	//	DB::statement("INSERT INTO supplier VALUES('$Sname','$Semail','$Stel','$Saddress') ");
 
-		DB::table('supplier')->insert(
-					['Sname'=> $Sname, 'Semail' => $Semail, 'Stel' => $Stel, 'Saddress' => $Saddress]);
+            $exist = DB::select("select Sname from supplier");
+                foreach($exist as $e)
+                    if($e->Sname == $Sname)
+                    {
+                        $true= 1;
+                        break;
+                    }
+
+
+
+            if($true == 1)
+                {
+                    DB::table('supplier')->where('Sname', $Sname)->update(['Semail' => $Semail, 'Stel' => $Stel, 'Saddress' => $Saddress]);
+                }
+                else
+                {
+                        DB::table('supplier')->insert(
+                    ['Sname'=> $Sname, 'Semail' => $Semail, 'Stel' => $Stel, 'Saddress' => $Saddress]);
+                }
+
+
+
+
+
+
+
+
+
+
+	
 
 
 				return redirect()->back();
 		}
 
 		public function showSupplier(){
-
+            
 			$suppliers = DB::select("select * from supplier");
 			return view('Supplier', compact('suppliers'));
 		}

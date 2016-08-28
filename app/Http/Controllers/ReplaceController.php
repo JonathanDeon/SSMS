@@ -8,7 +8,7 @@ use App\Http\Requests;
 
 use DB;
 
-class HomeController extends Controller
+class ReplaceController extends Controller
 {
   
     public function Addemp(Request $request){
@@ -58,4 +58,6 @@ class HomeController extends Controller
 
 
     }
+
+    
 }

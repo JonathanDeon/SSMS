@@ -10,17 +10,49 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('fillCustomer','register@fillCustomer');
+
+Route::get('fillVehicle','register@fillVehicle');
+
+Route::get('RegisterCustomer','register@viewRegisterCustomer');
+
+Route::get('CustomerLoyalty','loyaltyController@getCustomerName');
+
+Route::post('CustomerLoyalty','loyaltyController@addloyalty');
+
+Route::post('RegisterCustomer','register@addCustomer');
+
+Route::get('Feedback','feedbackController@viewfeedback');
+
+Route::get('fillfeed','feedbackController@fillfeed');
+
+Route::get('fillname','feedbackController@fillname');
+
+Route::get('updateCustomer','register@updateCustomerDetails');
+
+Route::get('updateVehicle','register@updateVehicleDetails');
+
+Route::get('deleteCustomer','register@deleteCustomer');
+
+Route::get('CustomerDeficit','deficitControl@getCustomerN');
+
+Route::post('CustomerDeficit','deficitControl@addDeficit');
+
+Route::get('filldeficit','deficitControl@filldeficit');
+
+Route::get('setDeficit','deficitControl@setDeficit');
+
+
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('login',function(){
+    Route::get('login', function () {
         return view('Login');
     });
-    Route::get('signUpCheck','LoginController@signUp');
-    Route::get('/loginCheck','LoginController@authenticate');
+    Route::get('signUpCheck', 'LoginController@signUp');
+    Route::get('/loginCheck', 'LoginController@authenticate');
 
-    Route::get('logout','LogController@logout');
-
+    Route::get('logout', 'LogController@logout');
 
 });
 //
@@ -37,52 +69,32 @@ Route::get('welcome',function(){
 
 
 /*Customer Routes*/
+// Route::get('/', function () {
+//     return view('plans');
+// });
 
-Route::get('ReportsCustomer',function(){
-	return view('ReportsCustomer');
+Route::get('/assignments', function () {
+    return view ('assignments');
+
+});
+Route::get('/welcome', function () {
+    return view ('welcome');
+
 });
 
-Route::get('RegisterCustomer',function(){
-	return view('RegisterCustomer');
+Route::get('/plans', function () {
+    return view ('plans');
+
 });
 
 
-Route::get('CustomerLoyalty',function(){
-	return view('CustomerLoyalty');
+
+
+Route::get('/logs', function () {
+    return view ('logs');
 });
 
-Route::get('Feedback',function(){
-	return view('Feedback');
-});
 
-Route::get('Reports',function(){
-	return view('ReportsCustomer');
-});
-
-Route::get('CustomerDeficit',function(){
-	return view('CustomerDeficit');
-});
-/*Service routes*/
-
-Route::get('AssignService',function(){
-	return view('AssignService');
-});
-
-Route::get('ReservationsService',function(){
-	return view('ReservationsService');
-});
-
-Route::get('ServicePlans',function(){
-	return view('ServicePlans');
-});
-
-Route::get('ServiceLogs',function(){
-	return view('ServiceLogs');
-});
-
-Route::get('ReportsServices',function(){
-	return view('ReportsServices');
-});
 
 /*Employee routes*/
 
@@ -90,14 +102,6 @@ Route::get('deleteEmployee','EmployeeController@deleteEmployeeRecord');
 Route::get('deleteLoanScheme','LoanController@deleteLoanScheme');
 Route::get('EmployeeInformation','EmployeeController@showAllEmployees');
 Route::get('getAllEmployeesForInfo','EmployeeController@getAllEmployeesForInfo');
-//
-//Route::get('EmpMyProfile',function(){
-//	return view('EmpMyProfile');
-//});
-//
-//Route::get('welcomeEmp',function(){
-//	return view('welcomeEmp');
-//});
 
 //payroll
 Route::get('payroll','PayrollController@showPayrollInformation');
@@ -126,107 +130,122 @@ Route::get('fillInterview','InterviewController@getEmployeeDetails');
 Route::get('deleteInterview','InterviewController@deleteInterview');
 //Employee Loans
 Route::get('EmployeeLoans','LoanController@showLoans');
-Route::get('saveLoanScheme','LoanController@saveLoanScheme');
 Route::get('addLoan','LoanController@addLoan');
 Route::get('approveLoan','LoanController@approveLoan');
 Route::get('declineLoan','LoanController@rejectLoan');
-
-/*inventory routes*/
-//Route::get('AddNewItem',function(){
-//	return view('AddNewItem');
-//});
-//
-//Route::get('inventory',function(){
-//	return view('inventory');
-//});
-//
-//Route::get('Purchases',function(){
-//	return view('Purchases');
-//});
-//
-//Route::get('PurchaseReturns',function(){
-//	return view('PurchaseReturns');
-//});
-//
-//Route::get('Sales',function(){
-//	return view('Sales');
-//});
-//
-//Route::get('PurchaseOrder',function(){
-//	return view('PurchaseOrder');
-//});
-//
-//Route::get('Supplier',function(){
-//	return view('Supplier');
-//});
+Route::get('updateDate','LoanController@updateDate');
 
 
+Route::get('fillSupplier','supplierController@getSupplier');
+Route::get('updateSupplier','supplierController@updateSupplier');
+//Route::get('/', 'retViews@home');
+//Route::get('Purchases', 'retViews@Purchases');
+Route::get('Purchases', 'purchaseController@showPurchase');
+Route::get('Supplier', 'supplierController@showSupplier');
+Route::get('Sales', 'salesController@showSales');
+Route::get('PurchaseReturns', 'returnController@showPR');
+Route::get('Inventory', 'AddNewItemController@showItems');
+Route::get('deleteSupplier','supplierController@deleteSupplier');
+Route::get('deleteItem','addNewItemController@deleteItem');
+
+//Route::get('Inventory', 'retViews@Inventory');
+//Route::get('PurchaseReturns', 'retViews@PurchaseReturns');
+//Route::get('Sales', 'retViews@Sales');
+//Route::get('Supplier', 'retViews@Supplier');
+Route::get('PurchaseOrder', 'retViews@PurchaseOrder');
+Route::get('AddNewItem', 'retViews@AddNewItem');
+
+//Route::post('addPurchase','UserController@addPurchase');
+
+Route::post('/purchaseForm', [
+    'uses' => 'purchaseController@postPurchaseForm',
+    'as' => 'purchaseForm'
+]);
+
+/*Route::post('/addPurchase', [
+		'uses' => 'UserController@addPurchase',
+		'as' => 'addPurchase'
+		]);
+*/
+
+//});
+//
+Route::post('/salesForm', [
+    'uses' => 'salesController@postaddSales',
+    'as' => 'salesForm'
+]);
+
+Route::post('/supplierForm', [
+    'uses' => 'supplierController@postaddSupplier',
+    'as' => 'supplierForm'
+]);
+
+Route::post('/prForm', [
+    'uses' => 'returnController@postaddPr',
+    'as' => 'prForm'
+]);
+
+
+Route::post('/addForm', [
+    'uses' => 'AddNewItemController@postaddNew',
+    'as' => 'addForm'
+]);
 
 /*work shift routes*/
 
-//Route::get('AssignEmployees',function(){
-//	return view('AssignEmployees');
-//});
-//
-//Route::get('OverWorkedEmployees',function(){
-//	return view('OverWorkedEmployees');
-//});
-//
-//Route::get('CreateShifts',function(){
-//	return view('CreateShifts');
-//});
-//
-//Route::get('ReplaceEmployee',function(){
-//	return view('ReplaceEmployee');
-//});
-//
-//Route::get('RequestEmployee',function(){
-//	return view('RequestEmployee');
-//});
-//
-//Route::get('EfficiencyAnalysis',function(){
-//	return view('EfficiencyAnalysis');
-//});
-Route::get('create','CreateShiftsController@loadView');
+Route::get('CreateShifts','CreateShiftsController@loadView');
 Route::post('shiftcreate','CreateShiftsController@addshift');
-Route::get('replaceEmp','HomeController@Addemp');
+Route::get('replaceEmp','ReplaceController@Addemp');
 Route::post('selectBranch','efficiencyController@loadtable');
 Route::get('addEmployee','assignEmpController@addEmployeeShift');
-Route::post('selectshift','assignEmpController@getemp');
-Route::get('assign','assignEmpController@loadAssignEmployee');
-Route::get('assignShift','HomeController@assignShift');
-Route::get('replace','ReplaceController@loadReplaceEmployee');
-Route::post('request','ReplaceController@loadRequestedEmployees');
+Route::post('selectsift','assignEmpController@getemp');
+Route::get('AssignEmployees','assignEmpController@loadAssignEmployee');
+Route::get('assignShift','ReplaceController@assignShift');
+Route::get('ReplaceEmployee','ReplaceController@loadReplaceEmployee');
+Route::get('request','ReplaceController@loadRequestedEmployees');
 Route::post('selectShift','ReplaceController@replace');
-Route::get('efficiency','efficiencyController@loadview');
+Route::get('efficiency','effficiencyController@loadview');
+Route::post('selectBranch','effficiencyController@loadtable');
 
-// Route::get('liabilities', function () {
-//     return view('Liability');
-// });
+Route::get('liabilities', function () {
+    return view('Liability');
+});
 
-//
-// Route::get('assets', function () {
-//     return view('Assets');
-// });
+Route::get('assets', function () {
+    return view('Assets');
+});
 
+Route::get('inexpense', function()
+{
+    return view('IncomeExpenditure');
+});
 
-// Route::get('inexpense', function()
-// {
-//     return view('IncomeExpenditure');
-// });
-
-//
-///Route::get('transactions', function()
-// {
-//     return view('Transactions');
-// });
-
+Route::get('transactions', function()
+{
+    return view('Transactions');
+});
 
 Route::post('loadIDs','AssetController@findAssets');
+
 Route::post('assets','AssetController@addAssets');
+
 Route::post('calculateDepreciation','AssetController@calculateDepreciation');
+
 Route::get('assets','AssetController@loadAssets');
 
+Route::get('liabilities','LiabilityController@loadLiabilities');
+
+Route::post('add','LiabilityController@addLiabilities');
+
+Route::get('deleteAssets','AssetController@deleteAssets');
+
+Route::get('deleteLiabilities','LiabilityController@deleteLiabilities');
+
+
+Route::get('Reports', function()
+{
+    return view('ReportsCustomer');
+});
 
 
 
@@ -234,11 +253,6 @@ Route::get('assets','AssetController@loadAssets');
 
 
 /*janitorial routes*/
-
-Route::get('Janitorial',function(){
-	return view('Janitorial');
-});
-
 
 Route::get('/', function () {
     return view('main');
@@ -252,6 +266,40 @@ route::post('addEmp','EmpManController@getemp');
 route::post('addCust','CustManController@getCust');
 route::post('addPack','PackagesController@getPack');
 
+route::get('addSubCat','PackagesController@add_sub_cat_type');
+Route::get('deleteEmployee','EmpManController@deleteEmployee');
+Route::get('deleteCustomer','CustManController@deleteCustomer');
+
+Route::get('deleteCat','PackagesController@deleteCat');
+
+
+    Route::get('/assignments', function () {
+        return view ('assignments');
+
+    });
+    Route::get('/welcome', function () {
+        return view ('welcome');
+
+    });
+
+    Route::get('/plans', function () {
+        return view ('plans');
+
+    });
+
+    Route::get('/logs', function () {
+        return view ('logs');
+    });
+
+    Route::post('addplan','PlanController@addplan');
+    Route::post('addreserv','ReservController@addreserv');
+    Route::get('plans','PlanController@showplans');
+    Route::get('assignments','AssignController@availableEmp');
+    Route::post('addassignment','AssignController@addassignment');
+    Route::get('deletePlans','PlanController@deletePlans');
+    Route::get('logs','LogController@showlog');
+    Route::get('welcome','ReservController@slotwid');
+//Route::get('plans','PlanController@showcatwidget');
 
 
 

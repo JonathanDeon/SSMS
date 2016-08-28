@@ -21,7 +21,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"> </script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -389,12 +389,12 @@
                 <tr>
                   <th>Item ID</th>
                   <th>Item Name</th>
-                  <th>Issue Rate</th>
+                  <th>Issue_rate(approx)</th>
                   <th>Re-order level</th>
                   <th>Qty in hand</th>
                   <th>Unit Value</th>
                   <th>Total</th>
-                  <th>Days Left</th>
+                  <th>Availability #Days</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -409,8 +409,8 @@
                   <td>{{$item->unitvalue}}</td>
                   <td>{{$item->tot}}</td>
                   <td>{{$item->daysleft}}</td>
-                    <td><button type="button" id="accept" class="btn btn-primary" onclick="success()"><i class="fa fa-edit"></i></button></td>
-                    <td><button type="button" id="reject" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
+                   
+                     <td><button type="button" value="{{$item->itemid}}" class="btn btn-danger" onclick="deleteItem('{{$item->itemid}}')"><i class="fa fa-trash"></i></button></td>
                   </tr>
 
                 @endforeach
@@ -469,5 +469,65 @@
                 swal("Successful", "Data Successfully Saved!", "success")
     }
 </script>
+
+
+
+<script>
+                      function deleteItem(itemid){
+                      
+
+                          swal({
+                                      title: "Are you sure you want to delete?",
+                                      text: "You will not be able to recover this record!",
+                                      type: "warning",
+                                      showCancelButton: true,
+                                      confirmButtonColor: "#DD6B55",
+                                      confirmButtonText: "Delete",
+                                      closeOnConfirm: false },
+                                  function(confirm){
+                                      if(confirm) {
+
+                                          $.ajax({
+                                              method:'get',
+                                              url:'deleteItem',
+                                              data:{itemid:itemid},
+                                              success:function(){
+                                                  swal({
+                                                              title: "Deleted!",
+                                                              text: "Successfully deleted the supplier record!",
+                                                              type: "warning",
+                                                              showCancelButton: false,
+                                                              confirmButtonColor: "#DD6B55",
+                                                              confirmButtonText: "Ok",
+                                                              closeOnConfirm: false },
+                                                          function (confirm) {
+                                                              location.reload();
+                                                          });
+                                              },
+                                              error:function(x,y,thrownError){
+                                                  console.log(thrownError);
+                                              }
+                                          });
+                                      }else{
+                                      }
+                                  }
+                          );
+
+
+
+                      }
+                  </script>
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

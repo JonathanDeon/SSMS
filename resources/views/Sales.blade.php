@@ -49,20 +49,21 @@
                 swal("Invalid Field : "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
     }
 
-     function success() {
-                swal("Added", "You Cannot Have Field Empty", "success");
-              }
+       function success() {
+                swal("Successful", "Issued Item Successfully Saved!", "success");
+    }
+
 
 
 
 
 function calTotal() {
 
-  // inc();
+
     var qty = document.getElementById('Iqty').value;
     var price = document.getElementById('Iprice').value;
     var disc = document.getElementById('Idisc').value;
-    var expr = /^[0-9]+$/;
+    var expr =/^-?[0-9]+$/;
 
 
 
@@ -89,6 +90,18 @@ function calTotal() {
                 return; 
              }
 
+               else if(!qty.match(expr))
+         {
+            alert("Invalid Quantity : Only Integer values");
+            document.getElementById('Iqty').value="";
+         
+            return;
+
+         }
+
+
+
+
     if(price == "")
       {    
         emptyField("Price");
@@ -111,7 +124,15 @@ function calTotal() {
               return; 
             }
 
-   if(disc < 0)
+        if(disc == "")
+      {    
+        emptyField("Discount");
+       //alert("You cannot have price Empty");
+       return;
+      }
+
+
+ else if(disc < 0)
   {    
       nonNeg("Discount");
       document.getElementById('Idisc').value="";
@@ -137,18 +158,35 @@ if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
           Itotal.value=tot;
           return;
     }
-        if(qty != "" && price != "" && disc == "" )
+   /*     if(qty != "" && price != "" && disc == "" )
     {   
           var tot =(parseInt(qty)*parseFloat(price)).toFixed(2);
           var Itotal = document.getElementById('Itotal');
           Itotal.value=tot;
           return;
     }
+
+   */
+     
+   
+
+
+
+
+
+
+             }
+
+
+
+
+
+
+
+
      
     
-     
-    
-        }
+        
 
 
 
@@ -180,19 +218,21 @@ var items = document.getElementById('Iitemid').value;
   return;
   }*/
 
-  if(!isEmpty(items,"Item ID"))
+  if(selectValidate(items,"Item ID"))
+
       if(!isEmpty(qty,"Quantity"))
+      
+       
       if(validateDate(dates))
+        
+        
         if(!isEmpty(price,"Price"))
           if(!isEmpty(disc,"Discount"))
             if(!isEmpty(totalp,"Total"))
             {  
-              
+              success();
               return true;
             }
-
-
-
 
       else
         return false;
@@ -258,6 +298,25 @@ else
   return false;
   }  
 }
+
+
+function selectValidate(elem,field)
+
+  {
+
+    if(elem == "Select "+field)
+    {
+      alert("Please Choose "+field);
+      return false;
+
+
+    }
+    else
+      return true;
+
+
+
+  }
 
 
 
@@ -580,12 +639,29 @@ else
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="iid" placeholder="Issue no." style="width:80%" disabled>
                   </div>
-                </div> -->
+                </div> 
                 <div class="form-group">
                   <label for="inputIitemid" class="col-sm-2 control-label">Item ID</label>
 
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="Iitemid" name="Iitemid" placeholder="Item ID" style="width:80%">
+                  </div>
+                </div>
+-->
+
+
+                        <div class="form-group">
+               <label for="input" class="col-sm-2 control-label">Item ID</label>
+               <div class="col-sm-10">
+                  <select class="form-control" id="Iitemid" name="Iitemid" style="width:80%">
+                    <option>Select Item ID</option>
+
+                    @foreach($itm as $it)
+                    <option> {{ $it -> itemid }} </option>
+                    @endforeach
+                  
+
+                  </select>
                   </div>
                 </div>
 
@@ -806,11 +882,18 @@ else
 
 
 
+            @$s=1;
+            @$t=1;
+       @foreach($check as $c)
+                    <input type="text" name="A" id=$s value="{{ $c -> itemid }}" hidden>
+                    <input type="text" name="B" id=$t value="{{ $c -> qty }}" hidden>
+                    @$s=$s+1;
+                    @$t=$t+1;
+                    @endforeach
+                  
 
 
-
-
-
+ 
 
 
 

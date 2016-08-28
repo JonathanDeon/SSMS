@@ -146,12 +146,10 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-                        <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-                        <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-                        <li><a href="OverWorkedEmp"><i class="fa fa-plus-circle"></i>Over Worked Employees</a></li>
-                        <li><a href="RequestEmployee"><i class="fa fa-plus-circle"></i>Request Employee</a></li>
-                        <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
+                        <li><a href="AssignEmployee"><i class="fa fa-male"></i>Assign Employees</a></li>
+                        <li><a href="create"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
+                        <li><a href="replace"><i class="fa fa-exchange"></i>Replace Employee</a></li>
+
                     </ul>
                 </li>
             </ul>
@@ -285,8 +283,6 @@
                                                 <td>{{$x->g_designation}}</td>
                                                 <td>{{$x->g_contact}}</td>
                                                 <td>{{$x->g_address}}</td>
-                                                <td></td>
-                                                <td>{{$x->guarantor_name}}</td>
                                                 <td><button type="button" id="reject" value="{{$x->loan_id}}" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
                                             </tr>
                                         @endforeach
@@ -298,7 +294,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.tab-pane 3-->
+                <!-- /.tab-pane 3 PENDINg-->
                 <div class="tab-pane" id="tab_3">
                     <div class="row" style="margin-top: 25px">
                         <div class="col-xs-12">
@@ -363,6 +359,7 @@
                                         data: {id: id},
                                         success: function() {
                                             swal("Successful", "Loan Recorded!", "success");
+                                            location.reload();
                                         },
                                         error: function(x,y,z){
                                             swal("Failed!","Failed to approve", "warning")
@@ -388,7 +385,7 @@
                     </div>
                 </div>
                 <!-- /.tab-pane -->
-                <!-- /.tab-pane 4 -->
+                <!-- /.tab-pane 4 ALL-->
                 <div class="tab-pane" id="tab_4">
                     <div class="row" style="margin-top: 25px">
                         <div class="col-xs-12">
@@ -455,7 +452,7 @@
                     </div>
                 </div>
                 <!-- /.tab-pane -->
-                <!-- /.tab-pane 5-->
+                <!-- /.tab-pane 5 add-->
                 <div class="tab-pane active" id="tab_5">
                     <div class="row" style="margin-top: 25px">
                         <div class="col-xs-6">
@@ -525,7 +522,7 @@
                     </div>
                 </div>
                 <!-- /.tab-pane -->
-                <!-- /.tab-pane 6-->
+                <!-- /.tab-pane 6 approved-->
                 <div class="tab-pane" id="tab_6">
                     <div class="row" style="margin-top: 25px">
                         <div class="col-xs-12">
@@ -562,8 +559,8 @@
                                                 <td>{{$x->contact}}</td>
                                                 <td>{{$x->installments}}</td>
                                                 <td>{{$x->amount}}</td>
-                                                {{--<td><button type="button" id="update" value="{{$x->loan_id}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal2"><i class="fa fa-edit"></i></button></td>--}}
-                                                <td><a class="btn btn-primary" data-toggle="modal" href="#myModal2"><i class="fa fa-edit"></i></a></td>
+                                                <td><button type="button" id="updatedate" value="{{$x->loan_id}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal2"><i class="fa fa-edit"></i></button></td>
+                                                {{--<td><a id="updatedate" value="{{$x->loan_id}}" class="btn btn-primary" data-toggle="modal" href="#myModal2"><i class="fa fa-edit"></i></a></td>--}}
                                             </tr>
                                         @endforeach
                                         </tbody></table>
@@ -578,7 +575,7 @@
             </div>
         </div>
       <!--------------------------------------modal for update--------------------------->
-      <div class="modal modal-success fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
+      <div class="modal modal-info fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
           <div class="modal-dialog">
               <div class="modal-content">
                   <div class="modal-header">
@@ -587,21 +584,15 @@
                       <h4 class="modal-title">Add Loan Scheme</h4>
                   </div>
                   <div class="modal-body">
-                      <div class="box box-success">
+                      <div class="box box-info">
                           <div class="box-body">
                               <form role="form">
                                   <!-- text input -->
                                   <div class="form-group" style="color:black">
                                       <label>Title:</label>
-                                      <input type="text" class="form-control" id="title">
-                                      <label>Description:</label>
-                                      <textarea class="form-control" rows="3" id="description" placeholder="Description"></textarea>
-                                      <label>Amount:</label>
-                                      <input type="text" class="form-control" id="amount">
-                                      <label>Interest:</label>
-                                      <input type="text" class="form-control" id="interest">
-                                      <label>Installments:</label>
-                                      <input type="text" class="form-control" id="installments">
+                                      <input type="date" class="form-control" id="start_date">
+                                      <label>End Date:</label>
+                                      <input type="date" class="form-control" id="end_date">
                                   </div>
                               </form>
                           </div>
@@ -610,11 +601,29 @@
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-outline" onclick="saveLoanScheme()">Save changes</button>
+                      <button type="button" class="btn btn-outline" onclick="updateDate()">Save changes</button>
                   </div>
               </div>
               <!-- /.modal-content -->
-
+              <script>
+                  function updateDate(){
+                      var id = document.getElementById('updatedate').value;
+                      var start = document.getElementById('start_date').value;
+                      var end = document.getElementById('end_date').value;
+                      $.ajax({
+                          type: "get",
+                          url: 'updateDate',
+                          data: {id:id, start:start, end:end},
+                          success: function() {
+                              swal("Successful", "Loan Date Set!", "success");
+                              location.reload();
+                          },
+                          error: function(x,y,z){
+                              swal("Failed!", z);
+                          }
+                      })
+                  }
+              </script>
               <script>
                   function saveLoanScheme() {
                       var title = document.getElementById('loan_title').value;
@@ -622,18 +631,13 @@
                       var amount = document.getElementById('loan_amount').value;
                       var interest = document.getElementById('loan_interest').value;
                       var installments = document.getElementById('loan_installments').value;
-                      alert(title)
-                      alert(description)
-                      alert(amount)
-                      alert(interest)
-                      alert(installments)
                       $.ajax({
                           type: "get",
                           url: 'saveLoanScheme',
                           data: {title: title, description: description, amount: amount, interest: interest, installments:installments},
                           success: function() {
                               swal("Successful", "Loan Scheme Added!", "success");
-                              //location.reload();
+                              location.reload();
                           },
                           error: function(x,y,z){
                               swal("Adding Failed!", z);
@@ -707,11 +711,11 @@
                                     <label>Description:</label>
                                     <textarea class="form-control" rows="3" id="loan_description" placeholder="Description"></textarea>
                                     <label>Amount:</label>
-                                    <input type="text" class="form-control" id="loan_amount">
+                                    <input type="number" class="form-control" id="loan_amount">
                                     <label>Interest:</label>
-                                    <input type="text" class="form-control" id="loan_nterest">
+                                    <input type="number" class="form-control" id="loan_interest">
                                     <label>Installments:</label>
-                                    <input type="text" class="form-control" id="loan_installments">
+                                    <input type="number" class="form-control" id="loan_installments">
                                 </div>
                             </form>
                         </div>
@@ -724,34 +728,6 @@
                 </div>
             </div>
             <!-- /.modal-content -->
-
-            <script>
-                function saveLoanScheme() {
-                    var title = document.getElementById('title').value;
-                    var description = document.getElementById('description').value;
-                    var amount = document.getElementById('amount').value;
-                    var interest = document.getElementById('interest').value;
-                    var installments = document.getElementById('installments').value;
-                    console.log(title)
-                    console.log(description)
-                    console.log(amount)
-                    console.log(interest)
-                    console.log(installments)
-                    $.ajax({
-                        type: "get",
-                        url: 'saveLoanScheme',
-                        data: {title: title, description: description, amount: amount, interest: interest, installments:installments},
-                        success: function() {
-                            swal("Successful", "Loan Scheme Added!", "success");
-                            location.reload();
-                        },
-                        error: function(x,y,z){
-                            swal("Adding Failed!", z);
-                        }
-                    })
-
-                }
-            </script>
         </div>
         <!-- /.modal-dialog -->
 </div>
@@ -777,5 +753,6 @@
                 swal("Successful", "Data Successfully Saved!", "success")
     }
 </script>
+    </div>
 </body>
 </html>

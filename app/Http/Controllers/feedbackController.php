@@ -18,4 +18,24 @@ class feedbackController extends Controller
     	return view('feedback',compact('feedback'));
 
     }
+
+    public function fillfeed(Request $request){
+            $id = $request['id'];
+            $feed = DB::select("select * from feedback where cusID = '$id'");
+          	$name= DB::select("SELECT name FROM customer where cus_id ='$id'");
+
+            return json_encode($feed);
+            
+        }
+
+         public function fillname(Request $request){
+            $id = $request['id'];
+           
+          	$name= DB::select("SELECT name FROM customer where cus_id ='$id'");
+
+            return json_encode($name);
+            
+        }
+
+
 }

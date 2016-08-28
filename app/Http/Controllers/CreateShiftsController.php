@@ -19,7 +19,7 @@ class CreateShiftsController extends Controller
     	$plans = DB::select('select * from shiftplans');
 
 
-    	$branches = DB::select('select * from branches');
+    	$branches = DB::select('select * from branch');
 
       $employees=null;
 
@@ -34,12 +34,12 @@ class CreateShiftsController extends Controller
       $time = $request->input('optionsRadios1');
       $Bname = $request->input('SelectBranch');
 
-         $BID = DB::select("select id from branches where Branch_name='$Bname'");
+         $BID = DB::select("select id from branch where bname='$Bname'");
         $id=$BID[0]->id;
            DB::statement("INSERT INTO shiftplans(day,Tim,BID) values('$day','$time', '$id')");
 
               $plans = DB::select("select * from shiftplans");
-              $branches = DB::select("select * from branches");
+              $branches = DB::select("select * from branch");
  
        $employees = DB::select("select * from employee where Branch='$id'");
        \Session::flash('flash_message','done');

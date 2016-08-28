@@ -11,7 +11,7 @@ class CustManController extends Controller
 {
     public function loadView()
     {
-    	$customer = DB::select("select * from janitorial_customers");
+    	$customer = DB::select("select * from customer");
      	return view('CustMan', compact('customer'));
     	
     }
@@ -19,16 +19,24 @@ class CustManController extends Controller
     public function getCust(Request $request)
 
     {
-      $custid = $request->input('custid');	
       $name = $request->input('name');
       $address = $request->input('address');
-      $phone = $request->input('phone');
+      $contactNo = $request->input('contactNo');
+      $contactPerson= $request->input('contactPerson');
+      $customerType=2;
       $mail = $request->input('mail');
       $nic = $request->input('nic');
+      $pwd = $request ->input('pwd');
      
-     DB::statement("INSERT INTO janitorial_customers values('$custid','$name','$address','$phone','$mail','$nic')");
+     DB::statement("INSERT INTO customer(name,address,contactNo,contactPerson,cusType,mail,nic,pwd) values('$name','$address','$contactNo','$contactPerson','$customerType','$mail','$nic','pwd')");
 
-     $customer = DB::select("select * from janitorial_customers");
+     $customer = DB::select("select * from customer");
      return view('CustMan', compact('customer'));	
   	}
+
+  	public function deleteCustomer(Request $request)
+  	{
+        $cus_id = $request['cus_id'];
+        DB::statement("DELETE FROM customer WHERE cus_id = '$cus_id'");
+    }
 }

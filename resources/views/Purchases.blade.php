@@ -37,17 +37,28 @@
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
     function emptyField(field) {
-                swal("Invalid Field : "+field, "You Cannot Have "+field+" Field Empty", "warning");
+                swal("Invalid Field  "+field, "You Cannot Have "+field+" Field Empty", "warning");
     }
 
     function invalidl(field) {
-                swal("Invalid Field : "+field, "You Can Have Only Numeric Values In "+field+" field ", "warning");
+                swal("Invalid Field  "+field, "You Can Have Only Numeric Values In "+field+" field ", "warning");
     }
 
       function nonNeg(field) {
-                swal("Invalid Field : "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
+                swal("Invalid Field  "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
     }
 
+  function sel(field) {
+                swal(field+" Field Invalid", "Please choose "+field, "warning");
+    }
+
+
+    function dates(field,val) {
+                swal("Invalid "+field, " Please correct "+field+" Todai is "+val, "warning");
+    }
+       function success() {
+                swal("Successful", "Purchase Successfully Saved!", "success");
+    }
 
 
 
@@ -80,15 +91,16 @@ function formValidate(){
 
   //if(!isEmpty(items,"Item ID"))
   if(selectValidate(items,"Item ID"))
-    if(selectValidate(sid,"Supplier ID"))
-      if(!isEmpty(qty,"Quantity"))
+    if(selectValidate(sid,"Supplier ID")) 
       if(validateDate(dates))
+        if(!isEmpty(qty,"Quantity"))
         if(!isEmpty(price,"Price"))
           if(!isEmpty(disc,"Discount"))
             if(!isEmpty(totalp,"Total"))
-
-        return true;
-      
+            {  
+              success();
+          return true;
+      }
 
 
 
@@ -129,6 +141,7 @@ if(!isEmpty(elem,"Date")){
         if(dates!==today)
       {
           alert("Invalid Date Today is "+today);
+          //dates("Date");
           document.getElementById('Pdate').value="";
           return false;
 
@@ -151,17 +164,14 @@ function selectValidate(elem,field)
 
     if(elem == "Select "+field)
     {
-      alert("Please Choose "+field);
+      //alert("Please Choose "+field);
+      sel(field);
       return false;
 
 
     }
     else
       return true;
-
-
-
-
 
 
 
@@ -182,7 +192,8 @@ function isEmpty(elem,field) {
   if(elem == "")
       {   
 
-        alert("You cannot have "+field+" field Empty");
+        //alert("You cannot have "+field+" field Empty");
+        emptyField(field);
         return true;
       }
 else
@@ -214,7 +225,7 @@ function calTotal() {
     var qty = document.getElementById('Pqty').value;
     var price = document.getElementById('Pprice').value;
     var disc = document.getElementById('Pdisc').value;
-    var expr = /^[0-9]+$/;
+    var expr =/^-?[0-9]+$/;
 
 
 
@@ -240,6 +251,19 @@ function calTotal() {
                 return; 
              }
 
+         else if(!qty.match(expr))
+         {
+            alert("Invalid Quantity : Only Integer values");
+          document.getElementById('Pqty').value="";  
+            return;
+
+         }
+
+
+
+
+
+
     if(price == "")
       {    
         emptyField("Price");
@@ -262,7 +286,14 @@ function calTotal() {
               return; 
             }
 
-   if(disc < 0)
+    if(disc == "")
+      {    
+        emptyField("Discount");
+       //alert("You cannot have price Empty");
+       return;
+      }
+
+  else if(disc < 0)
   {    
       nonNeg("Discount");
       document.getElementById('Pdisc').value="";
@@ -288,13 +319,14 @@ if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
           Ptotal.value=tot;
           return;
     }
-        if(qty != "" && price != "" && disc == "" )
+        
+   /*     if(qty != "" && price != "" && disc == "" )
     {   
           var tot =(parseInt(qty)*parseFloat(price)).toFixed(2);
           var Ptotal = document.getElementById('Ptotal');
           Ptotal.value=tot;
           return;
-    }
+    }*/
      
     
      
@@ -686,6 +718,14 @@ function inc() {
                   </div>
                 </div>
 
+
+                     <div class="form-group">
+                  <label for="inputdate" class="col-sm-2 control-label">Date</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" name="Pdate" id="Pdate" placeholder="Purchase Date" style="width:80%">
+                  </div>
+                </div>
+
                  <div class="form-group">
                   <label for="inputqty" class="col-sm-2 control-label">Quantity</label>
                   <div class="col-sm-10">
@@ -693,12 +733,7 @@ function inc() {
                   </div>
                 </div>
 
-                 <div class="form-group">
-                  <label for="inputdate" class="col-sm-2 control-label">Date</label>
-                  <div class="col-sm-10">
-                    <input type="date" class="form-control" name="Pdate" id="Pdate" placeholder="Purchase Date" style="width:80%">
-                  </div>
-                </div>
+            
 
                  <div class="form-group">
                   <label for="inputprice" class="col-sm-2 control-label">Price</label>

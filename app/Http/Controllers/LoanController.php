@@ -44,13 +44,13 @@ class LoanController extends Controller
             "INSERT INTO employee_loan(employee, scheme, guarantor_name, g_contact, g_designation, g_address)
             VALUES ('$eid','$lid','$name','$contact','$designation','$address')");
 
-        return redirect('/AddEmployee');
     }
 
     private function showOngoingLoans(){
         $loans = DB::select("select * from employee_loan el, employee e,loan_scheme l
-                      where e.eid = el.employee and
-                      el.loan_id = l.scheme_id AND 
+                      where e.eid = el.employee
+                       and
+                      el.scheme = l.scheme_id AND 
                       el.status=1 and
                       ongoing=1
                   ");
@@ -60,7 +60,7 @@ class LoanController extends Controller
     private function showPendingLoans(){
         $loans = DB::select("select * from employee_loan el, employee e,loan_scheme l
                       where e.eid = el.employee and
-                      el.loan_id = l.scheme_id AND 
+                      el.scheme = l.scheme_id AND 
                       el.status=0
                   ");
         return $loans;
@@ -75,14 +75,14 @@ class LoanController extends Controller
     public function rejectLoan(Request $request){
         $loanId = $request['id'];
         $affected = DB::update("update employee_loan set status = 2 where loan_id = '$loanId'");
-        echo $affected;
+        //echo $affected;
         return $affected;
     }
 
     private function showApprovedLoans (){
         $loans = DB::select("select * from employee_loan el, employee e,loan_scheme l
                       where e.eid = el.employee and
-                      el.loan_id = l.scheme_id AND 
+                      el.scheme = l.scheme_id AND 
                       el.status=1 and 
                       ongoing=0
                   ");
@@ -92,5 +92,13 @@ class LoanController extends Controller
     public function deleteLoanScheme(Request $request){
         $loan_scheme_id = $request['id'];
         DB::statement("DELETE FROM loan_scheme WHERE scheme_id = '$loan_scheme_id'");
+    }
+
+    public function updateDate(Request $request){
+        $id = $request['id'];
+        $start = $affected = $request['start'];
+        $end = $affected = $request['end'];
+        $affected = DB::update("update employee_loan set ongoing = 1,start_date = '$start',end_date='$end' where loan_id = '$id'");
+        return $affected;
     }
 }

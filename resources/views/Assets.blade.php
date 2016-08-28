@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Customer Management | Register Customer</title>
+  <title>Asset Management</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -21,6 +21,11 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+ <script src="../../dist/js/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"> </script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -199,12 +204,20 @@
 
                       <div class="form-group">
                         <label>Type</label>
-                          <input type="text" class="form-control" placeholder="Enter Type" name="type">
+                          <select class="form-control" name="type">
+                           <option></option>
+                           <option>Machine</option>
+                           <option>Office Building</option>
+                           <option>Vehicle</option>
+                           <option>Cash</option>
+                           <option>Inventory</option>
+                           <option>Receivables</option>
+                          </select>
                       </div>
 
                       <div class="form-group">
                         <label>Value</label>
-                          <input type="text" class="form-control" placeholder="Enter Value" name="value">
+                          <input type ="text" class="form-control" placeholder="Enter Value" name="value">
                       </div>
 
                       <div class="form-group">
@@ -302,12 +315,64 @@
                   <td>{{$asset->value}}</td>
                   <td>{{$asset->duration}}</td>
                   <td>{{$asset->depreciation_rate}}</td>
+                  <td><button class="btn btn-danger" value="{{$asset->assetID}}"  onclick="deleteAssets('{{$asset->assetID}}')">Delete</button></td>
                 </tr>
                 @endforeach
                </tbody>
                 <tfoot>                
                 </tfoot>
-              </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
+              </table></div></div>
+<script>
+
+                        function deleteAssets(assetID) {
+                              swal({
+                                title: "Are you sure you want to delete?",
+                                text: "You will not be able to recover this record!",
+                                type: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#DD6B55",
+                                confirmButtonText: "Delete",
+                                closeOnConfirm: false },
+
+                              function(confirm){
+                                if(confirm) {
+                                
+                                  $.ajax({
+                                  method:'get',
+                                  url:'deleteAssets',
+                                  data:{assetID:assetID},
+                                  success:function(){
+                                    swal({
+                                        title: "Deleted!",
+                                        text: "Successfully deleted the record!",
+                                        type: "warning",
+                                        showCancelButton: false,
+                                        confirmButtonColor: "#DD6B55",
+                                        confirmButtonText: "Ok",
+                                        closeOnConfirm: false },
+                                            function (confirm) {
+                                                location.reload();
+                                            });
+                                },
+                                error:function(x,y,thrownError){
+                                    console.log(thrownError);
+                                }
+                              });
+                            }
+                            else{
+                            }
+                          }
+                          );
+                          }
+    
+                          function success() {
+                            swal("Successful", "Data Successfully Saved!", "success")
+                            location.reload();
+                          } 
+                        </script>
+              
+
+              <div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
             </div>
             <!-- /.box-body -->
           

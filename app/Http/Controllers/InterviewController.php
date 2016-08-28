@@ -15,10 +15,14 @@ class InterviewController extends Controller
         $position = $request['position'];
         $date = $request['date'];
         $time = $request['time'];
+        if($name == ""||$name==null || $contact =="" || $contact == null || $position == "" || $position == null || $date == "" || $date == null || $time == "" || $time == null )
+        {
+            return 1;
+        }
         DB::statement(
             "INSERT INTO interview(cand_name, contact, position, date, time)
             VALUES ('$name','$contact','$position','$date','$time')");
-        return redirect('/AddEmployee');
+        return 0;
     }
 
     public function saveInterview(Request $request){

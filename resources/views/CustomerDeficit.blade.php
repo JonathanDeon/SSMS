@@ -14,19 +14,29 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker-bs3.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../../plugins/datepicker/datepicker3.css"
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
   <![endif]-->
+
+
+
+  
 </head>
+
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
@@ -55,19 +65,20 @@
       <!-- Sidebar user panel -->
 
         <ul class="sidebar-menu">
+
         
         <li class="treeview active">
           <a href="#">
             <i class="fa fa-user"></i> <span>Customer Management</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">
+          <ul class="treeview-menu">         
             <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-            <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+            <li ><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
             <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
             <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-            <li class="active"><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+            <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
+            <li class="active"><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
           </ul>
         </li>
 
@@ -85,7 +96,8 @@
           </ul>
        </li>
 
-      <li class="treeview">
+
+        <li class="treeview">
          <a href="#">
           <i class="fa fa-users"></i><span>Employee Management</span>
           
@@ -152,7 +164,7 @@
               <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
             </ul>
        </li>
-
+        
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -163,12 +175,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Customer Feedback
+        Customer Loyalty Management
       </h1>
-      <ol class="breadcrumb">
+      <ol class="breadcrumb">w 
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Customer Management</a></li>
-        <li class="active">Customer Feedback</li>
+        <li class="active">Customer Loyalty Management</li>>
       </ol>
     </section>
 
@@ -179,48 +191,65 @@
         <div class="col-xs-12">
 
           <!-- general form elements -->
-          <div class="box box-primary">
+          <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">View Customer Feedback</h3>
+              <h3 class="box-title">Manage Special Offers</h3>
             </div>
-             <form role="form">
+             <form role="form" method="POST" action="{{url('CustomerDeficit')}}">
+                <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
            
             <!-- /.box-header -->
             <!-- form start -->
            
               <div class="box-body">
                <div class="col-md-6">
-                 <div class="form-group">
-                  <label for="LoadCusname">Customer Name</label>
-                  <input type="text" class="form-control" id="CusName" size="10">
-                </div>
 
                 <div class="form-group">
-                  <label for="LoadCusId">Customer ID</label>
-                  <input type="number" class="form-control" id="CusId" style="width:150px;">
-                </div>          
-
+                 
+                  <label>Customer Name</label>
+                  <select class="form-control" name="cusname" id="cusname">
+                  <option></option>
+                  @foreach($customers as $customer)
+                    <option value="{{$customer->cus_id}}">{{$customer->name}}</option> 
+                  @endforeach
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label>Deficit</label>
+                    
+                    <input type="text" class="form-control" name="defi" id="deficit">
+                  
+                    </div>
+      
+                  
+        
                </div>
 
-                <div class="col-md-6" position=50%>       
-                  <div class="form-group">       
-                  <label for="LoadFeedbk">Feedback</label>
-                  <textarea class="form-control" rows="3" disabled=""></textarea>
-                  </div> 
-                  <button type="button" class="btn btn-block btn-primary" style="width:15%; margin-left:85%;" onclick="success()">Respond</button>
+                 <div class="col-md-6" position=50%>              
+            
+                    <div class="form-group">
+                    <label>Customer ID</label>
+                    
+                    <input type="text" class="form-control" disabled="" name="cid" id="cusid">
+                  
+                    </div>
+      
+
+                    <div class="input-group-btn">
+                  <button type="submit" class="btn btn-block btn-primary" style="width:100px; float:right; margin-top:5%;" >Save</button>
+
+                  </div>
+                  </div>
+                </div> 
+                </form>       
                </div>
               </div>
-             
-            </form>
-          </div>    
-          </div>
-          </section>
 
-          <section>
-           <div class="col-md-12">    
-              <div class="box">
+          </div>   
+
+          <div class="box">
             <div class="box-header">
-              <h3 class="box-title">View Customer Feedback</h3>
+              <h3 class="box-title">View Customer Deficit</h3>
 
               <div class="box-tools">
                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -238,51 +267,138 @@
                 <tbody><tr>
                   <th>ID</th>
                   <th>User</th>
-                  <th>Date</th>
-                  <th>Reason</th>
+                  <th>Deficit Amount</th>
+                  
                   <th></th>
                 </tr>
+               @foreach($def as $def)  
                 <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  <td><button type="button" class="btn btn-success"><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
+                  <td>{{$def->deficitID}}</td>
+                  <td>{{$def->cusid}}</td>
+                  <td>{{$def->amount}}</td>
+                  <td><a class="btn btn-success" id="Edit" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a></button></td>
+                  
                 </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  <td> <button type="button" class="btn btn-success""><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  <td> <button type="button" class="btn btn-success""><i class="fa fa-edit"> </i> </button></td>
-                  <td><button type="button" class="btn btn-danger"><i class="fa fa-trash"> </i> </button></td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>11-7-2014</td>
-                  <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  <td> <button type="button" class="btn btn-success""><i class="fa fa-edit"></i></button></td>
-                  <td><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
-                </tr>
+                @endforeach
               </tbody></table>
+            </div> 
+
+
+
+                </div> 
+
+
+<div class="modal fade" id="editModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Update Deficit Information</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box box-warning">
+                        <div class="box-body">
+                            <form role="form">
+                                <!-- text input -->
+                                <div class="form-group">
+                                    <label>Customer ID</label>
+                                    <input type="text" id="cusnamei" class="form-control" placeholder="Enter ..."  disabled>
+                                    <label>Customer Name</label>
+                                    <input type="text" id="cusname1" class="form-control" placeholder="Enter ..." >
+                                    <label>Add Deficit</label>
+                                    <input type="number" class="form-control" id="deficita" placeholder="Enter ..." value="0">
+                                    <label>Deduct Deficit</label>
+                                    <input type="number" class="form-control" id="deficitm" placeholder="Enter ..." value="0">
+
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+              
+
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save" onclick="setDeficit()">Save changes</button>
+                </div>
             </div>
-            <!-- /.box-body -->
-          </div>
-      
-          </div>
-          </section>
-</body>
-<!-- ./wrapper -->
+        </div>
+    </div>
+
+
+        </section>
+         
+      </div>
+
+<script type="text/javascript">
+  $( "#cusname" ).change(function() {
+  $val=$( "#cusname" ).val();
+  
+  $("#cusid").val($val);
+//subtotal').val(data);
+});
+
+</script>
+
+<script type="text/javascript">
+  $( "#cusname" ).change(function() {
+  $val=$( "#cusname" ).val();
+  
+  $("#cusnamei").val($val);
+//subtotal').val(data);
+});
+
+</script>
+
+<script type="text/javascript">
+function setDeficit() {
+
+           
+
+            var id = document.getElementById('cusnamei').value;
+
+            var deficita = document.getElementById('deficita').value;
+
+            var deficitm = document.getElementById('deficitm').value;
+              //alert(name);
+            
+                  $.ajax({
+
+                       type: "get",
+                       url: 'setDeficit',
+                       data: {id:id,deficita:deficita,deficitm:deficitm},
+                       success: function() {
+                       swal({
+                            title: "Success!",
+                            text: "successfully updated the deficit information",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonColor: '#1D84FF',
+                            confirmButtonText: 'Ok',
+                            closeOnConfirm: true
+                            },
+                       function(isConfirm){
+                          if (isConfirm){
+                         window.location.href="/CustomerDeficit";
+                          }
+                       });
+
+                       
+                      },
+                         error: function(){
+                              swal("Error!","Customer information update failed!", "error");
+                            
+                           }
+                      })
+                }
+</script>
+
+
+
+
 
 <!-- jQuery 2.2.0 -->
 <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
@@ -294,14 +410,6 @@
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<script>
-    function alerts() {
-                swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
-            }
-
-    function success() {
-                swal("Successful", "Data Successfully Saved!", "success")
-    }
-</script>
+<script src="../../plugins/datepicker/bootstrap-datepicker.js"></script>  
 </body>
 </html>

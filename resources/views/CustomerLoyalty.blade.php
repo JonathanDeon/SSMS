@@ -28,6 +28,10 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
   <![endif]-->
+
+
+
+  
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -188,14 +192,15 @@
             <div class="box-header with-border">
               <h3 class="box-title">Manage Special Offers</h3>
             </div>
-             <form role="form">
+             <form role="form" method="POST" action="{{url('CustomerLoyalty')}}">
+                <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
            
             <!-- /.box-header -->
             <!-- form start -->
            
               <div class="box-body">
                <div class="col-md-6">
-               
+
                  <div class="form-group">
                  
                   <label>Customer Name</label>
@@ -208,13 +213,13 @@
                 </div>
                 
                   <div class="form-group">
-                <label>Discount Rate</label>
-                <select class="form-control select2 select2-hidden-accessible" style="width: 15%;" tabindex="-1" aria-hidden="true">
-                  <option selected="selected">0%</option>
-                  <option>5%</option> 
-                  <option>10%</option>
-                  <option>20%</option>
-                  <option>FOC</option>
+                <label>Discount Rate (Percentage %)</label>
+                <select class="form-control select2 select2-hidden-accessible" style="width: 15%;" tabindex="-1" aria-hidden="true" name="discount">
+                  <option selected="selected">0</option>
+                  <option>5</option> 
+                  <option>10</option>
+                  <option>20</option>
+                  <option>100</option>
                 </select>
               </div>
         
@@ -236,7 +241,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input class="form-control" id="datepicker" type="date">
+                        <input class="form-control" id="datepicker" name="from" type="date">
                       </div>
                       <!-- /.input group -->
                     </div>
@@ -248,82 +253,26 @@
                         <div class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </div>
-                        <input class="form-control pull-right" id="datepicker" type="text">
+                        <input class="form-control pull-right" id="datepicker" name="to" type="date" data-date-format="DD MMMM YYYY">
                       </div>
                       <!-- /.input group -->
                     </div>
 
                     <div class="input-group-btn">
-                  <button type="button" class="btn btn-block btn-primary" style="width:100px; float:right; margin-top:5%;" >Save</button>
+                  <button type="submit" class="btn btn-block btn-primary" style="width:100px; float:right; margin-top:5%;" >Save</button>
                   </div>
                   </div>
-                </div>        
+                </div> 
+                </form>       
                </div>
               </div>
 
-
-
-           <div class="col-md-12">    
-              <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Customer Service History</h3>
-
-              <div class="box-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                  <div class="input-group-btn">
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tbody><tr>
-                  <th>Customer ID</th>
-                  <th>Customer</th>
-                  <th>No. of Services</th> 
-                </tr>
-                <tr>
-                  <td>183</td>
-                  <td>John Doe</td>
-                  <td>4</td>
-                  
-                </tr>
-                <tr>
-                  <td>219</td>
-                  <td>Alexander Pierce</td>
-                  <td>3</td>
-                </tr>
-                <tr>
-                  <td>657</td>
-                  <td>Bob Doe</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>175</td>
-                  <td>Mike Doe</td>
-                  <td>1</td>
-                </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-      
-          </div>
-
-
           </div>    
-        
-
-         
+    
           
         </section>
          
       </div>
-
 
 <script type="text/javascript">
   $( "#cusname" ).change(function() {
@@ -334,6 +283,7 @@
 });
 
 </script>
+
 
 
 
