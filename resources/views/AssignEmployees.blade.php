@@ -52,6 +52,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+      </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -452,7 +453,8 @@
           </div>
         
 
-        </div>      
+        </div>
+        </div>
 
     </section>
  
