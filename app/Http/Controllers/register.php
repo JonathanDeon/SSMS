@@ -19,6 +19,8 @@ class register extends Controller
         //$cusid= \DB::select("SELECT cus_id FROM customer ORDER BY cus_id DESC LIMIT 1;");
         $cusid= \DB::select("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA ='ssms' AND TABLE_NAME ='customer';");
 		$customer= \DB::select("select * from customer");
+        $vehicle= \DB::select("select * from vehicle");
+
 
     	return view('RegisterCustomer',compact('customer','cusid'));
     }
@@ -28,8 +30,6 @@ class register extends Controller
              
         $name = $request->input('CusName');
         $address = $request->input('CusAdd');
-        // $address2 = $request->input('CusAdd2');
-        // $address3 = $request->input('CusAdd3');
         $tele = $request->input('cusTele');
         $email = $request->input('CusEmail');
         $nic = $request->input('CusNIC');
@@ -38,8 +38,8 @@ class register extends Controller
         $vMake = $request->input('vMake');
         $vModel = $request->input('vModel');
         $vnumbp = $request->input('vnumbP');
-        // \DB::connection()->pdo->beginTransaction();
         DB::beginTransaction();
+
         $data=DB::statement(
             "INSERT INTO customer(name,address,contactNo,mail,nic,pwd)
             VALUES ('$name','$address','$tele','$email','$nic','$pw')");
@@ -47,9 +47,11 @@ class register extends Controller
         $id=DB::getPdo()->lastInsertId();
         echo $id;
         var_dump($id);
+
        DB::statement(
             "INSERT INTO vehicle(model,type,number_plate,make,customer)
-            VALUES ('$vModel','$vType','$vnumbp','$vMake','$id')"); 
+            VALUES ('$vModel','$vType','$vnumbp','$vMake','$id')");
+
        DB::commit();
 
        \Session::flash('flash_message','done');
@@ -85,8 +87,8 @@ class register extends Controller
              $mail = $request['mail'];
              $nic = $request['nic'];
              $address = $request['address'];
-                $tele = $request['tele'];
-            $affected = DB::update("UPDATE `customer` SET `name`='$name',`mail`='$mail',`contactNo`='$tele',`address`='$address',`nic`='$nic' WHERE `cus_id`='$id'");
+             $tele = $request['tele'];
+             $affected = DB::update("UPDATE `customer` SET `name`='$name',`mail`='$mail',`contactNo`='$tele',`address`='$address',`nic`='$nic' WHERE `cus_id`='$id'");
 
           
 
@@ -97,9 +99,9 @@ class register extends Controller
              $id = $request['id'];
              $make = $request['make'];
              $plate = $request['plate'];
-            $model = $request['model'];
+             $model = $request['model'];
              
-            $updates = DB::update("UPDATE `vehicle` SET `model`='$model',`make`='$make',`number_plate`='$plate' WHERE `customer`='$id'");
+             $updates = DB::update("UPDATE `vehicle` SET `model`='$model',`make`='$make',`number_plate`='$plate' WHERE `customer`='$id'");
 
          
 
