@@ -22,7 +22,7 @@ class register extends Controller
         $vehicle= \DB::select("select * from vehicle");
 
 
-    	return view('RegisterCustomer',compact('customer','cusid'));
+    	return view('RegisterCustomer',compact('customer','cusid','vehicle'));
     }
 
 
