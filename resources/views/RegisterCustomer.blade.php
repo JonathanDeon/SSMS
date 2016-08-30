@@ -348,15 +348,16 @@
                 <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 50px;">Customer ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 361px;">Customer Name</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Telephone</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Email</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Vehicle Model</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Vehicle Number Plate</th>
                 </thead>
                 <tbody>
-                  @foreach($customer as $customer)             
+                  @foreach($customer as $customer)
                 <tr role="row" class="odd">
                   <td class="sorting_1">{{$customer->cus_id}}</td>
                   <td>{{$customer->name}}</td>
                   <td>{{$customer->contactNo}}</td>
                   <td>{{$customer->mail}}</td>
+                  @foreach($vehicle as $vehicle)
                   <td>{{$vehicle->model}}</td>
                   <td>{{$vehicle->number_plate}}</td>
-                  <td></td>
+                  @endforeach
                   <td> <a class="btn btn-success" id="Edit" onclick="getCustomer('{{$customer->cus_id}}'); getVehicle('{{$customer->cus_id}}');" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a><button type="button" class="btn btn-danger" value="{{$customer->cus_id}}" onclick="deleteCustomer('{{$customer->cus_id}}')"><i class="fa fa-trash"></button></td>
                 </tr>
                 @endforeach
