@@ -78,7 +78,6 @@
             <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
             <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
             <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
           </ul>
         </li>
 
@@ -386,7 +385,7 @@
                   <td>{{$customer->contactNo}}</td>
                   <td>{{$customer->mail}}</td>
                   <td> <a class="btn btn-success" id="Edit" onclick="getCustomer('{{$customer->cus_id}}'); getVehicle('{{$customer->cus_id}}');" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a></td>
-                  <td><button type="button" class="btn btn-danger" value="{{$customer->cus_id}}" onclick="deleteCustomer('{{$customer->cus_id}}')"><i class="fa fa-trash"></button></td>
+                  <td><button type="button" class="btn btn-danger" value="{{$customer->cus_id}}" onclick="deleteCustomer('{{$customer->cus_id}}')"><i class="fa fa-trash"></button</td>
                 </tr>
                 @endforeach
 
