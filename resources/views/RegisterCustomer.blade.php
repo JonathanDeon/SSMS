@@ -354,10 +354,10 @@
                   <td>{{$customer->name}}</td>
                   <td>{{$customer->contactNo}}</td>
                   <td>{{$customer->mail}}</td>
-                  @foreach($vehicle as $vehicle)
+                  @fore($vehicle as $vehicle)
                   <td>{{$vehicle->model}}</td>
                   <td>{{$vehicle->number_plate}}</td>
-                  @endforeach
+                  @endfor
                   <td> <a class="btn btn-success" id="Edit" onclick="getCustomer('{{$customer->cus_id}}'); getVehicle('{{$customer->cus_id}}');" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a><button type="button" class="btn btn-danger" value="{{$customer->cus_id}}" onclick="deleteCustomer('{{$customer->cus_id}}')"><i class="fa fa-trash"></button></td>
                 </tr>
                 @endforeach
