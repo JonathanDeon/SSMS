@@ -58,6 +58,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+    </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -117,14 +118,13 @@
           <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
             <i class="fa fa-angle-left pull-right"></i>
            </a>
-           
        </li>
 
        <li class="treeview">
          <a href="#">
           <i class="fa fa-money"></i><span>Finance Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
+             <i class="fa fa-angle-left pull-right"></i>
+         </a>
             <ul class="treeview-menu">
               <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
               <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
@@ -196,42 +196,12 @@
             </div>
              <form role="form" method="POST" action="{{url('RegisterCustomer')}}">
                  @if (count($errors) > 0)
-                <!--  <script>
-                    // Run on page load
-                    window.onload = function() {
-
-                        // If sessionStorage is storing default values (ex. name), exit the function and do not restore data
-                        if (sessionStorage.getItem('name') == "name") {
-                            return;
-                        }
-
-                        // If values are not blank, restore them to the fields
-                        var name = sessionStorage.getItem('name');
-                        if (name !== null) $('#CusName').val(name);
-
-                        var email = sessionStorage.getItem('email');
-                        if (email !== null) $('#CusEmail').val(email);
-
-                        // var subject= sessionStorage.getItem('subject');
-                        // if (subject!== null) $('#inputSubject').val(subject);
-
-                        // var message= sessionStorage.getItem('message');
-                        // if (message!== null) $('#inputMessage').val(message);
-                    }
-
-                    // Before refreshing the page, save the form data to sessionStorage
-                    window.onbeforeunload = function() {
-                        sessionStorage.setItem("name", $('#CusName').val());
-                        sessionStorage.setItem("email", $('#CusEmail').val());
-                        // sessionStorage.setItem("subject", $('#inputSubject').val());
-                        // sessionStorage.setItem("message", $('#inputMessage').val());
-                    }
-                </script> -->
                 <script>
                     function myFunction() {
                      location.reload();
                       }
-               </script>                                          
+               </script>
+
               <div class="alert alert-danger">
                 <strong>Save Failed</strong><br><br>
                 <ul>
@@ -259,7 +229,7 @@
                  <div class="form-group">
                   <label for="EnterCusname">Full Name<font color="red">*</font></label>
                   <input type="text" class="form-control" id="CusName" name="CusName" placeholder="Enter Name" size="10">
-                </div>
+                 </div>
 
                 <div class="form-group">
                   <label for="EnterCusEmail1">Email address<font color="red">*</font></label>
@@ -277,9 +247,9 @@
                 </div>
 
                </div>
-                 <div class="col-md-6" position=50%>              
 
-                 
+               <div class="col-md-6" position=50%>
+
                 <div class="form-group">
                 @foreach ($cusid as $cusid)
                   <label for="GenCusID">Customer ID</label>
@@ -292,15 +262,15 @@
                   <input type="text" class="form-control" name='CusNIC' id="NIC" placeholder="Enter NIC">
                 </div>  
 
-                <div class="form-group">
+                 <div class="form-group">
                   <label for="EnterCusPassword1">Password<font color="red">*</font></label>
                   <input type="password" class="form-control" name='CusPW' id="CusPassword1" placeholder="Password" >
-                </div>
+                 </div>
 
-                <div class="form-group">
+                 <div class="form-group">
                   <label for="EnterCusPassword2">Confirm Password<font color="red">*</font></label>
                   <input type="password" class="form-control" name='CusPW_confirmation' id="CusPassword2" placeholder="Confirm Password">
-                </div>    
+                 </div>
           
                </div>
 
@@ -385,7 +355,7 @@
                   <td>{{$customer->contactNo}}</td>
                   <td>{{$customer->mail}}</td>
                   <td> <a class="btn btn-success" id="Edit" onclick="getCustomer('{{$customer->cus_id}}'); getVehicle('{{$customer->cus_id}}');" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a></td>
-                  <td><button type="button" class="btn btn-danger" value="{{$customer->cus_id}}" onclick="deleteCustomer('{{$customer->cus_id}}')"><i class="fa fa-trash"></button</td>
+                  <td><button type="button" class="btn btn-danger" value="{{$customer->cus_id}}" onclick="deleteCustomer('{{$customer->cus_id}}')"><i class="fa fa-trash"></button></td>
                 </tr>
                 @endforeach
 
