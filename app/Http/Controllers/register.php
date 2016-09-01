@@ -88,9 +88,8 @@ class register extends Controller
              $nic = $request['nic'];
              $address = $request['address'];
              $tele = $request['tele'];
-             $affected = DB::update("UPDATE `customer` SET `name`='$name',`mail`='$mail',`contactNo`='$tele',`address`='$address',`nic`='$nic' WHERE `cus_id`='$id'");
 
-          
+             $affected = DB::update("UPDATE `customer` SET `name`='$name',`mail`='$mail',`contactNo`='$tele',`address`='$address',`nic`='$nic' WHERE `cus_id`='$id'");
 
         }
 
