@@ -271,21 +271,21 @@
 
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Data Table With Full Features</h3>
+                <h3 class="box-title">Customer Discounts</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper"><div class="row"><div class="col-sm-6"><div id="example1_length" class="dataTables_length"><label>Show <select class="form-control input-sm" aria-controls="example1" name="example1_length"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example1_filter"><label>Search:<input aria-controls="example1" placeholder="" class="form-control input-sm" type="search"></label></div></div></div><div class="row"><div class="col-sm-12"><table aria-describedby="example1_info" role="grid" id="example1" class="table table-bordered table-striped dataTable">
                                 <thead>
-                                <tr role="row"><th aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 181px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_asc">Rendering engine</th><th aria-label="Browser: activate to sort column ascending" style="width: 224px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Browser</th><th aria-label="Platform(s): activate to sort column ascending" style="width: 198px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Platform(s)</th><th aria-label="Engine version: activate to sort column ascending" style="width: 155px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Engine version</th><th aria-label="CSS grade: activate to sort column ascending" style="width: 110px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">CSS grade</th></tr>
+                                <tr role="row"><th aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 181px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_asc">Customer ID</th><th aria-label="Browser: activate to sort column ascending" style="width: 224px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Customer Name</th><th aria-label="Platform(s): activate to sort column ascending" style="width: 198px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Discount Amount</th><th aria-label="Engine version: activate to sort column ascending" style="width: 155px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">From Date</th><th aria-label="CSS grade: activate to sort column ascending" style="width: 110px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">To Date</th></tr>
                                 </thead>
                                 <tbody>
                                 <tr class="odd" role="row">
-                                    <td class="sorting_1">Gecko</td>
-                                    <td>Firefox 1.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td>1.7</td>
-                                    <td>A</td>
+                                    <td class="sorting_1"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                                 </tbody>
                                 <tfoot>
