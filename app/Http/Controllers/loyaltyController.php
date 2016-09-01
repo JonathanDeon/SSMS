@@ -14,7 +14,7 @@ class loyaltyController extends Controller
    public function getCustomerName(){
     	
         
-		$customers = \DB::select("select name,cus_id from customer");
+		$customers = \DB::select("select name,cus_id from loyalty");
 	
 		//return $customers;
     	return view('CustomerLoyalty',compact('customers'));
@@ -37,5 +37,15 @@ class loyaltyController extends Controller
 
 
         return redirect('CustomerLoyalty');
-}
+    }
+
+    public function getLoyalty(){
+
+
+        $customer= \DB::select("select * from ");
+
+
+
+        return view('CustomerLoyalty',compact('customer'));
+    }
 }
