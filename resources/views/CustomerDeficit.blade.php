@@ -343,15 +343,15 @@
 
 </script>
 
-<script type="text/javascript">
-  $( "#cusname" ).change(function() {
-  $val=$( "#cusname" ).val();
-  
-  $("#cusnamei").val($val);
-//subtotal').val(data);
-});
+{{--<script type="text/javascript">--}}
+  {{--$( "#cusname" ).change(function() {--}}
+  {{--$val=$( "#cusname" ).val();--}}
+  {{----}}
+  {{--$("#cusnamei").val($val);--}}
+{{--//subtotal').val(data);--}}
+{{--});--}}
 
-</script>
+{{--</script>--}}
 
 <script type="text/javascript">
 function setDeficit() {
