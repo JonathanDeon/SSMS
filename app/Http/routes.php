@@ -16,17 +16,29 @@ Route::get('fillVehicle','register@fillVehicle');
 
 Route::get('RegisterCustomer','register@viewRegisterCustomer');
 
+Route::get('customerReport','cusreportcontroller@Customerreport');
+
+Route::get('loyaltyReport','cusreportcontroller@LoyaltyReport');
+
 Route::get('CustomerLoyalty','loyaltyController@getCustomerName');
 
 Route::post('CustomerLoyalty','loyaltyController@addloyalty');
+
+Route::get('report-gen', 'register@domExample');
+
+//Route::get('CustomerLoyalty','loyaltyController@getLoyalty');
 
 Route::post('RegisterCustomer','register@addCustomer');
 
 Route::get('Feedback','feedbackController@viewfeedback');
 
+Route::post('Feedback','feedbackController@respond');
+
 Route::get('fillfeed','feedbackController@fillfeed');
 
 Route::get('fillname','feedbackController@fillname');
+
+Route::get('filldeficit1','deficitControl@fillCustomer');
 
 Route::get('updateCustomer','register@updateCustomerDetails');
 

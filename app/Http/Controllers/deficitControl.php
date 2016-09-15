@@ -49,11 +49,13 @@ public function setDeficit(Request $request)
             $deficita = $request['deficita'];
             $deficitm = $request['deficitm'];
             
-            $amt = DB::select("select amount from deficit");
+            $amt = DB::select("select amount from deficit where cusid='".$id."'");
 
-            $amount=$amt+$deficita-$deficitm;
+            //var_dump($amt[0]->amount);
+            //die();
+            $amount=$amt[0]->amount+$deficita-$deficitm;
 
-            $affected = DB::update("UPDATE `deficit` SET `amount`='$amount' WHERE `cusid`='$id'");
+            $affected = DB::update("UPDATE `deficit` SET `amount`='".$amount."' WHERE `cusid`='".$id."'");
 
         }
     
@@ -66,6 +68,15 @@ public function setDeficit(Request $request)
             return json_encode($customers);
             
         }
+
+    public function fillCustomer(Request $request){
+        $id = $request['id'];
+        $customers = DB::select("select * from customer where cus_id = '$id'");
+        //$vehicle = DB::select("select * from vehicle where customer='$id'");
+
+        return json_encode($customers);
+
+    }
 
 
 

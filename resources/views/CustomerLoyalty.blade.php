@@ -69,13 +69,12 @@
             <i class="fa fa-user"></i> <span>Customer Management</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">         
-            <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-            <li class="active"><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
-            <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
-            <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-            <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+          <ul class="treeview-menu">
+              <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+              <li class="active"><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+              <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+              <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+              <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
           </ul>
         </li>
 
@@ -277,16 +276,21 @@
             <div class="box-body">
                 <div class="dataTables_wrapper form-inline dt-bootstrap" id="example1_wrapper"><div class="row"><div class="col-sm-6"><div id="example1_length" class="dataTables_length"><label>Show <select class="form-control input-sm" aria-controls="example1" name="example1_length"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="example1_filter"><label>Search:<input aria-controls="example1" placeholder="" class="form-control input-sm" type="search"></label></div></div></div><div class="row"><div class="col-sm-12"><table aria-describedby="example1_info" role="grid" id="example1" class="table table-bordered table-striped dataTable">
                                 <thead>
-                                <tr role="row"><th aria-label=":" aria-sort="ascending" style="width: 181px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_asc">Customer ID</th><th aria-label="" style="width: 224px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Customer Name</th><th aria-label="" style="width: 198px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Discount Amount</th><th aria-label="" style="width: 155px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">From Date</th><th aria-label="" style="width: 110px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">To Date</th></tr>
+                                <tr role="row"><th aria-label=":" aria-sort="ascending" style="width: 181px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_asc">Customer ID</th><th aria-label="" style="width: 224px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Customer Name</th><th aria-label="" style="width: 198px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Discount Amount (%)</th><th aria-label="" style="width: 155px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">From Date</th><th aria-label="" style="width: 110px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">To Date</th></tr>
                                 </thead>
                                 <tbody>
+<?php
+//    echo var_dump($data);
+//?>
+                                @foreach($data as $data)
                                 <tr class="odd" role="row">
-                                    <td class="sorting_1"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td class="sorting_1">{{$data->cusid}}</td>
+                                    <td>{{$data->name}}</td>
+                                    <td>{{$data->discount}}</td>
+                                    <td>{{$data->fromDate}}</td>
+                                    <td>{{$data->toDate}}</td>
                                 </tr>
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr><th colspan="1" rowspan="1">Customer ID</th><th colspan="1" rowspan="1">Customer Name</th><th colspan="1" rowspan="1">Discount Amount</th><th colspan="1" rowspan="1">From Date</th><th colspan="1" rowspan="1">To Date</th></tr>
@@ -297,90 +301,7 @@
         </div>
 
 
-        <div class="row">
-            <div class="col-xs-12">
 
-                <div class="box box-success">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Manage Special Offers</h3>
-                    </div>
-                    <form role="form" method="POST" action="{{url('CustomerLoyalty')}}">
-                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-
-                        <!-- /.box-header -->
-                        <!-- form start -->
-
-                        <div class="box-body">
-                            <div class="col-md-6">
-
-                                <div class="form-group">
-
-                                    <label>Customer Name</label>
-                                    <select class="form-control" name="cusname" id="cusname">
-                                        <option></option>
-                                        @foreach ($customers as $customer)
-                                            <option value="{{$customer->cus_id}}">{{$customer->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Discount Rate (Percentage %)</label>
-                                    <select class="form-control select2 select2-hidden-accessible" style="width: 15%;" tabindex="-1" aria-hidden="true" name="discount">
-                                        <option selected="selected">0</option>
-                                        <option>5</option>
-                                        <option>10</option>
-                                        <option>20</option>
-                                        <option>100</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-6" position=50%>
-
-                                <div class="form-group">
-                                    <label>Customer ID</label>
-
-                                    <input type="text" class="form-control" disabled="" name="cusid" id="cusid">
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label>From:</label>
-
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input class="form-control" id="datepicker" name="from" type="date">
-                                    </div>
-                                    <!-- /.input group -->
-                                </div>
-
-                                <div class="form-group">
-                                    <label>To: </label>
-
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <i class="fa fa-calendar"></i>
-                                        </div>
-                                        <input class="form-control pull-right" id="datepicker" name="to" type="date" data-date-format="DD MMMM YYYY">
-                                    </div>
-                                    <!-- /.input group -->
-                                </div>
-
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-block btn-primary" style="width:100px; float:right; margin-top:5%;" >Save</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
-            </div>
 
 
         </div>

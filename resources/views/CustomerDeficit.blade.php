@@ -72,13 +72,12 @@
             <i class="fa fa-user"></i> <span>Customer Management</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
-          <ul class="treeview-menu">         
-            <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-            <li ><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
-            <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
-            <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-            <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-            <li class="active"><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+          <ul class="treeview-menu">
+              <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+              <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+              <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+              <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+              <li class="active" ><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
           </ul>
         </li>
 
@@ -220,8 +219,6 @@
                     <input type="text" class="form-control" name="defi" id="deficit">
                   
                     </div>
-      
-                  
         
                </div>
 
@@ -276,7 +273,7 @@
                   <td>{{$def->deficitID}}</td>
                   <td>{{$def->cusid}}</td>
                   <td>{{$def->amount}}</td>
-                  <td><a class="btn btn-success" id="Edit" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a></button></td>
+                  <td><a class="btn btn-success" id="Edit" data-toggle="modal" onclick="getCustomer('{{$def->cusid}}');"  href="#editModal"><i class="fa fa-edit"></i></a></button></td>
                   
                 </tr>
                 @endforeach
@@ -346,12 +343,40 @@
 {{--<script type="text/javascript">--}}
   {{--$( "#cusname" ).change(function() {--}}
   {{--$val=$( "#cusname" ).val();--}}
-  {{----}}
+
   {{--$("#cusnamei").val($val);--}}
 {{--//subtotal').val(data);--}}
 {{--});--}}
 
-{{--</script>--}}
+{{--//</script>---}}
+
+    <script type="text/javascript">
+        function getCustomer(id) {
+
+            $.ajax({
+                type: 'get',
+                url: 'filldeficit1',
+                data: {id: id},
+                success: function(x) {
+                    details = JSON.parse(x);
+                    console.log(details[0]);
+
+                    document.getElementById('cusnamei').value = details[0].cus_id;
+                    document.getElementById('cusname1').value = details[0].name;
+
+                },
+                error:function(x,y,z){
+                    alert(z);
+                }
+            });
+
+
+        }
+
+        </script>
+
+
+
 
 <script type="text/javascript">
 function setDeficit() {

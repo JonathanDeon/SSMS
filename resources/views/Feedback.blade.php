@@ -62,12 +62,11 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-            <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
-            <li class="active"><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
-            <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-            <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+              <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+              <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+              <li class="active"><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+              <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+              <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
           </ul>
         </li>
 
@@ -173,51 +172,6 @@
       </ol>
     </section>
 
-    <!-- Main content -->
-   <!--  <section class="content">
-      <div class="row">
-       
-      
-         
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">View Customer Feedback</h3>
-            </div>
-             <form role="form">
-           
-          
-           
-              <div class="box-body">
-               <div class="col-md-6">
-                 <div class="form-group">
-                  <label for="LoadCusname">Customer Name</label>
-                  <input type="text" class="form-control" id="CusName" size="10" disabled="">
-                </div>
-
-                <div class="form-group">
-                  <label for="LoadCusId">Customer ID</label>
-                  <input type="text" class="form-control" id="CusId" style="width:150px;" disabled="">
-                </div>          
-
-               </div>
-
-                <div class="col-md-6" position=50%>       
-                  <div class="form-group">       
-                  <label for="LoadFeedbk">Feedback</label>
-                  <textarea class="form-control" rows="3" disabled=""></textarea>
-                  </div> 
-                  <button type="button" class="btn btn-block btn-primary" style="width:15%; margin-left:85%;" onclick="success()">Respond</button>
-               </div>
-              </div>
-             
-            </form>
-          </div>    
-          </div>
-          </section>
- -->
-
-          
-
           <section>
            <div class="col-md-12">    
               <div class="box">
@@ -264,6 +218,7 @@
           </div>
           </section>
 
+
           <div class="modal fade" id="editModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -274,28 +229,32 @@
                 <div class="modal-body">
                     <div class="box box-warning">
                         <div class="box-body">
-                            <form role="form">
+                            <form role="form" method="POST" action="{{url('Feedback')}}">
+                                <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                                 <!-- text input -->
                                 <div class="form-group">
                                     <label>Customer ID</label>
-                                    <input type="text" id="CusId1" class="form-control" disabled>
+                                    <input type="text" id="CusId1" name="CusId1" class="form-control" readonly>
                                     <label>Customer Name</label>
                                     <input type="text" id="CusName1" class="form-control" disabled>
                                     <label>Feedback</label>
                                     <textarea class="form-control" id="feedback" rows="3" disabled></textarea>
+                                    <label>Reponse</label>
+                                    <textarea class="form-control" id="response" name="response" rows="3"></textarea>
                                     
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                    <button type="submit" class="btn btn-primary" id="save" onclick="">Repond</button>
+
                                 </div>
                             </form>
                         </div>
                         <!-- /.box-body -->
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                   
-                    <button type="button" class="btn btn-primary" id="save" onclick="">Repond</button>
-                    
-                </div>
+
             </div>
         </div>
     </div>
