@@ -17,16 +17,15 @@ class AssignEmpController extends Controller
 
 	 public function loadAssignEmployee()
   	{
-      $branches = DB::select('select * from branch');
+        $n=null;
+        $branches = DB::select("select * from branch where address !='$n'");
       $employees = null;
-  		return view('AssignEmp',compact('branches','employees'));
+        $unassignedemployees=null;
+        $employeesByShiftPlans = DB::select("select s.BID,s.day,s.Tim,count(e.EmpID) as count from shiftplans s,empinplans e where s.SPID = e.ShiftPlanID group by e.ShiftPlanID");
+  		return view('AssignEmp',compact('branches','employees','employeesByShiftPlans','unassignedemployees'));
     }
 
-    public function deleteEmployee(Request $request)
-    {
-        $EmpID = $request['EmpID'];
-        $deletedRecord=DB::statement("DELETE FROM empinplans WHERE EmpID = '$EmpID'");
-    }
+
     
     public function getemp(Request $request)
 
@@ -39,22 +38,32 @@ class AssignEmpController extends Controller
 
      $id=$BID[0]->id;
 
-    $employees = DB::select("select * from employee where Branch='$id'");
+
+        $unassignedemployees=DB::select("select * from employee where branch='$id' and eid Not In (select EmpID from empinplans);");
+
+
+        $employees = DB::select("select * from efficiency ef,employee E,shiftplans s,empinplans emp where ef.employee=E.eid and E.eid=emp.EmpID and s.SPID=emp.ShiftPlanID and s.day='$Day' and s.Tim !='$Time' and e.branch='$id' and e.eid not in(select e.eid from efficiency ef,employee E,shiftplans s,empinplans emp where ef.employee=E.eid and E.eid=emp.EmpID and s.SPID=emp.ShiftPlanID and s.day='$Day' and s.Tim ='$Time' and e.branch='$id');");
+        //var_dump($employees);
+
 
     //var_dump($employees);
 
-    $plan = DB::select("select * from shiftplans where BID='$id' AND day='$Day' AND Tim='$Time'");
+    $plandetails = DB::select("select SPID from shiftplans where BID='$id' AND day='$Day' AND Tim='$Time'");
 
+        $plan=$plandetails[0]->SPID;
 
-      $branches = DB::select('select * from branch');
+        $employeesByShiftPlans = DB::select("select s.BID,s.day,s.Tim,count(e.EmpID) as count from shiftplans s,empinplans e where s.SPID = e.ShiftPlanID group by e.ShiftPlanID");
+        $n=null;
+        $branches = DB::select("select * from branch where address !='$n'");
       
-  		return view('AssignEmp',compact('branches','employees'));
+  		return view('AssignEmp',compact('branches','employees','unassignedemployees','employeesByShiftPlans','plan'));
   	}
 
      public function addEmployeeShift(Request $request){
-        $empid=$request['empId'];
-        $x=4;
-        DB::statement("INSERT INTO empinplans values('$x','$empid')");
+        $empid=$request['eid'];
+         //var_dump(empId);
+        $shiftid=$request['pid'];
+        DB::statement("INSERT INTO empinplans values('$shiftid','$empid')");
     }
 
 

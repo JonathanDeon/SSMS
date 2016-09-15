@@ -11,6 +11,7 @@ use App\Shiftplan;
 use App\Branch;
 
 use DB;
+use Illuminate\Support\Facades\Session;
 
 class CreateShiftsController extends Controller
 {
@@ -18,8 +19,8 @@ class CreateShiftsController extends Controller
     {
     	$plans = DB::select('select * from shiftplans');
 
-
-    	$branches = DB::select('select * from branch');
+        $n=null;
+    	$branches = DB::select("select * from branch where address !='$n'");
 
       $employees=null;
 
@@ -34,15 +35,31 @@ class CreateShiftsController extends Controller
       $time = $request->input('optionsRadios1');
       $Bname = $request->input('SelectBranch');
 
-         $BID = DB::select("select id from branch where bname='$Bname'");
-        $id=$BID[0]->id;
-           DB::statement("INSERT INTO shiftplans(day,Tim,BID) values('$day','$time', '$id')");
 
+
+         $BID = DB::select("select id from branch where bname ='$Bname'");
+         $id=$BID[0]->id;
+
+        $existingrecords=DB::select("select * from shiftplans where day='$day' and Tim='$time' and BID='$id'");
+
+
+
+        if ($existingrecords == null) {
+            DB::statement("INSERT INTO shiftplans(day,Tim,BID) values('$day','$time', '$id')");
+            \Session::flash('flash_message','done');
+        }
+
+        else
+        {
+            Session::flash('message', 'Record Exists!');
+        }
               $plans = DB::select("select * from shiftplans");
               $branches = DB::select("select * from branch");
+        $n=null;
+        $branches = DB::select("select * from branch where address !='$n'");
  
-       $employees = DB::select("select * from employee where Branch='$id'");
-       \Session::flash('flash_message','done');
+       $employees = DB::select("select * from employee e,efficiency ef,empinplans emp,shiftplans s where e.eid=ef.employee and e.eid=emp.EmpID and emp.ShiftPlanID=s.SPID and e.Branch='$id'");
+
 
       return view('create_shifts',compact('plans', 'branches','employees'));
     }

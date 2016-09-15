@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Service Management | OverWorkedEmployees</title>
+    <title>Service Management | Remove Employees</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -166,7 +166,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header" >
             <h1>
-                Over-worked Employees
+                Remove Employee
             </h1>
             <ol class="breadcrumb">
                 <li><a href="/main"><i class="fa fa-user"></i>WorkShift</a></li>
@@ -177,56 +177,162 @@
          <section class="content">
 
           <div class="main">
-            <div class="box">
-                        <div class="box-header">
-                          <h3 class="box-title">Leave Analysis</h3>
 
-                          <div class="box-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                              <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+            <div class="row">
 
-                              <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                              </div>
+                <div class="col-md-6">
+
+                     <div class="box box-danger">
+
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Select Shift</h3>
+                        </div>
+
+                        <form role="form" method="POST" action="{{url('Remove')}}">
+                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                <span class="form-group-addon"><i class="fa fa-fw fa-building"></i></span>
+                                <label for="Branch">Branch</label>
+                                <select class="form-control" id="SelectBranch" name="SelectBranch">
+                                    @foreach ($branches as $branch)
+                                        <option>{{ $branch->bname }}</option>
+                                    @endforeach
+                                </select>
                             </div>
-                          </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                          <table class="table table-hover">
-                            <tbody><tr>
-                              <th>Name</th>
-                              <th>Branch</th>
-                              <th>Day</th>
-                              <th>No of leaves</th>
-                            </tr>
-                        @if($OverWorkedEmployees!=null)
-                        @foreach($OverWorkedEmployees as $employee)
-                            <tr>
-                            <td>{{$employee->name}}</td>
-                            <td>{{$employee->branch}}</td>
-                            <td>{{$employee->day}}</td>
-                            <td>0</td>
-                            </tr>
-                        @endforeach
-                        @endif
 
-                        @if($OverWorkedEmployees1!=null)
-                        @foreach($OverWorkedEmployees1 as $employee)
-                          <tr>
-                          <td>{{$employee->name}}</td>
-                          <td>{{$employee->bname}}</td>
-                          <td>{{$employee->day}}</td>
-                          <td>{{$employee->count}}</td>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <span class="form-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
+                                    <label for="Day">Day</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="selectDay1" id="optionsRadios1" value="week-day" checked="">
+                                            week-day
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="selectDay1" id="optionsRadios2" value="week-end">
+                                            week-end
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <span class="form-group-addon"><i class="fa fa fa-fw fa-calendar-times-o"></i></span>
+                                    <label for="Time">Time</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="selectTime1" id="optionsRadios11" value="peak" checked="">
+                                            peak
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="selectTime1" id="optionsRadios12" value="non-peak">
+                                            non-peak
+                                        </label>
+                                    </div>
+                                 </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" style="margin-left:450px">OK</button>
+                        </div>
+                     </form>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="col-md-6">
+                          <div class="box box-danger">
+                                           <div class="box-header">
+                                             <h3 class="box-title">Employee count by Shift Plan</h3>
+                                           </div>
+                                           <!-- /.box-header -->
+                                           <div class="box-body no-padding">
+                                             <table class="table table-condensed">
+                                               <tbody><tr>
+                                                 <th>Branch</th>
+                                                 <th>Day Shift</th>
+                                                 <th>Time Shift</th>
+                                                 <th>No of Employees</th>
+                                               </tr>
+                                           @foreach ($employeesByShiftPlans as $empDetails)
+                                               <tr>
+                                                 <td>{{$empDetails->BID}}</td>
+                                                 <td>{{$empDetails->day}}</td>
+                                                 <td>{{$empDetails->Tim}}</td>
+                                                 <td>{{$empDetails->count}}</td>
+                                               </tr>
+                                           @endforeach
+                                             </tbody></table>
+                                           </div>
+                                           <!-- /.box-body -->
+                                         </div>
+            </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <form class="form-horizontal">
+                          <div class="box box-danger">
+                            <div class="box-header">
+                              <h3 class="box-title">Assigned Employees</h3>
+                            </div>
+                          <!-- /.box-header -->
+                            <div class="box-body table-responsive no-padding">
+                              <table class="table table-hover">
+                                <tbody><tr>
+                                  <th>Employee Name</th>
+                                  <th>Address</th>
+                                  <th>Contact</th>
+                                  <th>Efficiency</th>
+                                  <th></th>
+                                </tr>
+
+                                @if ($employees != null)
+                                @foreach ($employees as $employee)
+                                <tr>
+                                  <td>{{ $employee->name }}</td>
+                                  <td>{{$employee->address}}</td>
+                                  <td>{{$employee->contact}}</td>
+                                @if (($employee->Efficiency)>=80)
+                                  <td><span class="badge bg-green">{{$employee->Efficiency}}%</span></td>
+                                @elseif(($employee->Efficiency)>=60)
+                                 <td><span class="badge bg-blue">{{$employee->Efficiency}}%</span></td>
+                                @elseif(($employee->Efficiency)>=40)
+                                 <td><span class="badge bg-yellow">{{$employee->Efficiency}}%</span></td>
+                                @else
+                                 <td><span class="badge bg-red">{{$employee->Efficiency}}%</span></td>
+                                @endif
+
+                          <td><button type="button" value="{{$employee->eid}}" class="btn btn-danger" onclick="removeEmployee('{{$employee->eid}}','{{$planid}}')">Remove</button></td>
                           </tr>
-                        @endforeach
-                        @endif
+                                @endforeach
+                                @endif
 
-
-                          </tbody></table>
-                        </div>
-                        <!-- /.box-body -->
-                      </div>
+                             </tbody></table>
+                            </div>
+                            </div>
+                            </form>
+                </div>
+            </div>
           </div>
     </section>
     <!-- ./wrapper -->
