@@ -61,12 +61,11 @@
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-            <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
-            <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
-            <li class="active"><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-            <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+              <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+              <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+              <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+              <li class="active"><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+              <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
           </ul>
         </li>
 
@@ -181,7 +180,8 @@
 
             <div class="info-box-content">
              
-              <span class="info-box-number">Generate Customer Information Report</span>
+              <a onclick="window.open('customerReport')" type="button" class="btn btn-block btn-warning btn-lg" style="width: 25%">Generate Customer Report</a>
+
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -190,8 +190,9 @@
             <span class="info-box-icon bg-blue"><i class="fa fa-files-o"></i></span>
 
             <div class="info-box-content">
-             
-              <span class="info-box-number">Generate Customer Loyalty Report</span>
+
+                <a onclick="window.open('loyaltyReport')" type="button" class="btn btn-block btn-primary btn-lg" style="width: 25%">Generate Loyalty Report</a>
+
             </div>
             <!-- /.info-box-content -->
           </div>
@@ -201,21 +202,15 @@
             <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
 
             <div class="info-box-content">
-             
-              <span class="info-box-number">Generate Customer Deficit Report</span>
+
+                <button type="button" class="btn btn-block btn-success btn-lg" style="width: 25%">Generate Deficit Report</button>
             </div>
             <!-- /.info-box-content -->
           </div>
         </div>
-
-
-
           </div>    
           </div>
           </section>
-
-       
-      
   </div>
 </div>
 </body>
@@ -233,6 +228,8 @@
 <script src="../../dist/js/demo.js"></script>
 
 <script src="../../plugins/flot/jquery.flot.pie.min.js"></script>
+
+<link rel="alternate" media="print" href="different_page.html" />
 
 <script>
   
@@ -260,11 +257,6 @@
         show: false
       }
     });
-
-
-
-
-
 
 
 </script>

@@ -72,7 +72,7 @@ Route::get('saveLoanScheme','LoanController@saveLoanScheme');
 Route::get('checkEligibility','LoanController@checkEligibility');
 
 //Employee Reports
-Route::get('getEmployeePDF','EmployeeReports@getEmpPDF');
+Route::get('AllEmployeesReport','EmployeeReports@getEmpPDF');
 
 
 

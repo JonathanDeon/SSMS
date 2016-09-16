@@ -195,7 +195,7 @@
               <div class="row">
                   <div class="col-xs-12">
                       <div class="col-xs-2">
-                          <a href="getEmployeePDF"><button type="button" class="btn btn-block btn-success btn-flat">Export to PDF</button></a>
+                          <a onclick="window.open('AllEmployeesReport')"><button type="button" class="btn btn-block btn-success btn-flat">Export to PDF</button></a>
                       </div>
                   </div>
               </div>

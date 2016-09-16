@@ -278,6 +278,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_3">
                     <div class="box-body table-responsive no-padding">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="col-xs-2">
+                                    <a onclick="window.open('AllEmployeesReport')"><button type="button" class="btn btn-block btn-success btn-flat">Export to PDF</button></a>
+                                </div>
+                            </div>
+                        </div>
                         <table class="table table-hover">
                             <tbody>
                             <tr>
