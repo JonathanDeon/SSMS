@@ -184,3 +184,110 @@ Route::get('filldeficit','deficitControl@filldeficit');
 Route::get('setDeficit','deficitControl@setDeficit');
 
 /*-----------------------------------//Customer Management---------------------------------*/
+
+/*-----------------------------------//Finance Management---------------------------------*/
+Route::get('liabilities', function () {
+    return view('Liability');
+});
+
+Route::get('assets', function () {
+    return view('Assets');
+});
+
+Route::get('inexpense', function()
+{
+    return view('Income&Expenditure');
+});
+
+Route::get('assetDep', function()
+{
+    return view('AssetDepreciation');
+});
+
+Route::get('interest', function()
+{
+    return view('InterestL');
+});
+Route::post('assets','AssetController@addAssets');
+Route::get('assets','AssetController@loadAssets');
+Route::get('deleteAssets','AssetController@deleteAssets');
+Route::get('getOriginalValue', 'AssetController@getOriginalValue');
+Route::get('assets/getasset/{id}', 'AssetController@getAsset');
+Route::get('assetDep','AssetController@loadAssetDepDetails');
+Route::get('deleteAssetDep','AssetController@deleteAssetDep');
+Route::get('assets/getDep', 'AssetController@calculateDepreciation');
+Route::post('depassets','AssetController@addDepAmount');
+Route::get('search/assetSearch', 'AssetController@assetSearch');
+Route::get('search/assetDepSearch','AssetController@assetDepSearch');
+Route::get('liabilities','LiabilityController@loadLiabilities');
+Route::post('add','LiabilityController@addLiabilities');
+Route::get('deleteLiabilities','LiabilityController@deleteLiabilities');
+Route::post('update','LiabilityController@updateLiabilities');
+Route::get('liabilities/getliability/{id}', 'LiabilityController@getLiability');
+Route::get('liabilityInterest','LiabilityController@loadLiabilityInterestDetails');
+Route::get('deleteLiabilityInterest','LiabilityController@deleteLiabilityInterest');
+Route::get('liabilities/calInterest', 'LiabilityController@calculateInterest');
+Route::get('updateEmployee','LiabilityController@updateLiability');
+Route::get('search/liabilitySearch', 'LiabilityController@liabilitySearch');
+Route::get('search/liabilityDepSearch', 'LiabilityController@liabilityInterestSearch');
+Route::post('addInterest', 'LiabilityController@addInterest');
+Route::get('expense','ExpenditureController@loadExpenses');
+Route::get('income','IncomeController@loadIncome');
+//pdf
+Route::get('janitorial-pdf','IncomeController@getJanitorialPdf');
+Route::get('sales-pdf','IncomeController@getSalesPdf');
+Route::get('services-pdf', 'IncomeController@getServicePdf');
+Route::get('purchases-pdf','ExpenditureController@getPurchasesPdf');
+Route::get('purchaseReturns-pdf','ExpenditureController@getPurchaseReturnsPdf');
+Route::get('salaries-pdf', 'ExpenditureController@getSalariesPdf');
+
+/*-----------------------------------//Finance Management---------------------------------*/
+
+/*-----------------------------------//Janitorial Management---------------------------------*/
+
+Route::get('/', function () {
+    return view('main');
+});
+route::get('emp','EmpManController@loadView');
+
+route::get('cust','CustManController@loadView');
+
+route::get('package','PackagesController@loadView');
+
+route::get('order','OrderController@loadView');
+
+route::post('addEmp','EmpManController@getemp');
+
+route::post('addCust','CustManController@getCust');
+
+route::post('addPack','PackagesController@getPack');
+
+route::get('addSubCat','PackagesController@add_sub_cat_type');
+
+Route::get('deleteEmployee','EmpManController@deleteEmployee');
+
+Route::get('deleteCustomer','CustManController@deleteCustomer');
+
+Route::get('deleteCat','PackagesController@deleteCat');
+
+Route::get('getSubCat','OrderController@getSubCat');
+
+Route::get('getEmployeeInfo','EmpManController@getEmployeeInfo');
+
+Route::get('getCustomerInfo','CustManController@getCustomerInfo');
+
+Route::get('getSubCatInfo','PackagesController@getSubCatInfo');
+
+Route::get('deleteOrder','OrderController@deleteOrder');
+
+Route::get('getCustomers','OrderController@getCustomers');
+
+Route::get('getOrders','OrderController@getOrders');
+
+Route::post('addOrder','OrderController@addOrder');
+
+Route::get('getSupervisors','OrderController@getSupervisors');
+
+Route::get('getJanitors','OrderController@getJanitors');
+
+/*-----------------------------------//Janitorial Management---------------------------------*/
