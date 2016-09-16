@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     -->
     <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -389,9 +390,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <tr role="row">
                                                 <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" style="width: 181px;">Employee Id</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;">Name</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;">Basic</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;">ETF 3%</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 197px;">Epf 8%</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;">Epf 12%</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 154px;">Allowance</th>
+                                                <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Loan Deductions</th>
                                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 112px;">Net Salary</th>
                                                 {{--<th rowspan="1" style="width: 112px;"></th>--}}
                                                 {{--<th rowspan="1" style="width: 112px;"></th>--}}
@@ -487,7 +491,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   "type": "get",
                   "url": "getEmployeeMonthlySalaryReport",
 
-
               },
               "pageLength": 100,
 
@@ -495,16 +498,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
               columns: [
                   {"data": "empId"},
                   {"data": "name"},
+                  {"data": "basic"},
                   {"data": "etf3"},
                   {"data": "epf8"},
                   {"data": "epf12"},
-                  {"data": "netSalary"}
-
+                  {"data": "allowance"},
+                  {"data": "loanDeduction"},
+                  {"data": "netSalary"},
               ]
 
 
           });
 //      });
+      $('document').ready(function () {
+          $.ajax({
+              type: "get",
+              url: "getEmployeeMonthlySalaryReport",
+              success: function(x) {
+
+                  console.log(x);
+              },
+              error:function(){
+
+              }
+          })
+      });
   </script>
 </body>
 </html>
