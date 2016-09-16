@@ -14,7 +14,7 @@ class purchaseController extends Controller
 
 
 			//$pid = $request['pid'];
-			$Pitemid = $request['Pitemid'];
+			$PitemName = $request['PitemName'];
 			$Psupplier = $request['Psupplier'];
 			$Pqty = $request['Pqty'];
 			$Pdate = $request['Pdate'];
@@ -23,14 +23,21 @@ class purchaseController extends Controller
 			$Ptotal = $request['Ptotal'];
 
 
+
+		
+
+
 			DB::table('addPurchase')->insert(
-					['Pitemid'=> $Pitemid, 'Psupplier' => $Psupplier, 'Pqty' => $Pqty, 'Pdate' => $Pdate, 'Pprice' => $Pprice, 'Pdisc' => $Pdisc, 'Ptotal' => $Ptotal]);
+					['Pitemid'=> $PitemName, 'Psupplier' => $Psupplier, 'Pqty' => $Pqty, 'Pdate' => $Pdate, 'Pprice' => $Pprice, 'Pdisc' => $Pdisc, 'Ptotal' => $Ptotal]);
+
+			DB::statement("UPDATE item SET unitvalue='$Pprice' WHERE itemName = '$PitemName'");
+
 
 //'pid' => $pid,
 				
-			$it=DB::table('item')->where('itemid',$Pitemid)->value('qty');
+			$it=DB::table('item')->where('itemName',$PitemName)->value('qty');
 			$addQty=$it+$Pqty;
-			DB::statement("UPDATE item SET qty='$addQty' WHERE itemid = '$Pitemid'");
+			DB::statement("UPDATE item SET qty='$addQty' WHERE itemName = '$PitemName'");
 
 //			$it=DB::select("select qty from item where itemid= '$Pitemid'");
 /*			foreach ($it as $value) {
@@ -49,11 +56,11 @@ class purchaseController extends Controller
 
 		public function showPurchase(){
 
-
-            $Soption = DB::select("select ssid from supplier");
-            $it = DB::select("select itemid from item");
+			$Pwidget = DB::select("select sum(Ptotal) as 'tot' from addPurchase where Pdate=CURDATE()");
+            $Soption = DB::select("select Sname from supplier");
+            $it = DB::select("select itemName from item");
 			$purchases = DB::select("select * from addPurchase");
-			return view('Purchases', compact('purchases','Soption','it'));
+			return view('Purchases', compact('purchases','Soption','it','Pwidget'));
 		}
 
 

@@ -101,4 +101,15 @@ class LoanController extends Controller
         $affected = DB::update("update employee_loan set ongoing = 1,start_date = '$start',end_date='$end' where loan_id = '$id'");
         return $affected;
     }
+
+    public function checkEligibility(Request $request){
+        $id = $request['eid'];
+        $employees = DB::select("select emp_type from employee e
+                      where e.eid = '$id'");
+        foreach ($employees as $employee){
+            if($employee->emp_type == "Contract"){
+                return response()->view(500);
+            }
+        }
+    }
 }

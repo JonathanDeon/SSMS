@@ -39,20 +39,15 @@
     function emptyField(field) {
                 swal("Invalid Field  "+field, "You Cannot Have "+field+" Field Empty", "warning");
     }
-
     function invalidl(field) {
                 swal("Invalid Field  "+field, "You Can Have Only Numeric Values In "+field+" field ", "warning");
     }
-
       function nonNeg(field) {
                 swal("Invalid Field  "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
     }
-
   function sel(field) {
                 swal(field+" Field Invalid", "Please choose "+field, "warning");
     }
-
-
     function dates(field,val) {
                 swal("Invalid "+field, " Please correct "+field+" Todai is "+val, "warning");
     }
@@ -64,34 +59,42 @@
 
 
 
+window.onload=function(){
 
 
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+      
+      if(dd<10){
+        dd='0'+dd;
+      } 
+      if(mm<10){
+        mm='0'+mm;
+      } 
+      var today = yyyy+'-'+mm+'-'+dd
+
+
+  if (document.getElementById("Pdate").value == "") {
+    document.getElementById("Pdate").value = today;
+  }
+}
 
 
 function formValidate(){
 
- //alert("TEST");
-
  
- var items = document.getElementById('Pitemid').value;
+ var items = document.getElementById('PitemName').value;
  var dates = document.getElementById('Pdate').value;
  var qty = document.getElementById('Pqty').value;
  var price = document.getElementById('Pprice').value;
- var sid = document.getElementById('Psupplier').value;
+ var sname = document.getElementById('Psupplier').value;
  var disc = document.getElementById('Pdisc').value;
  var totalp = document.getElementById('Ptotal').value;
 
-/* if(items == "")
- {  
-  //document.getElementById("pitemid").value=dates;
-  alert("Item ID should be entered");
-  //emptyField("itemID");
-  return;
-  }*/
-
-  //if(!isEmpty(items,"Item ID"))
-  if(selectValidate(items,"Item ID"))
-    if(selectValidate(sid,"Supplier ID")) 
+  if(selectValidate(items,"Item Name"))
+    if(selectValidate(sname,"Supplier Name")) 
       if(validateDate(dates))
         if(!isEmpty(qty,"Quantity"))
         if(!isEmpty(price,"Price"))
@@ -101,9 +104,6 @@ function formValidate(){
               success();
           return true;
       }
-
-
-
       else
         return false;
       else
@@ -118,16 +118,11 @@ function formValidate(){
         return false;
        else
         return false;
-
-
 function validateDate(elem){
-
 if(!isEmpty(elem,"Date")){  
-
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
-
     var yyyy = today.getFullYear();
       
       if(dd<10){
@@ -137,62 +132,34 @@ if(!isEmpty(elem,"Date")){
         mm='0'+mm;
       } 
       var today = yyyy+'-'+mm+'-'+dd;
-//document.getElementById("DATE").value = today;
         if(dates!==today)
       {
           alert("Invalid Date Today is "+today);
-          //dates("Date");
+        
           document.getElementById('Pdate').value="";
           return false;
-
       }
         else
         return true;
         }
-
   else
   return false;
-
 }
-
-
-
-
 function selectValidate(elem,field)
-
   {
-
     if(elem == "Select "+field)
     {
-      //alert("Please Choose "+field);
+     
       sel(field);
       return false;
-
-
     }
     else
       return true;
-
-
-
   }
-
-
-
-
-
-
-
-
-
-
-
 function isEmpty(elem,field) {
-
   if(elem == "")
       {   
-
-        //alert("You cannot have "+field+" field Empty");
+     
         emptyField(field);
         return true;
       }
@@ -201,115 +168,77 @@ else
   return false;
   }  
 }
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
 function calTotal() {
-
   // inc();
     var qty = document.getElementById('Pqty').value;
     var price = document.getElementById('Pprice').value;
     var disc = document.getElementById('Pdisc').value;
     var expr =/^-?[0-9]+$/;
-
-
-
     if(qty == "")
       {    
         emptyField("Quantity");
-       //alert("You cannot have Quantity Empty");
+      
        return;
       }
-
           else if(qty < 0)
           {    
             nonNeg("Quantity");
             document.getElementById('Pqty').value="";
             return;
            }
-
                else if(isNaN(qty))
              { 
                  invalidl("Quantity"); 
                  document.getElementById('Pqty').value="";         
-                //alert("Invalid Quantity Field : You Cannot Enter Letters");
+              
                 return; 
              }
-
          else if(!qty.match(expr))
          {
             alert("Invalid Quantity : Only Integer values");
           document.getElementById('Pqty').value="";  
             return;
-
          }
-
-
-
-
-
-
     if(price == "")
       {    
         emptyField("Price");
-       //alert("You cannot have price Empty");
+    
        return;
       }
-
          else if(price < 0)
         {    
             nonNeg("Price");
             document.getElementById('Pprice').value="";
             return;
         }
-
             else if(isNaN(price))
             { 
               invalidl("Price");
               document.getElementById('Pprice').value="";          
-              //alert("Invalid Price Field : You Cannot Enter Letters");
+           
               return; 
             }
-
     if(disc == "")
       {    
         emptyField("Discount");
-       //alert("You cannot have price Empty");
+   
        return;
       }
-
   else if(disc < 0)
   {    
       nonNeg("Discount");
       document.getElementById('Pdisc').value="";
       return;
   }
-
 if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
 {
     invalidl("Discount");
     document.getElementById('Pdisc').value="";
-    //alert("Invalid Discount Field : You Cannot Enter Letters");
+   
     return;
 }
       
-
-
     
    
     if(qty != "" && price != "" && disc != "" && (!isNaN(disc)) )
@@ -319,76 +248,23 @@ if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
           Ptotal.value=tot;
           return;
     }
-        
-   /*     if(qty != "" && price != "" && disc == "" )
-    {   
-          var tot =(parseInt(qty)*parseFloat(price)).toFixed(2);
-          var Ptotal = document.getElementById('Ptotal');
-          Ptotal.value=tot;
-          return;
-    }*/
-     
-    
-     
-    
+
         }
-
-
-
-
-
-
-
-
 function pad(n, width, z) {
   z = z || '0';
   n = n + '';
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
-
-
-
-
-
 var a=1;
-
 function inc() {
-
   var b="P";
   //
   var h = pad(a,3);
   var ret=b.concat(h);
-
    document.getElementById("pid").value=ret;
     a=a+1;
-
-
-
 }
-
-
-
-
-
-
-
-
-
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -450,40 +326,53 @@ function inc() {
        </li>
 
 
+   
       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-users"></i><span>Employee Management</span>
-          
-            <i class="fa fa-angle-left pull-right"></i>
-           </span>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
-            </ul>
-       </li>
+                    <a href="#">
+                        <i class="fa fa-users"></i><span>Employee Management</span>
+
+                        <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                        <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                        <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                        <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                        <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                    </ul>
+                </li>
 
        <li class="treeview">
-         <a href="Janitorial">
-          <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-           
-       </li>
-
-       <li class="treeview">
+                    <a href="#"><i class="fa fa-link"></i>Janitorial Service Management<span></span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="emp">Employee Managment</a>
+                        </li>
+                        <li><a href="cust">Customer Managment</a>
+                        </li>
+                        <li><a href="package">Categories</a>
+                        </li>
+                        <li><a href="order">Order Managment</a>
+                        </li>
+                    </ul>
+                </li>
+       
+<li class="treeview">
          <a href="#">
           <i class="fa fa-money"></i><span>Finance Management</span>
             <i class="fa fa-angle-left pull-right"></i>
            </a>
             <ul class="treeview-menu">
-              <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-              <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-              <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-              <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
+              <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+              <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+              <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+              <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+              <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+              <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
             </ul>
        </li>
 
@@ -504,19 +393,19 @@ function inc() {
        </li>
         
        <li class="treeview">
-         <a href="#">
-          <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-              <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-              <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-              <li><a href="OverWorkedEmp"><i class="fa fa-plus-circle"></i>Over Worked Employees</a></li>
-              <li><a href="RequestEmployee"><i class="fa fa-plus-circle"></i>Request Employee</a></li>
-              <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
-            </ul>
-       </li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                        <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                        <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                         <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                        <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                    </ul>
+                </li>
 
       </ul>
     </section>
@@ -564,9 +453,11 @@ function inc() {
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>Purchases</h3>
+               <h2>Purchases Today</h2>
 
-              <p>Add item</p>
+              @foreach($Pwidget as $w)
+              <h4>Rs. {{$w->tot+0}} </h4>
+              @endforeach
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>
@@ -579,9 +470,9 @@ function inc() {
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>Issues</h3>
+              <h3>Sales</h3>
 
-              <p>Issue Item</p>
+              <p>Sales Item</p>
             </div>
             <div class="icon">
               <i class="fa fa-sign-out"></i>
@@ -607,50 +498,10 @@ function inc() {
         <!-- ./col -->
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Main content -->
     <section class="content">
     <P> </P>
       <!-- Your Page Content Here -->
-
-
-
-
-
-
 
 <div  align="center">
 
@@ -664,36 +515,14 @@ function inc() {
     <form class="form-horizontal" name="purchaseForm" id="purchaseForm"  onsubmit =" return formValidate()" action="{{ route('purchaseForm') }}" method="post">
               <div class="box-body">
 
-               <!-- <div class="form-group">
-                  <label for="inputPID" class="col-sm-2 control-label">Purchase ID</label>
-                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="pid" id="pid" placeholder="Purchase ID" style="width:80%">
-                  </div>
-                </div> 
-
                 <div class="form-group">
-                  <label for="inputitemid" class="col-sm-2 control-label">Item ID</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Pitemid" id="Pitemid" placeholder="Item ID" style="width:80%">
-                  </div>
-                </div>
-
-                  <div class="form-group">
-                  <label for="inputITEMID" class="col-sm-2 control-label">Supplier ID</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Psupplier" id="Psupplier" placeholder="Supplier ID" style="width:80%">
-                  </div>
-                </div>
--->
-
-                <div class="form-group">
-               <label for="inputsupplier" class="col-sm-2 control-label">Item ID</label>
+               <label for="inputsupplier" class="col-sm-2 control-label">Item Name</label>
                <div class="col-sm-10">
-                  <select class="form-control" id="Pitemid" name="Pitemid" style="width:80%">
-                    <option>Select Item ID</option>
+                  <select class="form-control" id="PitemName" name="PitemName" style="width:80%">
+                    <option>Select Item Name</option>
 
                     @foreach($it as $t)
-                    <option> {{ $t -> itemid }} </option>
+                    <option> {{ $t -> itemName }} </option>
                     @endforeach
                   
 
@@ -701,16 +530,14 @@ function inc() {
                   </div>
                 </div>
 
-
-
                 <div class="form-group">
-               <label for="inputsupplier" class="col-sm-2 control-label">Supplier ID</label>
+               <label for="inputsupplier" class="col-sm-2 control-label">Supplier Name</label>
                <div class="col-sm-10">
                   <select class="form-control" id="Psupplier" name="Psupplier" style="width:80%">
-                    <option>Select Supplier ID</option>
+                    <option>Select Supplier Name</option>
 
                     @foreach($Soption as $op)
-                    <option> {{ $op -> ssid }} </option>
+                    <option> {{ $op -> Sname }} </option>
                     @endforeach
                   
 
@@ -722,7 +549,7 @@ function inc() {
                      <div class="form-group">
                   <label for="inputdate" class="col-sm-2 control-label">Date</label>
                   <div class="col-sm-10">
-                    <input type="date" class="form-control" name="Pdate" id="Pdate" placeholder="Purchase Date" style="width:80%">
+                    <input type="date" class="form-control" name="Pdate" id="Pdate" placeholder="Purchase Date" style="width:80%" readonly>
                   </div>
                 </div>
 
@@ -736,9 +563,9 @@ function inc() {
             
 
                  <div class="form-group">
-                  <label for="inputprice" class="col-sm-2 control-label">Price</label>
+                  <label for="inputprice" class="col-sm-2 control-label">Unit Price</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Pprice"  id="Pprice" placeholder="Price" style="width:80%">
+                    <input type="text" class="form-control" name="Pprice"  id="Pprice" placeholder="Unit Price" style="width:80%">
                   </div>
                 </div>
 
@@ -751,19 +578,18 @@ function inc() {
                   </div>
                 </div>
 
+             
                 <div class="form-group">
                   <label for="Total" class="col-sm-2 control-label">Total</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Ptotal" id="Ptotal" placeholder="Total Amount" style="width:80%" readonly>
-                    <button type="button" onclick="return calTotal()" class="btn btn-info btn-flat">calculate total</button>
-                  </div>
+                 <div class="input-group input-group-sm-10" style="width:63%">
+                <input type="text" class="form-control" name="Ptotal" id="Ptotal" placeholder="Total Amount" readonly>
+                    <span class="input-group-btn">
+                      <button type="button" onclick="return calTotal()" class="btn btn-info btn-flat">Total</button>
+                    </span>
+              </div>
                 </div>
 
-               
-
-
-
-                
+           
               </div>
               <!-- /.box-body -->
               
@@ -772,115 +598,43 @@ function inc() {
                 <button type="submit" value="submit" class="btn btn-primary pull-center name=addp"> Add Purchase Item</button>
                 
                 <input type="hidden" name="_token" value="{{ Session::token() }}"> 
-                <button type="reset" onClick="clearForm()" class="btn btn-warning pull-center"> clear </button>
+                <button type="reset" class="btn btn-danger pull-center"> clear </button>
               </div>
               
               <!-- /.box-footer -->
             </form>
           </div>
+
+
 <section>
     <div style="text-align: center;">
    <a href="PurchaseReturns" button class="btn btn-success pull-center name=prlrp" type="button"" style="width: 200px;left:50%">Generate Purchase Return</button></a>
    </div>
+
 </section>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    
-
-
  <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Purchase Details</h3>
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="row">
    
-
        <div class="col-sm-6">
-
-
-
        <div class="dataTables_filter" id="example1_filter">
-
-
        </div></div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
                   <th>PID</th>
-                  <th>Item ID</th>
-                  <th>SupplierID </th>
+                  <th>Item Name</th>
+                  <th>Supplier Name </th>
                   <th>Quantity </th>
                   <th>Date</th>
                   <th>Price</th>
@@ -900,7 +654,6 @@ function inc() {
                   <td>{{$purchase->Pdisc}}</td>
                   <td>{{$purchase->Ptotal}}</td>
                   </tr>
-
                 @endforeach
                 </tbody>
               
@@ -908,24 +661,10 @@ function inc() {
             </div>
             <!-- /.box-body -->
           </div>
-
-
-
-
-
-
  
-
-
-
-
-
     </section>
-
   </div>
-
 <!-- ./wrapper -->
-
 <!-- jQuery 2.2.0 -->
 <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -937,6 +676,12 @@ function inc() {
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
 </body>
 </html>

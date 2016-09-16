@@ -17,38 +17,14 @@ class supplierController extends Controller
 			$Semail = $request['Semail'];
 			$Stel = $request['Stel'];
 			$Saddress = $request['Saddress'];
-            $true = 0;
+           
 			
 	//	DB::statement("INSERT INTO supplier VALUES('$Sname','$Semail','$Stel','$Saddress') ");
 
-            $exist = DB::select("select Sname from supplier");
-                foreach($exist as $e)
-                    if($e->Sname == $Sname)
-                    {
-                        $true= 1;
-                        break;
-                    }
-
-
-
-            if($true == 1)
-                {
-                    DB::table('supplier')->where('Sname', $Sname)->update(['Semail' => $Semail, 'Stel' => $Stel, 'Saddress' => $Saddress]);
-                }
-                else
-                {
+       
                         DB::table('supplier')->insert(
                     ['Sname'=> $Sname, 'Semail' => $Semail, 'Stel' => $Stel, 'Saddress' => $Saddress]);
-                }
-
-
-
-
-
-
-
-
-
+                
 
 	
 
@@ -58,8 +34,9 @@ class supplierController extends Controller
 
 		public function showSupplier(){
             
+            $Supwidget = DB::select("select COUNT(Sname) as 'number' from supplier");
 			$suppliers = DB::select("select * from supplier");
-			return view('Supplier', compact('suppliers'));
+			return view('Supplier', compact('suppliers','Supwidget'));
 		}
 
 
@@ -93,7 +70,7 @@ class supplierController extends Controller
         $Saddress = $request['Saddress'];
        
 
-        $affected = DB::update("update supplier set Saddress = '$Saddress' where ssid = '$ssid'");
+        $affected = DB::update("update supplier set Saddress='$Saddress',Sname='$Sname',Semail='$Semail',Stel='$Stel' where ssid = '$ssid'");
         //return $affected;
     }
 

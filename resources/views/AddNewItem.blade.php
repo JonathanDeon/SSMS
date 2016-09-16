@@ -24,12 +24,14 @@
 
 <script>
   
- function alerts() {
+    function alerts() {
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
+
     function emptyField(field) {
                 swal("Invalid Field : "+field, "You Cannot Have "+field+" Field Empty", "warning");
     }
+
 
     function invalidl(field) {
                 swal("Invalid Field : "+field, "You Can Have Only Numeric Values In "+field+" field ", "warning");
@@ -42,153 +44,66 @@
    function success() {
                 swal("Successful", "New Item Successfully Saved!", "success");
     }
-
-
-
-
-
-
-
-
-
-
-function formValidate(){
-
- //alert("TEST");
-
+  
+  function formValidate(){
+ 
  
  var items = document.getElementById('itemName').value;
  var rate = document.getElementById('Irate').value;
  var rol = document.getElementById('rol').value;
  var price = document.getElementById('unitvalue').value;
 
-
-/* if(items == "")
- {  
-  //document.getElementById("pitemid").value=dates;
-  alert("Item ID should be entered");
-  //emptyField("itemID");
-  return;
-  }*/
-
   if(!isEmpty(items,"Item Name"))
       if(!isEmpty(rate,"Rate"))
         if(!isnotnum(rate,"Rate"))
           if(!greaterz(rate,"Rate"))
-        if(!isEmpty(rol,"Re-order Level"))
-          if(!isnotnum(rol,"Re-order Level"))
-          if(!greaterz(rol,"Re-order Level"))
-          if(!isEmpty(price,"Unit Value"))
-            if(!isnotnum(price,"Unit Value"))
-          if(!greaterz(price,"Unit Value"))
-       
-          {
-            success();
-        return true;
-        }
+            if(!isEmpty(rol,"Re-order Level"))
+              if(!isnotnum(rol,"Re-order Level"))
+                if(!greaterz(rol,"Re-order Level"))
+                  if(!isEmpty(price,"Unit Value"))
+                    if(!isnotnum(price,"Unit Value"))
+                      if(!greaterz(price,"Unit Value"))
+                      {
+                        success();
+                        return true;
+                      }
           
+                        else
+                        return false;
+                      else
+                      return false;
+                    else
+                    return false;
+                  else
+                  return false;
+                else
+                return false;  
               else
-        return false;
-    
-     else
-        return false;
-
+              return false; 
             else
-        return false;
-    
-     else
-        return false;
-
-      else
-        return false;
-    
-     else
-        return false;
- 
-       else
-        return false;
-      else
-         return false;
+            return false;
         else
         return false;
-       else
-        return false;
-
-
-function validateDate(elem){
-
-if(!isEmpty(elem,"Date")){  
-
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-
-    var yyyy = today.getFullYear();
-      
-      if(dd<10){
-        dd='0'+dd;
-      } 
-      if(mm<10){
-        mm='0'+mm;
-      } 
-      var today = yyyy+'-'+mm+'-'+dd;
-//document.getElementById("DATE").value = today;
-        if(dates!==today)
-      {
-          alert("Invalid Date Today is "+today);
-          document.getElementById('Pdate').value="";
-          return false;
-
-      }
-        else
-        return true;
-        }
-
-  else
-  return false;
-
-}
-
-
+      else
+      return false;
+    else
+    return false;
 
 
 function selectValidate(elem)
-
   {
-
     if(elem == "Choose Supplier ID")
     {
       alert("Please Choose Supplier");
       return false;
-
-
     }
     else
       return true;
-
-
-
-
-
-
-
   }
 
-
-
-
-
-
-
-
-
-
-
 function isEmpty(elem,field) {
-
   if(elem == "")
       {   
-
         alert("You cannot have "+field+" field Empty");
         return true;
       }
@@ -198,12 +113,11 @@ else
   }  
 }
 
+
 function isnotnum(elem,field)
 {
-
   if(isNaN(elem))
       {   
-
         alert("Input field "+field+" should be numeric");
         return true;
       }
@@ -213,114 +127,79 @@ else
   }  
 }
 
+
 function greaterz(elem,field)
 {
-
-  if(elem<0)
+  if(elem<1)
       {   
-
-        alert("You cannot have "+field+" a negative value");
+        alert("You shoul have "+field+" greater than zero");
         return true;
       }
 else
 {
   return false;
   }  
-
-
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
 
 function calTotal() {
-
-  // inc();
+  
     var qty = document.getElementById('Pqty').value;
     var price = document.getElementById('Pprice').value;
     var disc = document.getElementById('Pdisc').value;
     var expr = /^[0-9]+$/;
-
-
-
     if(qty == "")
       {    
         emptyField("Quantity");
-       //alert("You cannot have Quantity Empty");
-       return;
+        return;
       }
-
           else if(qty < 0)
           {    
             nonNeg("Quantity");
             document.getElementById('Pqty').value="";
             return;
            }
-
                else if(isNaN(qty))
              { 
                  invalidl("Quantity"); 
                  document.getElementById('Pqty').value="";         
-                //alert("Invalid Quantity Field : You Cannot Enter Letters");
+                
                 return; 
              }
-
     if(price == "")
       {    
         emptyField("Price");
-       //alert("You cannot have price Empty");
+       
        return;
       }
-
          else if(price < 0)
         {    
             nonNeg("Price");
             document.getElementById('Pprice').value="";
             return;
         }
-
             else if(isNaN(price))
             { 
               invalidl("Price");
               document.getElementById('Pprice').value="";          
-              //alert("Invalid Price Field : You Cannot Enter Letters");
+             
               return; 
             }
-
    if(disc < 0)
   {    
       nonNeg("Discount");
       document.getElementById('Pdisc').value="";
       return;
   }
-
 if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
 {
     invalidl("Discount");
     document.getElementById('Pdisc').value="";
-    //alert("Invalid Discount Field : You Cannot Enter Letters");
+   
     return;
 }
       
-
-
     
    
     if(qty != "" && price != "" && disc != "" && (!isNaN(disc)) )
@@ -342,35 +221,94 @@ if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
      
     
         }
-
-
-
-
-
-
-
-
 function pad(n, width, z) {
   z = z || '0';
   n = n + '';
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
-
-
-
-
-
 var a=1;
-
 function inc() {
-
   var b="P";
   //
   var h = pad(a,3);
   var ret=b.concat(h);
-
    document.getElementById("pid").value=ret;
     a=a+1;
+}
+</script>
+
+
+<script>
+
+function repPur(){
+
+ var from=document.getElementById('Pfrom').value;
+ var to=document.getElementById('Pto').value;
+
+
+
+
+  if(validateDate(from,"From Date"))
+    if(validateDate(to,"To Date"))
+       
+          {
+            
+        return true;
+        }
+          
+              else
+        return false;
+               else
+        return false;
+      
+
+
+
+
+
+
+ function isEmpty(elem,field) {
+  if(elem == "")
+      {   
+        alert("You cannot have "+field+" field Empty");
+        return true;
+      }
+else
+{
+  return false;
+  }  
+}
+
+
+function validateDate(elem,field){
+if(!isEmpty(elem,field)){  
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+      
+      if(dd<10){
+        dd='0'+dd;
+      } 
+      if(mm<10){
+        mm='0'+mm;
+      } 
+      var today = yyyy+'-'+mm+'-'+dd;
+//document.getElementById("DATE").value = today;
+        if(elem>today)
+      {
+          alert("Invalid Date Today is "+today);
+        
+          return false;
+      }
+        else
+        return true;
+        }
+  else
+  return false;
+}
+
+
 
 
 
@@ -379,6 +317,75 @@ function inc() {
 
 
 
+
+
+
+function repSal(){
+
+ var from=document.getElementById('Sfrom').value;
+ var to=document.getElementById('Sto').value;
+
+
+
+if(validateDate(from,"From Date"))
+    if(validateDate(to,"To Date"))
+       
+          {
+            
+        return true;
+        }
+          
+              else
+        return false;
+               else
+        return false;
+
+
+
+
+
+
+ function isEmpty(elem,field) {
+  if(elem == "")
+      {   
+        alert("You cannot have "+field+" field Empty");
+        return true;
+      }
+else
+{
+  return false;
+  }  
+}
+
+
+function validateDate(elem,field){
+if(!isEmpty(elem,field)){  
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+      
+      if(dd<10){
+        dd='0'+dd;
+      } 
+      if(mm<10){
+        mm='0'+mm;
+      } 
+      var today = yyyy+'-'+mm+'-'+dd;
+//document.getElementById("DATE").value = today;
+        if(elem>today)
+      {
+          alert("Invalid Date Today is "+today);
+        
+          return false;
+      }
+        else
+        return true;
+        }
+  else
+  return false;
+}
+}
 
 
 
@@ -390,6 +397,22 @@ function inc() {
 
 
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -452,27 +475,39 @@ function inc() {
        </li>
 
 
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-users"></i><span>Employee Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-              <li><a href="EmployeeLoans"><i class="fa  fa-credit-card"></i>Employee Loans</a></li>
-            </ul>
-       </li>
+      <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i><span>Employee Management</span>
+
+                        <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                        <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                        <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                        <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                        <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                    </ul>
+                </li>
 
        <li class="treeview">
-         <a href="Janitorial">
-          <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-           
-       </li>
+                    <a href="#"><i class="fa fa-link"></i>Janitorial Service Management<span></span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="emp">Employee Managment</a>
+                        </li>
+                        <li><a href="cust">Customer Managment</a>
+                        </li>
+                        <li><a href="package">Categories</a>
+                        </li>
+                        <li><a href="order">Order Managment</a>
+                        </li>
+                    </ul>
+                </li>
 
        <li class="treeview">
          <a href="#">
@@ -480,10 +515,12 @@ function inc() {
             <i class="fa fa-angle-left pull-right"></i>
            </a>
             <ul class="treeview-menu">
-              <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-              <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-              <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-              <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
+              <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+              <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+              <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+              <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+              <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+              <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
             </ul>
        </li>
 
@@ -504,19 +541,19 @@ function inc() {
        </li>
 
        <li class="treeview">
-         <a href="#">
-          <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-              <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-              <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-              <li><a href="OverWorkedEmp"><i class="fa fa-plus-circle"></i>Over Worked Employees</a></li>
-              <li><a href="RequestEmployee"><i class="fa fa-plus-circle"></i>Request Employee</a></li>
-              <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
-            </ul>
-       </li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                        <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                        <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                         <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                        <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                    </ul>
+                </li>
 
 
        
@@ -557,32 +594,15 @@ function inc() {
             <!--    -->
             <form class="form-horizontal" name="addForm" id="addForm" onsubmit =" return formValidate()" action="{{ route('addForm') }}" method="post">
               <div class="box-body">
-            <!--  
-                <div class="form-group">               
-                  <label for="inputPID" class="col-sm-2 control-label">Purchase ID</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="pid" name="pid" placeholder="Purchase ID" style="width:80%">
-                  </div>
-                </div> 
+            
                 <div class="form-group">
-                  <label for="inputItemID" class="col-sm-2 control-label">Item ID</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="itemid" name="itemid" placeholder="Item ID" style="width:80%">
-                  </div>
-                </div>  -->
-                
-
-
-                 <div class="form-group">
                   <label for="inputItemID" class="col-sm-2 control-label">Item Name</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="itemName" name="itemName" placeholder="Item Name" style="width:80%">
                   </div>
                 </div>
 
-
-
-                    <div class="form-group">
+                <div class="form-group">
                   <label for="inputItemID" class="col-sm-2 control-label">Issue Rate</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="Irate" name="Irate" placeholder="Rate per day" style="width:80%">
@@ -591,7 +611,7 @@ function inc() {
 
 
 
-                    <div class="form-group">
+                <div class="form-group">
                   <label for="inputItemID" class="col-sm-2 control-label">Reorder Level</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="rol" name="rol" placeholder="Re-order level" style="width:80%">
@@ -607,25 +627,7 @@ function inc() {
                   </div>
                 </div>
 
-             <!--   <div class="form-group">
-                  <label for="inputQty" class="col-sm-2 control-label">Quantity</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="qty" name="qty" placeholder="Quantity" style="width:80%">
-                  </div>
-                </div> 
-
-
-              <div class="form-group">
-                  <label for="Total" class="col-sm-2 control-label">Total</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="tot" id="tot" placeholder="Total Amount" style="width:60%" readonly>
-                    <button type="button" onclick="return calTotal()" class="btn btn-info btn-flat">calculate total</button>
-                  </div>
-                </div> -->
-
-
-                
-
+    
                 
               </div>
               <!-- /.box-body -->
@@ -634,7 +636,7 @@ function inc() {
             <!--    <button type="submit" class="btn btn-default">Cancel</button> -->
                 <button type="submit" class="btn btn-primary pull-center name=addp" >Add New Item</button>
                 <input type="hidden" name="_token" value="{{ Session::token() }}"> 
-                 <button type="reset" onClick="clearForm()" class="btn btn-warning pull-center"> Clear </button>
+                 <button type="reset" class="btn btn-danger pull-center"> Clear </button>
               </div>
               
               <!-- /.box-footer -->
@@ -643,8 +645,92 @@ function inc() {
              </div>
     </div>
        
-</section>
-  </div>
+ <section class="content">
+      <div class="row" align="center">
+         <div class="box box-info" style="width: 40%">
+            <div class="box-header with-border">
+              <h3 class="box-title">Purchase Report</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <form class="form-horizontal" name="Preport" id="Preport" onsubmit ="return repPur()" action="{{ route('getPurchasePDF') }}"  method="post">
+                <!-- text input -->
+
+                       <div class="form-group">
+                  <label for="inputItemID" class="col-sm-2 control-label">From : </label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="Pfrom" name="Pfrom" placeholder="Enter ..." style="width:80%">
+                  </div>
+                </div>
+
+
+                      <div class="form-group">
+                  <label for="inputItemID" class="col-sm-2 control-label">To : </label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="Pto" name="Pto" placeholder="Enter ..." style="width:80%">
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary pull-center" name="s" >Submit</button>
+                <input type="hidden" name="_token" value="{{ Session::token() }}"> 
+
+
+                </form>
+
+
+
+                <br><br>
+                
+                <div class="box-header with-border">
+              <h3 class="box-title">Sales Report</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <form class="form-horizontal" name="Sreport" id="Sreport" onsubmit ="return repSal()" action="{{ route('getSalesPDF') }}" method="post">
+                <!-- text input -->
+
+                       <div class="form-group">
+                  <label for="inputItemID" class="col-sm-2 control-label">From : </label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="Sfrom" name="Sfrom" placeholder="Enter ..." style="width:80%">
+                  </div>
+                </div>
+
+
+                      <div class="form-group">
+                  <label for="inputItemID" class="col-sm-2 control-label">To : </label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="Sto" name="Sto" placeholder="Enter ..." style="width:80%">
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary pull-center" name="e" >Submit</button>
+                <input type="hidden" name="_token" value="{{ Session::token() }}"> 
+
+
+                </form>
+
+
+
+
+                </div>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- /.content -->
+  
+    </section>
 <!-- ./wrapper -->
 <!-- jQuery 2.2.0 -->
 <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
@@ -656,6 +742,24 @@ function inc() {
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+
+
+
+
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+
+
+
+
+
+
 <script>
     function alerts() {
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });

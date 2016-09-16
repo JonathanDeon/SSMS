@@ -24,19 +24,7 @@ class addNewItemController extends Controller
 
 			DB::table('item')->insert(
 					['itemName' => $itemName, 'Irate' => $Irate, 'rol' => $rol, 'unitvalue' => $unitvalue,]);
-				
-
-
-
-
-
-
-
-
-
-
-
-
+			
 
 
 
@@ -71,14 +59,16 @@ class addNewItemController extends Controller
 
 			}
 
+			$Iwidget = DB::select("select sum(tot) as 'tot' from item");
+			$chckROL=DB::select("select itemid, itemName,qty,rol from item where qty<=rol");
+		
 
-
-
-
+		//$chckROL=DB::select("select itemid from item where qty<=rol");
+       // return json_encode($suppliers);
 
 
 			$items = DB::select("select * from item");
-			return view('Inventory', compact('items'));
+			return view('Inventory', compact('items','chckROL','Iwidget'));
 		}
 
 
@@ -91,6 +81,34 @@ class addNewItemController extends Controller
         $deletedRecord = DB::statement("DELETE FROM item WHERE itemid = '$itemid'");
     }
 
+
+
+
+    public function getItem(Request $request){
+        $itemid = $request['itemid'];
+        $IT = DB::select("select * from item where itemid = '$itemid'");
+        return json_encode($IT);
+    }
+
+
+
+   // updateSupplier
+
+        public function updateItem(Request $request){
+
+        $itemid = $request['itemid'];
+        $itemName = $request['itemName'];
+        $Irate = $request['Irate'];
+        $rol = $request['rol'];
+        $qty = $request['qty'];
+        $unitvalue = $request['unitvalue'];
+        $tot = $request['tot'];
+        $daysleft = $request['daysleft'];
+       
+
+        $affected = DB::update("update item set itemName='$itemName', Irate='$Irate',rol='$rol',unitvalue='$unitvalue' where itemid = '$itemid'");
+        //return $affected;
+    }
 
 
 

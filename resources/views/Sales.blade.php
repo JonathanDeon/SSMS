@@ -22,6 +22,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
+
+
+
+
+    <script src="../../dist/js/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -30,50 +38,62 @@
  <![endif]-->
 
 
-
+ 
 
 <script>
-
  function alerts() {
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
     function emptyField(field) {
                 swal("Invalid Field : "+field, "You Cannot Have "+field+" Field Empty", "warning");
     }
-
     function invalidl(field) {
                 swal("Invalid Field : "+field, "You Can Have Only Numeric Values In "+field+" field ", "warning");
     }
-
       function nonNeg(field) {
                 swal("Invalid Field : "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
     }
-
        function success() {
                 swal("Successful", "Issued Item Successfully Saved!", "success");
     }
 
 
 
+window.onload=function(){
+
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+      
+      if(dd<10){
+        dd='0'+dd;
+      } 
+      if(mm<10){
+        mm='0'+mm;
+      } 
+      var today = yyyy+'-'+mm+'-'+dd
+
+
+  if (document.getElementById("Idate").value == "") {
+    document.getElementById("Idate").value = today;
+  }
+}
+
 
 
 function calTotal() {
-
-
     var qty = document.getElementById('Iqty').value;
     var price = document.getElementById('Iprice').value;
     var disc = document.getElementById('Idisc').value;
     var expr =/^-?[0-9]+$/;
-
-
-
     if(qty == "")
       {    
         emptyField("Quantity");
        //alert("You cannot have Quantity Empty");
        return;
       }
-
           else if(qty < 0)
           {    
             nonNeg("Quantity");
@@ -81,7 +101,6 @@ function calTotal() {
        
             return;
            }
-
                else if(isNaN(qty))
              { 
                  invalidl("Quantity");  
@@ -89,33 +108,25 @@ function calTotal() {
                 //alert("Invalid Quantity Field : You Cannot Enter Letters");
                 return; 
              }
-
                else if(!qty.match(expr))
          {
             alert("Invalid Quantity : Only Integer values");
             document.getElementById('Iqty').value="";
          
             return;
-
          }
-
-
-
-
     if(price == "")
       {    
         emptyField("Price");
        //alert("You cannot have price Empty");
        return;
       }
-
          else if(price < 0)
         {    
             nonNeg("Price");
             document.getElementById('Iprice').value="";
             return;
         }
-
             else if(isNaN(price))
             { 
               invalidl("Price"); 
@@ -123,22 +134,18 @@ function calTotal() {
               //alert("Invalid Price Field : You Cannot Enter Letters");
               return; 
             }
-
         if(disc == "")
       {    
         emptyField("Discount");
        //alert("You cannot have price Empty");
        return;
       }
-
-
  else if(disc < 0)
   {    
       nonNeg("Discount");
       document.getElementById('Idisc').value="";
       return;
   }
-
 if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
 {
     invalidl("Discount");
@@ -147,8 +154,6 @@ if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
     return;
 }
       
-
-
     
    
     if(qty != "" && price != "" && disc != "" && (!isNaN(disc)) )
@@ -158,68 +163,23 @@ if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
           Itotal.value=tot;
           return;
     }
-   /*     if(qty != "" && price != "" && disc == "" )
-    {   
-          var tot =(parseInt(qty)*parseFloat(price)).toFixed(2);
-          var Itotal = document.getElementById('Itotal');
-          Itotal.value=tot;
-          return;
-    }
-
-   */
+ 
      
    
-
-
-
-
-
-
              }
-
-
-
-
-
-
-
-
      
     
         
-
-
-
-
-
-
-
-
-
 function formValidate(){
 
-//var dates = document.getElementById('Idate').value;
-//alert("date is : "+dates);
-
- //alert("TEST");
-
-var items = document.getElementById('Iitemid').value;
+var items = document.getElementById('IitemName').value;
  var dates = document.getElementById('Idate').value;
  var qty = document.getElementById('Iqty').value;
  var price = document.getElementById('Iprice').value;
  var disc = document.getElementById('Idisc').value;
  var totalp = document.getElementById('Itotal').value;
 
-/* if(items == "")
- {  
-  //document.getElementById("pitemid").value=dates;
-  alert("Item ID should be entered");
-  //emptyField("itemID");
-  return;
-  }*/
-
-  if(selectValidate(items,"Item ID"))
-
+  if(selectValidate(items,"Item Name"))
       if(!isEmpty(qty,"Quantity"))
       
        
@@ -233,7 +193,6 @@ var items = document.getElementById('Iitemid').value;
               success();
               return true;
             }
-
       else
         return false;
       else
@@ -247,16 +206,11 @@ var items = document.getElementById('Iitemid').value;
         else
         return false;
      
-
-
  function validateDate(elem){
-
 if(!isEmpty(elem,"Date")){  
-
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
-
     var yyyy = today.getFullYear();
       
       if(dd<10){
@@ -272,24 +226,16 @@ if(!isEmpty(elem,"Date")){
           alert("Invalid Date Today is "+today);
           document.getElementById('Idate').value="";
           return false;
-
       }
         else
         return true;
         }
-
   else
   return false;
-
 }
-
-
-
 function isEmpty(elem,field) {
-
   if(elem == "")
       {   
-
         alert("You cannot have "+field+" field Empty");
         return true;
       }
@@ -298,64 +244,17 @@ else
   return false;
   }  
 }
-
-
 function selectValidate(elem,field)
-
   {
-
     if(elem == "Select "+field)
     {
       alert("Please Choose "+field);
       return false;
-
-
     }
     else
       return true;
-
-
-
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -417,40 +316,53 @@ function selectValidate(elem,field)
        </li>
 
 
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-users"></i><span>Employee Management</span>
-          
-            <i class="fa fa-angle-left pull-right"></i>
-           </span>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
-            </ul>
-       </li>
+   
+      <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i><span>Employee Management</span>
+
+                        <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                        <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                        <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                        <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                        <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                    </ul>
+                </li>
 
        <li class="treeview">
-         <a href="Janitorial">
-          <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-           
-       </li>
+                    <a href="#"><i class="fa fa-link"></i>Janitorial Service Management<span></span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="emp">Employee Managment</a>
+                        </li>
+                        <li><a href="cust">Customer Managment</a>
+                        </li>
+                        <li><a href="package">Categories</a>
+                        </li>
+                        <li><a href="order">Order Managment</a>
+                        </li>
+                    </ul>
+                </li>
 
-       <li class="treeview">
+   <li class="treeview">
          <a href="#">
           <i class="fa fa-money"></i><span>Finance Management</span>
             <i class="fa fa-angle-left pull-right"></i>
            </a>
             <ul class="treeview-menu">
-              <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-              <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-              <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-              <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
+              <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+              <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+              <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+              <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+              <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+              <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
             </ul>
        </li>
 
@@ -471,19 +383,19 @@ function selectValidate(elem,field)
        </li>
 
         <li class="treeview">
-         <a href="#">
-          <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-              <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-              <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-              <li><a href="OverWorkedEmp"><i class="fa fa-plus-circle"></i>Over Worked Employees</a></li>
-              <li><a href="RequestEmployee"><i class="fa fa-plus-circle"></i>Request Employee</a></li>
-              <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
-            </ul>
-       </li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                        <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                        <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                         <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                        <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                    </ul>
+                </li>
 
       </ul>
     </section>
@@ -495,23 +407,14 @@ function selectValidate(elem,field)
     
     <section class="content-header">
       <h1>
-        Issues
-        <small>Details about Issues</small>
+        Sales
+        <small>Details about Sales</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
         <li class="active">Here</li>
       </ol>
     </section>
-
-
-
-
-
-
-
-
-
 
  <section class="content">
       <!-- Small boxes (Stat box) -->
@@ -550,9 +453,11 @@ function selectValidate(elem,field)
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>Issues</h3>
+              <h2>Sales Today</h2>
 
-              <p>Issue Item</p>
+               @foreach($Swidget as $w)
+              <h4>Rs. {{$w->tot+0}} </h4>
+              @endforeach
             </div>
             <div class="icon">
               <i class="fa fa-sign-out"></i>
@@ -578,86 +483,31 @@ function selectValidate(elem,field)
         <!-- ./col -->
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Main content -->
     <section class="content">
     <P> </P>
       <!-- Your Page Content Here -->
-
-
-
-
-
-   
-
- 
-
-
 
  <div  align="center">
 
           <!-- Horizontal Form -->
           <div class="box box-info" style="width: 58%" >
             <div class="box-header with-border">
-              <h3 class="box-title">Add Issue Details</h3>
+              <h3 class="box-title">Add Sales Details</h3>
             </div>
             <!-- /.box-header -->
             <!-- onsubmit =" return formValidate()" action="{{ route('salesForm') }}" method="post" -->
             <form class="form-horizontal" name="salesForm" id="salesForm" onsubmit =" return formValidate()" action="{{ route('salesForm') }}" method="post">
               <div class="box-body">
-           
-           <!--     <div class="form-group">
-                  <label for="inputPID" class="col-sm-2 control-label">Issue no.</label>
 
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="iid" placeholder="Issue no." style="width:80%" disabled>
-                  </div>
-                </div> 
-                <div class="form-group">
-                  <label for="inputIitemid" class="col-sm-2 control-label">Item ID</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Iitemid" name="Iitemid" placeholder="Item ID" style="width:80%">
-                  </div>
-                </div>
--->
-
-
-                        <div class="form-group">
-               <label for="input" class="col-sm-2 control-label">Item ID</label>
+              <div class="form-group">
+               <label for="input" class="col-sm-2 control-label">Item Name</label>
                <div class="col-sm-10">
-                  <select class="form-control" id="Iitemid" name="Iitemid" style="width:80%">
-                    <option>Select Item ID</option>
+                  <select class="form-control" id="IitemName" name="IitemName" style="width:80%">
+                    <option>Select Item Name</option>
 
                     @foreach($itm as $it)
-                    <option> {{ $it -> itemid }} </option>
+                    <option> {{ $it -> itemName }} </option>
                     @endforeach
                   
 
@@ -681,7 +531,7 @@ function selectValidate(elem,field)
                   <label for="inputdate" class="col-sm-2 control-label">Date</label>
 
                   <div class="col-sm-10">
-                    <input type="date" class="form-control" id="Idate" name="Idate" placeholder="Purchase Date" style="width:80%">
+                    <input type="date" class="form-control" id="Idate" name="Idate" placeholder="Issue Date" style="width:80%" readonly>
                   </div>
                 </div>
 
@@ -691,62 +541,42 @@ function selectValidate(elem,field)
                   <label for="inputdate" class="col-sm-2 control-label">Selling price</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Iprice" name="Iprice" placeholder="Selling price" style="width:80%">
+                    <input type="text" class="form-control" id="Iprice" name="Iprice" placeholder="Selling price(Rs.)" style="width:80%">
                   </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
+                
 
                  <div class="form-group">
                   <label for="inputITEMID" class="col-sm-2 control-label">Discount</label>
 
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="Idisc" name="Idisc" placeholder="Discount" style="width:80%">
+                    <input type="text" class="form-control" id="Idisc" name="Idisc" placeholder="Discount(Rs.)" style="width:80%">
                   </div>
                 </div>
 
 
 
 
-
-
-             <div class="form-group">
+                  <div class="form-group">
                   <label for="Total" class="col-sm-2 control-label">Total</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Itotal" id="Itotal" placeholder="Total Amount" style="width:80%" readonly>
-                    <button type="button" onclick="return calTotal()" class="btn btn-info btn-flat">calculate total</button>
-                  </div>
+                 <div class="input-group input-group-sm-10" style="width:63%">
+                <input type="text" class="form-control" name="Itotal" id="Itotal" placeholder="Total Amount(Rs.)" readonly>
+                    <span class="input-group-btn">
+                      <button type="button" onclick="return calTotal()" class="btn btn-info btn-flat">Total</button>
+                    </span>
+              </div>
                 </div>
 
-            
-
-
-
-
-
-
-
-
-
-                
+       
               </div>
               <!-- /.box-body -->
               
               <div class="box-footer">
             
-                <button type="submit" class="btn btn-primary pull-center name=addp" >Add Issued Item</button>
+                <button type="submit" class="btn btn-primary pull-center name=addp" >Add Sales Item</button>
                  
                  <input type="hidden" name="_token" value="{{ Session::token() }}">  
-                <button type="reset" onClick="clearForm()" class="btn btn-warning pull-center"> Clear </button>
-
+                <button type="reset" class="btn btn-danger pull-center"> Clear </button>
 
 
 
@@ -761,86 +591,32 @@ function selectValidate(elem,field)
 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
  <section class="content">
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Issue Details</h3>
+              <h3 class="box-title">Sales Details</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
 
 
-
-
-
-
-
-
 <div class="row">
- 
-
        <div class="col-sm-6">
-
-
-
        <div class="dataTables_filter" id="example1_filter">
-
-
        </div></div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+           
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Issue ID</th>
-                  <th>Item ID</th>
+                  <th>Sales ID</th>
+                  <th>Item Name</th>
                   <th>Quantity</th>
                   <th>Date </th>
-                  <th>Price</th>
-                  <th>Discount </th>
-                  <th>Total</th>
+                  <th>Unit Value(Rs.)</th>
+                  <th>Discount(Rs.) </th>
+                  <th>Total(Rs.)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -864,53 +640,12 @@ function selectValidate(elem,field)
             <!-- /.box-body -->
           </div>
 
-
-
-
-
-
-
-
-
-
-
-
     </section>
     <!-- /.content -->
   </div>
 
+    </section>    
 
-
-
-            @$s=1;
-            @$t=1;
-       @foreach($check as $c)
-                    <input type="text" name="A" id=$s value="{{ $c -> itemid }}" hidden>
-                    <input type="text" name="B" id=$t value="{{ $c -> qty }}" hidden>
-                    @$s=$s+1;
-                    @$t=$t+1;
-                    @endforeach
-                  
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </section>                
- 
   </div>    
 
 <!-- ./wrapper -->
@@ -925,6 +660,13 @@ function selectValidate(elem,field)
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
 
 
 </body>

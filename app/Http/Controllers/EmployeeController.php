@@ -44,10 +44,11 @@ class EmployeeController extends Controller
         $designation = $request->input('designation');
         $branch = $request->input('branch');
         $manager = $request->input('manager');
+        $type = $request->input('type');
 
         DB::statement(
-            "INSERT INTO employee(address, nic, name, contact, dob, joined_date, service_type, gender, manager, branch, designation)
-            VALUES ('$address','$nic','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation')");
+            "INSERT INTO employee(address, nic, name, contact, dob, joined_date, service_type, gender, manager, branch, designation,emp_type)
+            VALUES ('$address','$nic','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation','$type')");
 
         return redirect('/AddEmployee');
     }

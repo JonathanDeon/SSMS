@@ -31,13 +31,7 @@
 
     <script src="../../dist/js/demo.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"> </script>
-
-
- 
-
-
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
 
     <script>
    function alerts() {
@@ -46,28 +40,18 @@
     function emptyField(field) {
                 swal("Invalid Field : "+field, "You Cannot Have "+field+" Field Empty", "warning");
     }
-
     function invalidl(field) {
                 swal("Invalid Field : "+field, "You Can Have Only Numeric Values In "+field+" field ", "warning");
     }
-
       function nonNeg(field) {
                 swal("Invalid Field : "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
     }
-
-
-
-
-
 function formValidate(){
-
        var emailID = document.getElementById('Semail').value;
        var Sname = document.getElementById('Sname').value;
        var Addr = document.getElementById('Saddress').value;
        var phone = document.getElementById('Stel').value;
-
-
-
+    
       if(!isEmpty(Sname,"Supplier Name"))
        if(emailValidate(emailID))
           if(validatePhone(phone))
@@ -84,13 +68,9 @@ function formValidate(){
                   return false;
                 else
                   return false;
-
-
  
        
       
-
-
     function emailValidate(elem){         
         
          atpos = emailID.indexOf("@");
@@ -107,17 +87,11 @@ function formValidate(){
         else
          return true;
      }
-
      return false;
        
        }
-
-
-
-
     function isEmpty(elem,field) {
-
-        if(elem == "")
+        if(elem=="")
         {    
            alert("You cannot have "+field+" field Empty");
            return true;
@@ -127,16 +101,6 @@ function formValidate(){
           return false;
         }  
     } 
-
-
-
-
-
-
-
-
-
-
     function validatePhone(elem){  
         var expr = /^[0-9]+$/;
       if(!isEmpty(elem,"Phone no."))
@@ -146,69 +110,22 @@ function formValidate(){
             alert("Invalid Phone : Only numeric values");
             document.getElementById('Stel').value="";
             return false;
-
          }
-
          if(elem.length!=10)
          {
-
             alert("Invalid Phone : Length of digits should be 10");
             document.getElementById('Stel').value="";
             return false;
-
          }
-
-
          else
           return true;
       }
-
       return false;
           
           }
       
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
-
-
-
-
-
-
-
 
 
 </head>
@@ -273,29 +190,40 @@ function formValidate(){
        </li>
 
 
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-users"></i><span>Employee Management</span>
-          
-            <i class="fa fa-angle-left pull-right"></i>
-           </span>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
-            </ul>
-       </li>
+  
+      <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i><span>Employee Management</span>
+
+                        <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                        <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                        <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                        <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                        <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                    </ul>
+                </li>
 
        <li class="treeview">
-         <a href="Janitorial">
-          <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-           
-       </li>
+                    <a href="#"><i class="fa fa-link"></i>Janitorial Service Management<span></span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="emp">Employee Managment</a>
+                        </li>
+                        <li><a href="cust">Customer Managment</a>
+                        </li>
+                        <li><a href="package">Categories</a>
+                        </li>
+                        <li><a href="order">Order Managment</a>
+                        </li>
+                    </ul>
+                </li>
 
        <li class="treeview">
          <a href="#">
@@ -303,10 +231,12 @@ function formValidate(){
             <i class="fa fa-angle-left pull-right"></i>
            </a>
             <ul class="treeview-menu">
-              <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-              <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-              <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-              <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
+              <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+              <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+              <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+              <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+              <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+              <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
             </ul>
        </li>
 
@@ -327,19 +257,19 @@ function formValidate(){
        </li>
 
         <li class="treeview">
-         <a href="#">
-          <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-              <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-              <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-              <li><a href="OverWorkedEmp"><i class="fa fa-plus-circle"></i>Over Worked Employees</a></li>
-              <li><a href="RequestEmployee"><i class="fa fa-plus-circle"></i>Request Employee</a></li>
-              <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
-            </ul>
-       </li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                        <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                        <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                         <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                        <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                    </ul>
+                </li>
 
       </ul>
     </section>
@@ -360,15 +290,6 @@ function formValidate(){
         <li class="active">Here</li>
       </ol>
     </section>
-
-
-
-
-
-
-
-
-
 
  <section class="content">
       <!-- Small boxes (Stat box) -->
@@ -407,9 +328,9 @@ function formValidate(){
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>Issues</h3>
+              <h3>Sales</h3>
 
-              <p>Issue Item</p>
+              <p>Sales Item</p>
             </div>
             <div class="icon">
               <i class="fa fa-sign-out"></i>
@@ -424,7 +345,9 @@ function formValidate(){
             <div class="inner">
               <h3>Suppliers</h3>
 
-              <p>Details</p>
+             @foreach($Supwidget as $sup)
+              <h4>{{$sup->number+0}} suppliers </h4>
+              @endforeach
             </div>
             <div class="icon">
               <i class="fa fa-user-plus"></i>
@@ -435,48 +358,10 @@ function formValidate(){
         <!-- ./col -->
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Main content -->
     <section class="content">
     <P> </P>
       <!-- Your Page Content Here -->
-
-
-
-
-
-   
-
- 
-
-
 
  <div  align="center">
 
@@ -490,13 +375,7 @@ function formValidate(){
             <form class="form-horizontal" name="supplierForm" id="supplierForm" onsubmit =" return formValidate()" action="{{ route('supplierForm') }}" method="post">
               <div class="box-body">
                 
-               <!-- <div class="form-group">
-                  <label for="inputPID" class="col-sm-2 control-label">Supplier ID</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control"  id="ssid" name="ssid" placeholder="Supplier ID" style="width:80%">
-                  </div>
-                </div> -->
+            
                 <div class="form-group">
                   <label for="inputITEMID" class="col-sm-2 control-label">Supplier Name</label>
 
@@ -506,21 +385,13 @@ function formValidate(){
                 </div>
 
 
-
-
-
-                                    <div class="form-group">
+                <div class="form-group">
                   <label for="inputITEMID" class="col-sm-2 control-label">Email</label>
 
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="Semail" name="Semail" placeholder="Email" style="width:80%">
                   </div>
                 </div>
-
-
-
-
-
 
 
                  <div class="form-group">
@@ -530,8 +401,6 @@ function formValidate(){
                     <input type="text" class="form-control" id="Stel" name="Stel" placeholder="Telephone" style="width:80%">
                   </div>
                 </div>
-
-
 
 
                     <div class="form-group">
@@ -556,7 +425,7 @@ function formValidate(){
             <!--    <button type="submit" class="btn btn-default">Cancel</button> -->
                 <button type="submit" class="btn btn-primary pull-center name=addp" >Add Supplier</button>
                    <input type="hidden" name="_token" value="{{ Session::token() }}">
-                <button type="reset" class="btn btn-warning pull-center"> Clear </button>
+                <button type="reset" class="btn btn-danger pull-center"> Clear </button>
 
 
 
@@ -571,29 +440,6 @@ function formValidate(){
 
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
  <section class="content">
       <div class="row">
         <div class="col-xs-12">
@@ -606,70 +452,11 @@ function formValidate(){
 
 
 
-
-
-
-
-
-
-
 <div class="row">
- <!--      <div class="col-sm-6">
-       <div id="example1_length" class="dataTables_length">
-       <label>Show <select class="form-control input-sm" aria-controls="example1" name="example1_length">
-       <option value="10">10</option>
-       <option value="25">25</option> 
-       <option value="50">50</option>
-       <option value="100">100</option></select> entries</label>
-
-
-
-
-       </div>
-
-       </div> -->
-
        <div class="col-sm-6">
-
-
-
        <div class="dataTables_filter" id="example1_filter">
-     <!--  <label>Search:<input aria-controls="example1" placeholder="" class="form-control input-sm" type="search"></label>
-
-<div class="btn-group">
-        <button type="button" onclick="alerts()" class="btn btn-default">Remove</button>
-                  <button type="button" class="btn btn-default">Edit</button>
-                </div> -->
-
        </div></div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+           
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -690,23 +477,17 @@ function formValidate(){
                         <td>{{$supplier->Stel}}</td>
                         <td>{{$supplier->Saddress}}</td>
 
-                    <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal"><i class="ion-android-add-circle"></i>&nbsp</button></td>
+                    <td><button type="button" onclick="getSupplier('{{$supplier->ssid}}')" id="update" value="{{$supplier->ssid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>
                     <td><button type="button" value="{{$supplier->ssid}}" class="btn btn-danger" onclick="deleteSupplier('{{$supplier->ssid}}')"><i class="fa fa-trash"></i></button></td>
 
                     </tr>
 
                 @endforeach
-                <script type="text/javascript">
-                  function ok(){
-                    alert("okay");
-                  }
-                </script>>
-
+      
                 </tbody></table>
                   <script>
                       function deleteSupplier(ssid){
                       
-
                           swal({
                                       title: "Are you sure you want to delete?",
                                       text: "You will not be able to recover this record!",
@@ -717,7 +498,6 @@ function formValidate(){
                                       closeOnConfirm: false },
                                   function(confirm){
                                       if(confirm) {
-
                                           $.ajax({
                                               method:'get',
                                               url:'deleteSupplier',
@@ -743,9 +523,6 @@ function formValidate(){
                                       }
                                   }
                           );
-
-
-
                       }
                   </script>
 
@@ -758,7 +535,6 @@ function formValidate(){
 
                    <script>
                               function getSupplier(ssid) {  
-
                                   document.getElementById('Ussid').value = ssid;
                                   $.ajax({
                                       type: "get",
@@ -771,28 +547,42 @@ function formValidate(){
                                           document.getElementById('USname').value = details[0].Sname;
                                           document.getElementById('USemail').value = details[0].Semail;
                                           document.getElementById('UStel').value = details[0].Stel;
-                                          // document.getElementById('USaddress').value = details[0].Saddress;
+                                           document.getElementById('USaddress').value = details[0].Saddress;
                                           
                                       },
                                       error:function(){
                                       }
                                   })
                               }
+
+
+
+
+
+
                               function updateSupplier() {
                                   var ssid = document.getElementById('save').value;
                                   var Sname = document.getElementById('USname').value;
                                   var Semail = document.getElementById('USemail').value;
                                   var Stel = document.getElementById('UStel').value;
-                                  // var Saddress = document.getElementById('USaddress').value;
-                             
-                                  $.ajax({
+                                 var Saddress = document.getElementById('USaddress').value;
+
+
+                        
+
+     if(!isEmpty(Sname,"Supplier Name"))
+       if(emailValidate(Semail))
+          if(validatePhone(Stel))
+            if(!isEmpty(Saddress,"Supplier Address"))
+                { 
+                         $.ajax({
                                       type: "get",
                                       url: 'updateSupplier',
                                       data: {ssid: ssid,Sname:Sname,Semail:Semail,Stel: Stel,Saddress:Saddress},
                                       success: function() {
                                           swal({
                                               title: "Success!",
-                                              text: "successfully updated the employee information",
+                                              text: "successfully updated the Supplier information",
                                               type: "success",
                                               showCancelButton: false,
                                               confirmButtonColor: '#1D84FF',
@@ -806,36 +596,91 @@ function formValidate(){
                                           });
                                       },
                                       error: function(){
-                                          swal("Error!","Employee information update failed!", "error");
+                                          swal("Error!","Supplier information update failed!", "error");
                                       }
                                   })
-                              } 
+
+                   return true;
+                 }
+                   else
+                   return false;
+                 else
+                  return false;
+                else
+                  return false;
+                else
+                  return false;
+
+
+
+
+
+
+
+
+          function emailValidate(elem){         
+        
+         atpos = elem.indexOf("@");
+         dotpos = elem.lastIndexOf(".");
+        
+      if(!isEmpty(elem,"Email"))
+      {     
+         if (atpos < 1 || ( dotpos - atpos < 2 )) 
+         {
+            alert("Please enter correct Email Address");
+            document.getElementById('USemail').value="";
+            return false;      
+         }
+        else
+         return true;
+     }
+     return false;
+       
+       }
+    function isEmpty(elem,field) {
+        if(elem =="")
+        {    
+          emptyField(field);
+           //alert("You cannot have "+field+" field Empty");
+           return true;
+        }
+        else
+        {
+          return false;
+        }  
+    } 
+    function validatePhone(elem){  
+        var expr = /^[0-9]+$/;
+      if(!isEmpty(elem,"Phone no."))
+      {  
+         if(!elem.match(expr))
+         {
+            alert("Invalid Phone : Only numeric values");
+            document.getElementById('UStel').value="";
+            return false;
+         }
+         if(elem.length!=10)
+         {
+            alert("Invalid Phone : Length of digits should be 10");
+            document.getElementById('UStel').value="";
+            return false;
+         }
+         else
+          return true;
+      }
+      return false;
+          
+          }
+
+
+
+                              }
+
+           
                           </script>
 
-
-
-
-
-
-
-
-
-
-              
             </div>
-            <!--        
- <td><button type="button" id="accept" class="btn btn-primary" onclick="success()"><i class="fa fa-edit"></i></button></td>
-                    <td><button type="button" id="reject" class="btn btn-danger" onclick="alerts()"><i class="fa fa-trash"></i></button></td>
- -->
           </div>
-
-
-
-
-
-
-
-
 
 </div>
 
@@ -843,39 +688,7 @@ function formValidate(){
     <!-- /.content -->
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </section>   
-    
-
-
-
-
-
-
-
-
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -893,7 +706,7 @@ function formValidate(){
                                         <label>Supplier ID:</label>
                                         <input type="text" class="form-control" id="Ussid" name="Ussid" disabled>
                                         <label>Supplier Name:</label>
-                                        <input type="text" class="form-control" id="USname" name="USname">
+                                        <input type="text" class="form-control" id="USname" name="USname" disabled>
                                         <label>Supplier Email</label>
                                         <input type="text" class="form-control" id="USemail" name="USemail">
                                         <label>Supplier Telephone</label>
@@ -917,26 +730,6 @@ function formValidate(){
        
     </div>  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-
     <!-- /.content -->
   </div>
   
@@ -953,6 +746,14 @@ function formValidate(){
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
 
 <script>
     function alerts() {

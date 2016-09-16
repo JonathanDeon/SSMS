@@ -27,7 +27,92 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+
   <![endif]-->
+<script>
+   function alerts() {
+                swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
+            }
+    function emptyField(field) {
+                swal("Invalid Field  "+field, "You Cannot Have "+field+" Field Empty", "warning");
+    }
+    function invalidl(field) {
+                swal("Invalid Field  "+field, "You Can Have Only Numeric Values In "+field+" field ", "warning");
+    }
+      function nonNeg(field) {
+                swal("Invalid Field  "+field, "You Can Have Only Positive Values In "+field+" field ", "warning");
+    }
+  function sel(field) {
+                swal(field+" Field Invalid", "Please choose "+field, "warning");
+    }
+    function dates(field,val) {
+                swal("Invalid "+field, " Please correct "+field+" Todai is "+val, "warning");
+    }
+       function success() {
+                swal("Successful", "Purchase Order Successfully Sent!", "success");
+    }
+
+</script>
+
+
+
+<script>
+  
+function validatePO(){
+
+ var to = document.getElementById('to').value;
+ var title = document.getElementById('title').value;
+ var content = document.getElementById('content').value;
+
+    if(selectValidate(to,"Supplier"))
+        if(!isEmpty(title,"Subject"))
+          if(!isEmpty(content,"the Content"))
+            {  
+              success();
+              return true;
+           }
+      else
+        return false;
+      else
+        return false;
+        else
+        return false;
+
+
+function selectValidate(elem,field)
+  {
+    if(elem == "Select "+field)
+    {
+      //alert("Please Choose "+field);
+      sel(field);
+      return false;
+    }
+    else
+      return true;
+  }
+
+function isEmpty(elem,field) {
+  if(elem == "")
+      {   
+        //alert("You cannot have "+field+" field Empty");
+        emptyField(field);
+        return true;
+      }
+else
+{
+  return false;
+  }  
+}
+
+
+
+}
+
+
+</script>
+
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -88,29 +173,40 @@
        </li>
 
 
+    
       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-users"></i><span>Employee Management</span>
-          
-            <i class="fa fa-angle-left pull-right"></i>
-           </span>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
-            </ul>
-       </li>
+                    <a href="#">
+                        <i class="fa fa-users"></i><span>Employee Management</span>
+
+                        <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                        <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                        <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                        <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                        <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                    </ul>
+                </li>
 
        <li class="treeview">
-         <a href="Janitorial">
-          <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-           
-       </li>
+                    <a href="#"><i class="fa fa-link"></i>Janitorial Service Management<span></span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="emp">Employee Managment</a>
+                        </li>
+                        <li><a href="cust">Customer Managment</a>
+                        </li>
+                        <li><a href="package">Categories</a>
+                        </li>
+                        <li><a href="order">Order Managment</a>
+                        </li>
+                    </ul>
+                </li>
 
        <li class="treeview">
          <a href="#">
@@ -118,10 +214,12 @@
             <i class="fa fa-angle-left pull-right"></i>
            </a>
             <ul class="treeview-menu">
-              <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-              <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-              <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-              <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
+              <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+              <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+              <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+              <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+              <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+              <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
             </ul>
        </li>
 
@@ -142,19 +240,19 @@
        </li>
        
        <li class="treeview">
-         <a href="#">
-          <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-              <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-              <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-              <li><a href="OverWorkedEmp"><i class="fa fa-plus-circle"></i>Over Worked Employees</a></li>
-              <li><a href="RequestEmployee"><i class="fa fa-plus-circle"></i>Request Employee</a></li>
-              <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
-            </ul>
-       </li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                        <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                        <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                         <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                        <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                    </ul>
+                </li>
 
       </ul>
     </section>
@@ -174,21 +272,6 @@
         <li class="active">Here</li>
       </ol>
     </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
  <section class="content">
       <!-- Small boxes (Stat box) -->
@@ -227,9 +310,9 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>Issues</h3>
+              <h3>Sales</h3>
 
-              <p>Issue Item</p>
+              <p>Sales Item</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>
@@ -256,93 +339,61 @@
       </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Main content -->
     <section class="content">
     <P> </P>
       <!-- Your Page Content Here -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
- 
-<div>
-  
+<div> 
 <section>
 <div class="box box-info">
             <div class="box-header">
               <i class="fa fa-envelope"></i>
 
-              <h3 class="box-title">Quick Email</h3>
+              <h3 class="box-title">Send Quick Purchase Order</h3>
               <!-- tools box -->
               <div class="pull-right box-tools">
-                <button title="" class="btn btn-danger btn-sm" type="button" data-original-title="Remove" data-toggle="tooltip" data-widget="remove">
-                  <i class="fa fa-times"></i></button>
+                
+                
               </div>
               <!-- /. tools -->
             </div>
             <div class="box-body">
-              <form action="#" method="post">
+              <form name="po" id="po"  onsubmit ="return validatePO()" action="{{ route('send') }}" method="post">
                 <div class="form-group">
-                  <input name="emailto" class="form-control" type="email" placeholder="Email to:">
+                  <select name="to" id="to" class="form-control" type="text" placeholder="Email to:">
+                     <option>Select Supplier</option>
+
+                    @foreach($Suppliername as $se)
+                    <option> {{ $se -> Sname }} </option>
+                    @endforeach
+                  
+
+                  </select>
                 </div>
+
+
+
                 <div class="form-group">
-                  <input name="subject" class="form-control" type="text" placeholder="Subject">
+                  <input name="title" id ="title" class="form-control" type="text" placeholder="Subject">
                 </div>
                 <div>
-                  <textarea class="textarea" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" placeholder="Message"></textarea>
+                  <textarea class="textarea" id ="content" name="content" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;" placeholder="Message"></textarea>
                 </div>
-              </form>
-            </div>
-            <div class="box-footer clearfix">
-              <button class="pull-right btn btn-primary" id="sendEmail" type="button">Send
+                   <div class="box-footer clearfix">
+                  
+                    <button type="reset" class="btn btn-danger pull-center"> clear </button>
+                
+             <input type="hidden" name="_token" value="{{ Session::token() }}"> 
+              <button class="pull-right btn btn-primary" id="sendEmail" type="submit"> Send
                 <i class="fa fa-arrow-circle-right"></i></button>
             </div>
+              </form>
+            </div>
+
           </div>
 
-
-
-
 </div>
-
 
     </section>
 
@@ -360,14 +411,19 @@
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
 
 <script>
     function alerts() {
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
-    function success() {
-                swal("Successful", "Data Successfully Saved!", "success");
-    }
+ 
 </script>
 </body>
 </html>

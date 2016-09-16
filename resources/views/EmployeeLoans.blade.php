@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Customer Management | Register Customer</title>
+  <title>Employee Management | Loans</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -79,7 +79,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="welcome"><i class="fa fa-calendar-minus-o"></i> <span>Reservations</span></a></li>
+                        <li><a href="reservations"><i class="fa fa-calendar-minus-o"></i> <span>Reservations</span></a></li>
                         <li><a href="assignments"><i class="fa fa-male"></i> <span>Assignments</span></a></li>
                         <li><a href="plans"><i class="fa fa-check-square"></i> <span>Service Plans</span></a></li>
                         <li><a href="logs"><i class="fa fa-file-text-o"></i> <span>Logs</span></a></li>
@@ -108,7 +108,16 @@
                         <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
-
+                    <ul class="treeview-menu">
+                        <li><a href="emp">Employee Managment</a>
+                        </li>
+                        <li><a href="cust">Customer Managment</a>
+                        </li>
+                        <li><a href="package">Categories</a>
+                        </li>
+                        <li><a href="order">Order Managment</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="treeview">
@@ -117,10 +126,12 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-                        <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-                        <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-                        <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
+                        <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+                        <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+                        <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+                        <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+                        <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+                        <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
                     </ul>
                 </li>
 
@@ -131,7 +142,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
-                        <li><a href="inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+                        <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
                         <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
                         <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
                         <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
@@ -146,9 +157,12 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="AssignEmployee"><i class="fa fa-male"></i>Assign Employees</a></li>
-                        <li><a href="create"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-                        <li><a href="replace"><i class="fa fa-exchange"></i>Replace Employee</a></li>
+                        <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                        <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                        <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                        <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                        <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
 
                     </ul>
                 </li>
@@ -195,15 +209,6 @@
                                 <div class="box-header">
                                     <h3 class="box-title">Loan Schemes</h3>
 
-                                    <div class="box-tools">
-                                        <div class="input-group input-group-sm" style="width: 400px;">
-                                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                                            <div class="input-group-btn">
-                                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body table-responsive no-padding">
@@ -469,6 +474,9 @@
                                             <input type="text" id="ename" class="form-control" placeholder="Enter Employee Name">
                                         </div>
                                     </form>
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-block btn-primary btn-flat" style="width: 30%; float: right" onclick="checkEligibility()">Check Eligibility</button>
+                                    </div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
@@ -497,6 +505,7 @@
                             </div>
                             <script>
                                 function addLoan() {
+
                                     var lid = document.getElementById('lid').value;
                                     var eid = document.getElementById('eid').value;
                                     var name = document.getElementById('name').value;
@@ -514,6 +523,22 @@
                                         },
                                         error: function(){
                                             swal("Adding Failed!", "warning")
+                                        }
+                                    })
+                                }
+                            </script>
+                            <script>
+                                function checkEligibility(){
+                                    var eid = document.getElementById('eid').value;
+                                    $.ajax({
+                                        type: "get",
+                                        url: 'checkEligibility',
+                                        data: {eid: eid},
+                                        success: function() {
+                                            swal("Eligible!", "success");
+                                        },
+                                        error: function(){
+                                            swal("Not Eligible!", "warning")
                                         }
                                     })
                                 }
@@ -589,7 +614,7 @@
                               <form role="form">
                                   <!-- text input -->
                                   <div class="form-group" style="color:black">
-                                      <label>Title:</label>
+                                      <label>Start Date:</label>
                                       <input type="date" class="form-control" id="start_date">
                                       <label>End Date:</label>
                                       <input type="date" class="form-control" id="end_date">
