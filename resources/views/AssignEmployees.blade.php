@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Customer Management | Register Customer</title>
-  <!-- My first push -->
+  <!-- My fourth push -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
@@ -52,6 +52,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+      </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -452,7 +453,8 @@
           </div>
         
 
-        </div>      
+        </div>
+        </div>
 
     </section>
  

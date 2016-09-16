@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Replace Employees</title>
+  <title>Service Management | Replace Employees</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -76,113 +76,116 @@ desired effect
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
+   <aside class="main-sidebar">
+           <!-- sidebar: style can be found in sidebar.less -->
+           <section class="sidebar">
+               <!-- Sidebar user panel -->
 
-    <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
-          <!-- Sidebar user panel -->
+               <ul class="sidebar-menu">
+                                          <li class="treeview">
+                                                    <a href="#">
+                                                      <i class="fa fa-user"></i> <span>Customer Management</span>
+                                                      <i class="fa fa-angle-left pull-right"></i>
+                                                    </a>
+                                                    <ul class="treeview-menu">
+                                                        <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+                                                        <li class="active"><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+                                                        <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+                                                        <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+                                                        <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
+                                                    </ul>
+                                                  </li>
 
-          <ul class="sidebar-menu">
+                                           <li class="treeview">
+                                               <a href="#">
+                                                   <i class="fa fa-calendar-minus-o"></i> <span>Service Management</span>
+                                                   <i class="fa fa-angle-left pull-right"></i>
+                                               </a>
+                                               <ul class="treeview-menu">
+                                                  <li><a href="assignments"><i class="fa fa-male"></i> <span>Assignments</span></a></li>
+                                                  <li><a href="plans"><i class="fa fa-check-square"></i> <span>Service Plans</span></a></li>
+                                                   <li><a href="logs"><i class="fa fa-file-text-o"></i> <span>Logs</span></a></li>
+                                                   <li><a href="reports"><i class="fa fa-pencil-square-o"></i> <span>Reports</span></a></li>
+                                               </ul>
+                                           </li>
 
-              <li class="treeview active">
-                  <a href="#">
-                      <i class="fa fa-user"></i> <span>Customer Management</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                      <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-                      <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
-                      <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
-                      <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-                      <li class="active"><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-                      <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
-                  </ul>
-              </li>
+                                           <li class="treeview">
+                                                               <a href="#">
+                                                                   <i class="fa fa-users"></i><span>Employee Management</span>
+                                                                   <i class="fa fa-angle-left pull-right"></i>
+                                                                   </span>
+                                                               </a>
+                                                               <ul class="treeview-menu">
+                                                                   <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                                                                   <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                                                                   <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                                                                   <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                                                                   <li class="active"><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                                                               </ul>
+                                                           </li>
 
-              <li class="treeview">
-                  <a href="#">
-                      <i class="fa fa-car"></i> <span>Service Management</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                      <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-                      <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
-                      <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
-                      <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
-                      <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
-                  </ul>
-              </li>
+                                           <li class="treeview">
+                                                                                       	<a href="#">
+                                                                                       		<i class="fa fa-link"></i> <span> Janitorial Management </span>
+                                                                                               	<i class="fa fa-angle-left pull-right"></i>
+                                                                                               </a>
 
-              <li class="treeview">
-                  <a href="#">
-                      <i class="fa fa-users"></i><span>Employee Management</span>
+                                                                                               <ul class="treeview-menu">
+                                                                                               	<li class="active"><a href="emp"><i class="fa fa-users"></i> Employee Management</a></li>
+                                                                                                       <li><a href="cust"><i class="fa fa-user"></i> Customer Management</a></li>
+                                                                                                       <li><a href="package"><i class="fa fa-cubes"></i> Categories</a></li>
+                                                                                                       <li><a href="order"><i class="fa fa-cart-plus"></i> Order Management</a></li>
+                                                                                               </ul>
+                                                                                       </li>
 
-                      <i class="fa fa-angle-left pull-right"></i>
-                      </span>
-                  </a>
-                  <ul class="treeview-menu">
-                      <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                      <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-                      <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-                      <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-                      <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
-                  </ul>
-              </li>
+                                           <li class="treeview">
+                                                    <a href="#">
+                                                     <i class="fa fa-money"></i><span>Finance Management</span>
+                                                       <i class="fa fa-angle-left pull-right"></i>
+                                                      </a>
+                                                       <ul class="treeview-menu">
+                                                         <li class="active"><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+                                                         <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+                                                         <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+                                                         <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+                                                         <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+                                                         <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
+                                                       </ul>
+                                                  </li>
 
-              <li class="treeview">
-                  <a href="Janitorial">
-                      <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                  </a>
+                                             <li class="treeview">
+                                                     <a href="#">
+                                                      <i class="fa fa-cube"></i><span>Inventory Management</span>
+                                                        <i class="fa fa-angle-left pull-right"></i>
+                                                       </a>
+                                                        <ul class="treeview-menu">
+                                                          <li class="active"><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
+                                                          <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+                                                          <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
+                                                          <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
+                                                          <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
+                                                          <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
+                                                          <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
+                                                        </ul>
+                                                   </li>
 
-              </li>
-
-              <li class="treeview">
-                  <a href="#">
-                      <i class="fa fa-money"></i><span>Finance Management</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                      <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-                      <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-                      <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-                      <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
-                  </ul>
-              </li>
-
-              <li class="treeview">
-                  <a href="#">
-                      <i class="fa fa-cube"></i><span>Inventory Management</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                      <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
-                      <li><a href="inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
-                      <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
-                      <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
-                      <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
-                      <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
-                      <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
-                  </ul>
-              </li>
-
-              <li class="treeview">
-                  <a href="#">
-                      <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-                      <i class="fa fa-angle-left pull-right"></i>
-                  </a>
-                  <ul class="treeview-menu">
-                      <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-                      <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-                      <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-                  </ul>
-              </li>
-
-          </ul>
-      </section>
-
-      <!-- /.sidebar -->
-  </aside>
+                                           <li class="treeview active">
+                                                               <a href="#">
+                                                                   <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                                                                   <i class="fa fa-angle-left pull-right"></i>
+                                                               </a>
+                                                               <ul class="treeview-menu">
+                                                                   <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                                                                   <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                                                                   <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                                                                    <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                                                                   <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                                                                   <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                                                               </ul>
+                                                           </li>
+                                       </ul>
+           </section>
+       </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -192,8 +195,8 @@ desired effect
         Replace Employees
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i>Work Shift</a></li>
+        <li class="active">Replace Employees</li>
       </ol>
     </section>
 
@@ -202,72 +205,11 @@ desired effect
 
     <div class="main">
 
-    <div  class="row">
 
-      <h4 style="margin-left:40px">Unavailable Employees</h4>
-
-
-        <div class="col-lg-3 col-xs-6" style="margin-left:50px">
-          <!-- small box -->
-          <div class="small-box bg-red">
-
-            <div class="inner">
-              <h3>11</h3>
-
-              <p>Branch 1</p>
-            </div>
-
-
-
-            <div class="icon">
-              <i class="fa fa-fw fa-user-times"></i>
-            </div>
-
-            <a href="#" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
-            </a>
-          </div>
-
-        </div>
-
-        <div class="col-lg-3 col-xs-6" style="margin-left:50px">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>7</h3>
-
-              <p>Branch 2</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-fw fa-user-times"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-xs-6" style="margin-left:50px">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>3</h3>
-
-              <p>Branch 3</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-fw fa-user-times"></i>
-            </div>
-            <a href="#" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
-            </a>
-          </div>
-        </div>
-  </div>
 
   <div>
 
-     <div class="box box-danger">
+     <div class="box box-warning">
               <div class="box-header with-border">
               <h3 class="box-title">Replacing Unavailable Employees</h3>
               </div>
@@ -285,11 +227,11 @@ desired effect
             <div style="padding:10px;">
             <div class="input-group input-group-sm">
                 <select class="form-control" id="SelectShift" name="SelectShift">
-                 @foreach ($Uplans as $shift)
-
-                <option value="{{ $shift->PlanID }}">Shift plan {{ $shift->PlanID }}</option>
-                
-             @endforeach       
+                @if ($unavailableshiftplans!=null)
+                @foreach ($unavailableshiftplans as $plan)
+                    <option>Shift Plan {{$plan->SPID}}</option>;
+                @endforeach
+                @endif
               </select>
                     <span class="input-group-btn">
                       <button type="submit" class="btn btn-info btn-flat">Go!</button>
@@ -300,29 +242,46 @@ desired effect
               </form>
             
             </div>
+            </div>
 
-              <div class="col-md-6" style="margin-left:70px;">
+            <div class="row">
 
-            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+              <div class="col-md-12">
+
+            <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-md-12"></div><div class="col-md-12"></div></div><div class="row"><div class="col-md-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
 
              <tbody><tr>
-                  <th>Name</th>
-                  <th>Efficiency</th>
-                  <th></th>
+                  <th style="width: 250px;">Name</th>
+                  <th style="width: 200px;">Unavailable From</th>
+                  <th style="width: 200px;">Unavailable Till</th>
+                  <th style="width: 200px;">Efficiency</th>
+                  <th align="centre"></th>
                 </tr>
-                @if ($employees != null)
-                 @foreach ($employees as $employee)
+                  <form role="form" method="POST" action="{{url('getEmployee')}}">
+                                                    <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+
+                  <input type="hidden" name="planid" value="{{$pid}}">
+                @if ($unavailableEmployees != null)
+                 @foreach ($unavailableEmployees as $employee)
                     <tr>
+
                       <td>{{ $employee->name }}</td>
-                      <td>
-                        <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                        </div>
-                      </td>
-                      <td><button type="button" value="{{$employee->eid}}" class="btn btn-success" onclick="Addemp({{$employee->eid}})">Replace</button></td>
+                      <td>{{$employee->start_date}}</td>
+                      <td>{{$employee->end_date}}</td>
+                      @if (($employee->Efficiency)>=80)
+                        <td><span class="badge bg-green">{{$employee->Efficiency}}%</span></td>
+                      @elseif(($employee->Efficiency)>=60)
+                        <td><span class="badge bg-blue">{{$employee->Efficiency}}%</span></td>
+                      @elseif(($employee->Efficiency)>=40)
+                        <td><span class="badge bg-yellow">{{$employee->Efficiency}}%</span></td>
+                      @else
+                        <td><span class="badge bg-red">{{$employee->Efficiency}}%</span></td>
+                      @endif
+                      <td><button type="submit" value="{{$employee->leave_id}}" name="submit" class="btn btn-primary">OK</button></td>
                 </tr>
                 @endforeach
                 @endif
+                </form>
                
                 </tbody>
 
@@ -333,6 +292,53 @@ desired effect
             </div>
             </div>
 
+                        <div class="row">
+
+                          <div class="col-md-12">
+
+                        <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-md-12"></div><div class="col-md-12"></div></div><div class="row"><div class="col-md-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+
+                         <tbody><tr>
+                              <th style="width: 250px;">Name</th>
+                              <th style="width: 200px;">Day Shift</th>
+                              <th style="width: 200px;">Time Shift</th>
+                              <th style="width: 200px;">Efficiency</th>
+                              <th></th>
+
+                              <!--<th style="width: 200px;">Efficiency</th>!-->
+
+                            </tr>
+                            @if ($replaceableEmployees != null)
+                             @foreach ($replaceableEmployees as $employee)
+                                @if ($employee->eid != $emp)
+                                <tr>
+                                  <td>{{ $employee->name }}</td>
+                                  <td>{{$employee->day}}</td>
+                                  <td>{{$employee->Tim}}</td>
+                                   @if (($employee->Efficiency)>=80)
+                                    <td><span class="badge bg-green">{{$employee->Efficiency}}%</span></td>
+                                   @elseif(($employee->Efficiency)>=60)
+                                    <td><span class="badge bg-blue">{{$employee->Efficiency}}%</span></td>
+                                   @elseif(($employee->Efficiency)>=40)
+                                    <td><span class="badge bg-yellow">{{$employee->Efficiency}}%</span></td>
+                                   @else
+                                    <td><span class="badge bg-red">{{$employee->Efficiency}}%</span></td>
+                                   @endif
+                                  <td><button type="button" value="{{$employee->eid}}" class="btn btn-success" onclick="UpdateEmployeeShift('{{$employee->eid}}','{{$pid}}','{{$emp}}','{{$leaveid}}')">Replace</button></td>
+                                </tr>
+                                @endif
+                            @endforeach
+                            @endif
+
+                            </tbody>
+
+                        </table>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
 
               
             </div>
@@ -341,202 +347,162 @@ desired effect
     
 
 
-       <div class="box box-danger">
-              <div class="box-header with-border">
-              <h3 class="box-title">Assigning The Most Efficient Employees</h3>
-              </div>
+                <div class="box box-warning">
+                            <div class="box-header">
+                              <h3 class="box-title">Reassignable Employees</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body no-padding">
+                              <table class="table table-condensed">
+                                <tbody><tr>
+                                  <th>Name</th>
+                                  <th>Back to Work Date</th>
+                                  <th>efficiency</th>
+                                  <th></th>
+                                </tr>
+                                @if ($reassignableemployees!=null)
+                                @foreach($reassignableemployees as $reassign)
+                                <tr>
+                                  <td>{{$reassign->name}}</td>
+                                  <td>{{$reassign->end_date}}</td>
+                                   @if (($reassign->Efficiency)>=80)
+                                    <td><span class="badge bg-green">{{$reassign->Efficiency}}%</span></td>
+                                   @elseif(($reassign->Efficiency)>=60)
+                                    <td><span class="badge bg-blue">{{$reassign->Efficiency}}%</span></td>
+                                   @elseif(($reassign->Efficiency)>=40)
+                                    <td><span class="badge bg-yellow">{{$reassign->Efficiency}}%</span></td>
+                                   @else
+                                    <td><span class="badge bg-red">{{$reassign->Efficiency}}%</span></td>
+                                   @endif
+                                  <td><button type="button" value="{{$reassign->ID}}" class="btn btn-success" onclick="ReEnterEmployeeShift('{{$reassign->ID}}')">Replace</button></td>
+                                </tr>
+                                @endforeach
+                                @endif
 
-              <div class="box-body">
-              <div class="row">
-
-               <div class="col-md-4">
-                <div class="box box-success box-solid" style="margin-left:0px;">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Branch 1</h3>
-                      <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                        </button>
-                      </div>
-                 </div>
-           
-
-                <div class="box-body no-padding">
-                    <table class="table table-condensed">
-                      <tbody><tr>
-                        <th>Name</th>
-                        <th>Efficiency</th>
-                        <th></th>
-                      </tr>
-
-                @if ($efficiencylist != null)
-                @foreach( $efficiencylist as $list )
-                  <tr>
-                    <td>{{ $list->name }}</td> 
-                    <td>
-                      <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width:{{ $list->Efficiency }}%">
-                      </div>
-                    </td>
-                    <td><button type="button" value="y" class="btn btn-success" onclick="Addemp({{$list->employee}})">Replace</button></td>
-                </tr>
-                @endforeach
-                @endif
-                
-               
-              </tbody></table>
-            </div>
-           
-            <!-- /.box-body -->
-            </div>
-
-
-          </div>
-
-          <div class="col-md-4">
-
-          <div class="box box-warning box-solid" style="margin-left:0px;">
-            <div class="box-header with-border">
-              <h3 class="box-title">Branch 2</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            
-            <!-- /.box-header -->
-           
-            <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tbody><tr>
-                  <th>Name</th>
-                  <th>Efficiency</th>
-                  <th></th>
-                </tr>
-               
-                @if ($efficiencylist != null)
-                @foreach( $efficiencylist as $list )
-                  <tr>
-                    <td>{{ $list->name }}</td> 
-                    <td>
-                      <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width:{{ $list->Efficiency }}%">
-                      </div>
-                    </td>
-                    <td><button type="button" value="y" class="btn btn-success" onclick="Addemp({{$list->employee}})">Replace</button></td>
-                </tr>
-                @endforeach
-                @endif
-                
-               
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-            </div>
-
-
-
-
-            </div>
-
-            <div class="col-md-4">
-
-            <div class="box box-danger box-solid" style="margin-left:0px;">
-            <div class="box-header with-border">
-              <h3 class="box-title">Branch 3</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            
-            <!-- /.box-header -->
-           
-            <div class="box-body no-padding">
-              <table class="table table-condensed">
-                <tbody><tr>
-                  <th>Name</th>
-                  <th>Efficiency</th>
-                  <th></th>
-                </tr>
-               
-                @if ($efficiencylist != null)
-                @foreach( $efficiencylist as $list )
-                  <tr>
-                    <td>{{ $list->name }}</td> 
-                    <td>
-                      <div class="progress progress-xs">
-                        <div class="progress-bar progress-bar-danger" style="width:{{ $list->Efficiency }}%">
-                      </div>
-                    </td>
-                    <td><button type="button" value="y" class="btn btn-success" onclick="Addemp('{{$list->employee}}')">Replace</button></td>
-                </tr>
-                @endforeach
-                @endif
-                
-            </div>
-            <!-- /.box-body -->
-            </div>
-            </div>
-            </div>
-          </div>
+                              </tbody></table>
+                            </div>
+                            <!-- /.box-body -->
+                          </div>
 
               </div>
-      </div>
 
-    </div>
+
+
       
 
     </section>
   
- <script type="text/javascript">
-  function Addemp(emp) {
+ <script>
+        function ReEnterEmployeeShift(reId) {
 
-     swal({
-            title: "Are you sure you want to Add?",
-                    
-                    type: "success",
-                    showCancelButton: true,
-                    confirmButtonColor: "#75c92c",
-                    confirmButtonText: "Add",
-                    closeOnConfirm: false },
-                function(confirm){
-                        if(confirm) {
-                            alert("test"+emp);
-                            $.ajax({
-                                method:'get',
-                                url:'replaceEmp',
-                                data:{emp:emp},
-                                success:function(){
-                                    swal({
-                                        title: "Add!",
-                                        text: "Successfully added the employee record!",
-                                        type: "Success",
-                                        showCancelButton: false,
-                                        confirmButtonColor: "#75c92c",
-                                        confirmButtonText: "Ok",
-                                        closeOnConfirm: false },
-                                            function (confirm) {
-                                                location.reload();
-                                            });
-                                },
-                                error:function(x,y,thrownError){
-                                    console.log(thrownError);
-                                }
-                            });
-                        }else{
-                        }
-                }
-            );
-      
-       
-  }
+             swal({
+                 title: "Are you sure you want to Reassign?",
+                         text: "",
+                         type: "success",
+                         showCancelButton: true,
+                         confirmButtonColor: "#00CC00",
+                         confirmButtonText: "Reassign",
+                         closeOnConfirm: false },
+                     function(confirm){
+
+                             if(confirm) {
+
+                                 $.ajax({
+                                     method:'get',
+                                     url:'ReEnterEmployeeShift',
+                                     data:{rid:reId},
+                                     success:function(){
+                                         swal({
+                                             title: "Replaced!",
+                                             text: "Successfully replaced the employee record!",
+                                             type: "success",
+                                             showCancelButton: false,
+                                             confirmButtonColor: "#00CC00",
+                                             confirmButtonText: "Ok",
+                                             closeOnConfirm: false },
+                                                 function (confirm) {
+                                                     location.reload();
+                                                 });
+                                     },
+                                     error:function(x,y,thrownError){
+                                         console.log(thrownError);
+                                     }
+                                 });
+                             }else{
+
+                             }
+                     }
+                 );
+
+         }
+ </script>
+
+  <script>
+         function UpdateEmployeeShift(empId,planid,RempId,leaveid) {
+
+              swal({
+                  title: "Are you sure you want to Replace?",
+                          text: "",
+                          type: "success",
+                          showCancelButton: true,
+                          confirmButtonColor: "#00CC00",
+                          confirmButtonText: "Replace",
+                          closeOnConfirm: false },
+                      function(confirm){
+
+                              if(confirm) {
+
+                                  $.ajax({
+                                      method:'get',
+                                      url:'UpdateEmployeeShift',
+                                      data:{eid:empId,pid:planid,Reid:RempId,lid:leaveid},
+                                      success:function(){
+                                          swal({
+                                              title: "Replaced!",
+                                              text: "Successfully replaced the employee record!",
+                                              type: "success",
+                                              showCancelButton: false,
+                                              confirmButtonColor: "#00CC00",
+                                              confirmButtonText: "Ok",
+                                              closeOnConfirm: false },
+                                                  function (confirm) {
+                                                      location.reload();
+                                                  });
+                                      },
+                                      error:function(x,y,thrownError){
+                                          console.log(thrownError);
+                                      }
+                                  });
+                              }else{
+
+                              }
+                      }
+                  );
+
+          }
+  </script>
+<!--
+<script>
+       function getEmployee(empId,planid) {
+
+
+                                $.ajax({
+                                    method:'get',
+                                    url:'getEmployee',
+                                    data:{eid:empId,pid:planid},
+                                    success:function(){
+                                        location.reload();
+                                    },
+                                    error:function(x,y,thrownError){
+                                        console.log(thrownError);
+                                    }
+                                });
+
+                    }
+
+
 </script>
+!-->
   </div>
 
   
