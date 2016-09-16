@@ -30,7 +30,7 @@ Route::get('/welcome', function () {
 
 
 
-/*Employee routes*/
+/*-----------------------------------Employee Management---------------------------------*/
 
 Route::get('deleteEmployee','EmployeeController@deleteEmployeeRecord');
 Route::get('deleteLoanScheme','LoanController@deleteLoanScheme');
@@ -76,7 +76,7 @@ Route::get('checkEligibility','LoanController@checkEligibility');
 Route::get('AllEmployeesReport','EmployeeReports@getEmpPDF');
 
 
-
+/*-----------------------------------//Employee Management---------------------------------*/
 
 
 
@@ -135,4 +135,49 @@ Route::post('/sendRequest', [
 
 
 
+/*-----------------------------------Customer Management---------------------------------*/
+Route::get('fillCustomer','register@fillCustomer');
 
+Route::get('fillVehicle','register@fillVehicle');
+
+Route::get('RegisterCustomer','register@viewRegisterCustomer');
+
+Route::get('customerReport','cusreportcontroller@Customerreport');
+
+Route::get('loyaltyReport','cusreportcontroller@LoyaltyReport');
+
+Route::get('deficitReport','cusreportcontroller@DeficitReport');
+
+Route::get('CustomerLoyalty','loyaltyController@getCustomerName');
+
+Route::post('CustomerLoyalty','loyaltyController@addloyalty');
+
+Route::get('report-gen', 'register@domExample');
+
+Route::post('RegisterCustomer','register@addCustomer');
+
+Route::get('Feedback','feedbackController@viewfeedback');
+
+Route::post('Feedback','feedbackController@respond');
+
+Route::get('fillfeed','feedbackController@fillfeed');
+
+Route::get('fillname','feedbackController@fillname');
+
+Route::get('filldeficit1','deficitControl@fillCustomer');
+
+Route::get('updateCustomer','register@updateCustomerDetails');
+
+Route::get('updateVehicle','register@updateVehicleDetails');
+
+Route::get('deleteCustomer','register@deleteCustomer');
+
+Route::get('CustomerDeficit','deficitControl@getCustomerN');
+
+Route::post('CustomerDeficit','deficitControl@addDeficit');
+
+Route::get('filldeficit','deficitControl@filldeficit');
+
+Route::get('setDeficit','deficitControl@setDeficit');
+
+/*-----------------------------------//Customer Management---------------------------------*/

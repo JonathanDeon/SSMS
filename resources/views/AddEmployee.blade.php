@@ -68,8 +68,7 @@
                         <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
                         <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
                         <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-                        <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-                        <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+                        <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
                     </ul>
                 </li>
 
@@ -79,11 +78,11 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="reservations"><i class="fa fa-calendar-minus-o"></i> <span>Reservations</span></a></li>
-                        <li><a href="assignments"><i class="fa fa-male"></i> <span>Assignments</span></a></li>
-                        <li><a href="plans"><i class="fa fa-check-square"></i> <span>Service Plans</span></a></li>
-                        <li><a href="logs"><i class="fa fa-file-text-o"></i> <span>Logs</span></a></li>
-                        <li><a href="reports"><i class="fa fa-pencil-square-o"></i> <span>Reports</span></a></li>
+                        <li><a href="ReservationsService"><i class="fa fa-circle-o"></i>Reservations</a></li>
+                        <li><a href="AssignService"><i class="fa fa-circle-o"></i>Assign Service</a></li>
+                        <li><a href="ServicePlans"><i class="fa fa-circle-o"></i>Service Plans</a></li>
+                        <li><a href="ServiceLogs"><i class="fa fa-circle-o"></i>Service Logs</a></li>
+                        <li><a href="ReportsServices"><i class="fa fa-circle-o"></i>Service Reports</a></li>
                     </ul>
                 </li>
 
@@ -109,13 +108,13 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="emp">Employee Managment</a>
+                        <li><a href="emp">Employee Management</a>
                         </li>
-                        <li><a href="cust">Customer Managment</a>
+                        <li><a href="cust">Customer Management</a>
                         </li>
                         <li><a href="package">Categories</a>
                         </li>
-                        <li><a href="order">Order Managment</a>
+                        <li><a href="order">Order Management</a>
                         </li>
                     </ul>
                 </li>
@@ -162,7 +161,7 @@
                         <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
                         <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
                         <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
-                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>>
                     </ul>
                 </li>
             </ul>
