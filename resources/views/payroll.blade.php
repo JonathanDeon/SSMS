@@ -193,7 +193,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <ul class="nav nav-tabs" style="background-color:#B1C4E6">
                     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">New Salary Details</a>
                     <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Employee Salary Details</a></li>
-                    {{--<li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Monthly Salary Details</a></li>--}}
+                    <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Pay Slips</a></li>
                     {{--<li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Employee Fund Details</a></li>--}}
                 </ul>
             </div>
@@ -276,103 +276,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
                  </div>
 
                 <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_3">
-                    <div class="box-body table-responsive no-padding">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="col-xs-2">
-                                    <a onclick="window.open('AllEmployeesReport')"><button type="button" class="btn btn-block btn-success btn-flat">Export to PDF</button></a>
+                <div class="tab-pane" id="tab_3" align="center">
+                    <div class="box box-info" style="width: 50%; top:20px;">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Generate Pay Slip</h3>
+                        </div>
+                        <form class="form-horizontal" role="form" action="getPaySlip" method="post">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="emp_id" class="col-sm-2 control-label">Employee ID: </label>
+
+                                    <div class="col-sm-10">
+                                        <input type="number" min="0" class="form-control" name="emp_id" id="emp_id" style="width:80%">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="month" class="col-sm-2 control-label">Month</label>
+                                    <div class="col-sm-10">
+                                        <input type="month" min="0" class="form-control" name="month" id="month"style="width:80%">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <table class="table table-hover">
-                            <tbody>
-                            <tr>
-                                <th>Employee ID</th>
-                                <th>Employee Name</th>
-                                <th>Designation</th>
-                                <th>Basic</th>
-                                <th>Allowance</th>
-                                <th>Ongoing loans</th>
-                                <th>Total</th>
-                            </tr>
-                            {{--@foreach($employees as $employee)--}}
-                                {{--<tr>--}}
-                                    {{--<td>{{$employee->eid}}</td>--}}
-                                    {{--<td>{{$employee->name}}</td>--}}
-                                    {{--<td>{{$employee->title}}</td>--}}
-                                    {{--<td>{{$employee->gender}}</td>--}}
-                                    {{--<td>{{$employee->branch}}</td>--}}
-                                    {{--<td>{{$employee->manager}}</td>--}}
-                                    {{--<td>{{$employee->joined_date}}</td>--}}
-                                    {{--<td><button type="button" id="view" value="{{$employee->eid}}" class="btn btn-success" onclick="getEmployee('{{$employee->eid}}')"><i class="fa fa-eye"></i></button></td>--}}
-                                    {{--<td><button type="button" onclick="getEmployee('{{$employee->eid}}')" id="update" value="{{$employee->eid}}" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit"></i></button></td>--}}
-                                    {{--<td><button type="button" value="{{$employee->eid}}" class="btn btn-danger" onclick="deleteEmployee('{{$employee->eid}}')"><i class="fa fa-trash"></i></button></td>--}}
-                                {{--</tr>--}}
-                            {{--@endforeach--}}
-                            </tbody></table>
-                        <script>
-                            function getEmployee(id) {
-                                document.getElementById('employee-id').value = id;
-                                $.ajax({
-                                    type: "get",
-                                    url: 'fillEmployee',
-                                    data: {id: id},
-                                    success: function(x) {
-                                        var details = JSON.parse(x);
-                                        document.getElementById('save').value=details[0].eid;
-                                        document.getElementById('employee-name').value = details[0].name;
-                                        document.getElementById('optionsRadios1').checked = details[0].gender;
-                                        document.getElementById('contact').value = details[0].contact;
-                                        document.getElementById('dob').value = details[0].dob;
-                                        document.getElementById('dateJoined').value = details[0].joined_date;
-                                        document.getElementById('address').value = details[0].address;
-                                        document.getElementById('designation').value = details[0].designation;
-                                        document.getElementById('branch').value = details[0].branch;
-                                        document.getElementById('manager').value = details[0].manager;
-                                    },
-                                    error:function(){
+                            <!-- /.box-body -->
 
-                                    }
-                                })
-                            }
+                            <div class="box-footer">
 
-                            function updateEmployee() {
-                                var id = document.getElementById('save').value;
-                                var ename = document.getElementById('employee-name').value;
-                                var gender = document.querySelector('input[name="optionsRadios"]:checked').value;
-                                var contact = document.getElementById('contact').value;
-                                var address = document.getElementById('address').value;
-                                var dateJoined = document.getElementById('dateJoined').value;
-                                var dob = document.getElementById('dob').value;
-                                $.ajax({
-                                    type: "get",
-                                    url: 'updateEmployee',
-                                    data: {id: id, ename:ename,gender:gender,address: address,dateJoined:dateJoined},
-                                    success: function() {
-                                        swal({
-                                                    title: "Success!",
-                                                    text: "successfully updated the employee information",
-                                                    type: "success",
-                                                    showCancelButton: false,
-                                                    confirmButtonColor: '#1D84FF',
-                                                    confirmButtonText: 'Ok',
-                                                    closeOnConfirm: true
-                                                },
-                                                function(isConfirm){
-                                                    if (isConfirm){
-                                                        window.location.href="/EmployeeInformation";
-                                                    }
-                                                });
-                                    },
-                                    error: function(){
-                                        swal("Error!","Employee information update failed!", "error");
-                                    }
-                                })
-                            }
-                        </script>
+                                <button type="submit" class="btn btn-primary pull-center">Generate</button>
+                            </div>
+
+                            <!-- /.box-footer -->
+                        </form>
                     </div>
-
                 </div>
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="tab_2">

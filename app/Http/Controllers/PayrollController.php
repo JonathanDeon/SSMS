@@ -14,6 +14,17 @@ class PayrollController extends Controller
         return view('payroll',compact('designations'));
     }
 
+    public function getPaySlip(Request $request){
+        $id = $request['emp_id'];
+        $yearmonth = $request['month'];
+        $text = explode("-", $yearmonth);
+        $month = $text[1];
+        $year = $text[0];
+
+        $salaries = DB::select("SELECT * FROM employee_salary_details WHERE empId = '$id' AND EXTRACT(YEAR FROM salary_date)='$year' AND EXTRACT(MONTH FROM salary_date)='$month'");
+        return view('PaySlip',compact('salaries','id','year','month'));
+    }
+
     public function addSalary(Request $request){
         $id = $request['designation'];
         $basic = $request['basic'];

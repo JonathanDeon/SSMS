@@ -77,7 +77,7 @@ Route::get('checkEligibility','LoanController@checkEligibility');
 
 //Employee Reports
 Route::get('AllEmployeesReport','EmployeeReports@getEmpPDF');
-
+Route::post('getPaySlip','PayrollController@getPaySlip');
 
 /*-----------------------------------//Employee Management---------------------------------*/
 
