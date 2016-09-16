@@ -46,9 +46,9 @@ class efficiencyController extends Controller
 
         $firstDayofthisMonth= Carbon::today()->format('Y-m-01');
 
-        $u = DB::select("select distinct e.leave_id,e.employee,e.start_date,end_date,count(*) from employee_leave e,employee m where m.designation !=1 and ((e.start_date >= '$firstDayofPreviousMonth' and e.start_date <= '$lastDayofPreviousMonth') or (e.start_date >= '$firstDayofPreviousPreviousMonth' and e.start_date <= '$lastDayofPrevousPreviousMonth' and e.end_date >= '$firstDayofPreviousMonth')) and e.employee in (select EmpID from empinplans) group by e.employee having count(*) = 2 ");
+        $u = DB::select("select distinct e.leave_id,e.employee,e.start_date,end_date,count(*) from employee_leave e,employee m where e.employee=m.eid and m.designation !=1 and ((e.start_date >= '$firstDayofPreviousMonth' and e.start_date <= '$lastDayofPreviousMonth') or (e.start_date >= '$firstDayofPreviousPreviousMonth' and e.start_date <= '$lastDayofPrevousPreviousMonth' and e.end_date >= '$firstDayofPreviousMonth')) and e.employee group by e.employee having count(*) = 1 ");
 
-        $multiplerecords = DB::select("select distinct e.leave_id,e.employee,count(*) from employee_leave e,employee m where m.designation !=1 and ((e.start_date >= '$firstDayofPreviousMonth' and e.start_date <= '$lastDayofPreviousMonth' ) or (e.start_date >= '$firstDayofPreviousPreviousMonth' and e.start_date <= '$lastDayofPrevousPreviousMonth' and e.end_date >= '$firstDayofPreviousMonth' ))  group by e.employee having count(*) >= 4 ");
+        $multiplerecords = DB::select("select distinct e.leave_id,e.employee,count(*) from employee_leave e,employee m where e.employee=m.eid and m.designation !=1 and ((e.start_date >= '$firstDayofPreviousMonth' and e.start_date <= '$lastDayofPreviousMonth' ) or (e.start_date >= '$firstDayofPreviousPreviousMonth' and e.start_date <= '$lastDayofPrevousPreviousMonth' and e.end_date >= '$firstDayofPreviousMonth' ))  group by e.employee having count(*) >= 2 ");
 
 
         $employees = DB::select("select distinct e.eid from employee e,empinplans emp where e.eid=emp.EmpID and  eid not in (select employee from employee_leave);");
@@ -111,6 +111,7 @@ class efficiencyController extends Controller
 
                 $p = array_sum($n);
 
+
                 //$day=$record->day;
                 if ($day == "week-day") {
                     $denominator = 20;
@@ -119,8 +120,14 @@ class efficiencyController extends Controller
                 }
 
                 $e = $p / $denominator * 100;
+
                 $v = 100 - $e;
                 $vy = round($v, 2, PHP_ROUND_HALF_UP);
+
+                if ($vy < 0)
+                {
+                    $vy=0;
+                }
 
                 DB::statement("INSERT INTO efficiency_log(employee,month,efficiency) values('$c','$Month', '$vy')");
 
