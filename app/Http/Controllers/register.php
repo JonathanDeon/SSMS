@@ -16,25 +16,12 @@ use DB;
 class register extends Controller
 {
     public function viewRegisterCustomer(){
-    	
-        //$cusid= \DB::select("SELECT cus_id FROM customer ORDER BY cus_id DESC LIMIT 1;");
+
         $cusid= \DB::select("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA ='ssms' AND TABLE_NAME ='customer';");
-		$customer= \DB::select("select * from customer");
-        $vehicle= \DB::select("select * from vehicle");
 
+        $def=DB::select("select * from customer c , vehicle v where c.cus_id = v.customer group by c.cus_id");
 
-    	return view('RegisterCustomer',compact('customer','cusid','vehicle'));
-    }
-
-    public function report(){
-
-        //$cusid= \DB::select("SELECT cus_id FROM customer ORDER BY cus_id DESC LIMIT 1;");
-        $cusid= \DB::select("SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA ='ssms' AND TABLE_NAME ='customer';");
-        $customer= \DB::select("select * from customer");
-        $vehicle= \DB::select("select * from vehicle");
-
-
-        return view('customerReport',compact('customer','cusid','vehicle'));
+    	return view('RegisterCustomer',compact('cusid','def'));
     }
 
 

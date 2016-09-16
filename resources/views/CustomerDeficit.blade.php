@@ -81,88 +81,100 @@
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="#">
-           <i class="fa fa-car"></i> <span>Service Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
-            <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
-            <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
-            <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
-          </ul>
-       </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-car"></i> <span>Service Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="ReservationsService"><i class="fa fa-circle-o"></i>Reservations</a></li>
+                    <li><a href="AssignService"><i class="fa fa-circle-o"></i>Assign Service</a></li>
+                    <li><a href="ServicePlans"><i class="fa fa-circle-o"></i>Service Plans</a></li>
+                    <li><a href="ServiceLogs"><i class="fa fa-circle-o"></i>Service Logs</a></li>
+                    <li><a href="ReportsServices"><i class="fa fa-circle-o"></i>Service Reports</a></li>
+                </ul>
+            </li>
 
 
-        <li class="treeview">
-         <a href="#">
-          <i class="fa fa-users"></i><span>Employee Management</span>
-          
-            <i class="fa fa-angle-left pull-right"></i>
-           </span>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
-            </ul>
-       </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i><span>Employee Management</span>
 
-       <li class="treeview">
-         <a href="Janitorial">
-          <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-           
-       </li>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                    <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                    <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                    <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                    <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                </ul>
+            </li>
 
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-money"></i><span>Finance Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-              <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-              <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-              <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
-            </ul>
-       </li>
-        
-        <li class="treeview">
-         <a href="#">
-          <i class="fa fa-cube"></i><span>Inventory Management</span>        
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
-              <li><a href="inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
-              <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
-              <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
-              <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
-              <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
-              <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
-            </ul>
-       </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="emp">Employee Managment</a>
+                    </li>
+                    <li><a href="cust">Customer Managment</a>
+                    </li>
+                    <li><a href="package">Categories</a>
+                    </li>
+                    <li><a href="order">Order Managment</a>
+                    </li>
+                </ul>
 
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-              <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-              <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-              <li><a href="OverWorkedEmp"><i class="fa fa-plus-circle"></i>Over Worked Employees</a></li>
-              <li><a href="RequestEmployee"><i class="fa fa-plus-circle"></i>Request Employee</a></li>
-              <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
-            </ul>
-       </li>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-money"></i><span>Finance Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+                    <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+                    <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+                    <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+                    <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+                    <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cube"></i><span>Inventory Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
+                    <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+                    <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
+                    <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
+                    <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
+                    <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
+                    <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                    <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                    <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                    <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                    <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                    <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>>
+                </ul>
+            </li>
         
       </ul>
     </section>
