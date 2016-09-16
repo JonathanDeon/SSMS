@@ -186,7 +186,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Customer Loyalty Management
+        Customer Deficit Management
       </h1>
       <ol class="breadcrumb">w 
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
