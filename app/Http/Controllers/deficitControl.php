@@ -29,8 +29,9 @@ class deficitControl extends Controller
         $deficit = $request->input('defi'); 
 
         DB::statement(
-            "INSERT INTO deficit(cusid,amount) VALUES ('$id','$deficit')"); 
+            "INSERT INTO deficit(cusid,amount) VALUES ('$id','$deficit')");
 
+         \Session::flash('flash_message','done');
         return redirect('CustomerDeficit');
 }
 

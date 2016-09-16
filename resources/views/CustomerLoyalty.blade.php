@@ -21,13 +21,15 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
 
 
     <![endif]-->
@@ -35,10 +37,13 @@
         function alerts() {
             swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
         }
-
+    </script>
+    <script>
         function success() {
-            swal("Successful", "Data Successfully Saved!", "success")
+            swal("Successful", "Data Successfully Saved!", "success");
         }
+
+
     </script>
 
   
@@ -213,6 +218,8 @@
             <div class="box-header with-border">
               <h3 class="box-title">Manage Special Offers</h3>
             </div>
+
+
              <form role="form" method="POST" action="{{url('CustomerLoyalty')}}">
                  @if (count($errors) > 0)
                      <script>
@@ -231,11 +238,11 @@
                      </div>
                  @endif
                  @if(Session::has('flash_message'))
-                         <?php
-                         echo '<script type="text/javascript">',
-                         'success();',
-                         '</script>';
-                         ?>
+                     <?php
+                     echo '<script type="text/javascript">',
+                     'success();',
+                     '</script>';
+                     ?>
                  @endif
 
 

@@ -32,7 +32,18 @@
 
   <![endif]-->
 
+    <script>
+        function alerts() {
+            swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
+        }
+    </script>
+    <script>
+        function success() {
+            swal("Successful", "Data Successfully Saved!", "success");
+        }
 
+
+    </script>
 
   
 </head>
@@ -207,7 +218,33 @@
               <h3 class="box-title">Manage Deficits</h3>
             </div>
              <form role="form" method="POST" action="{{url('CustomerDeficit')}}">
-                <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+
+                 @if (count($errors) > 0)
+                     <script>
+                         function myFunction() {
+                             location.reload();
+                         }
+                     </script>
+
+                     <div class="alert alert-danger">
+                         <strong>Save Failed</strong><br><br>
+                         <ul>
+                             @foreach ($errors->all() as $error)
+                                 <li>{{ $error }}</li>
+                             @endforeach
+                         </ul>
+                     </div>
+                 @endif
+                 @if(Session::has('flash_message'))
+                     <?php
+                     echo '<script type="text/javascript">',
+                     'success();',
+                     '</script>';
+                     ?>
+                 @endif
+
+
+                 <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
            
             <!-- /.box-header -->
             <!-- form start -->
