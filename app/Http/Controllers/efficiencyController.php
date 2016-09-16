@@ -42,13 +42,16 @@ class efficiencyController extends Controller
         $firstDayofPreviousPreviousMonth = Carbon::now()->startOfMonth()->subMonth()->subMonth();
         $lastDayofPrevousPreviousMonth = Carbon::now()->subMonth()->subMonth()->endOfMonth();
 
+        $today = $carbon_today= Carbon::today()->format('Y-m-d');
+
         $firstDayofthisMonth= Carbon::today()->format('Y-m-01');
-        $u = DB::select("select * from employee_leave e,empinplans emp,shiftplans s  where e.employee=emp.EmpID and emp.ShiftPlanID=s.SPID and e.approved=1 and ((start_date >='$firstDayofPreviousMonth' and start_date <='$firstDayofthisMonth') or ((start_date >= '$firstDayofPreviousPreviousMonth' and start_date <= '$firstDayofPreviousMonth') and end_date >= '$firstDayofPreviousMonth')) and employee IN (select employee from employee_leave  where start_date >'2016/09/01' and start_date <'2016/10/01' group by employee having count(*) = 1);");
 
-        $multiplerecords = DB::select("select * from employee_leave e,empinplans em,shiftplans s where e.employee=em.EmpID and e.approved=1 and em.ShiftPlanID=s.SPID and ((start_date >='$firstDayofPreviousMonth' and start_date <='$firstDayofthisMonth') or ((start_date >= '$firstDayofPreviousPreviousMonth' and start_date <= '$firstDayofPreviousMonth') and end_date >= '$firstDayofPreviousMonth')) and start_date <'$firstDayofthisMonth' and employee IN (select employee from employee_leave  where ((start_date >='$firstDayofPreviousMonth' and start_date <='$firstDayofthisMonth') or ((start_date >= '$firstDayofPreviousPreviousMonth' and start_date <= '$firstDayofPreviousMonth') and end_date >= '$firstDayofPreviousMonth')) group by employee having count(*) > 1);");
+        $u = DB::select("select distinct e.leave_id,e.employee,e.start_date,end_date,count(*) from employee_leave e,employee m where m.designation !=1 and ((e.start_date >= '$firstDayofPreviousMonth' and e.start_date <= '$lastDayofPreviousMonth') or (e.start_date >= '$firstDayofPreviousPreviousMonth' and e.start_date <= '$lastDayofPrevousPreviousMonth' and e.end_date >= '$firstDayofPreviousMonth')) and e.employee in (select EmpID from empinplans) group by e.employee having count(*) = 2 ");
 
-        $employees = DB::select("select * from employee where eid not in (select employee from employee_leave);");
+        $multiplerecords = DB::select("select distinct e.leave_id,e.employee,count(*) from employee_leave e,employee m where m.designation !=1 and ((e.start_date >= '$firstDayofPreviousMonth' and e.start_date <= '$lastDayofPreviousMonth' ) or (e.start_date >= '$firstDayofPreviousPreviousMonth' and e.start_date <= '$lastDayofPrevousPreviousMonth' and e.end_date >= '$firstDayofPreviousMonth' ))  group by e.employee having count(*) >= 4 ");
 
+
+        $employees = DB::select("select distinct e.eid from employee e,empinplans emp where e.eid=emp.EmpID and  eid not in (select employee from employee_leave);");
         foreach ($employees as $employee)
         {
             $eid=$employee->eid;
@@ -73,49 +76,54 @@ class efficiencyController extends Controller
         {
             $n=array();
             $count=0;
-            foreach ($multiplerecords as $record)
-            {
+            foreach ($multiplerecords as $setofrecords) {
 
-                $c=$record->employee;
-                $z=$record->start_date;
-                $f=$record->end_date;
-                $carbon = new Carbon($z);
-                $carbon1 = new Carbon($f);
-                if ($carbon < $firstDayofPreviousMonth){
-                    $h =  $lastDayofPrevousPreviousMonth->diffInDays($carbon1)+1;
+                $c = $setofrecords->employee;
+
+                $leaveinfo = DB::select("select distinct employee,start_date,end_date from employee_leave where employee = $c and ((start_date >= '$firstDayofPreviousMonth' and start_date <= '$lastDayofPreviousMonth') or (start_date >= '$firstDayofPreviousPreviousMonth' and start_date <= '$lastDayofPrevousPreviousMonth' and end_date >= '$firstDayofPreviousMonth'  ))");
+
+                foreach ($leaveinfo as $record) {
+
+                    $z=$record->start_date;
+                    $f=$record->end_date;
+                    $carbon = new Carbon($z);
+                    $carbon1 = new Carbon($f);
+
+                    $plan = DB::select("select distinct EmpID,ShiftPlanID from EmpInPlans where EmpID='$c'");
+                    $p = $plan[0]->ShiftPlanID;
+                    $date = DB::select("select day from shiftplans where SPID='$p'");
+                    $day = $date[0]->day;
+                    if ($carbon >= $firstDayofPreviousMonth) {
+                        if ($carbon1 <= $lastDayofPreviousMonth) {
+                            $h = $carbon->diffInDays($carbon1) + 1;
+                        } else {
+                            $h = $carbon->diffInDays($lastDayofPreviousMonth) + 1;
+                        }
+                    } elseif ($carbon >= $firstDayofPreviousPreviousMonth) {
+                        $h = $firstDayofPreviousMonth->diffInDays($carbon1)+1;
+                    }
+
+
+                    var_dump($h);
+                    $n[$count] = $h;
+                    $count++;
                 }
-                elseif ($carbon1 <= $firstDayofthisMonth) {
-                    $h = $carbon->diffInDays($carbon1);
+
+                $p = array_sum($n);
+
+                //$day=$record->day;
+                if ($day == "week-day") {
+                    $denominator = 20;
+                } elseif ($day == "week-end") {
+                    $denominator = 8;
                 }
 
-                else{
-                    $h = $carbon->diffInDays($lastDayofPreviousMonth);
-                }
+                $e = $p / $denominator * 100;
+                $v = 100 - $e;
+                $vy = round($v, 2, PHP_ROUND_HALF_UP);
 
-
-                var_dump($h);
-                $n[$count]=$h;
-                $count++;
+                DB::statement("INSERT INTO efficiency_log(employee,month,efficiency) values('$c','$Month', '$vy')");
             }
-
-            $p=array_sum($n);
-            var_dump($p);
-                $day=$record->day;
-                if ($day =="week-day")
-                {
-                    $denominator=25;
-                }
-
-            elseif ($day =="week-end")
-            {
-                $denominator=8;
-            }
-
-            $e = $p/$denominator*100;
-            $v = 100 - $e;
-            $vy=round($v,2,PHP_ROUND_HALF_UP);
-
-            DB::statement("INSERT INTO efficiency_log(employee,month,efficiency) values('$c','$Month', '$vy')");
 
             $exist=DB::select("select * from efficiency where employee='$c'");
 
@@ -132,66 +140,71 @@ class efficiencyController extends Controller
 
 
             foreach ($u as $y) {
-                $z = $y->start_date;
-                $f = $y->end_date;
-                $carbon = new Carbon($z);
-                $carbon1 = new Carbon($f);
-                if ($carbon < $firstDayofPreviousMonth){
-                    $h =  $lastDayofPrevousPreviousMonth->diffInDays($carbon1)+1;
-                }
-                elseif ($carbon1 <= $firstDayofthisMonth) {
-                    $h = $carbon->diffInDays($carbon1);
+                $c1 = $y->employee;
+                if ($c != $c1) {
+                    $z = $y->start_date;
+                    $f = $y->end_date;
+                    $carbon = new Carbon($z);
+                    $carbon1 = new Carbon($f);
+                    if ($carbon >= $firstDayofPreviousMonth ){
+                        if ($carbon1 <= $lastDayofPreviousMonth)
+                        {
+                            $h = $carbon->diffInDays($carbon1)+1;
+                        }
+
+                        else
+                        {
+                            $h = $carbon->diffInDays($lastDayofPreviousMonth)+1;
+                        }
+                    }
+
+                    elseif ($carbon >= $firstDayofPreviousPreviousMonth)
+                    {
+                            $h = $firstDayofPreviousMonth->$carbon1;
+                    }
+
+
+                    $shift = DB::select("select day from shiftplans s,empinplans e where e.EmpID = '$c1' and s.SPID=e.ShiftPlanID");
+                    $day = $shift[0]->day;
+                    if ($day == "week-day") {
+                        $denominator = 20;
+                    } elseif ($day == "week-end") {
+                        $denominator = 8;
+                    }
+                    $n = $h / $denominator * 100;
+                    $v = 100 - $n;
+                    // var_dump($n);
+
+
+                    $vy = round($v, 2, PHP_ROUND_HALF_UP);
+
+                    DB::statement("INSERT INTO efficiency_log(employee,month,efficiency) values('$c1','$Month', '$vy')");
+
+                    $exist = DB::select("select * from efficiency where employee='$c1'");
+
+                    if ($exist == null) {
+                        DB::statement("INSERT INTO efficiency(employee,month,efficiency) values('$c1','$Month', '$vy')");
+                    } else {
+                        $affected = DB::update("UPDATE `efficiency` SET `month`='$Month',`Efficiency`='$vy' WHERE `employee`='$c1'");
+                    }
+
+
                 }
 
-                else{
-                    $h = $carbon->diffInDays($lastDayofPreviousMonth);
-                }
-                var_dump($h);
-                $day=$y->day;
-                if ($day =="week-day")
-                {
-                    $denominator=25;
-                }
 
-                elseif ($day =="week-end")
-                {
-                    $denominator=8;
-                }
-                $n = $h / $denominator * 100;
-                $v = 100 - $n;
-               // var_dump($n);
-                $c = $y->employee;
 
-                $vy=round($v,2,PHP_ROUND_HALF_UP);
 
-                DB::statement("INSERT INTO efficiency_log(employee,month,efficiency) values('$c','$Month', '$vy')");
 
-                $exist=DB::select("select * from efficiency where employee='$c'");
-
-                if ($exist==null)
-                {
-                    DB::statement("INSERT INTO efficiency(employee,month,efficiency) values('$c','$Month', '$vy')");
-                }
-
-                else
-                {
-                    $affected = DB::update("UPDATE `efficiency` SET `month`='$Month',`Efficiency`='$vy' WHERE `employee`='$c'");
-                }
 
 
 
             }
 
-        $n=null;
-
-            $branches = DB::select("select * from branch where address != '$n'");
-            $efficiency=null;
-            $x=1;
-
-
-            return view('EfficiencyAnalysis',compact('branches','efficiency','x'));
-
-
+        $n = null;
+        $branches = DB::select("select * from branch where address != '$n'");
+        $efficiency = null;
+        $x = 1;
+        return view('EfficiencyAnalysis', compact('branches', 'efficiency', 'x'));
     }
 
     public function getEfficiency(Request $request)
@@ -201,7 +214,7 @@ class efficiencyController extends Controller
         $BID = DB::select("select id from branch where bname='$branch'");
         $id=$BID[0]->id;
 
-        $efficiency = DB::select("select * from efficiency ef,employee E,empinplans emp,shiftplans s where e.eid=ef.employee and emp.EmpID = e.eid and emp.ShiftPlanID = s.SPID and ef.employee=E.eid and E.eid IN (select eid from employee where branch='$id');");
+        $efficiency = DB::select("select distinct E.eid,E.name,E.contact,ef.Efficiency,s.day from efficiency ef,employee E,empinplans emp,shiftplans s where e.eid=ef.employee and emp.EmpID = e.eid and emp.ShiftPlanID = s.SPID and ef.employee=E.eid and E.eid IN (select eid from employee where branch='$id') order by ef.Efficiency DESC");
 
         $n=null;
 
