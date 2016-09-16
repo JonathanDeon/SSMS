@@ -234,6 +234,13 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
+                                                <label for="inputName" class="col-sm-2 control-label">Email</label>
+
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" required name="mail" id="mail" placeholder="Enter mail"style="width:80%">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="inputdob" class="col-sm-2 control-label">Date of Birth</label>
                                                 {{--<style>--}}
                                                 {{--{z-index:1151 !important;}--}}
@@ -345,7 +352,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputdate" class="col-sm-2 control-label">Manager</label>
+                                                <label for="inputdate" class="col-sm-2 control-label">Type</label>
 
                                                 <div class="col-sm-10">
                                                     <select class="form-control" style="width:80%" name="type" id="type">

@@ -166,12 +166,11 @@ function formValidate(){
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-            <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
-            <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
-            <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-            <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
+              <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+              <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+              <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+              <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+              <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
           </ul>
         </li>
 
@@ -208,22 +207,18 @@ function formValidate(){
                 </li>
 
        <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i>Janitorial Service Management<span></span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="emp">Employee Managment</a>
-                        </li>
-                        <li><a href="cust">Customer Managment</a>
-                        </li>
-                        <li><a href="package">Categories</a>
-                        </li>
-                        <li><a href="order">Order Managment</a>
-                        </li>
-                    </ul>
-                </li>
+  <a href="#">
+    <i class="fa fa-link"></i> <span> Janitorial Management </span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+
+        <ul class="treeview-menu">
+          <li><a href="emp"><i class="fa fa-users"></i> Employee Management</a></li>
+                <li><a href="cust"><i class="fa fa-user"></i> Customer Management</a></li>
+                <li><a href="package"<i class="fa fa-cubes"></i> Categories</a></li>
+                <li><a href="order"><i class="fa fa-cart-plus"></i> Order Management</a></li>
+        </ul>
+</li>
 
        <li class="treeview">
          <a href="#">
@@ -286,8 +281,7 @@ function formValidate(){
         <small>Details</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
+       
       </ol>
     </section>
 

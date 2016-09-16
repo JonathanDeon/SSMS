@@ -35,6 +35,7 @@ class EmployeeController extends Controller
     public function addEmployee(Request $request){
         $name = $request->input('name');
         $nic =  $request->input('nic');
+        $mail = $request->input('mail');
         $address = $request->input('address');
         $dob = $request->input('dob');
         $contact = $request->input('phone');
@@ -47,8 +48,8 @@ class EmployeeController extends Controller
         $type = $request->input('type');
 
         DB::statement(
-            "INSERT INTO employee(address, nic, name, contact, dob, joined_date, service_type, gender, manager, branch, designation,emp_type)
-            VALUES ('$address','$nic','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation','$type')");
+            "INSERT INTO employee(address, nic, name, contact, dob, joined_date, service_type, gender, manager, branch, designation,emp_type,email)
+            VALUES ('$address','$nic','$name','$contact','$dob','$date','$service','$gender','$manager','$branch','$designation','$type','$mail')");
 
         return redirect('/AddEmployee');
     }

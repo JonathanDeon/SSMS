@@ -52,6 +52,7 @@ Route::get('saveLeaveInfo','LeaveController@saveLeaveInfo');
 Route::get('rejectLeave','LeaveController@rejectLeave');
 Route::get('recordLeave','LeaveController@recordLeave');
 Route::get('leave','LeaveController@showPendingLeave');
+Route::get('fillEmployeeLeave','LeaveController@fillEmployeeLeave');
 
 //Employee managing
 Route::get('AddEmployee','EmployeeController@showAddEmployee');
@@ -124,6 +125,10 @@ Route::post('/getSalesPDF',[
 Route::post('/send', [
     'uses' => 'InventoryMailController@send',
     'as' => 'send'
+]);
+Route::post('/sendRequest', [
+    'uses' => 'LeaveMailController@sendRequest',
+    'as' => 'sendRequest'
 ]);
 
 /*-----------------------------------//Inventory---------------------------------*/

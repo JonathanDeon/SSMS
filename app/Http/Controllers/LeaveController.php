@@ -31,7 +31,22 @@ class LeaveController extends Controller
                                   ORDER BY l.designation");
 
         $designations = DB::select("select * from designation");
+
         return view('leave',compact('leaves','allLeaves','designations','leaveTypes','leaveCount'));
+
+
+    }
+
+    public function fillEmployeeLeave(Request $request){
+        $name = $request['id'];
+
+        $employees = DB::select("
+                        SELECT e.eid, e.name, l.leave_type,  SUM(el.l_count) as 'test1', no_of_leaves AS 'test2'
+                        FROM leave_type l,employee e, employee_leave el
+                        WHERE e.designation = l.designation AND e.eid = el.employee AND el.leave_type=l.id AND EXTRACT(YEAR FROM el.start_date)=YEAR(CURDATE()) AND  e.name='$name'
+                        GROUP BY el.leave_type");
+
+        return json_encode($employees);
     }
 
     public function approveLeave(Request $request){
@@ -64,10 +79,27 @@ class LeaveController extends Controller
         $start_date = $request['start_date'];
         $end_date = $request['end_date'];
         $reason = $request['reason'];
+        $diff=date_diff(date_create($start_date),date_create($end_date));
+        $int = (int) $diff->format("%a");
 
-        DB::statement(
-            "INSERT INTO employee_leave(leave_type, employee, start_date, end_date, reason)
-            VALUES ('$leave_type','$eid','$start_date','$end_date','$reason')");
+        $employees = DB::select("
+                        SELECT SUM(el.l_count) as test,l.no_of_leaves FROM leave_type l,employee_leave el WHERE l.id=el.leave_type AND el.leave_type='$leave_type'");
+
+        foreach($employees as $employee){
+            if($employee->test <= $employee->no_of_leaves){
+                if($int==0){
+                    $int = $int+1;
+                }
+                DB::statement(
+                    "INSERT INTO employee_leave(leave_type, employee, start_date, end_date, reason,l_count)
+                     VALUES ('$leave_type','$eid','$start_date','$end_date','$reason',$int)");
+                app('App\Http\Controllers\LeaveMailController')->sendRequest($request);
+            }
+            else{
+                return Response::json(['error' => 'Error msg'], 404);
+            }
+        }
+
     }
 
 }

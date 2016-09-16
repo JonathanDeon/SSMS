@@ -339,11 +339,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="box-header">
                             <h3 class="box-title"></h3>
                         </div>
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm">
+                                <input type="text" name="table_search" id="table_search" class="form-control pull-right" placeholder="Search for Employee Leave History">
+
+                                <div class="input-group-btn">
+                                    <button type="button" class="btn btn-default" onclick="getEmployee()" data-toggle="modal" data-target="#myModal2" ><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
                         <!-- /.box-header -->
                         <div class="box-body no-padding">
                             <table class="table table-condensed">
                                 <tbody><tr>
-                                    <th>Leave ID</th>
+                                    {{--<th>Leave ID</th>--}}
                                     <th>Employee Name</th>
                                     <th>Branch</th>
                                     <th>Leave Type</th>
@@ -354,7 +364,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </tr>
                                 @foreach($allLeaves as $allLeave)
                                     <tr>
-                                        <td>{{$allLeave->id}}</td>
+{{--                                        <td>{{$allLeave->id}}</td>--}}
                                         <td>{{$allLeave->name}}</td>
                                         <td>{{$allLeave->bname}}</td>
                                         <td>{{$allLeave->leave_type}}</td>
@@ -613,6 +623,89 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     }
                 </script>
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+        <!--------------------------------modal---------------------------------------->
+        <div class="modal modal-info fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"></span>Attendance</button>
+                        <h4 class="modal-title">Employee Leave Summary</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box box-info">
+                            <div class="box-body">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Leave Details</h3>
+                                    </div>
+                                    <form role="form">
+                                        <!-- text input -->
+                                        <div class="form-group" style="color: black">
+                                            <label>ID:</label>
+                                            <input type="text" class="form-control" id="employee-id" disabled>
+                                            <label>Name:</label>
+                                            <input type="text" disabled class="form-control" required pattern="^[a-zA-Z\s]*$" title ='only letters allowed' id="employee-name">
+                                        </div>
+                                    </form>
+                                    <!-- /.box-header -->
+                                    <div class="box-body no-padding">
+                                        <table class="table table-condensed" style="color: black" id="myTable" name="myTable">
+                                            <tbody><tr>
+                                                <th>Leave Type</th>
+                                                <th>Entitled</th>
+                                                <th>Taken</th>
+                                            </tr>
+                                            </tbody></table>
+                                    </div>
+                                    <script>
+                                        function getEmployee() {
+                                            var id = document.getElementById('table_search').value;
+                                            var myTable = document.getElementById('myTable');
+                                            $.ajax({
+                                                type: "get",
+                                                url: 'fillEmployeeLeave',
+                                                data: {id: id},
+                                                success: function(x) {
+                                                    var details = JSON.parse(x);
+                                                    ///myTable.rows[0].cells[1].innerHTML=details[0].eid;
+                                                    document.getElementById('employee-id').value = details[0].eid;
+                                                    document.getElementById('employee-name').value = details[0].name;
+
+                                                    for (var i=0;i<details.length;i++){
+                                                        var rowCount = myTable.rows.length;
+                                                        var row = myTable.insertRow(rowCount);
+
+                                                        var cell1 = row.insertCell(0);
+                                                        var cell2 = row.insertCell(1);
+                                                        var cell3 = row.insertCell(2);
+
+                                                        cell1.innerHTML=details[i].leave_type;
+                                                        cell2.innerHTML=details[i].test2;
+                                                        cell3.innerHTML=details[i].test1;
+
+                                                    }
+                                                },
+                                                error:function(){
+
+                                                }
+                                            })
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
         </div>
