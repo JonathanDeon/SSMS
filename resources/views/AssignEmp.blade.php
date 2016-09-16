@@ -72,106 +72,109 @@
                 <!-- Sidebar user panel -->
 
                 <ul class="sidebar-menu">
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-user"></i> <span>Customer Management</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-                            <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
-                            <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
-                            <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-                            <li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-                            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
-                        </ul>
-                    </li>
+                                           <li class="treeview">
+                                                     <a href="#">
+                                                       <i class="fa fa-user"></i> <span>Customer Management</span>
+                                                       <i class="fa fa-angle-left pull-right"></i>
+                                                     </a>
+                                                     <ul class="treeview-menu">
+                                                         <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+                                                         <li class="active"><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+                                                         <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+                                                         <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+                                                         <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
+                                                     </ul>
+                                                   </li>
 
-                    <li class="active"><a href="reservations"><i class="fa fa-calendar-minus-o"></i> <span>Reservations</span></a></li>
-                            <li><a href="assignments"><i class="fa fa-male"></i> <span>Assignments</span></a></li>
-                            <li><a href="plans"><i class="fa fa-check-square"></i> <span>Service Plans</span></a></li>
-                            <li><a href="logs"><i class="fa fa-file-text-o"></i> <span>Logs</span></a></li>
-                            <li><a href="reports"><i class="fa fa-pencil-square-o"></i> <span>Reports</span></a></li>
+                                            <li class="treeview">
+                                                <a href="#">
+                                                    <i class="fa fa-calendar-minus-o"></i> <span>Service Management</span>
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </a>
+                                                <ul class="treeview-menu">
+                                                   <li><a href="assignments"><i class="fa fa-male"></i> <span>Assignments</span></a></li>
+                                                   <li><a href="plans"><i class="fa fa-check-square"></i> <span>Service Plans</span></a></li>
+                                                    <li><a href="logs"><i class="fa fa-file-text-o"></i> <span>Logs</span></a></li>
+                                                    <li><a href="reports"><i class="fa fa-pencil-square-o"></i> <span>Reports</span></a></li>
+                                                </ul>
+                                            </li>
 
-                   <li class="treeview">
-                     <a href="#">
-                       <i class="fa fa-users"></i><span>Employee Management</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                          </span>
-                      </a>
-                      <ul class="treeview-menu">
-                         <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-                             <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-                              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-                              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-                              <li class="active"><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
-                      </ul>
-                   </li>
+                                            <li class="treeview">
+                                                                <a href="#">
+                                                                    <i class="fa fa-users"></i><span>Employee Management</span>
+                                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                                    </span>
+                                                                </a>
+                                                                <ul class="treeview-menu">
+                                                                    <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                                                                    <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                                                                    <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                                                                    <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                                                                    <li class="active"><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                                                                </ul>
+                                                            </li>
 
-                   <li class="treeview">
-                                       <a href="#"><i class="fa fa-link"></i>Janitorial Service Management<span></span>
-                                       <span class="pull-right-container">
-                                           <i class="fa fa-angle-left pull-right"></i>
-                                       </span>
-                                       </a>
-                                       <ul class="treeview-menu">
-                                           <li class="active"><a href="emp">Employee Managment</a>
-                                           </li>
-                                           <li><a href="cust">Customer Managment</a>
-                                           </li>
-                                           <li><a href="package">Categories</a>
-                                           </li>
-                                           <li><a href="order">Order Managment</a>
-                                           </li>
-                                       </ul>
-                                   </li>
+                                            <li class="treeview">
+                                            	<a href="#">
+                                            		<i class="fa fa-link"></i> <span> Janitorial Management </span>
+                                                    	<i class="fa fa-angle-left pull-right"></i>
+                                                    </a>
 
-                   <li class="treeview">
-                            <a href="#">
-                             <i class="fa fa-money"></i><span>Finance Management</span>
-                               <i class="fa fa-angle-left pull-right"></i>
-                              </a>
-                               <ul class="treeview-menu">
-                                 <li class="active"><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
-                                 <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
-                                 <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-                                 <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
-                                 <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
-                                 <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
-                               </ul>
-                          </li>
+                                                    <ul class="treeview-menu">
+                                                    	<li class="active"><a href="emp"><i class="fa fa-users"></i> Employee Management</a></li>
+                                                            <li><a href="cust"><i class="fa fa-user"></i> Customer Management</a></li>
+                                                            <li><a href="package"><i class="fa fa-cubes"></i> Categories</a></li>
+                                                            <li><a href="order"><i class="fa fa-cart-plus"></i> Order Management</a></li>
+                                                    </ul>
+                                            </li>
 
-                    <li class="treeview">
-                            <a href="#">
-                             <i class="fa fa-cube"></i><span>Inventory Management</span>
-                               <i class="fa fa-angle-left pull-right"></i>
-                              </a>
-                               <ul class="treeview-menu">
-                                 <li class="active"><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
-                                 <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
-                                 <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
-                                 <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
-                                 <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
-                                 <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
-                                 <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
-                               </ul>
-                          </li>
 
-                    <li class="treeview active">
-                                        <a href="#">
-                                            <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </a>
-                                        <ul class="treeview-menu">
-                                            <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
-                                            <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
-                                            <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
-                                             <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
-                                            <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
-                                            <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                                            <li class="treeview">
+                                                     <a href="#">
+                                                      <i class="fa fa-money"></i><span>Finance Management</span>
+                                                        <i class="fa fa-angle-left pull-right"></i>
+                                                       </a>
+                                                        <ul class="treeview-menu">
+                                                          <li class="active"><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+                                                          <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+                                                          <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+                                                          <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+                                                          <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+                                                          <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
+                                                        </ul>
+                                                   </li>
+
+                                              <li class="treeview">
+                                                      <a href="#">
+                                                       <i class="fa fa-cube"></i><span>Inventory Management</span>
+                                                         <i class="fa fa-angle-left pull-right"></i>
+                                                        </a>
+                                                         <ul class="treeview-menu">
+                                                           <li class="active"><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
+                                                           <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+                                                           <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
+                                                           <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
+                                                           <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
+                                                           <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
+                                                           <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
+                                                         </ul>
+                                                    </li>
+
+                                            <li class="treeview active">
+                                                                <a href="#">
+                                                                    <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                                </a>
+                                                                <ul class="treeview-menu">
+                                                                    <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                                                                    <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                                                                    <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                                                                     <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                                                                    <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                                                                    <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                                                                </ul>
+                                                            </li>
                                         </ul>
-                                    </li>
-                </ul>
             </section>
         </aside>
 
@@ -194,91 +197,12 @@
 
 
 
-                <div class="row">
 
-                  <div class="col-lg-3 col-xs-6" style="margin-left:50px">
-                  <!-- small box -->
-                      <div class="small-box bg-green">
-
-                        <div class="inner">
-
-                          <h3>94<sup style="font-size: 20px">%</sup></h3>
-
-                          <p>Shift Plan 4</p>
-                        </div>
-
-
-                        <div class="icon">
-
-                          <i class="ion ion-stats-bars"></i>
-
-                        </div>
-
-                       <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-
-                     </div>
-
-                  </div>
-
-                  <div class="col-lg-3 col-xs-6" style="margin-left:50px">
-                  <!-- small box -->
-                    <div class="small-box bg-yellow">
-
-                      <div class="inner">
-
-                        <h3>86<sup style="font-size: 20px">%</sup></h3>
-
-                        <p>Shift Plan 2</p>
-
-                      </div>
-
-                    <div class="icon">
-
-                      <i class="ion ion-stats-bars"></i>
-
-                    </div>
-
-                    <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-
-                  </div>
-
-                </div>
-
-                 <div class="col-lg-3 col-xs-6" style="margin-left:50px">
-                  <!-- small box -->
-
-                <div class="small-box bg-red">
-
-                  <div class="inner">
-
-                    <h3>82<sup style="font-size: 20px">%</sup></h3>
-
-                    <p>Shift Plan 6</p>
-
-                  </div>
-
-                  <div class="icon">
-
-                      <i class="ion ion-stats-bars"></i>
-
-                  </div>
-
-                    <a href="#" class="small-box-footer">
-
-                      More info <i class="fa fa-arrow-circle-right"></i>
-
-                    </a>
-                </div>
-
-              </div>
-
-
-                </div>
 
                 <div class="row">
 
                   <div class="col-md-6">
-                    <div class="box box-warning">
+                    <div class="box box-success">
 
                 <div class="box-header with-border">
 
@@ -372,7 +296,7 @@
                 </div>
 
                 <div class="box-footer">
-                        <button type="submit" class="btn btn-primary" style="margin-left:450px">OK</button>
+                        <button type="submit" class="btn btn-success" style="margin-left:450px">OK</button>
                 </div>
                 </form>
 
@@ -380,7 +304,7 @@
                   </div>
 
                   <div class="col-md-6">
-                   <div class="box box-warning">
+                   <div class="box box-success">
                                <div class="box-header">
                                  <h3 class="box-title">Employee count by Shift Plan</h3>
                                </div>
@@ -415,7 +339,7 @@
                 <div class="row">
                   <div class="col-md-12">
                    <form class="form-horizontal">
-                                  <div class="box box-warning">
+                                  <div class="box box-success">
                                     <div class="box-header">
                                       <h3 class="box-title">Unassigned Employees</h3>
                                     </div>
@@ -459,7 +383,7 @@
 
                   <div class="col-md-12">
                   <form class="form-horizontal">
-                  <div class="box box-warning">
+                  <div class="box box-success">
                     <div class="box-header">
                       <h3 class="box-title">Assignable Employees</h3>
                     </div>
@@ -566,45 +490,7 @@
 
     </div>
     <!-- ./wrapper -->
-    <div class="modal modal-info fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>Interview</button>
-                    <h4 class="modal-title">Update</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="box box-info">
-                        <div class="box-body">
-                            <form role="form">
-                                <!-- text input -->
-                                <div class="form-group" style="color:black">
-                                    <label>ID:</label>
-                                    <input type="text" class="form-control" id="can_id" disabled>
-                                    <label>Name:</label>
-                                    <input type="text" class="form-control" id="can2_name" disabled>
-                                    <label>date:</label>
-                                    <input type="date" class="form-control" id="can_date" required>
-                                    <label>time:</label>
-                                    <input type="time" class="form-control" id="can_time" required>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-outline" onclick="saveInterview()">Save changes</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
 
-
-        </div>
-        <!-- /.modal-dialog -->
-</div>
 
 
 

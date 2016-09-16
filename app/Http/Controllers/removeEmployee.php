@@ -40,7 +40,7 @@ class removeEmployee extends Controller
 
 
 
-        $employees = DB::select("select * from employee e,efficiency ef where e.eid=ef.employee and eid IN (select empid from empinplans where ShiftPlanID='$planid');");
+        $employees = DB::select("select * from employee e,efficiency ef where e.eid=ef.employee and eid IN (select empid from empinplans where ShiftPlanID='$planid') order by ef.Efficiency DESC");
 
         $employeesByShiftPlans = DB::select("select s.BID,s.day,s.Tim,count(e.EmpID) as count from shiftplans s,empinplans e where s.SPID = e.ShiftPlanID group by e.ShiftPlanID");
 
@@ -48,7 +48,7 @@ class removeEmployee extends Controller
 
 
         $n=null;
-        $branches = DB::select("select * from branch where address='$n'");
+        $branches = DB::select("select * from branch where address !='$n'");
 
         return view('RemoveEmployee',compact('branches','employees','planid','employeesByShiftPlans'));
     }

@@ -58,7 +58,7 @@ class CreateShiftsController extends Controller
         $n=null;
         $branches = DB::select("select * from branch where address !='$n'");
  
-       $employees = DB::select("select * from employee e,efficiency ef,empinplans emp,shiftplans s where e.eid=ef.employee and e.eid=emp.EmpID and emp.ShiftPlanID=s.SPID and e.Branch='$id'");
+       $employees = DB::select("select * from employee e,efficiency ef,empinplans emp,shiftplans s where e.eid=ef.employee and e.eid=emp.EmpID and emp.ShiftPlanID=s.SPID and e.Branch='$id' order by ef.Efficiency DESC");
 
 
       return view('create_shifts',compact('plans', 'branches','employees'));
