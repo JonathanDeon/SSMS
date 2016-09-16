@@ -71,11 +71,11 @@ class efficiencyController extends Controller
             }
         }
 
-
-        if ($multiplerecords != null)
-        {
-            $n=array();
-            $count=0;
+        $mark=0;
+        if ($multiplerecords != null) {
+            $mark = 1;
+            $n = array();
+            $count = 0;
             foreach ($multiplerecords as $setofrecords) {
 
                 $c = $setofrecords->employee;
@@ -84,8 +84,8 @@ class efficiencyController extends Controller
 
                 foreach ($leaveinfo as $record) {
 
-                    $z=$record->start_date;
-                    $f=$record->end_date;
+                    $z = $record->start_date;
+                    $f = $record->end_date;
                     $carbon = new Carbon($z);
                     $carbon1 = new Carbon($f);
 
@@ -100,11 +100,11 @@ class efficiencyController extends Controller
                             $h = $carbon->diffInDays($lastDayofPreviousMonth) + 1;
                         }
                     } elseif ($carbon >= $firstDayofPreviousPreviousMonth) {
-                        $h = $firstDayofPreviousMonth->diffInDays($carbon1)+1;
+                        $h = $firstDayofPreviousMonth->diffInDays($carbon1) + 1;
                     }
 
 
-                    var_dump($h);
+                    //var_dump($h);
                     $n[$count] = $h;
                     $count++;
                 }
@@ -123,21 +123,24 @@ class efficiencyController extends Controller
                 $vy = round($v, 2, PHP_ROUND_HALF_UP);
 
                 DB::statement("INSERT INTO efficiency_log(employee,month,efficiency) values('$c','$Month', '$vy')");
-            }
 
-            $exist=DB::select("select * from efficiency where employee='$c'");
 
-            if ($exist==null)
-            {
-                DB::statement("INSERT INTO efficiency(employee,month,efficiency) values('$c','$Month', '$vy')");
-            }
+                $exist = DB::select("select * from efficiency where employee='$c'");
 
-            else
-            {
-                $affected = DB::update("UPDATE `efficiency` SET `month`='$Month',`Efficiency`='$vy' WHERE `employee`='$c'");
+                if ($exist == null) {
+                    DB::statement("INSERT INTO efficiency(employee,month,efficiency) values('$c','$Month', '$vy')");
+                } else {
+                    $affected = DB::update("UPDATE `efficiency` SET `month`='$Month',`Efficiency`='$vy' WHERE `employee`='$c'");
+                }
+
+                $count=0;
             }
         }
 
+        if ($mark == 0)
+        {
+            $c = -1;
+        }
 
             foreach ($u as $y) {
                 $c1 = $y->employee;
@@ -160,7 +163,7 @@ class efficiencyController extends Controller
 
                     elseif ($carbon >= $firstDayofPreviousPreviousMonth)
                     {
-                            $h = $firstDayofPreviousMonth->$carbon1;
+                            $h = $firstDayofPreviousMonth->diffInDays($carbon1)+1;
                     }
 
 
