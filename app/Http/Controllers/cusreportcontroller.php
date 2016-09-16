@@ -34,4 +34,15 @@ class cusreportcontroller extends Controller
         return view('loyaltyReport',compact('customers','data'));
     }
 
+    public function DeficitReport(){
+
+
+        $customers = DB::select("select name,cus_id from customer");
+        //$def = DB::select("select deficitID,cusid,amount from deficit");
+
+        $def=DB::select("select deficit.*,customer.name from deficit inner join customer on deficit.cusid = customer.cus_id");
+
+        return view('deficitReport',compact('customers','def'));
+    }
+
 }

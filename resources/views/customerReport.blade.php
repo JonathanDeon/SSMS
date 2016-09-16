@@ -40,9 +40,9 @@
 <body>
 <div class=" col-md-12">
     <div class="col-md-1">
-    <img src="dist/img/aglk.jpg" style="width: 100px; height: 100px;">
+    <img src="dist/img/aglkb.jpg" style="width: 600px; height: 100px;"><p><b>Customer Report</b></p>
         </div>
-    <div class="col-md-4"><p><b>Auto Gleam LK, Moratuwa</b></p></div>
+    <div class="col-md-4"></div>
 </div>
 
 <input name="_token" type="hidden" value="{{ csrf_token() }}"/>

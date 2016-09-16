@@ -202,8 +202,8 @@
             <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
 
             <div class="info-box-content">
+                <a onclick="window.open('deficitReport')" type="button" class="btn btn-block btn-success btn-lg" style="width: 25%">Generate Deficit Report</a>
 
-                <button type="button" class="btn btn-block btn-success btn-lg" style="width: 25%">Generate Deficit Report</button>
             </div>
             <!-- /.info-box-content -->
           </div>

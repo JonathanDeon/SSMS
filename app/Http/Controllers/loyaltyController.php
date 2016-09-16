@@ -36,14 +36,4 @@ class loyaltyController extends Controller
         return redirect('CustomerLoyalty');
     }
 
-//    public function getLoyalty(){
-//
-//
-//       
-//
-//
-//
-//        return view('CustomerLoyalty1',compact('customer'));
-//        return redirect('CustomerLoyalty');
-//    }
 }

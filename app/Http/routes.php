@@ -20,13 +20,13 @@ Route::get('customerReport','cusreportcontroller@Customerreport');
 
 Route::get('loyaltyReport','cusreportcontroller@LoyaltyReport');
 
+Route::get('deficitReport','cusreportcontroller@DeficitReport');
+
 Route::get('CustomerLoyalty','loyaltyController@getCustomerName');
 
 Route::post('CustomerLoyalty','loyaltyController@addloyalty');
 
 Route::get('report-gen', 'register@domExample');
-
-//Route::get('CustomerLoyalty','loyaltyController@getLoyalty');
 
 Route::post('RegisterCustomer','register@addCustomer');
 
