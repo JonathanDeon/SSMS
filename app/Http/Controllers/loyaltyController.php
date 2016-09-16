@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterCustomerRequest;
 
 use App\Http\Requests;
 
@@ -30,9 +31,9 @@ class loyaltyController extends Controller
 
         DB::statement(
             "INSERT INTO loyalty(cusid,discount,fromDate,toDate)
-            VALUES ('$id','$discount','$fromm','$to')"); 
+            VALUES ('$id','$discount','$fromm','$to')");
 
-
+        \Session::flash('flash_message','done');
         return redirect('CustomerLoyalty');
     }
 
