@@ -10,7 +10,10 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::get('test','PayrollController@getLoanDeductions');
+Route::get('test1','PayrollController@getEmployeeBasicSalaryDetails');
+Route::get('test2','PayrollController@getEmployeeMonthlySalaryReport');
+Route::get('test3','PayrollController@getSalaryTableValues');
 Route::group(['middleware' => ['web']], function () {
 
     Route::get('login', function () {
