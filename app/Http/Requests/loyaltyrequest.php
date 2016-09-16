@@ -25,9 +25,7 @@ class loyaltyrequest extends Request
     {
         return [
 
-            'from'=>'required',
-
-            'to'=>'required|after:start_date',
+            'to'=>'after:from',
 
         ];
     }
@@ -36,8 +34,7 @@ class loyaltyrequest extends Request
     {
         return [
 
-            'from.required' => 'Discount Start date is required',
-            'to.required' => 'Discount end is required',
+            'to.after' => 'To date should be greater than from date',
 
         ];
     }

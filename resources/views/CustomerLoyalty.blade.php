@@ -26,10 +26,20 @@
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
-  <![endif]-->
 
+    <![endif]-->
+    <script>
+        function alerts() {
+            swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
+        }
 
+        function success() {
+            swal("Successful", "Data Successfully Saved!", "success")
+        }
+    </script>
 
   
 </head>
@@ -204,6 +214,31 @@
               <h3 class="box-title">Manage Special Offers</h3>
             </div>
              <form role="form" method="POST" action="{{url('CustomerLoyalty')}}">
+                 @if (count($errors) > 0)
+                     <script>
+                         function myFunction() {
+                             location.reload();
+                         }
+                     </script>
+
+                     <div class="alert alert-danger">
+                         <strong>Save Failed</strong><br><br>
+                         <ul>
+                             @foreach ($errors->all() as $error)
+                                 <li>{{ $error }}</li>
+                             @endforeach
+                         </ul>
+                     </div>
+                 @endif
+                 @if(Session::has('flash_message'))
+                         <?php
+                         echo '<script type="text/javascript">',
+                         'success();',
+                         '</script>';
+                         ?>
+                 @endif
+
+
                 <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
            
             <!-- /.box-header -->
@@ -291,9 +326,7 @@
                                 <tr role="row"><th aria-label=":" aria-sort="ascending" style="width: 181px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting_asc">Customer ID</th><th aria-label="" style="width: 224px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Customer Name</th><th aria-label="" style="width: 198px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">Discount Amount (%)</th><th aria-label="" style="width: 155px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">From Date</th><th aria-label="" style="width: 110px;" colspan="1" rowspan="1" aria-controls="example1" tabindex="0" class="sorting">To Date</th></tr>
                                 </thead>
                                 <tbody>
-<?php
-//    echo var_dump($data);
-//?>
+
                                 @foreach($data as $data)
                                 <tr class="odd" role="row">
                                     <td class="sorting_1">{{$data->cusid}}</td>

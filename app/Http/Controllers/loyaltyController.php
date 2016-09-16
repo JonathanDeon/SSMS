@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\RegisterCustomerRequest;
+
+use App\Http\Requests\loyaltyrequest;
 
 use App\Http\Requests;
 
 use DB;
+
 use App\customer;
+
 
 class loyaltyController extends Controller
 {
@@ -21,7 +24,7 @@ class loyaltyController extends Controller
     	return view('CustomerLoyalty',compact('customers','data'));
     }
 
-    public function addloyalty(Request $request){
+    public function addloyalty(loyaltyrequest $request){
              
         // $name = $request->input('cusname');
         $id = $request->input('cusname');

@@ -6,8 +6,8 @@ use App\Http\Requests;
 
 use App\customer;
 
-//use Requests\RegisterCustomerRequest;
 use App\Http\Requests\RegisterCustomerRequest;
+
 use Illuminate\Http\Request;
 
 use DB;
