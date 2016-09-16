@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Customer Management | Register Customer</title>
+  <title>Customer Management | Customer Deficit Management</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -191,7 +191,7 @@
       <ol class="breadcrumb">w 
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Customer Management</a></li>
-        <li class="active">Customer Loyalty Management</li>>
+        <li class="active">Customer Deficit Management</li>>
       </ol>
     </section>
 
@@ -204,7 +204,7 @@
           <!-- general form elements -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Manage Special Offers</h3>
+              <h3 class="box-title">Manage Deficits</h3>
             </div>
              <form role="form" method="POST" action="{{url('CustomerDeficit')}}">
                 <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
