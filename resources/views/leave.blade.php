@@ -319,28 +319,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <table class="table table-condensed">
                                 <tbody><tr>
                                     <th>Designation</th>
-                                    <th>Casual Leave</th>
-                                    <th>Medical Leave</th>
-                                    <th>Annual Leave</th>
+                                    <th>Leave Type</th>
+                                    <th>No.of Leaves</th>
                                 </tr>
-                                <tr>
-                                    <td>Manager</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>12</td>
-                                </tr>
-                                <tr>
-                                    <td>Accountant</td>
-                                    <td>4</td>
-                                    <td>3</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>Stock Keeper</td>
-                                    <td>4</td>
-                                    <td>3</td>
-                                    <td>10</td>
-                                </tr>
+                                @foreach($leaveCount as $count)
+                                    <tr>
+                                        <td>{{$count->title}}</td>
+                                        <td>{{$count->leave_type}}</td>
+                                        <td>{{$count->no_of_leaves}}</td>
+                                    </tr>
+                                @endforeach
                                 </tbody></table>
                         </div>
                     </div>
@@ -462,7 +450,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <select class="form-control" style="width:80%" name="leave_type" id="leave_type">
                                                 <option>Select Leave Type</option>
                                                 @foreach($leaveTypes as $leaveType)
-                                                    <option value="{{ $leaveType->id }}">{{$leaveType->leave_type}}</option>
+                                                    <option value="{{ $leaveType->lid }}">{{$leaveType->leave_type}} - {{$leaveType->title}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -615,7 +603,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             url: 'saveLeaveInfo',
                             data: {title: title, emp_type: emp_type, designation: designation, number: number},
                             success: function(x) {
-                                swal("Successful", "Leave Type Added!", "acceptLeave");
+                                swal("Successful", "Leave Type Added!", "success");
                                 location.reload();
                             },
                             error: function(){

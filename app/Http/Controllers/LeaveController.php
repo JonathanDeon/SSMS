@@ -22,10 +22,16 @@ class LeaveController extends Controller
                       b.id = e.branch 
                   ");
 
-        $leaveTypes = DB::select("select * from leave_type l");
+        $leaveTypes = DB::select("SELECT l.id as lid, l.leave_type, d.title FROM leave_type l,designation d 
+                                  WHERE l.designation = d.id
+                                  ORDER BY l.designation");
+
+        $leaveCount = DB::select("SELECT * FROM leave_type l,designation d 
+                                  WHERE l.designation = d.id
+                                  ORDER BY l.designation");
 
         $designations = DB::select("select * from designation");
-        return view('leave',compact('leaves','allLeaves','designations','leaveTypes'));
+        return view('leave',compact('leaves','allLeaves','designations','leaveTypes','leaveCount'));
     }
 
     public function approveLeave(Request $request){
