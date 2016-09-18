@@ -157,7 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /* Generating data to pdf */
-//        Barryvdh\DomPDF\serviceProvider::class,
+        Barryvdh\DomPDF\serviceProvider::class,
     ],
 
     /*

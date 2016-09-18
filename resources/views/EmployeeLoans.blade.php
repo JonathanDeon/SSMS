@@ -276,7 +276,7 @@
                                         @foreach($ongoing as $x)
                                             <tr>
                                                 <td>{{$x->l_name}}</td>
-                                                <td>{{$x->scheme_id}}</td>
+                                                {{--<td>{{$x->scheme_id}}</td>--}}
                                                 <td>{{$x->eid}}</td>
                                                 <td>{{$x->name}}</td>
                                                 <td>{{$x->contact}}</td>

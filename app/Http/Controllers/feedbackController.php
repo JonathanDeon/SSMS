@@ -37,5 +37,18 @@ class feedbackController extends Controller
             
         }
 
+    public function respond(Request $request){
+
+
+        $id = $request->input('CusId1');
+        $response = $request->input('response');
+
+
+        DB::statement(
+            "update feedback set response='$response' WHERE cusID ='$id'");
+
+
+        return redirect('Feedback');
+    }
 
 }

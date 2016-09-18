@@ -23,7 +23,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
 <script>
-  
+
     function alerts() {
                 swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
             }
@@ -44,10 +44,10 @@
    function success() {
                 swal("Successful", "New Item Successfully Saved!", "success");
     }
-  
+
   function formValidate(){
- 
- 
+
+
  var items = document.getElementById('itemName').value;
  var rate = document.getElementById('Irate').value;
  var rol = document.getElementById('rol').value;
@@ -67,7 +67,7 @@
                         success();
                         return true;
                       }
-          
+
                         else
                         return false;
                       else
@@ -77,9 +77,9 @@
                   else
                   return false;
                 else
-                return false;  
+                return false;
               else
-              return false; 
+              return false;
             else
             return false;
         else
@@ -103,91 +103,91 @@ function selectValidate(elem)
 
 function isEmpty(elem,field) {
   if(elem == "")
-      {   
+      {
         alert("You cannot have "+field+" field Empty");
         return true;
       }
 else
 {
   return false;
-  }  
+  }
 }
 
 
 function isnotnum(elem,field)
 {
   if(isNaN(elem))
-      {   
+      {
         alert("Input field "+field+" should be numeric");
         return true;
       }
 else
 {
   return false;
-  }  
+  }
 }
 
 
 function greaterz(elem,field)
 {
   if(elem<1)
-      {   
+      {
         alert("You shoul have "+field+" greater than zero");
         return true;
       }
 else
 {
   return false;
-  }  
+  }
 }
 
 }
 
 function calTotal() {
-  
+
     var qty = document.getElementById('Pqty').value;
     var price = document.getElementById('Pprice').value;
     var disc = document.getElementById('Pdisc').value;
     var expr = /^[0-9]+$/;
     if(qty == "")
-      {    
+      {
         emptyField("Quantity");
         return;
       }
           else if(qty < 0)
-          {    
+          {
             nonNeg("Quantity");
             document.getElementById('Pqty').value="";
             return;
            }
                else if(isNaN(qty))
-             { 
-                 invalidl("Quantity"); 
-                 document.getElementById('Pqty').value="";         
-                
-                return; 
+             {
+                 invalidl("Quantity");
+                 document.getElementById('Pqty').value="";
+
+                return;
              }
     if(price == "")
-      {    
+      {
         emptyField("Price");
-       
+
        return;
       }
          else if(price < 0)
-        {    
+        {
             nonNeg("Price");
             document.getElementById('Pprice').value="";
             return;
         }
             else if(isNaN(price))
-            { 
+            {
               invalidl("Price");
-              document.getElementById('Pprice').value="";          
-             
-              return; 
+              document.getElementById('Pprice').value="";
+
+              return;
             }
    if(disc < 0)
-  {    
+  {
       nonNeg("Discount");
       document.getElementById('Pdisc').value="";
       return;
@@ -196,30 +196,30 @@ if(qty != "" && price != "" && disc != "" && (isNaN(disc)) )
 {
     invalidl("Discount");
     document.getElementById('Pdisc').value="";
-   
+
     return;
 }
-      
-    
-   
+
+
+
     if(qty != "" && price != "" && disc != "" && (!isNaN(disc)) )
-    {   
+    {
           var tot =((parseInt(qty)*parseFloat(price).toFixed(2))-parseFloat(disc).toFixed(2)).toFixed(2);
           var Ptotal = document.getElementById('Ptotal');
           Ptotal.value=tot;
           return;
     }
         if(qty != "" && price != "" && disc == "" )
-    {   
+    {
           var tot =(parseInt(qty)*parseFloat(price)).toFixed(2);
           var Ptotal = document.getElementById('Ptotal');
           Ptotal.value=tot;
           return;
     }
-     
-    
-     
-    
+
+
+
+
         }
 function pad(n, width, z) {
   z = z || '0';
@@ -250,17 +250,17 @@ function repPur(){
 
   if(validateDate(from,"From Date"))
     if(validateDate(to,"To Date"))
-       
+
           {
-            
+
         return true;
         }
-          
+
               else
         return false;
                else
         return false;
-      
+
 
 
 
@@ -269,36 +269,36 @@ function repPur(){
 
  function isEmpty(elem,field) {
   if(elem == "")
-      {   
+      {
         alert("You cannot have "+field+" field Empty");
         return true;
       }
 else
 {
   return false;
-  }  
+  }
 }
 
 
 function validateDate(elem,field){
-if(!isEmpty(elem,field)){  
+if(!isEmpty(elem,field)){
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
-      
+
       if(dd<10){
         dd='0'+dd;
-      } 
+      }
       if(mm<10){
         mm='0'+mm;
-      } 
+      }
       var today = yyyy+'-'+mm+'-'+dd;
 //document.getElementById("DATE").value = today;
         if(elem>today)
       {
           alert("Invalid Date Today is "+today);
-        
+
           return false;
       }
         else
@@ -329,12 +329,12 @@ function repSal(){
 
 if(validateDate(from,"From Date"))
     if(validateDate(to,"To Date"))
-       
+
           {
-            
+
         return true;
         }
-          
+
               else
         return false;
                else
@@ -347,36 +347,36 @@ if(validateDate(from,"From Date"))
 
  function isEmpty(elem,field) {
   if(elem == "")
-      {   
+      {
         alert("You cannot have "+field+" field Empty");
         return true;
       }
 else
 {
   return false;
-  }  
+  }
 }
 
 
 function validateDate(elem,field){
-if(!isEmpty(elem,field)){  
+if(!isEmpty(elem,field)){
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
     var yyyy = today.getFullYear();
-      
+
       if(dd<10){
         dd='0'+dd;
-      } 
+      }
       if(mm<10){
         mm='0'+mm;
-      } 
+      }
       var today = yyyy+'-'+mm+'-'+dd;
 //document.getElementById("DATE").value = today;
         if(elem>today)
       {
           alert("Invalid Date Today is "+today);
-        
+
           return false;
       }
         else
@@ -427,54 +427,58 @@ if(!isEmpty(elem,field)){
       <span class="logo-lg"><b>Auto</b>Gleam</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-</nav>
+      <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </a>
+      </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar user panel -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
 
-        <ul class="sidebar-menu">
-        
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-user"></i> <span>Customer Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-              <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
-              <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
-              <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
-              <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
-              <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-          </ul>
-        </li>
+            <ul class="sidebar-menu">
 
-        <li class="treeview">
-          <a href="#">
-           <i class="fa fa-car"></i> <span>Service Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</a></li>
-            <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
-            <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
-            <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
-          </ul>
-       </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-user"></i> <span>Customer Management</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+                        <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+                        <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+                        <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+                        <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-car"></i> <span>Service Management</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="reservations"><i class="fa fa-square-o"></i>Add/update Reservations</a></li>
+                        <li ><a href="slot01"><i class="fa fa-square-o"></i>Slot 01</a></li>
+                        <li ><a href="slot02"><i class="fa fa-square-o"></i>Slot 02</a></li>
+                        <li ><a href="slot03"><i class="fa fa-square-o"></i>Slot 03</a></li>
+                        <li ><a href="slot04"><i class="fa fa-square-o"></i>Slot 04</a></li>
+                        <li ><a href="assignments"><i class="fa fa-male"></i>Assignments</a></li>
+                        <li><a href="plans"><i class="fa fa-check-square"></i> Service Plans</a></li>
+                        <li><a href="logs"><i class="fa fa-file-text-o"></i>Logs</a></li>
+                        <li><a href="reports"><i class="fa fa-pencil-square-o"></i>Reports</a></li>
+                    </ul>
+                </li>
 
 
-      <li class="treeview">
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-users"></i><span>Employee Management</span>
 
@@ -490,52 +494,53 @@ if(!isEmpty(elem,field)){
                     </ul>
                 </li>
 
-       <li class="treeview">
-  <a href="#">
-    <i class="fa fa-link"></i> <span> Janitorial Management </span>
-          <i class="fa fa-angle-left pull-right"></i>
-        </a>
 
-        <ul class="treeview-menu">
-          <li><a href="emp"><i class="fa fa-users"></i> Employee Management</a></li>
-                <li><a href="cust"><i class="fa fa-user"></i> Customer Management</a></li>
-                <li><a href="package"<i class="fa fa-cubes"></i> Categories</a></li>
-                <li><a href="order"><i class="fa fa-cart-plus"></i> Order Management</a></li>
-        </ul>
-</li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span> Janitorial Management </span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
 
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-money"></i><span>Finance Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
-              <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
-              <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-              <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
-              <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
-              <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
-            </ul>
-       </li>
+                    <ul class="treeview-menu">
+                        <li><a href="emp"><i class="fa fa-users"></i> Employee Management</a></li>
+                        <li><a href="cust"><i class="fa fa-user"></i> Customer Management</a></li>
+                        <li><a href="package"<i class="fa fa-cubes"></i> Categories</a></li>
+                        <li><a href="order"><i class="fa fa-cart-plus"></i> Order Management</a></li>
+                    </ul>
+                </li>
 
-       <li class="treeview active">
-         <a href="#">
-          <i class="fa fa-cube"></i><span>Inventory Management</span>        
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li class="active"><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
-              <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
-              <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
-              <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
-              <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
-              <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
-              <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
-            </ul>
-       </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-money"></i><span>Finance Management</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+                        <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+                        <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+                        <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+                        <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+                        <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
+                    </ul>
+                </li>
 
-       <li class="treeview">
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-cube"></i><span>Inventory Management</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="active"><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
+                        <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+                        <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
+                        <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
+                        <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
+                        <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
+                        <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
                         <i class="fa fa-angle-left pull-right"></i>
@@ -544,18 +549,16 @@ if(!isEmpty(elem,field)){
                         <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
                         <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
                         <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
-                         <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                        <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
                         <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
-                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+                        <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>>
                     </ul>
                 </li>
 
-
-       
-      </ul>
-    </section>
-    
-  </aside>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
 
 
   
@@ -708,7 +711,6 @@ if(!isEmpty(elem,field)){
 
 
                 </div>
-
     </section>
 
 
@@ -741,13 +743,9 @@ if(!isEmpty(elem,field)){
 
 
 
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+{{--<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>--}}
 <!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
 
 
 

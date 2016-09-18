@@ -58,6 +58,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+    </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
@@ -78,92 +79,110 @@
             <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
             <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
             <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
-            <li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="#">
-           <i class="fa fa-car"></i> <span>Service Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="ReservationsService"><i class="fa fa-calendar"></i>Reservations</a></li>
-            <li><a href="AssignService"><i class="fa fa-check-square-o"></i>Assign Service</i></a></li>
-            <li><a href="ServicePlans"><i class="fa fa-map-o"></i>Service Plans</a></li>
-            <li><a href="ServiceLogs"><i class="fa fa-clone"></i>Service Logs</a></li>
-            <li><a href="ReportsServices"><i class="fa fa-file-text-o"></i>Service Reports</a></li>
-          </ul>
-       </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-car"></i> <span>Service Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="reservations"><i class="fa fa-square-o"></i>Add/update Reservations</a></li>
+                    <li ><a href="slot01"><i class="fa fa-square-o"></i>Slot 01</a></li>
+                    <li ><a href="slot02"><i class="fa fa-square-o"></i>Slot 02</a></li>
+                    <li ><a href="slot03"><i class="fa fa-square-o"></i>Slot 03</a></li>
+                    <li ><a href="slot04"><i class="fa fa-square-o"></i>Slot 04</a></li>
+                    <li ><a href="assignments"><i class="fa fa-male"></i>Assignments</a></li>
+                    <li><a href="plans"><i class="fa fa-check-square"></i> Service Plans</a></li>
+                    <li><a href="logs"><i class="fa fa-file-text-o"></i>Logs</a></li>
+                    <li><a href="reports"><i class="fa fa-pencil-square-o"></i>Reports</a></li>
+                </ul>
+            </li>
 
 
-      <li class="treeview">
-         <a href="#">
-          <i class="fa fa-users"></i><span>Employee Management</span>
-          
-            <i class="fa fa-angle-left pull-right"></i>
-           </span>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-user-plus"></i>Recruitment</a></li>
-              <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
-              <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
-              <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
-              <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
-            </ul>
-       </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i><span>Employee Management</span>
 
-       <li class="treeview">
-         <a href="Janitorial">
-          <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-           
-       </li>
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+                    <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+                    <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+                    <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+                    <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+                </ul>
+            </li>
 
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-money"></i><span>Finance Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>
-              <li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
-              <li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>
-              <li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>
-            </ul>
-       </li>
-    
-        <li class="treeview">
-         <a href="#">
-          <i class="fa fa-cube"></i><span>Inventory Management</span>        
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
-              <li><a href="inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
-              <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
-              <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
-              <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
-              <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
-              <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
-            </ul>
-       </li>
 
-       <li class="treeview">
-         <a href="#">
-          <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
-            <i class="fa fa-angle-left pull-right"></i>
-           </a>
-            <ul class="treeview-menu">
-              <li><a href="AssignEmployees"><i class="fa fa-male"></i>Assign Employees</a></li>
-              <li><a href="CreateShifts"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>
-              <li><a href="ReplaceEmployee"><i class="fa fa-exchange"></i>Replace Employee</a></li>
-              <li><a href="OverWorkedEmp"><i class="fa fa-plus-circle"></i>Over Worked Employees</a></li>
-              <li><a href="RequestEmployee"><i class="fa fa-plus-circle"></i>Request Employee</a></li>
-              <li><a href="EfficiencyAnalysis"><i class="fa fa-plus-circle"></i>Efficiency Analysis</a></li>
-            </ul>
-       </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="emp">Employee Managment</a>
+                    </li>
+                    <li><a href="cust">Customer Managment</a>
+                    </li>
+                    <li><a href="package">Categories</a>
+                    </li>
+                    <li><a href="order">Order Managment</a>
+                    </li>
+                </ul>
+
+
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-money"></i><span>Finance Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+                    <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+                    <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+                    <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+                    <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+                    <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cube"></i><span>Inventory Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
+                    <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+                    <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
+                    <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
+                    <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
+                    <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
+                    <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                    <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+                    <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+                    <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                    <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+                    <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
+
+                </ul>
+            </li>
 
       </ul>
     </section>
@@ -197,42 +216,12 @@
             </div>
              <form role="form" method="POST" action="{{url('RegisterCustomer')}}">
                  @if (count($errors) > 0)
-                <!--  <script>
-                    // Run on page load
-                    window.onload = function() {
-
-                        // If sessionStorage is storing default values (ex. name), exit the function and do not restore data
-                        if (sessionStorage.getItem('name') == "name") {
-                            return;
-                        }
-
-                        // If values are not blank, restore them to the fields
-                        var name = sessionStorage.getItem('name');
-                        if (name !== null) $('#CusName').val(name);
-
-                        var email = sessionStorage.getItem('email');
-                        if (email !== null) $('#CusEmail').val(email);
-
-                        // var subject= sessionStorage.getItem('subject');
-                        // if (subject!== null) $('#inputSubject').val(subject);
-
-                        // var message= sessionStorage.getItem('message');
-                        // if (message!== null) $('#inputMessage').val(message);
-                    }
-
-                    // Before refreshing the page, save the form data to sessionStorage
-                    window.onbeforeunload = function() {
-                        sessionStorage.setItem("name", $('#CusName').val());
-                        sessionStorage.setItem("email", $('#CusEmail').val());
-                        // sessionStorage.setItem("subject", $('#inputSubject').val());
-                        // sessionStorage.setItem("message", $('#inputMessage').val());
-                    }
-                </script> -->
                 <script>
                     function myFunction() {
                      location.reload();
                       }
-               </script>                                          
+               </script>
+
               <div class="alert alert-danger">
                 <strong>Save Failed</strong><br><br>
                 <ul>
@@ -260,7 +249,7 @@
                  <div class="form-group">
                   <label for="EnterCusname">Full Name<font color="red">*</font></label>
                   <input type="text" class="form-control" id="CusName" name="CusName" placeholder="Enter Name" size="10">
-                </div>
+                 </div>
 
                 <div class="form-group">
                   <label for="EnterCusEmail1">Email address<font color="red">*</font></label>
@@ -278,9 +267,9 @@
                 </div>
 
                </div>
-                 <div class="col-md-6" position=50%>              
 
-                 
+               <div class="col-md-6" position=50%>
+
                 <div class="form-group">
                 @foreach ($cusid as $cusid)
                   <label for="GenCusID">Customer ID</label>
@@ -293,15 +282,15 @@
                   <input type="text" class="form-control" name='CusNIC' id="NIC" placeholder="Enter NIC">
                 </div>  
 
-                <div class="form-group">
+                 <div class="form-group">
                   <label for="EnterCusPassword1">Password<font color="red">*</font></label>
                   <input type="password" class="form-control" name='CusPW' id="CusPassword1" placeholder="Password" >
-                </div>
+                 </div>
 
-                <div class="form-group">
+                 <div class="form-group">
                   <label for="EnterCusPassword2">Confirm Password<font color="red">*</font></label>
                   <input type="password" class="form-control" name='CusPW_confirmation' id="CusPassword2" placeholder="Confirm Password">
-                </div>    
+                 </div>
           
                </div>
 
@@ -376,23 +365,24 @@
             <div class="box-body">
               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="example1_length"></div></div><div class="col-sm-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                 <thead>
-                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 50px;">Customer ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 361px;">Customer Name</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Telephone</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Email</th>
+                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 50px;">Customer ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 361px;">Customer Name</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Telephone</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Email</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Vehicle Make</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Vehicle Model</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 200px;">Number Plate</th>
                 </thead>
                 <tbody>
-                  @foreach($customer as $customer)             
+                  @foreach($def as $customer)
                 <tr role="row" class="odd">
                   <td class="sorting_1">{{$customer->cus_id}}</td>
                   <td>{{$customer->name}}</td>
                   <td>{{$customer->contactNo}}</td>
                   <td>{{$customer->mail}}</td>
-                  <td> <a class="btn btn-success" id="Edit" onclick="getCustomer('{{$customer->cus_id}}'); getVehicle('{{$customer->cus_id}}');" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a></td>
-                  <td><button type="button" class="btn btn-danger" value="{{$customer->cus_id}}" onclick="deleteCustomer('{{$customer->cus_id}}')"><i class="fa fa-trash"></button></td>
+                  <td>{{$customer->make}}</td>
+                  <td>{{$customer->model}}</td>
+                  <td>{{$customer->number_plate}}</td>
+                  <td> <a class="btn btn-success" id="Edit" onclick="getCustomer('{{$customer->cus_id}}'); getVehicle('{{$customer->cus_id}}');" data-toggle="modal" href="#editModal"><i class="fa fa-edit"></i></a><button type="button" style="margin-left: 15px;" class="btn btn-danger" value="{{$customer->cus_id}}" onclick="deleteCustomer('{{$customer->cus_id}}')"><i class="fa fa-trash"></button></td>
                 </tr>
-                @endforeach
-
+                  @endforeach
                 </tbody>
                 <tfoot>
-                <tr><th rowspan="1" colspan="1">Customer ID</th><th rowspan="1" colspan="1">Customer Name</th><th rowspan="1" colspan="1">Telephone</th>
+                <tr><th rowspan="1" colspan="1">Customer ID</th><th rowspan="1" colspan="1">Customer Name</th><th rowspan="1" colspan="1">Telephone</th><th rowspan="1" colspan="1">Email</th><th rowspan="1" colspan="1">Vehicle Make</th><th rowspan="1" colspan="1">Vehicle Model</th><th rowspan="1" colspan="1">Number Plate</th>
               </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example1_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-8"><div class="dataTables_paginate paging_simple_numbers" id="example1_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example1_previous"><a href="#" aria-controls="example1" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example1" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example1_next"><a href="#" aria-controls="example1" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
             </div>
             <!-- /.box-body -->
@@ -402,7 +392,10 @@
       </div>
       </section>
 
-<script type="text/javascript">
+
+      <script type="text/javascript">
+
+
   function getCustomer(id) {
     
         $.ajax({

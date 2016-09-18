@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Service Management | Create Shifts</title>
+    <title>Service Management | Remove Employees</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -26,22 +26,6 @@
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-
-     <script>
-        function alerts()
-                {
-                    swal({   title: "Are you sure you want to delete?",   text: "You will not be able to recover this record!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Delete",   closeOnConfirm: false }, function(){   swal("Deleted!", "Employee Record has been deleted", "success"); });
-                }
-        function success()
-                {
-                    swal("Successful", "Data Successfully Saved!", "success")
-                }
-
-
-    </script>
-
 
     <![endif]-->
 </head>
@@ -181,10 +165,10 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+                        <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
                         <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
                         <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
-                        <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+                        <li class="active"><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
                         <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
                         <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>
 
@@ -201,230 +185,222 @@
         <!-- Content Header (Page header) -->
         <section class="content-header" >
             <h1>
-                Create Shifts
+                Remove Employee
             </h1>
             <ol class="breadcrumb">
-                <li><a href="/main"><i class="fa fa-user"></i>Work-shfts</a></li>
-                <li class="active">Add shift</li>
+                <li><a href="/main"><i class="fa fa-user"></i>WorkShift</a></li>
+                <li class="active">RemoveEmployee</li>
             </ol>
         </section>
 
-        <!-- Main content -->
-            <section class="content">
+         <section class="content">
 
-                <div class="main">
+          <div class="main">
 
-                    <div class="row">
+            <div class="row">
 
-                        <div class="col-md-6">
+                <div class="col-md-6">
 
-                            <div class="box box-primary">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Enter Shift Details</h3>
-                                </div>
-                                <!-- /.box-header -->
-                                <!-- form start -->
-                                <form role="form" method="POST" action="{{url('shiftcreate')}}">
-                                    <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                     <div class="box box-danger">
 
-                                    @if(Session::has('flash_message'))
-                                        <?php
-                                            echo '<script type="text/javascript">',
-                                                'success();',
-                                                ' </script>';
-                                         ?>
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Select Shift</h3>
+                        </div>
 
-                                    @endif
-                                  @if(Session::has('message'))
-                                  <p class="alert alert-danger">{{ Session::get('message') }}</p>
-                                  @endif
+                        <form role="form" method="POST" action="{{url('Remove')}}">
+                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
 
-                                    <div class="box-body">
+                        <div class="box-body">
 
-                                        <div class="form-group">
-                                            <span class="form-group-addon"><i class="fa fa-fw fa-building"></i></span>
-                                                <label for="Branch">Branch</label>
+                            <div class="form-group">
+                                <span class="form-group-addon"><i class="fa fa-fw fa-building"></i></span>
+                                <label for="Branch">Branch</label>
+                                <select class="form-control" id="SelectBranch" name="SelectBranch">
+                                    @foreach ($branches as $branch)
+                                        <option>{{ $branch->bname }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                            <select class="form-control" id="SelectBranch" name="SelectBranch">
+                            <div class="col-md-6">
 
-                                                @foreach ($branches as $branch)
-                                                    <option>{{ $branch->bname }}</option>
-                                                @endforeach
-
-                                            </select>
-
-                                        </div>
-
-                                        <div class="row1">
-
-                                            <div class="col-md-6">
-
-                                                <div class="form-group">
-                                                    <span class="form-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
-                                                        <label for="Day">Day</label>
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="optionsRadios" id="selectDay1" value="week-day" checked>
-                                                            Week-day
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="optionsRadios" id="selectday2" value="week-end">
-                                                            Week-end
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <span class="form-group-addon"><i class="fa fa fa-fw fa-calendar-times-o"></i></span>
-                                                        <label for="Time">Time</label>
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="optionsRadios1" id="optionsRadios11" value="peak" checked>
-                                                            Peak
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <label>
-                                                            <input type="radio" name="optionsRadios1" id="optionsRadios12" value="non-peak">
-                                                            Non-peak
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                                <div class="form-group">
+                                    <span class="form-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
+                                    <label for="Day">Day</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="selectDay1" id="optionsRadios1" value="week-day" checked="">
+                                            week-day
+                                        </label>
                                     </div>
-
-
-                                    <div class="box-footer" style="height:70px">
-
-                                        <button type="submit" class="btn btn-primary" onclick="AddtoTable()" style="margin-left:400px; margin-top:8px; margin-bottom:8px;" >Submit</button>
-
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="selectDay1" id="optionsRadios2" value="week-end">
+                                            week-end
+                                        </label>
                                     </div>
-                                </form>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="col-md-6">
-
-                            <div class="box box-primary" style="height: 303px; overflow-y: scroll;">
-
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Shift Plan Details</h3>
                                 </div>
-                                <!-- /.box-header -->
-                                <div class="box-body table-responsive no-padding">
 
-                                    <table  id="myTable" class="table table-hover">
-                                        <tbody><tr>
-                                            <th>ID</th>
-                                            <th>Branch</th>
-                                            <th>Day</th>
-                                            <th>Time</th>
-                                        </tr>
+                            </div>
 
-                                        @foreach ($plans as $plan)
-                                            <tr>
-                                                <td>{{ $plan->SPID }}</td>
-                                                <td>{{ $plan->BID }}</td>
-                                                <td>{{ $plan->day }}</td>
-                                                <td>{{ $plan->Tim }}</td>
-                                            </tr>
-                                        @endforeach
+                            <div class="col-md-6">
 
-                                        </tbody>
+                                <div class="form-group">
+                                    <span class="form-group-addon"><i class="fa fa fa-fw fa-calendar-times-o"></i></span>
+                                    <label for="Time">Time</label>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="selectTime1" id="optionsRadios11" value="peak" checked="">
+                                            peak
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label>
+                                            <input type="radio" name="selectTime1" id="optionsRadios12" value="non-peak">
+                                            non-peak
+                                        </label>
+                                    </div>
+                                 </div>
 
-                                    </table>
-
-                                </div>
-                    <!-- /.box-body -->
                             </div>
 
                         </div>
 
-                    </div>
-
-
-
-
-                    <div class="row">
-                    <div class="col-md-12">
-
-                        <div class="box box-primary">
-
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Assigned Employees</h3>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body1 no-padding">
-                                <table class="table table-condensed">
-
-                                <tbody>
-
-                                    <tr>
-
-                                        <th style="width:450px">Employee Name</th>
-                                        <th style="width:350px">Contact no</th>
-                                        <th style="width:300px">Time Shift</th>
-                                        <th style="width:200px">Efficiency percentage<th>
-
-                                    </tr>
-
-
-
-                                        @if ($employees != null)
-
-                                            @foreach ($employees as $employee)
-                                         <tr>
-                                                <td>{{ $employee->name }}</td>
-                                                <td>{{$employee->contact}}</td>
-                                                <td>{{$employee->day}}</td>
-                                               @if (($employee->Efficiency)>=80)
-                                                <td><span class="badge bg-green">{{$employee->Efficiency}}%</span></td>
-                                               @elseif(($employee->Efficiency)>=60)
-                                                <td><span class="badge bg-blue">{{$employee->Efficiency}}%</span></td>
-                                               @elseif(($employee->Efficiency)>=40)
-                                                <td><span class="badge bg-yellow">{{$employee->Efficiency}}%</span></td>
-                                               @else
-                                                <td><span class="badge bg-red">{{$employee->Efficiency}}%</span></td>
-                                               @endif
-                                        </tr>
-                                            @endforeach
-
-                                        @endif
-
-
-
-
-                                </tbody>
-
-                            </table>
-
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary" style="margin-left:450px">OK</button>
                         </div>
-                    <!-- /.box-body -->
-                    </div>
-
-                </div>
-                </div>
+                     </form>
 
                 </div>
 
-            </section>
-            <!-- /.content -->
+
+
+            </div>
+
+            <div class="col-md-6">
+                          <div class="box box-danger">
+                                           <div class="box-header">
+                                             <h3 class="box-title">Employee count by Shift Plan</h3>
+                                           </div>
+                                           <!-- /.box-header -->
+                                           <div class="box-body no-padding">
+                                             <table class="table table-condensed">
+                                               <tbody><tr>
+                                                 <th>Branch</th>
+                                                 <th>Day Shift</th>
+                                                 <th>Time Shift</th>
+                                                 <th>No of Employees</th>
+                                               </tr>
+                                           @foreach ($employeesByShiftPlans as $empDetails)
+                                               <tr>
+                                                 <td>{{$empDetails->BID}}</td>
+                                                 <td>{{$empDetails->day}}</td>
+                                                 <td>{{$empDetails->Tim}}</td>
+                                                 <td>{{$empDetails->count}}</td>
+                                               </tr>
+                                           @endforeach
+                                             </tbody></table>
+                                           </div>
+                                           <!-- /.box-body -->
+                                         </div>
+            </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                  <form class="form-horizontal">
+                          <div class="box box-danger">
+                            <div class="box-header">
+                              <h3 class="box-title">Assigned Employees</h3>
+                            </div>
+                          <!-- /.box-header -->
+                            <div class="box-body table-responsive no-padding">
+                              <table class="table table-hover">
+                                <tbody><tr>
+                                  <th>Employee Name</th>
+                                  <th>Address</th>
+                                  <th>Contact</th>
+                                  <th>Efficiency</th>
+                                  <th></th>
+                                </tr>
+
+                                @if ($employees != null)
+                                @foreach ($employees as $employee)
+                                <tr>
+                                  <td>{{ $employee->name }}</td>
+                                  <td>{{$employee->address}}</td>
+                                  <td>{{$employee->contact}}</td>
+                                @if (($employee->Efficiency)>=80)
+                                  <td><span class="badge bg-green">{{$employee->Efficiency}}%</span></td>
+                                @elseif(($employee->Efficiency)>=60)
+                                 <td><span class="badge bg-blue">{{$employee->Efficiency}}%</span></td>
+                                @elseif(($employee->Efficiency)>=40)
+                                 <td><span class="badge bg-yellow">{{$employee->Efficiency}}%</span></td>
+                                @else
+                                 <td><span class="badge bg-red">{{$employee->Efficiency}}%</span></td>
+                                @endif
+
+                          <td><button type="button" value="{{$employee->eid}}" class="btn btn-danger" onclick="removeEmployee('{{$employee->eid}}','{{$planid}}')">Remove</button></td>
+                          </tr>
+                                @endforeach
+                                @endif
+
+                             </tbody></table>
+                            </div>
+                            </div>
+                            </form>
+                </div>
+            </div>
           </div>
-
-    </div>
+    </section>
     <!-- ./wrapper -->
 
 
+<script>
+       function removeEmployee(empId,planid) {
 
+            swal({
+                title: "Are you sure you want to delete?",
+                        text: "You will not be able to recover this record!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Delete",
+                        closeOnConfirm: false },
+                    function(confirm){
+
+                            if(confirm) {
+
+                                $.ajax({
+                                    method:'get',
+                                    url:'remove1',
+                                    data:{eid:empId,pid:planid},
+                                    success:function(){
+                                        swal({
+                                            title: "Deleted!",
+                                            text: "Successfully removed the employee record!",
+                                            type: "warning",
+                                            showCancelButton: false,
+                                            confirmButtonColor: "#DD6B55",
+                                            confirmButtonText: "Ok",
+                                            closeOnConfirm: false },
+                                                function (confirm) {
+                                                    location.reload();
+                                                });
+                                    },
+                                    error:function(x,y,thrownError){
+                                        console.log(thrownError);
+                                    }
+                                });
+                            }else{
+
+                            }
+                    }
+                );
+
+        }
+</script>
 
 <!-- jQuery 2.2.0 -->
 <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
@@ -449,17 +425,9 @@
 
 <script src="../../dist/js/demo.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script>
-//    $('#dob').datepicker({
-//        autoclose: true
-//
-//    });
-//    $('#date').datepicker({
-//        autoclose: true
-//
-//    });
 
-</script>
+</div>
+</div>
 </div>
 </body>
 </html>

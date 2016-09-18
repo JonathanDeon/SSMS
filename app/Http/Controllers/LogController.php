@@ -9,8 +9,10 @@
 		
 		public function showlog()
 		{
-			$logs = DB::select("select * from service");
-			return view('logs', compact('logs'));
+			$logs = DB::select("select * from service where status = 'finished'");
+
+
+			return view('logs', compact('logs','today'));
 
         
 		}

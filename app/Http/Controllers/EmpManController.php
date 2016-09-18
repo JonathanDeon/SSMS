@@ -11,7 +11,7 @@ class EmpManController extends Controller
 {
     public function loadView()
     {
-    	$employees = DB::select("select * from employee where service_type=2");
+    	$employees = DB::select("select * from employee where service_type='janitorial'");
     	return view('EmployeeManagement', compact('employees'));
     }
 
@@ -27,7 +27,7 @@ class EmpManController extends Controller
         $joined_date = $request->input('jDate');
         $gender = $request->input('gender');
         $designation = $request->input('pos');
-        $service_type = "2";
+        $service_type = "janitorial";
         $emp_type = "Contract";
 
         if ($id == 0) {

@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>Servcie Management | Logs</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -23,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect.
   -->
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -58,11 +58,11 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="welcome" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>S</b>M</span>
+      <span class="logo-mini"><b>AGM</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Service</b>Management</span>
+      <span class="logo-lg"><b>Auto</b>Gleam</span>
     </a>
 
     <!-- Header Navbar -->
@@ -76,109 +76,131 @@ desired effect
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-  {{--<aside class="main-sidebar">--}}
-    {{--<!-- sidebar: style can be found in sidebar.less -->--}}
-    {{--<section class="sidebar">--}}
-      {{--<!-- Sidebar user panel -->--}}
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
 
-      {{--<ul class="sidebar-menu">--}}
-        {{--<li class="treeview">--}}
-          {{--<a href="#">--}}
-            {{--<i class="fa fa-user"></i> <span>Customer Management</span>--}}
-            {{--<i class="fa fa-angle-left pull-right"></i>--}}
-          {{--</a>--}}
-          {{--<ul class="treeview-menu">--}}
-            {{--<li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>--}}
-            {{--<li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>--}}
-            {{--<li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>--}}
-            {{--<li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>--}}
-            {{--<li><a href="#"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>--}}
-            {{--<li><a href="#"><i class="fa fa-calendar"></i>Customer Reservations</a></li>--}}
-          {{--</ul>--}}
-        {{--</li>--}}
+      <ul class="sidebar-menu">
 
-        {{--<li class="treeview">--}}
-          {{--<a href="#">--}}
-            {{--<i class="fa fa-user"></i> <span>Service Management</span>--}}
-            {{--<i class="fa fa-angle-left pull-right"></i>--}}
-          {{--</a>--}}
-          {{--<ul class="treeview-menu">--}}
-            {{--<li><a href="welcome"><i class="fa fa-calendar-minus-o"></i> <span>Reservations</span></a></li>--}}
-            {{--<li><a href="assignments"><i class="fa fa-male"></i> <span>Assignments</span></a></li>--}}
-            {{--<li><a href="plans"><i class="fa fa-check-square"></i> <span>Service Plans</span></a></li>--}}
-            {{--<li><a href="logs"><i class="fa fa-file-text-o"></i> <span>Logs</span></a></li>--}}
-            {{--<li><a href="reports"><i class="fa fa-pencil-square-o"></i> <span>Reports</span></a></li>--}}
-          {{--</ul>--}}
-        {{--</li>--}}
 
-        {{--<li class="treeview active">--}}
-          {{--<a href="#">--}}
-            {{--<i class="fa fa-users"></i><span>Employee Management</span>--}}
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user"></i> <span>Customer Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="RegisterCustomer"><i class="fa fa-user-plus"></i> Register Customer</a></li>
+            <li><a href="CustomerLoyalty"><i class="fa fa-thumbs-o-up"></i> Customer Loyalty</a></li>
+            <li><a href="Feedback"><i class="fa fa-commenting"></i>Customer Feedback</a></li>
+            <li><a href="Reports"><i class="fa fa-file-text"></i>Reports</a></li>
+            <li><a href="CustomerDeficit"><i class="fa fa-minus-square"></i>Customer Deficits</a></li>
+          </ul>
+        </li>
 
-            {{--<i class="fa fa-angle-left pull-right"></i>--}}
-            {{--</span>--}}
-          {{--</a>--}}
-          {{--<ul class="treeview-menu">--}}
-            {{--<li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>--}}
-            {{--<li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>--}}
-            {{--<li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>--}}
-            {{--<li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>--}}
-            {{--<li class="active"><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>--}}
-          {{--</ul>--}}
-        {{--</li>--}}
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-car"></i> <span>Service Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="reservations"><i class="fa fa-square-o"></i>Add/update Reservations</a></li>
+            <li><a href="slot01"><i class="fa fa-square-o"></i>Slot 01</a></li>
+            <li ><a href="slot02"><i class="fa fa-square-o"></i>Slot 02</a></li>
+            <li ><a href="slot03"><i class="fa fa-square-o"></i>Slot 03</a></li>
+            <li ><a href="slot04"><i class="fa fa-square-o"></i>Slot 04</a></li>
+            <li><a href="assignments"><i class="fa fa-male"></i>Assignments</a></li>
+            <li><a href="plans"><i class="fa fa-check-square"></i> Service Plans</a></li>
+            <li class="active"><a href="logs"><i class="fa fa-file-text-o"></i>Logs</a></li>
+            <li><a href="reports"><i class="fa fa-pencil-square-o"></i>Reports</a></li>
+          </ul>
+        </li>
 
-        {{--<li class="treeview">--}}
-          {{--<a href="Janitorial">--}}
-            {{--<i class="fa fa-bar-chart"></i><span>Janitorial Management</span>--}}
-            {{--<i class="fa fa-angle-left pull-right"></i>--}}
-          {{--</a>--}}
 
-        {{--</li>--}}
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i><span>Employee Management</span>
 
-        {{--<li class="treeview">--}}
-          {{--<a href="#">--}}
-            {{--<i class="fa fa-money"></i><span>Finance Management</span>--}}
-            {{--<i class="fa fa-angle-left pull-right"></i>--}}
-          {{--</a>--}}
-          {{--<ul class="treeview-menu">--}}
-            {{--<li><a href="Assets"><i class="fa fa-building"></i>Asset Management</a></li>--}}
-            {{--<li><a href="Liability"><i class="fa fa-plus-circle"></i>Liability Management</a></li>--}}
-            {{--<li><a href="Income&Expenditure"><i class="fa fa-files-o"></i>Income & Exp. Management</a></li>--}}
-            {{--<li><a href="TransactionManagement"><i class="fa fa-credit-card"></i>Transaction Management</a></li>--}}
-          {{--</ul>--}}
-        {{--</li>--}}
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="AddEmployee"><i class="fa fa-user-plus"></i>Recruitment</a></li>
+            <li><a href="EmployeeInformation"><i class="fa fa-book"></i>Information</a></li>
+            <li><a href="payroll"><i class="fa fa-dollar"></i>Payroll Management</a></li>
+            <li><a href="leave"><i class="fa fa-calendar-minus-o"></i>Attendance</a></li>
+            <li><a href="EmployeeLoans"><i class="fa fa-credit-card"></i>Employee Loans</a></li>
+          </ul>
+        </li>
 
-        {{--<li class="treeview">--}}
-          {{--<a href="#">--}}
-            {{--<i class="fa fa-cube"></i><span>Inventory Management</span>--}}
-            {{--<i class="fa fa-angle-left pull-right"></i>--}}
-          {{--</a>--}}
-          {{--<ul class="treeview-menu">--}}
-            {{--<li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>--}}
-            {{--<li><a href="inventory"><i class="fa fa-cubes"></i>Inventory</a></li>--}}
-            {{--<li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>--}}
-            {{--<li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>--}}
-            {{--<li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>--}}
-            {{--<li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>--}}
-            {{--<li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>--}}
-          {{--</ul>--}}
-        {{--</li>--}}
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-bar-chart"></i><span>Janitorial Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="emp">Employee Managment</a>
+            </li>
+            <li><a href="cust">Customer Managment</a>
+            </li>
+            <li><a href="package">Categories</a>
+            </li>
+            <li><a href="order">Order Managment</a>
+            </li>
+          </ul>
 
-        {{--<li class="treeview">--}}
-          {{--<a href="#">--}}
-            {{--<i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>--}}
-            {{--<i class="fa fa-angle-left pull-right"></i>--}}
-          {{--</a>--}}
-          {{--<ul class="treeview-menu">--}}
-            {{--<li><a href="AssignEmployee"><i class="fa fa-male"></i>Assign Employees</a></li>--}}
-            {{--<li><a href="create"><i class="fa fa-plus-circle"></i>Create Shifts</a></li>--}}
-            {{--<li><a href="replace"><i class="fa fa-exchange"></i>Replace Employee</a></li>--}}
+        </li>
 
-          {{--</ul>--}}
-        {{--</li>--}}
-      {{--</ul>--}}
-    {{--</section>--}}
-  {{--</aside>--}}
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-money"></i><span>Finance Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="assets"><i class="fa fa-building"></i>Asset Management</a></li>
+            <li><a href="assetDep"><i class="fa fa-tasks"></i>Asset Depreciation Information</a></li>
+            <li><a href="liabilities"><i class="fa fa-plus-circle"></i>Liability Management</a></li>
+            <li><a href="liabilityInterest"><i class="fa fa-object-group"></i>Liability Interest Information</a></li>
+            <li><a href="income"><i class="fa fa-files-o"></i>Income Management</a></li>
+            <li><a href="expense"><i class="fa fa-credit-card"></i>Expenditure Management</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cube"></i><span>Inventory Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="AddNewItem"><i class="fa fa-plus"></i>Add New Item</a></li>
+            <li><a href="Inventory"><i class="fa fa-cubes"></i>Inventory</a></li>
+            <li><a href="Purchases"><i class="fa fa-shopping-cart"></i>Purchases</a></li>
+            <li><a href="PurchaseReturns"><i class="fa fa-refresh"></i>Purchase Return</a></li>
+            <li><a href="Sales"><i class="fa fa-money"></i>Sales</a></li>
+            <li><a href="PurchaseOrder"><i class="fa fa-mail-forward "></i>Send PO</a></li>
+            <li><a href="Supplier"><i class="fa fa-truck"></i>Suppliers</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-bar-chart"></i><span>Work-Shift Management</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="CreateShifts"><i class="fa fa-male"></i>Create Shifts</a></li>
+            <li><a href="AssignEmployees"><i class="fa fa-plus-circle"></i>Assign Employees</a></li>
+            <li><a href="ReplaceEmployees"><i class="fa fa-exchange"></i>Replace Employees</a></li>
+            <li><a href="RemoveEmployees"><i class="fa fa-fw fa-close">&nbsp;&nbsp;&nbsp;</i>Remove Employees</a></li>
+            <li><a href="EfficiencyAnalysis"><i class="fa fa-fw fa-bar-chart">&nbsp;&nbsp;&nbsp;</i>Efficiency Analysis</a></li>
+            <li><a href="OverWorkedEmployees"><i class="fa fa-fw fa-calendar-minus-o">&nbsp;&nbsp;&nbsp;</i>Over Worked Employees</a></li>>
+          </ul>
+        </li>
+
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -196,75 +218,6 @@ desired effect
 
     <!-- Main content -->
     <section class="content">
-
-
-
-
-                  <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-calendar-check-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Today</span>
-              <span class="info-box-number"></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-
-
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-blue"><i class="fa fa-calendar-check-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">This Week</span>
-              <span class="info-box-number"></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-
-
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="fa fa-calendar-check-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">This Month</span>
-              <span class="info-box-number"></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-
-
-
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-calendar-check-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">This Year</span>
-              <span class="info-box-number"></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-
-
-
-
-
-
-
-
 
                     <div class="row">
         <div class="col-xs-12">
@@ -288,6 +241,7 @@ desired effect
                 <tbody><tr>
                   <th>Service ID</th>
                   <th>Customer Name</th>
+                  <th>Employee Name</th>
                   <th>Date</th>
                   <th>Status</th>
                   <th>Slot ID</th>
@@ -296,7 +250,8 @@ desired effect
                 <tr>
                   <td>{{ $log->service_id }}</td>
                   <td>{{ $log->customer }}</td>
-                  <td>{{ $log->date_time }}}</td>
+                  <td>{{ $log->employeeName }}</td>
+                  <td>{{ $log->date_time }}</td>
                   <td><span class="label label-success">Finished</span></td>
                   <td>{{ $log->slotId }}</td>
                 </tr>
@@ -328,83 +283,6 @@ desired effect
 
   <!-- Main Footer -->
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript;">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="pull-right-container">
-                  <span class="label label-danger pull-right">70%</span>
-                </span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
-  <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
-  <div class="control-sidebar-bg"></div>
-</div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->

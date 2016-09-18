@@ -192,7 +192,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs" style="background-color:#B1C4E6">
                     <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">New Salary Details</a>
-                    <li><a href="#tab_2" data-toggle="tab" aria-expanded="false">Employee Salary Details</a></li>
+                    <li ><a href="#tab_2" data-toggle="tab" aria-expanded="false">Employee Salary Details</a></li>
                     <li><a href="#tab_3" data-toggle="tab" aria-expanded="false">Pay Slips</a></li>
                     {{--<li><a href="#tab_4" data-toggle="tab" aria-expanded="false">Employee Fund Details</a></li>--}}
                 </ul>

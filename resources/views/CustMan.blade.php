@@ -501,7 +501,7 @@
                                   <form role="form" method="POST" action="{{url('addCust')}}">
 
                                   <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-                                  <input name="cus_id" id="cus_id" type="" value="0" />
+                                  <input name="cus_id" id="cus_id" type="hidden" value="0" />
                                   <!-- <div class="row">
                                   <div class="form-group">
                                     <div style="text-align: left"class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Customer ID</div>

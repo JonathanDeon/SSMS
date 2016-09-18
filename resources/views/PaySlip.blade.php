@@ -40,7 +40,7 @@
 <body>
 <div class=" col-md-12">
     <div class="col-md-1">
-        <img src="dist/img/aglkb.jpg" style="width: 600px; height: 100px;"><p><b>All Employees Report</b></p>
+        <img src="dist/img/aglkb.jpg" style="width: 600px; height: 100px;"><p><b>Pay Slip</b></p>
     </div>
     <div class="col-md-4"></div>
 </div>

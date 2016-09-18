@@ -34,8 +34,6 @@ class RegisterCustomerRequest extends Request
             'vModel'=>'required',
             'vnumbP'=>'required',
 
-           
-
                 ];
             }
 
@@ -58,8 +56,6 @@ class RegisterCustomerRequest extends Request
             'vModel.required' => 'Vehicle Model is required',
             'vnumbP.required' => 'Number Plate is required',
             'CusEmail.required' => 'Email Plate is required',
-
-
             
         ];
     }

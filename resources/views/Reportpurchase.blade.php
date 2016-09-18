@@ -40,8 +40,8 @@
 <body>
 <div class=" col-md-12">
     <div class="col-md-1">
-    <img src="dist/img/aglk.jpg" style="width: 1000px; height: 100px;">
-        </div>
+        <img src="dist/img/aglkb.jpg" style="width: 600px; height: 100px;"><p><b></b></p>
+    </div>
     <div class="col-md-4"><p><b>Auto Gleam</b></p></div>
 </div>
 

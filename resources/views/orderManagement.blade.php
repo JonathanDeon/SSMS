@@ -34,7 +34,91 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script>
+        //OrderID load
 
+        var order_id = "";
+        var start1 = '<select class="form-control" id="order_load" name="order_load">';
+        var end1 = '</select>';
+        $.ajax({
+            type: "GET",
+            url: './getOrders',
+            success: function(data) {
+                console.log(data);
+
+
+                for(var i=0; i<data.length; i++){
+                    order_id += '<option value="'+data[i]['janOrderId']+'">'+data[i]['janOrderId']+'</option>';
+                }
+                $('#order_load').html(start1+order_id+end1);
+            }
+        });
+
+        //Supervisor load
+
+        var supervisors = "";
+        var start2 = '<select class="form-control" id="supervisor_load" name="supervisor_load">';
+        var end2 = '</select>';
+        $.ajax({
+            type: "GET",
+            url: './getSupervisors',
+            success: function(data) {
+                console.log(data);
+
+
+                for(var i=0; i<data.length; i++){
+                    supervisors += '<option value="'+data[i]['name']+'">'+data[i]['name']+'</option>';
+                }
+                $('#supervisor_load').html(start2+supervisors+end2);
+            }
+        });
+
+        //Janitor load
+
+        var jan = "";
+        var start3 = '<select class="form-control" id="janitor_load" name="janitor_load">';
+        var end3 = '</select>';
+        $.ajax({
+            type: "GET",
+            url: './getJanitors',
+            success: function(data) {
+                console.log(data);
+
+
+                for(var i=0; i<data.length; i++){
+                    jan += '<option value="'+data[i]['name']+'">'+data[i]['name']+'</option>';
+                }
+                $('#janitor_load').html(start3+jan+end3);
+            }
+        });
+
+        function addEmp2Order() {
+
+            var o = $('#orderId option:selected').val();
+            var s = $('#supervisorId option:selected').val();
+            var e = $('#empId option:selected').val();
+
+            $.ajax({
+                type: "GET",
+                data: {
+                    'orderId': o,
+                    'supervisorId': s,
+                    'empId': e
+                },
+                url: './addEmp2Order',
+                success: function (data) {
+                    console.log(data);
+                    location.reload();
+
+                },
+                error: function (error) {
+                    alert(error.status + " : " + error.statusText);
+                    console.log(JSON.stringify(error));
+                }
+            });
+        }
+
+    </script>
     <style>
         .btn-floating {
             display: inline-block;
@@ -319,8 +403,7 @@
 
         <script>
 
-
-            function deleteOrder(janOrderId) {
+           function deleteOrder(janOrderId) {
                 swal({
                             title: "Are you sure you want to delete?",
                             text: "You will not be able to recover this record!",
@@ -367,6 +450,9 @@
                 swal("Successful", "Data Successfully Saved!", "success")
                 location.reload();
             }
+            
+            
+            
         </script>
 
         <!-- Main content -->
@@ -437,25 +523,29 @@
                                 <br>
                                 <div class="box">
                                     <div class="box-body">
-
+                                            
+                                        <form role="form" id="order_form" method="POST" action="{{url('addEmp2Order')}}">
+                                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                                            
                                         <div class="row">
                                                 <div class="form-group">
                                                     <div style="text-align: left" class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Order ID: </div>
                                                     <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
-                                                        <div id="order_load">
+                                                        <div name="order_load" id="order_load">
                                                             
                                                         </div>
                                                     </div>
                                                 </div>
                                         </div>
                                         <br />
+                                        
 					
                                         
 					<div class="row">
                                             <div class="form-group">
                                                 <div style="text-align: left" class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Select Supervisor: </div>
                                                     <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
-                                                        <div id="supervisor_load">
+                                                        <div name="supervisor_load" id="supervisor_load">
                                                             
                                                         </div>
                                                     </div>
@@ -467,7 +557,7 @@
                                                 <div class="form-group">
                                                     <div style="text-align: left" class="col-md-4 col-sm-4 col-xs-4 col-xxs-12">Select Janitors: </div>
                                                     <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
-                                                        <div id="janitor_load">
+                                                        <div name="janitor_load" id="janitor_load">
                                                             
                                                         </div>
                                                     </div>
@@ -477,20 +567,51 @@
                                         <br />
 										
 										                                       
-
+                                        </form>
                                         <div class="row">
                                             <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-8 col-xxs-12">
-                                                        <button type="button" class="btn btn-primary">Assign</button>
+                                                        <button type="submit" class="btn btn-primary">Assign</button>
                                                     </div>
                                             </div>
                                         </div>
                                         <br>
-                                        
-                                        
-                                        
-
+                
                                     </div>
+                                    
+                                    <div class="box-body">
+                                        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                                            
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <table id="orderDetails" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+
+                                                        <thead>
+                                                            
+                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Order ID</th>    
+                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Supervisor</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1">Janitors</th>                                                        
+                                                        </thead>
+                                                        <tbody>
+
+                                                        @foreach ($table as $order)
+                                                            <tr role="row" class="odd">
+                                                                <td class="sorting_1">{{ $order->orderId }}</td>
+                                                                <td>{{ $order->supervisorId }}</td>
+                                                                <td>{{ $order->empId }}</td>
+                                                                <td>
+                                                                    <button class="btn btn-danger" value="{{$order->orderId}}" onclick="deleteOrder('{{$order->orderId}}')">Delete</button>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -1136,62 +1257,9 @@
                 }
             });
             
-            //OrderID load
+
+
             
-            var order_id = "";
-            var start1 = '<select class="form-control" id="order_load" name="order_load">';
-            var end1 = '</select>';
-            $.ajax({
-                type: "GET",
-                url: './getOrders',
-                success: function(data) {
-                    console.log(data);                   
-                    
-                                                                
-                    for(var i=0; i<data.length; i++){
-                        order_id += '<option value="'+data[i]['janOrderId']+'">'+data[i]['janOrderId']+'</option>';                        
-                    }
-                    $('#order_load').html(start1+order_id+end1);
-                }
-            });
-            
-            //Supervisor load
-            
-            var supervisors = "";
-            var start2 = '<select class="form-control" id="supervisor_load" name="supervisor_load">';
-            var end2 = '</select>';
-            $.ajax({
-                type: "GET",
-                url: './getSupervisors',
-                success: function(data) {
-                    console.log(data);                   
-                    
-                                                                
-                    for(var i=0; i<data.length; i++){
-                        order_id += '<option value="'+data[i]['name']+'">'+data[i]['name']+'</option>';                        
-                    }
-                    $('#supervisor_load').html(start2+supervisors+end2);
-                }
-            });
-            
-            //Janitor load
-            
-            var jan = "";
-            var start3 = '<select class="form-control" id="janitor_load" name="janitor_load">';
-            var end3 = '</select>';
-            $.ajax({
-                type: "GET",
-                url: './getJanitors',
-                success: function(data) {
-                    console.log(data);                   
-                    
-                                                                
-                    for(var i=0; i<data.length; i++){
-                        order_id += '<option value="'+data[i]['name']+'">'+data[i]['name']+'</option>';                        
-                    }
-                    $('#supervisor_load').html(start3+jan+end3);
-                }
-            });
         });
     </script>
 </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sales Report</title>
+    <title>Customer Deficit Report</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -40,63 +40,32 @@
 <body>
 <div class=" col-md-12">
     <div class="col-md-1">
-        <img src="dist/img/aglkb.jpg" style="width: 600px; height: 100px;"><p><b></b></p>
-        </div>
-    <div class="col-md-4"><p><b>Auto Gleam</b></p></div>
+        <img src="dist/img/aglkb.jpg" style="width: 600px; height: 100px;"><p><b>Customer Deficit Report</b></p>
+    </div>
+    <div class="col-md-4"></div>
 </div>
 
 <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
 <div class="col-md-6" align="justify">
- <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header" align="center">
-              <h2>Sales Details Report <h2>
-              <h3>From {{$From}} to {{$To}}</h3>
-                @foreach($totrep as $t)
-                <h3> Total Sales within the period : Rs. {{$t->Itot}} </h3>
-                @endforeach
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-<div class="row">
-   
-       <div class="col-sm-6">
-       <div class="dataTables_filter" id="example1_filter">
-       </div></div></div>
-            
-              <table id="example2" class="table table-bordered table-hover">
-                 <thead>
-                <tr>
-                  <th>Sales ID</th>
-                  <th>Item Name</th>
-                  <th>Quantity</th>
-                  <th>Date </th>
-                  <th>Unit Value(Rs.)</th>
-                  <th>Discount(Rs.) </th>
-                  <th>Total(Rs.)</th>
-                </tr>
-                </thead>
-                <tbody>
-            @foreach($sales as $sale)
-                  <tr>
-                  <td>{{$sale->iid}}</td>
-                  <td>{{$sale->Iitemid}}</td>
-                  <td>{{$sale->Iqty}}</td>
-                  <td>{{$sale->Idate}}</td>
-                  <td>{{$sale->Iprice}}</td>
-                  <td>{{$sale->Idisc}}</td>
-                  <td>{{$sale->Itotal}}</td>
-                  </tr>
+    <div class="box-body">
 
-                @endforeach
-              
-                </tbody>
-              
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
+        <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="example1_length"></div></div></div><div class="row"><div class="col-sm-12"><table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                        <thead>
+                        <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending" style="width: 50px;">Deficit ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 361px;">Customer Name</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Customer ID</th><th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">Amount</th>
+                        </thead>
+                        @foreach($def as $def)
+                            <tr>
+                                <td>{{$def->deficitID}}</td>
+                                <td>{{$def->name}}</td>
+                                <td>{{$def->cusid}}</td>
+                                <td>{{$def->amount}}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table></div></div>
+        </div>
+    </div>
+</div>
 <!-- jQuery 2.2.0 -->
 <script src="../../plugins/jQuery/jQuery-2.2.0.min.js"></script>
 <!-- Bootstrap 3.3.6 -->

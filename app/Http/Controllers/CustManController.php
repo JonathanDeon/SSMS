@@ -11,14 +11,12 @@ class CustManController extends Controller
 {
     public function loadView()
     {
-    	$customer = DB::select("select * from customer");
+    	$customer = DB::select("select * from customer WHERE cusType=2");
      	return view('CustMan', compact('customer'));
     	
     }
 
-    public function getCust(Request $request)
-
-    {
+    public function getCust(Request $request){
       $cus_id = $request->input('cus_id');
       $name = $request->input('name');
       $address = $request->input('address');
@@ -33,14 +31,13 @@ class CustManController extends Controller
             DB::statement("INSERT INTO customer(name,address,contactNo,contactPerson,cusType,mail,nic,pwd) 
                             values('$name','$address','$contactNo','$contactPerson','$customerType','$mail','$nic','$pwd')");
 
-            $customer = DB::select("select * from customer");
+            $customer = DB::select("select * from customer WHERE cusType=2");
             return view('CustMan', compact('customer'));
         }
         else{
             DB::statement("UPDATE customer SET name = '$name', address = '$address', contactNo = '$contactNo', contactPerson ='$contactPerson', mail ='$mail', nic='$nic', pwd='$pwd' 
-                           WHERE  cus_id = '$cus_id'");
-            
-            $customer = DB::select("select * from customer");
+            WHERE  cus_id = '$cus_id'");
+            $customer = DB::select("select * from customer WHERE cusType=2");
             return view('CustMan', compact('customer'));
         }
 

@@ -136,10 +136,81 @@ Route::post('/sendRequest', [
 
 /*-----------------------------------//Inventory---------------------------------*/
 
+/*-----------------------------------Service Management---------------------------------*/
+Route::get('/assignments', function () {
+    return view ('assignments');
 
+});
+Route::get('/reports', function () {
+    return view ('reports');
+
+});
+Route::get('/reservations', function () {
+    return view ('reservations');
+
+});
+Route::get('/slot01', function () {
+    return view ('slot01');
+
+});
+
+Route::get('/slot02', function () {
+    return view ('slot02');
+
+});
+
+Route::get('/slot03', function () {
+    return view ('slot03');
+
+});
+
+Route::get('/slot04', function () {
+    return view ('slot04');
+
+});
+
+Route::get('/plans', function () {
+    return view ('plans');
+
+});
+
+
+Route::get('/logs', function () {
+    return view ('logs');
+});
+Route::post('addplan','PlanController@addplan');
+Route::post('addreserv','ReservController@addreserv');
+Route::post('updatereserv','ReservController@updatereserv');
+Route::get('plans','PlanController@showplans');
+Route::get('assignments','AssignController@availableEmp');
+Route::post('addassignment','AssignController@addassignment');
+Route::get('deletePlans','PlanController@deletePlans');
+Route::get('clearSlot','ReservController@clearSlot');
+Route::get('logs','LogController@showlog');
+Route::get('reports','reportsController@showpaymentlog');
+Route::get('reservations','ReservController@slotwid');
+Route::get('slot01','slot01Controller@showpending');
+Route::get('slot02','slot02Controller@showpending');
+Route::get('slot03','slot03Controller@showpending');
+Route::get('slot04','slot04Controller@showpending');
+
+Route::get('serviceNext','ReservController@serviceNext');
+Route::get('deletereservation','slot01Controller@deletereservation');
+Route::get('deletereservation','slot02Controller@deletereservation');
+Route::get('deletereservation','slot03Controller@deletereservation');
+Route::get('deletereservation','slot04Controller@deletereservation');
+
+
+
+
+/*-----------------------------------Service Management---------------------------------*/
 
 /*-----------------------------------Customer Management---------------------------------*/
 Route::get('fillCustomer','register@fillCustomer');
+
+Route::get('/ReportsCustomer', function () {
+    return view ('ReportsCustomer');
+});
 
 Route::get('fillVehicle','register@fillVehicle');
 
@@ -182,10 +253,10 @@ Route::post('CustomerDeficit','deficitControl@addDeficit');
 Route::get('filldeficit','deficitControl@filldeficit');
 
 Route::get('setDeficit','deficitControl@setDeficit');
-
 /*-----------------------------------//Customer Management---------------------------------*/
 
 /*-----------------------------------//Finance Management---------------------------------*/
+/*Finance routes*/
 Route::get('liabilities', function () {
     return view('Liability');
 });
@@ -208,6 +279,11 @@ Route::get('interest', function()
 {
     return view('InterestL');
 });
+
+
+
+
+
 Route::post('assets','AssetController@addAssets');
 Route::get('assets','AssetController@loadAssets');
 Route::get('deleteAssets','AssetController@deleteAssets');
@@ -219,6 +295,7 @@ Route::get('assets/getDep', 'AssetController@calculateDepreciation');
 Route::post('depassets','AssetController@addDepAmount');
 Route::get('search/assetSearch', 'AssetController@assetSearch');
 Route::get('search/assetDepSearch','AssetController@assetDepSearch');
+
 Route::get('liabilities','LiabilityController@loadLiabilities');
 Route::post('add','LiabilityController@addLiabilities');
 Route::get('deleteLiabilities','LiabilityController@deleteLiabilities');
@@ -231,20 +308,21 @@ Route::get('updateEmployee','LiabilityController@updateLiability');
 Route::get('search/liabilitySearch', 'LiabilityController@liabilitySearch');
 Route::get('search/liabilityDepSearch', 'LiabilityController@liabilityInterestSearch');
 Route::post('addInterest', 'LiabilityController@addInterest');
+
 Route::get('expense','ExpenditureController@loadExpenses');
+
 Route::get('income','IncomeController@loadIncome');
 //pdf
 Route::get('janitorial-pdf','IncomeController@getJanitorialPdf');
 Route::get('sales-pdf','IncomeController@getSalesPdf');
 Route::get('services-pdf', 'IncomeController@getServicePdf');
+
 Route::get('purchases-pdf','ExpenditureController@getPurchasesPdf');
 Route::get('purchaseReturns-pdf','ExpenditureController@getPurchaseReturnsPdf');
 Route::get('salaries-pdf', 'ExpenditureController@getSalariesPdf');
-
 /*-----------------------------------//Finance Management---------------------------------*/
 
 /*-----------------------------------//Janitorial Management---------------------------------*/
-
 Route::get('/', function () {
     return view('main');
 });
@@ -290,4 +368,31 @@ Route::get('getSupervisors','OrderController@getSupervisors');
 
 Route::get('getJanitors','OrderController@getJanitors');
 
+Route::get('addEmp2Order','OrderController@addEmp2Order');
 /*-----------------------------------//Janitorial Management---------------------------------*/
+
+/*-----------------------------------//WorkShift Management---------------------------------*/
+
+Route::get('CreateShifts','CreateShiftsController@loadView');
+Route::post('shiftcreate','CreateShiftsController@addshift');
+Route::get('replaceEmp','ReplaceController@Addemp');
+Route::post('selectBranch','efficiencyController@loadtable');
+Route::get('addEmployee','assignEmpController@addEmployeeShift');
+Route::post('Assign','assignEmpController@getemp');
+Route::get('AssignEmployees','assignEmpController@loadAssignEmployee');
+Route::get('assignShift','ReplaceController@assignShift');
+Route::get('ReplaceEmployees','ReplaceController@loadReplaceEmployee');
+Route::get('request','ReplaceController@loadRequestedEmployees');
+Route::post('selectShift','ReplaceController@replace');
+Route::get('EfficiencyAnalysis','efficiencyController@loadview');
+Route::get('remove1','removeEmployee@removeEmployeeRecord');
+Route::post('Remove','removeEmployee@getEmpDetails');
+Route::get('RemoveEmployees','removeEmployee@loadRemoveEmployee');
+Route::post('getefficiencyDetails','efficiencyController@getEfficiency');
+Route::post('calculatefficiencyDetails','efficiencyController@calculateEfficiency');
+Route::post('getEmployee','ReplaceController@getReplaceableEmpDetails');
+Route::get('UpdateEmployeeShift','ReplaceController@UpdateShift');
+Route::get('OverWorkedEmployees','OverWorkedEmpController@loadOverWorkedEmployees');
+Route::get('ReEnterEmployeeShift','ReplaceController@ReEnterShift');
+
+/*-----------------------------------//WorkShift Management---------------------------------*/

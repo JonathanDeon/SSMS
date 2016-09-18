@@ -354,7 +354,7 @@ function inc() {
                 <li><a href="package"<i class="fa fa-cubes"></i> Categories</a></li>
                 <li><a href="order"><i class="fa fa-cart-plus"></i> Order Management</a></li>
         </ul>
-</li>>
+</li>
        
 <li class="treeview">
          <a href="#">
@@ -670,12 +670,6 @@ function inc() {
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
-<!-- AdminLTE App -->
-<script src="dist/js/app.min.js"></script>
 </body>
 </html>

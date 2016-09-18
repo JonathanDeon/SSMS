@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Servcie Management | Assign Employee</title>
+  <title>Servcie Management | Reservations</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -25,21 +25,69 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-
-
-  <!--sweet alerts -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-
-  <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+
+  <!--sweet alerts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 </head>
+<script type="text/javascript">
+
+  function deletereservation(service_id){
+
+
+    swal({
+              title: "Are you sure you want to delete?",
+              text: "You will not be able to recover this record!",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Delete",
+              closeOnConfirm: false },
+            function(confirm){
+              if(confirm) {
+
+                $.ajax({
+                  method:'get',
+                  url:'deletereservation',
+                  data:{service_id:service_id},
+                  success:function(){
+                    swal({
+                              title: "Deleted!",
+                              text: "Successfully deleted the service reservation record!",
+                              type: "warning",
+                              showCancelButton: false,
+                              confirmButtonColor: "#DD6B55",
+                              confirmButtonText: "Ok",
+                              closeOnConfirm: false },
+                            function (confirm) {
+                              location.reload();
+                            });
+                  },
+                  error:function(x,y,thrownError){
+                    console.log(thrownError);
+                  }
+                });
+              }else{
+              }
+            }
+    );
+
+
+
+  }
+
+
+
+
+
+
+</script>
 <!--
 BODY TAG OPTIONS:
 =================
@@ -61,76 +109,6 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="hold-transition skin-blue sidebar-mini">
-<script type="text/javascript">
-    function successadd(field) {
-                swal("Added Successfully", "Employee has been added to the service", "success");
-    }
-    function emptyField(field) {
-                swal("Empty Field", "You cannot have one or more fields empty", "warning");
-    }
-    function notNumber(field) {
-                swal("Not Numeric", "You can only input numeric values", "warning");
-    }
-    function successassign() {
-                swal("Assign Successfull", "Employee has been assigned to the service", "success");
-    }
-
-    function formValidate(){
-
-       var emp = document.getElementById('empid').value;
-       var serve = document.getElementById('servid').value;
-       
-      
-
-        if(!isEmpty(emp))
-          if(!isEmpty(serve))
-                  if(isdigit(emp))
-                      if(isdigit(serve))
-
-                    return true;
-                  
-                  else
-                    return false;  
-                  else
-                    return false;
-                  else
-                    return false;
-                  else
-                    return false;
-                  
-        }
-    
-    function isdigit(elem)
-    {
-       
-       if(isNaN(elem))
-       {  alert("input should be numeric");
-          return false;
-       }
-       else
-          return true;
-    }
-
-
-    function isEmpty(elem,field) {
-
-        if(elem == "")
-        {   emptyField(field);
-           //alert("You cannot have one or multiple fields Empty");
-           return true;
-        }
-        else
-        {
-          return false;
-        }  
-    } 
-
-
-</script>
-
-
-
-
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -143,7 +121,6 @@ desired effect
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Auto</b>Gleam</span>
     </a>
-
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
@@ -185,10 +162,10 @@ desired effect
           <ul class="treeview-menu">
             <li><a href="reservations"><i class="fa fa-square-o"></i>Add/update Reservations</a></li>
             <li ><a href="slot01"><i class="fa fa-square-o"></i>Slot 01</a></li>
-            <li ><a href="slot02"><i class="fa fa-square-o"></i>Slot 02</a></li>
+            <li class="active"><a href="slot02"><i class="fa fa-square-o"></i>Slot 02</a></li>
             <li ><a href="slot03"><i class="fa fa-square-o"></i>Slot 03</a></li>
             <li ><a href="slot04"><i class="fa fa-square-o"></i>Slot 04</a></li>
-            <li class="active"><a href="assignments"><i class="fa fa-male"></i>Assignments</a></li>
+            <li><a href="assignments"><i class="fa fa-male"></i>Assignments</a></li>
             <li><a href="plans"><i class="fa fa-check-square"></i> Service Plans</a></li>
             <li><a href="logs"><i class="fa fa-file-text-o"></i>Logs</a></li>
             <li><a href="reports"><i class="fa fa-pencil-square-o"></i>Reports</a></li>
@@ -286,7 +263,7 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <p class="lead">
-        Employee Assignments
+        Slot 02 Pending Services
         
       </p>
       <ol class="breadcrumb">
@@ -298,212 +275,52 @@ desired effect
     <!-- Main content -->
     <section class="content">
 
-      <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-blue"><i class="fa fa-user"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Available Employees</span>
-              <span class="info-box-number">@foreach($emps as $emp)   
-                                            <p>{{ $emp->empcount }}</p>
-                                            @endforeach</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-
-
-
-        <div class="col-md-6 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-green"><i class="fa fa-user-plus"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Employee Assignment Requests</span>
-              <span class="info-box-number">@foreach($reqs as $req)   
-                                            <p>{{ $req->reqcount }}</p>
-                                            @endforeach</span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-
-        
-
-
-        
-
-      <div class="col-md-12">
-          <div class="box box-warning collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Available Employee Details</h3>
-
-
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                </button>
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body" style="display: none;">
-              <div class="row">
+                    <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            
+            <div class="box-header">
+              <h3 class="box-title">Slot 02 Service Details</h3>
+
+              <div class="box-tools">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                  <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
               <table class="table table-hover">
                 <tbody><tr>
-                  <th>Employee ID</th>
-                  <th>Employee Name</th>
+                  <th>Service ID</th>
+                  <th>Customer Name</th>
+                  <th>Date</th>
+                  <th>Time</th>
                   <th>Status</th>
                 </tr>
-                @foreach($assigns as $assign)
+                @foreach($pending2 as $pending)
                 <tr>
-                  <td>{{ $assign->eid }}</td>
-                  <td>{{ $assign->name }}</td>
-                  <td><span class="label label-success">Available</span></td>
+                  <td>{{ $pending->service_id }}</td>
+                  <td>{{ $pending->customer }}</td>
+                  <td>{{ $pending->reservDate }}</td>
+                  <td>{{ $pending->reservTime }}</td>
+                  <td>{{ $pending->status }}</td>
+
+                  <td><button type="button" value="{{$pending->service_id}}" class="btn btn-danger" onclick="deletereservation('{{$pending->service_id}}')"><i class="fa fa-trash"></i></button></td>
+
                 </tr>
                 @endforeach
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-      </div>
-
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-
-
-
-
-
-
-
-
-        <div class="col-md-12">
-          <div class="box box-success collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Employee Requests</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                </button>
-              </div>
-              <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-              
-              <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            
-            <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-              <table class="table table-hover">
-                <tbody><tr>
-                  <th>Employee Name</th>
-                  <th>Customer Name</th>
-                  <th>Service ID</th>
-                  <th>Slot ID</th>
-                  
-
-                </tr>
-                @foreach($requests as $request)
-                <tr>
-                  <td>{{ $request->empnameReq }}</td>
-                  <td>{{ $request->customer }}</td>
-                  <td>{{ $request->service_id }}</td>
-                  <td>{{ $request->slotId }}</td>
-                </tr>
-                @endforeach
-                </tr>
-              </tbody></table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-      </div>
-
-
-
-
-
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-
-
-
-
-
-
-
-
-
-<div class="row">
-        
-      </div>
-
-
-
-
-
-
-
-      <div class="box box-danger">
-            <div class="box-header with-border">
-              <h3 class="box-title">Assign Employee to a service</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-            <form class="form-horizontal" method="post" action="addassignment" name="addassignment" id="addassignment" onsubmit="return formValidate()">
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Employee ID</label>
-                  
-                  <div class="col-sm-10">
-                    <input type="text" min="0" class="form-control" id="empid" placeholder="Name" name="empid">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Service ID</label>
-
-                  <div class="col-sm-10">
-                    <input type="text" min="0" class="form-control" id="servid" placeholder="Service" name="servid">
-                  </div>
-                </div>
                 
-              </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-info pull-right" onclick="successassign()">Assign</button>
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              </div>
-              <!-- /.box-footer -->
-            </form>
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
           </div>
-
-
-
-
-
-
-
-
+          <!-- /.box -->
+        </div>
+      </div>
 
 
     </section>
@@ -513,6 +330,11 @@ desired effect
 
   <!-- Main Footer -->
 
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->

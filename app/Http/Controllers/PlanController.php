@@ -47,10 +47,11 @@
 			$plans = DB::select("select * from service_plan");
 			$cats = DB::select("select COUNT(category) as 'counter' from service_plan");
 			$serv = DB::select("select COUNT(*) as 'counter2' from service_plan");
+			$plan = DB::select("select COUNT(DISTINCT category) as 'counter3' from service_plan ");
 				
 
 
-			return view('plans', compact('plans','cats','serv'));
+			return view('plans', compact('plans','cats','serv','plan'));
 
         
 		}
